@@ -1,5 +1,11 @@
-const User = require('../db/models/user');
-(cloudinary = require('cloudinary').v2), (jwt = require('jsonwebtoken'));
+const cyclist = require('../db/models/cyclist');
+(cloudinary = require('cloudinary').v2),
+  ({
+    sendWelcomeEmail,
+    sendCancellationEmail,
+    forgotPasswordEmail
+  } = require('../emails/index')),
+  (jwt = require('jsonwebtoken'));
 
 // Creating Cyclist //
 

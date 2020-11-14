@@ -48,7 +48,7 @@ const cyclistSchema = new mongoose.Schema(
       }
     ],
     avatar: {
-      type: string
+      type: String
     }
   },
   {
