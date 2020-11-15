@@ -1,6 +1,7 @@
 const mongoose = require('mongoose'),
   validator = require('validator'),
-  bcrypt = require('jsonwebtoken');
+  bcrypt = require('bcryptjs'),
+  jwt = require('jsonwebtoken');
 
 const cyclistSchema = new mongoose.Schema({
   name: {
@@ -88,7 +89,7 @@ cyclistSchema.virtual('review', {
 
 cyclistSchema.methods.toJSON = function () {
   const cyclist = this;
-  const cyclistObject = cylist.toObject;
+  const cyclistObject = cyclist.toObject();
   delete cyclistObject.password;
   delete cyclistObject.tokens;
   return cyclistObject;
@@ -97,30 +98,32 @@ cyclistSchema.methods.toJSON = function () {
 cyclistSchema.methods.generateAuthToken = async function () {
   const cyclist = this;
   const token = jwt.sign(
-    { _id: cylist._id.toString(), name: cyclist.name },
+    {
+      _id: cyclist._id.toString(),
+      name: cyclist.name
+    },
     process.env.JWT_SECRET,
-    { expiresIn: '72h' }
+    { expiresIn: '24h' }
   );
-
-  user.tokens = user.tokens.concat({ token });
-  await user.save();
+  cyclist.tokens = cyclist.tokens.concat({ token });
+  await cyclist.save();
   return token;
 };
 
-// Find User by Email and Password
+// Find cyclist by Email and Password
 cyclistSchema.statics.findByCredentials = async (email, password) => {
   const cyclist = await cyclist.findOne({ email });
-  if (!user) throw new Error('Unable to log in.');
+  if (!cyclist) throw new Error('Unable to log in.');
   const isMatch = await bcrypt.compare(password, cyclist.password);
-  if (!isMatch) throw new Error('Unable to login.');
-  return user;
+  if (!isMatch) throw new Error('Invalid password, try again!');
+  return cyclist;
 };
 
-// Mongoose Middleware to Hash users Passwords
+// Mongoose Middleware to Hash cyclists Passwords
 cyclistSchema.pre('save', async function (next) {
   const cyclist = this;
   if (cyclist.isModified('password'))
-    cylist.password = await bcrypt.hash(cyclist.password, 8);
+    cyclist.password = await bcrypt.hash(cyclist.password, 8);
 
   next();
 });

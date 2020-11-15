@@ -1,31 +1,44 @@
+//import the DB connection
 require('./db/config/index');
 const express = require('express'),
   app = express(),
+  openRoutes = require('./routes/open/index'),
+  passport = require('./middleware/authentication/index'),
+  fileUpload = require('express-fileupload'),
   cookieParser = require('cookie-parser'),
-  openRoutes = require('./routes/open/'),
-  // passport = require('./middleware/authentication'),
   path = require('path');
 
-//Middleware
+// Parse incoming JSON into objects
 app.use(express.json());
-// app.use('/api/*', passport.authenticate('jwt', { session: false }));
 
-// Unauthenticated routes
-
+//Unauthenticated routes
 app.use('/api', openRoutes);
 
-// Serve any static files
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-}
-
-// Any authentication middleware and related routing would be here.
+//Middleware to parse through incoming cookies in the requests.
 app.use(cookieParser());
 
-// Handle React routing, return all requests to React app
 if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.resolve(__dirname, '..', 'client', 'build')));
+}
+
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp/images'
+  })
+);
+
+//Authenticated Routes
+app.use('/api/*', passport.authenticate('jwt', { session: false }));
+
+if (process.env.NODE_ENV === 'production') {
+  // Handle React routing, return all requests to React app
   app.get('*', (request, response) => {
-    response.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+    response.sendFile(
+      path.resolve(__dirname, '..', 'client', 'build', 'index.html')
+    );
   });
 }
+
 module.exports = app;
