@@ -1,19 +1,15 @@
-const repair = require('../db/models/repair');
+const Repair = require('../db/models/repair');
 
 exports.createRepair = async (req, res) => {
-  const { description, repair, price, sameday, averagetime } = req.body;
   try {
-    const repairs = new Bikeshop({
-      repair,
-      description,
-      price,
-      sameday,
-      averagetime
+    const repair = await new Repair({
+      ...req.body,
+      bikeshop: req.user._id
     });
-
-    res.status(201).json(repairs);
-  } catch (e) {
-    res.status(400).json({ error: e.toString() });
+    await repair.save();
+    res.status(200).send(repair);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -30,13 +26,48 @@ exports.updateRepair = async (req, res) => {
     allowedUpdates.includes(update)
   );
   if (!isValidOperation)
-    return res.status(400).json({ message: 'Invalid updates' });
+    return res.status(400).json({ message: 'invalid updates' });
+
   try {
-    updates.forEach((update) => (req.repair[update] = req.body[update]));
+    const repair = await Repair.findOne({
+      _id: req.params.id,
+      bikeshop: req.bikeshop._id
+    });
+    if (!repair) return res.status(404).json({ message: 'repair not found' });
+    updates.forEach((update) => (repair[update] = req.body[update]));
+    await repair.save();
+    res.status(200).json(repair);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
-    await req.repairs.save();
+exports.deleteRepair = async (req, res) => {
+  try {
+    const repair = await Repair.findOneAndDelete({
+      _id: req.params.id,
+      owner: req.user._id
+    });
+    if (!repair) return res.status(404).json({ message: 'repair not found' });
+    res.status(200).json({ message: 'repair has been deleted' });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
-    res.json(req.repairs);
+// ***********************************************//
+// Get a specific Repair
+// ***********************************************//
+
+exports.getSpecificRepair = async (req, res) => {
+  const _id = req.params.id;
+  if (!mongoose.Types.ObjectId.isValid(_id))
+    return res.status(400).json({ message: 'not a valid repair' });
+
+  try {
+    const repair = await repair.findOne({ _id, bikeshop: req.user._id });
+    if (!repair) return res.status(400).json({ message: 'repair not found' });
+    res.status(200).json(repair);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
