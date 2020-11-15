@@ -1,13 +1,10 @@
-const Cyclist = require('../db/models/cyclist');
-const cyclist = require('../db/models/cyclist');
-const { forgotPasswordEmail } = require('../emails');
-(cloudinary = require('cloudinary').v2),
-  ({
-    sendWelcomeEmail,
-    sendCancellationEmail,
-    forgotPasswordEmail
-  } = require('../emails/index')),
-  (jwt = require('jsonwebtoken'));
+const Cyclist = require('../db/models/cyclist'),
+  mongoose = require('mongoose'),
+  jwt = require('jsonwebtoken');
+
+//* *//
+// Unauthenticated
+//* *//
 
 // Creating Cyclist //
 
@@ -17,7 +14,10 @@ exports.createCyclist = async (req, res) => {
     const cyclist = new cyclist({
       name,
       email,
-      password
+      password,
+      phone,
+      zipcode,
+      bicycles
     });
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, {
@@ -88,6 +88,8 @@ exports.passwordRedirect = async (req, res) => {
     res.json({ error: e.toString() });
   }
 };
+
+// AUTHENTICATED REQUESTS
 
 //Update a Password
 exports.updatePassword = async (req, res) => {

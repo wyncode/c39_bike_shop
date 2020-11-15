@@ -2,11 +2,6 @@ const { createCyclist, loginCyclist } = require('../../controllers/cyclist');
 
 const router = require('express').Router();
 
-{
-  createCyclist, loginCyclist;
-}
-require('../../controllers/cyclist');
-
 router.post('/', createCyclist);
 router.post('/login', loginCyclist);
 

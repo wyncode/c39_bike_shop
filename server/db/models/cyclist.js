@@ -37,6 +37,10 @@ const cyclistSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  phone: {
+    type: String,
+    trim: true
+  },
   bicycles: [
     {
       bike: {
@@ -65,12 +69,7 @@ const cyclistSchema = new mongoose.Schema({
   ],
   avatar: {
     type: String
-  },
-  phone: {
-    type: String,
-    trim: true
-  },
-  timestamps: true
+  }
 });
 
 //Creating relation between Cyclist and order
