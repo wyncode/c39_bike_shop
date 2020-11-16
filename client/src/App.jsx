@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AppContextProvider } from './context/AppContext';
 import ContextDemo from './components/ContextDemo';
+import HomePage from './Pages/HomePage';
 
 import './App.css';
 
