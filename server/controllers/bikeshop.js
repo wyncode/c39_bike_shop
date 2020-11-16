@@ -175,3 +175,14 @@ exports.deleteBikeshop = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+exports.updatePassword = async (req, res) => {
+  try {
+    req.user.password = req.body.password;
+    await req.user.save();
+    res.clearCookie('jwt');
+    res.status(200).json({ message: 'password updated successfully!' });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};

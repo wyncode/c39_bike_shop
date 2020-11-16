@@ -1,5 +1,8 @@
 const Repair = require('../db/models/repair');
 
+// ***********************************************//
+// create repair
+// ***********************************************//
 exports.createRepair = async (req, res) => {
   try {
     const repair = await new Repair({
@@ -12,7 +15,9 @@ exports.createRepair = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
+// ***********************************************//
+// change repair
+// ***********************************************//
 exports.updateRepair = async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = [
@@ -41,6 +46,9 @@ exports.updateRepair = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+// ***********************************************//
+// Get a delete Repair
+// ***********************************************//
 
 exports.deleteRepair = async (req, res) => {
   try {

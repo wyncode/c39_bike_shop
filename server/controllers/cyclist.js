@@ -153,12 +153,23 @@ exports.logoutAllDevices = async (req, res) => {
 // Delete a cyclist
 // ***********************************************//
 
-exports.deletecyclist = async (req, res) => {
+exports.deleteCyclist = async (req, res) => {
   try {
     await req.cyclist.remove();
     sendCancellationEmail(req.cyclist.email, req.cyclist.name);
     res.clearCookie('jwt');
     res.json({ message: 'cyclist deleted' });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+exports.updatePassword = async (req, res) => {
+  try {
+    req.user.password = req.body.password;
+    await req.user.save();
+    res.clearCookie('jwt');
+    res.status(200).json({ message: 'password updated successfully!' });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

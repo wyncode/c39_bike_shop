@@ -3,10 +3,13 @@ require('./db/config/index');
 const express = require('express'),
   app = express(),
   openRoutes = require('./routes/open/index'),
-  passport = require('./middleware/authentication/index'),
-  fileUpload = require('express-fileupload'),
-  cookieParser = require('cookie-parser'),
-  path = require('path');
+  repairRouter = require('./routes/secure/repair'),
+  cyclistRouter = require('./routes/secure/cyclist'),
+  bikeshopRouter = require('./routes/secure/bikeshop');
+(passport = require('./middleware/authentication/index')),
+  (fileUpload = require('express-fileupload')),
+  (cookieParser = require('cookie-parser')),
+  (path = require('path'));
 
 // Parse incoming JSON into objects
 app.use(express.json());
@@ -31,6 +34,10 @@ app.use(
 
 //Authenticated Routes
 app.use('/api/*', passport.authenticate('jwt', { session: false }));
+
+app.use('/api/repair', repairRouter);
+app.use('/api/cyclist', cyclistRouter);
+app.use('/api/bikeshop', bikeshopRouter);
 
 if (process.env.NODE_ENV === 'production') {
   // Handle React routing, return all requests to React app
