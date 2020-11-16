@@ -1,11 +1,25 @@
-const router = require('express').Router();
+const { createBikeshop, loginBikeshop } = require('../../controllers/bikeshop');
 
-// JUST FOR DEMO PURPOSES, PUT YOUR ACTUAL API CODE HERE
-router.get('/api/demo', (request, response) => {
-  response.json({
-    message: 'Hello from server.js'
-  });
-});
-// END DEMO
+const router = require('express').Router(),
+  {
+    createCyclist,
+    loginCyclist,
+    requestPasswordReset,
+    passwordRedirect
+  } = require('../../controllers/cyclist');
+
+const {
+  createBikeshop,
+  loginBikeshop,
+  requestPasswordReset,
+  passwordRedirect
+} = require('../../controllers/bikeshop');
+
+router.post('/', createCyclist);
+router.post('/login', loginCyclist);
+router.post('/bikeshop', createBikeshop);
+router.post('/loginbikeshop', loginBikeshop);
+router.get('/password', requestPasswordReset);
+router.get('/password/:token', passwordRedirect);
 
 module.exports = router;

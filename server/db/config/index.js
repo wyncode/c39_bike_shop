@@ -7,7 +7,7 @@ try {
     useUnifiedTopology: true,
     useFindAndModify: false
   });
-  console.log('Connected to MongoDB');
-} catch (e) {
-  console.log(e.toString());
+  console.log('MongoDB has been connected!');
+} catch (error) {
+  console.log(`Error: ${error}`);
 }
