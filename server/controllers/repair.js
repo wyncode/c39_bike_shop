@@ -80,3 +80,13 @@ exports.getSpecificRepair = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+// ***********************************************//
+// Get a all repairs
+// ***********************************************//
+
+exports.getAllRepairs = (req, res) => {
+  Repair.find()
+    .then((repairs) => res.status(200).json(repairs))
+    .catch((err) => res.status(500).json('Error: ' + err));
+};

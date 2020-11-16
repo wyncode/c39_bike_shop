@@ -5,7 +5,7 @@ const router = require('express').Router(),
     getAllRepairs,
     updateRepair,
     deleteRepair
-  } = require('../../controllers/Repairs');
+  } = require('../../controllers/repair');
 
 router.post('/', createRepair);
 router.get('/:id', getSpecificRepair);
