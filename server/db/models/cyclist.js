@@ -1,8 +1,7 @@
 const mongoose = require('mongoose'),
   validator = require('validator'),
   bcrypt = require('bcryptjs'),
-  jwt = require('jsonwebtoken'),
-  Invoice = require('./invoice');
+  jwt = require('jsonwebtoken');
 
 const cyclistSchema = new mongoose.Schema({
   name: {
@@ -39,6 +38,10 @@ const cyclistSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  phone: {
+    type: String,
+    trim: true
+  },
   bicycles: [
     {
       bike: {
@@ -67,35 +70,64 @@ const cyclistSchema = new mongoose.Schema({
   ],
   avatar: {
     type: String
-  },
-  phone: {
-    type: String,
-    trim: true
-  },
-  timestamps: true
+  }
 });
 
+//Creating relation between Cyclist and order
 cyclistSchema.virtual('cyclist', {
   ref: 'ServiceOrder',
   localField: '_id',
   foreignField: 'cyclist'
 });
 
+//Creating relationship between Cyclist and Review
 cyclistSchema.virtual('review', {
   ref: 'Review',
   localField: '_id',
   foreignField: 'reviewId'
 });
+
+cyclistSchema.methods.toJSON = function () {
+  const cyclist = this;
+  const cyclistObject = cyclist.toObject();
+  delete cyclistObject.password;
+  delete cyclistObject.tokens;
+  return cyclistObject;
+};
+
 cyclistSchema.methods.generateAuthToken = async function () {
   const cyclist = this;
   const token = jwt.sign(
-    { _id: cylist._id.toString(), name: cyclist.name },
+    {
+      _id: cyclist._id.toString(),
+      name: cyclist.name
+    },
     process.env.JWT_SECRET,
-    { expiresIn: '72h' }
+    { expiresIn: '24h' }
   );
-
   cyclist.tokens = cyclist.tokens.concat({ token });
   await cyclist.save();
-
   return token;
 };
+
+// Find cyclist by Email and Password
+cyclistSchema.statics.findByCredentials = async (email, password) => {
+  const cyclist = await cyclist.findOne({ email });
+  if (!cyclist) throw new Error('Unable to log in.');
+  const isMatch = await bcrypt.compare(password, cyclist.password);
+  if (!isMatch) throw new Error('Invalid password, try again!');
+  return cyclist;
+};
+
+// Mongoose Middleware to Hash cyclists Passwords
+cyclistSchema.pre('save', async function (next) {
+  const cyclist = this;
+  if (cyclist.isModified('password'))
+    cyclist.password = await bcrypt.hash(cyclist.password, 8);
+
+  next();
+});
+
+const Cyclist = mongoose.model('Cyclist', cyclistSchema);
+
+module.exports = Cyclist;
