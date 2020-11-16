@@ -8,6 +8,13 @@ const router = require('express').Router(),
     passwordRedirect
   } = require('../../controllers/cyclist');
 
+const {
+  createBikeshop,
+  loginBikeshop,
+  requestPasswordReset,
+  passwordRedirect
+} = require('../../controllers/bikeshop');
+
 router.post('/', createCyclist);
 router.post('/login', loginCyclist);
 router.post('/bikeshop', createBikeshop);
