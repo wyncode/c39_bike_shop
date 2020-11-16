@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AppContextProvider } from './context/AppContext';
-import ContextDemo from './components/ContextDemo';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 
@@ -17,11 +17,12 @@ const App = () => {
 
   return (
     <AppContextProvider>
-      <div id="demo">
-        <h3>Hello from client/src/App.js</h3>
-        <ContextDemo />
-        <h3>{serverMessage}</h3>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/Shoplist" component={Shoplist} />
+        </Switch>
+      </BrowserRouter>
     </AppContextProvider>
   );
 };
