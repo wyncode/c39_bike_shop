@@ -2,7 +2,7 @@ import React from 'react';
 import { TextField } from '@material-ui/core';
 
 const SearchBar = () => {
-  // const onChange
+  const onChange = () => {};
 
   return (
     <div>
@@ -11,7 +11,7 @@ const SearchBar = () => {
           id="filled-basic"
           label="Search bike shops"
           variant="filled"
-          //   onChange= {onChange}
+          onChange={onChange}
         />
       </form>
     </div>
