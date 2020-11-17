@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Review = new mongoose.Schema(
+const reviewSchema = new mongoose.Schema(
   {
     review: {
       type: String,
@@ -11,11 +11,11 @@ const Review = new mongoose.Schema(
       trim: true
     },
     bikeshop: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Bikeshop'
     },
     cyclist: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'cyclist'
     }
   },

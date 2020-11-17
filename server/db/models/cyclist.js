@@ -3,75 +3,78 @@ const mongoose = require('mongoose'),
   bcrypt = require('bcryptjs'),
   jwt = require('jsonwebtoken');
 
-const cyclistSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-    trim: true,
-    lowercase: true,
-    validate(value) {
-      if (!validator.isEmail(value)) {
-        throw new Error('Invalid e-mail address.');
-      }
-    }
-  },
-  password: {
-    type: String,
-    required: true,
-    trim: true,
-    validate(value) {
-      if (value.toLowerCase().includes('password')) {
-        throw new Error("'Password' can't be used as a password.");
-      }
-      if (value.length < 6) {
-        throw new Error('Password must be at least 6 characters in length.');
-      }
-    }
-  },
-  zipcode: {
-    type: String,
-    trim: true
-  },
-  phone: {
-    type: String,
-    trim: true
-  },
-  bicycles: [
-    {
-      bike: {
-        bikeName: {
-          type: String,
-          trim: true
-        },
-        bikeModel: {
-          type: String,
-          trim: true
-        },
-        bikeType: {
-          type: String,
-          trim: true
+const cyclistSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+      trim: true,
+      lowercase: true,
+      validate(value) {
+        if (!validator.isEmail(value)) {
+          throw new Error('Invalid e-mail address.');
         }
       }
-    }
-  ],
-  tokens: [
-    {
-      token: {
-        type: String,
-        required: true
+    },
+    password: {
+      type: String,
+      required: true,
+      trim: true,
+      validate(value) {
+        if (value.toLowerCase().includes('password')) {
+          throw new Error("'Password' can't be used as a password.");
+        }
+        if (value.length < 6) {
+          throw new Error('Password must be at least 6 characters in length.');
+        }
       }
+    },
+    zipcode: {
+      type: String,
+      trim: true
+    },
+    phone: {
+      type: String,
+      trim: true
+    },
+    bicycles: [
+      {
+        bike: {
+          bikeName: {
+            type: String,
+            trim: true
+          },
+          bikeModel: {
+            type: String,
+            trim: true
+          },
+          bikeType: {
+            type: String,
+            trim: true
+          }
+        }
+      }
+    ],
+    tokens: [
+      {
+        token: {
+          type: String,
+          required: true
+        }
+      }
+    ],
+    avatar: {
+      type: String
     }
-  ],
-  avatar: {
-    type: String
-  }
-});
+  },
+  { timestap: true }
+);
 
 //Creating relation between Cyclist and order
 cyclistSchema.virtual('cyclist', {
@@ -81,10 +84,10 @@ cyclistSchema.virtual('cyclist', {
 });
 
 //Creating relationship between Cyclist and Review
-cyclistSchema.virtual('review', {
+cyclistSchema.virtual('reviewer', {
   ref: 'Review',
   localField: '_id',
-  foreignField: 'reviewId'
+  foreignField: 'reviewer'
 });
 
 cyclistSchema.methods.toJSON = function () {

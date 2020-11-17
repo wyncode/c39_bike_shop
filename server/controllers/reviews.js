@@ -1,5 +1,5 @@
-const Bikeshop = require('../db/models/Bikeshop');
-const Review = require('../db/models/reviews');
+const Bikeshop = require('../db/models/bikeshop'),
+  Review = require('../db/models/reviews');
 
 const getAllReviews = (req, res) => {
   Review.find()

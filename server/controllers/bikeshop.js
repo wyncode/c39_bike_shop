@@ -1,25 +1,13 @@
-const bikeshop = require('../db/models/bikeshop'),
+const Bikeshop = require('../db/models/bikeshop'),
   jwt = require('jsonwebtoken');
 
 exports.createBikeshop = async (req, res) => {
-  const {
-    BikeShopName,
-    email,
-    password,
-    phoneNumber,
-    logo,
-    shopContact,
-    website
-  } = req.body;
+  const { name, email, password } = req.body;
   try {
     const bikeshop = new Bikeshop({
-      BikeShopName,
+      name,
       email,
-      password,
-      phoneNumber,
-      logo,
-      shopContact,
-      website
+      password
     });
     const token = await bikeshop.generateAuthToken();
     res.cookie('jwt', token, {
@@ -39,7 +27,7 @@ exports.createBikeshop = async (req, res) => {
 exports.loginBikeshop = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const bikeshop = await Bikeshop.findByCredentials(email, password);
+    const bikeshop = await bikeshop.findByCredentials(email, password);
     const token = await bikeshop.generateAuthToken();
     res.cookie('jwt', token, {
       httpOnly: true,
@@ -58,24 +46,23 @@ exports.loginBikeshop = async (req, res) => {
 // bikeshop must click within 10 minutes
 // to reset their password.
 // ******************************
-exports.requestPasswordReset = async (req, res) => {
+exports.bikeshopPasswordRequest = async (req, res) => {
   try {
     const { email } = req.query;
-    const bikeshop = await Bikeshop.findOne({ email });
+    const bikeshop = await bikeshop.findOne({ email });
     if (!bikeshop) throw new Error('bikeshop not found');
     const token = jwt.sign(
       { _id: bikeshop._id.toString(), name: bikeshop.name },
       process.env.JWT_SECRET,
       { expiresIn: '10m' }
     );
-    forgotPasswordEmail(email, token);
     res.json({ message: 'reset password email sent!' });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
-exports.passwordRedirect = async (req, res) => {
+exports.bikeshopPasswordRedirect = async (req, res) => {
   const { token } = req.params;
   try {
     jwt.verify(token, process.env.JWT_SECRET, function (err) {
@@ -110,9 +97,10 @@ exports.updateCurrentBikeshop = async (req, res) => {
     'name',
     'email',
     'password',
-    'avatar',
-    'bicycle',
-    'zipcode'
+    'repairs',
+    'events',
+    'logo',
+    'shopContact'
   ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
@@ -168,7 +156,7 @@ exports.logoutAllDevices = async (req, res) => {
 exports.deleteBikeshop = async (req, res) => {
   try {
     await req.bikeshop.remove();
-    sendCancellationEmail(req.bikeshop.email, req.bikeshop.name);
+
     res.clearCookie('jwt');
     res.json({ message: 'bikeshop deleted' });
   } catch (error) {

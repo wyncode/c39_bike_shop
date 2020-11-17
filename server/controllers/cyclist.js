@@ -164,6 +164,19 @@ exports.deleteCyclist = async (req, res) => {
   }
 };
 
+exports.uploadAvatar = async (req, res) => {
+  try {
+    const response = await cloudinary.uploader.upload(
+      req.files.avatar.tempFilePath
+    );
+    req.user.avatar = response.secure_url;
+    await req.user.save();
+    res.json(response);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 exports.updatePassword = async (req, res) => {
   try {
     req.user.password = req.body.password;

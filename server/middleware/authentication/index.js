@@ -1,6 +1,7 @@
 const passport = require('passport'),
   JwtStrategy = require('passport-jwt').Strategy,
   Cyclist = require('../../db/models/cyclist'),
+  Bikeshop = require('../../db/models/bikeshop'),
   ExtractJwt = require('passport-jwt').ExtractJwt;
 
 //JWT Strategy
@@ -18,9 +19,16 @@ passport.use(
     if (Date.now() > jwtPayload.expires) {
       return done(null, false, { message: 'jwt expired' });
     }
-    let { iat, exp, ...cyclistData } = jwtPayload;
-    cyclistData = await Cyclist.findById(cyclistData._id);
-    return done(null, cyclistData);
+    let { iat, exp, ...data } = jwtPayload;
+    const cyclist = await Cyclist.findById(data._id);
+    const bikeshop = await Bikeshop.findById(data._id);
+    if (!cyclist) {
+      data = bikeshop;
+    } else {
+      data = cyclist;
+    }
+    console.log(data);
+    return done(null, data);
   })
 );
 
