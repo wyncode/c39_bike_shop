@@ -1,29 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { AppContextProvider } from './context/AppContext';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home';
+import ShopList from './pages/ShopList';
 
 import './App.css';
 
 const App = () => {
-  const [serverMessage, setServerMessage] = useState('');
-
-  const fetchDemoData = () => {
-    fetch('/api/demo')
-      .then((response) => response.json())
-      .then((data) => setServerMessage(data.message));
-  };
-
-  useEffect(fetchDemoData, []);
-
   return (
+    // Navbar goes here
     <AppContextProvider>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Homepage} />
-          <Route exact path="/Shoplist" component={Shoplist} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/Shoplist" component={ShopList} />
         </Switch>
       </BrowserRouter>
     </AppContextProvider>
+    //social media component goes here
   );
 };
 
