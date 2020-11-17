@@ -8,6 +8,7 @@ export default function AboutUs() {
     <React.Fragment>
       <CssBaseline />
       <Container fixed>
+        <p>A place to repair your two wheels with ease in a efficient way!</p>
         <Typography
           component="div"
           style={{ backgroundColor: '#cfe8fc', height: '100vh' }}

@@ -10,6 +10,12 @@ const Home = () => {
   return (
     <div>
       <Card />
+      <HowItWorks />
+      <InfoCards />
+      <FeaturedShops />
+      <AboutUs />
     </div>
   );
 };
+
+export default Home;
