@@ -1,14 +1,11 @@
 import React from 'react';
-import { TextField } from '@material-ui/core';
+import SearchBar from '../components/SearchBar';
 
 const ShopList = () => {
   return (
-    <div>
-      //searchbar
-      <form noValidate autoComplete="off">
-        <TextField id="filled-basic" label="Filled" variant="filled" />
-      </form>
-    </div>
+    <>
+      <SearchBar />
+    </>
   );
 
   //random repair or parts image component using math.random
