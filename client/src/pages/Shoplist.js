@@ -3,9 +3,9 @@ import SearchBar from '../components/SearchBar';
 
 const ShopList = () => {
   return (
-    <>
+    <div>
       <SearchBar />
-    </>
+    </div>
   );
 
   //random repair or parts image component using math.random
