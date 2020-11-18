@@ -1,18 +1,14 @@
 const router = require('express').Router(),
   {
+    createBikeshop,
     getCurrentBikeshop,
     updateCurrentBikeshop,
-    logoutBikeshop,
-    logoutAllDevices,
-    deleteBikeshop,
-    updatePassword
+    deleteBikeshop
   } = require('../../controllers/Bikeshop');
 
+router.post('/', createBikeshop);
 router.get('/me', getCurrentBikeshop);
 router.patch('/me', updateCurrentBikeshop);
-router.post('/logout', logoutBikeshop);
-router.post('/logoutall', logoutAllDevices);
 router.delete('/', deleteBikeshop);
-router.put('/password', updatePassword);
 
 module.exports = router;

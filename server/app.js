@@ -3,14 +3,15 @@ require('./db/config/index');
 const express = require('express'),
   app = express(),
   openRoutes = require('./routes/open/index'),
-  repairRouter = require('./routes/secure/repair'),
-  cyclistRouter = require('./routes/secure/cyclist'),
-  bikeshopRouter = require('./routes/secure/bikeshop'),
-  reviewRouter = require('./routes/secure/reviews'),
-  passport = require('./middleware/authentication/index'),
-  fileUpload = require('express-fileupload'),
-  cookieParser = require('cookie-parser'),
-  path = require('path');
+  userRouter = require('./routes/secure/user');
+(repairRouter = require('./routes/secure/repair')),
+  (cyclistRouter = require('./routes/secure/cyclist')),
+  (bikeshopRouter = require('./routes/secure/bikeshop')),
+  (reviewRouter = require('./routes/secure/reviews')),
+  (passport = require('./middleware/authentication/index')),
+  (fileUpload = require('express-fileupload')),
+  (cookieParser = require('cookie-parser')),
+  (path = require('path'));
 
 // Parse incoming JSON into objects
 app.use(express.json());
@@ -36,6 +37,7 @@ app.use(
 //Authenticated Routes
 app.use('/api/*', passport.authenticate('jwt', { session: false }));
 
+app.use('/api/user', userRouter);
 app.use('/api/cyclist', cyclistRouter);
 app.use('/api/bikeshop', bikeshopRouter);
 app.use('/api/repair', repairRouter);
