@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Repair = new mongoose.Schema({
+const repairSchema = new mongoose.Schema({
   repair: {
     type: String,
     trim: true,
@@ -23,11 +23,11 @@ const Repair = new mongoose.Schema({
     trim: true
   },
   bikeshop: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Bikeshop'
   },
   serviceOrder: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'ServiceOrder'
   }
 });

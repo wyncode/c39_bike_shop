@@ -1,19 +1,20 @@
 import React from 'react';
-import Card from './components/Card';
-import HowItWorks from './components/HowItWorks';
-import InfoCards from './components/InfoCards';
-import FeaturedShops from './components/FeaturedShops';
-import AboutUs from './components/AboutUs';
-import SocialMedia from './components/SocialMedia';
+import HeroImage from '../components/HeroImage';
+import HowItWorks from '../components/HowItWorks';
+import InfoCards from '../components/InfoCards';
+import FeaturedShops from '../components/FeaturedShops';
+import AboutUs from '../components/AboutUs';
+import Navigation from '../components/navigation';
 
 const Home = () => {
   return (
     <div>
-      <Card />
-      <HowItWorks />
+      <HeroImage />
+      <Navigation />
+      {/* <HowItWorks />
       <InfoCards />
       <FeaturedShops />
-      <AboutUs />
+      <AboutUs />  */}
     </div>
   );
 };

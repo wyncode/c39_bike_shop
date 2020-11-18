@@ -1,5 +1,3 @@
-const { createBikeshop, loginBikeshop } = require('../../controllers/bikeshop');
-
 const router = require('express').Router(),
   {
     createCyclist,
@@ -8,12 +6,7 @@ const router = require('express').Router(),
     passwordRedirect
   } = require('../../controllers/cyclist');
 
-const {
-  createBikeshop,
-  loginBikeshop,
-  requestPasswordReset,
-  passwordRedirect
-} = require('../../controllers/bikeshop');
+const { createBikeshop, loginBikeshop } = require('../../controllers/bikeshop');
 
 router.post('/', createCyclist);
 router.post('/login', loginCyclist);

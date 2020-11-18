@@ -1,4 +1,4 @@
-const bikeshop = require('../db/models/bikeshop'),
+const Bikeshop = require('../db/models/bikeshop'),
   jwt = require('jsonwebtoken');
 
 exports.createBikeshop = async (req, res) => {
