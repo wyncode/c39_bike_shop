@@ -3,7 +3,7 @@ import RepairCarousel from '../components/RepairCarousel';
 import SearchBar from '../components/SearchBar';
 import SearchResults from '../components/SearchResults';
 
-const ShopList = () => {
+const Shoplist = () => {
   return (
     <div>
       <SearchBar />
@@ -13,4 +13,4 @@ const ShopList = () => {
   );
 };
 
-export default ShopList;
+export default Shoplist;
