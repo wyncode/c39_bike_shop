@@ -1,5 +1,20 @@
 const Bikeshop = require('../db/models/bikeshop');
 
+//UNAUTHENTICATED
+
+exports.getAllBikeshops = (req, res) => {
+  Bikeshop.find()
+    .then((bikeshops) => res.status(200).json(bikeshops))
+    .catch((err) => res.status(500).json('Error: ' + err));
+};
+
+exports.getBikeshopById = (req, res) => {
+  const filter = req.params.id;
+  Bikeshop.findById(filter)
+    .then((resp) => res.json(resp))
+    .catch((err) => res.status(500).json('Error: ' + err));
+};
+
 // AUTHENTICATED REQUESTS
 exports.createBikeshop = async (req, res) => {
   const { shopName, shopContact, email, website, repairs } = req.body;
