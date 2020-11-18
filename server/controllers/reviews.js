@@ -1,13 +1,12 @@
-const Bikeshop = require('../db/models/Bikeshop'),
-  Review = require('../db/models/reviews');
+const Review = require('../db/models/reviews');
 
-const getAllReviews = (req, res) => {
+exports.getAllReviews = (req, res) => {
   Review.find()
     .then((reviews) => res.status(200).json(reviews))
     .catch((err) => res.status(500).json('Error: ' + err));
 };
 
-const addReview = (req, res) => {
+exports.addReview = (req, res) => {
   const newReview = new Review(req.body);
   newReview.Bikeshop = req.params.Bikeshop_id;
   return Bikeshop.findById(req.params.Bikeshop_id)
@@ -22,14 +21,14 @@ const addReview = (req, res) => {
     .catch((err) => res.status(500).json('Error: ' + err));
 };
 
-const getReviewById = (req, res) => {
+exports.getReviewById = (req, res) => {
   const filter = req.params.id;
   Review.findById(filter)
     .then((resp) => res.json(resp))
     .catch((err) => res.status(500).json('Error: ' + err));
 };
 
-const deleteReviewById = (req, res) => {
+exports.deleteReviewById = (req, res) => {
   Review.findByIdAndDelete(req.params.id)
     .then((review) => {
       if (!review) {
@@ -41,11 +40,4 @@ const deleteReviewById = (req, res) => {
     .catch((err) => {
       res.status(500).json('Error: ' + err);
     });
-};
-
-module.exports = {
-  getAllReviews,
-  addReview,
-  getReviewById,
-  deleteReviewById
 };
