@@ -1,14 +1,17 @@
+const ServiceOrder = require('./db/models/serviceOrder');
+
 //import the DB connection
 require('./db/config/index');
 const express = require('express'),
   app = express(),
   openRoutes = require('./routes/open/index'),
-  userRouter = require('./routes/secure/user');
-(repairRouter = require('./routes/secure/repair')),
-  (cyclistRouter = require('./routes/secure/cyclist')),
-  (bikeshopRouter = require('./routes/secure/bikeshop')),
-  (reviewRouter = require('./routes/secure/reviews')),
-  (passport = require('./middleware/authentication/index')),
+  userRouter = require('./routes/secure/user'),
+  repairRouter = require('./routes/secure/repair'),
+  cyclistRouter = require('./routes/secure/cyclist'),
+  bikeshopRouter = require('./routes/secure/bikeshop'),
+  reviewRouter = require('./routes/secure/reviews'),
+  orderRouter = requires('./routes/secure/serviceOrder.js');
+(passport = require('./middleware/authentication/index')),
   (fileUpload = require('express-fileupload')),
   (cookieParser = require('cookie-parser')),
   (path = require('path'));
@@ -42,6 +45,7 @@ app.use('/api/cyclist', cyclistRouter);
 app.use('/api/bikeshop', bikeshopRouter);
 app.use('/api/repair', repairRouter);
 app.use('/api/review', reviewRouter);
+app.use('/api/order', orderRouter);
 
 if (process.env.NODE_ENV === 'production') {
   // Handle React routing, return all requests to React app
