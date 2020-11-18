@@ -1,3 +1,4 @@
+const { ObjectID, ObjectId } = require('mongodb');
 const mongoose = require('mongoose'),
   validator = require('validator'),
   bcrypt = require('jsonwebtoken');
@@ -144,4 +145,4 @@ bikeshopSchema.pre('save', async function (next) {
 
 const Bikeshop = mongoose.model('Bikeshop', bikeshopSchema);
 
-module.exports = Bikeshop;
+module.exports = bikeshopSchema;
