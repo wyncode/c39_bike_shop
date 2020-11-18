@@ -7,9 +7,11 @@ const {
   deleteReviewById
 } = require('../../controllers/reviews');
 
-router.route('/').get(getAllReviews);
-router.route('/').post(addReview);
-router.route('/:id').get(getReviewById);
-router.route('/:id').delete(deleteReviewById);
+const isAdmin = require('../../middleware/authorization');
+
+router.get('/', getAllReviews);
+router.post('/', addReview);
+router.get('/:id', getReviewById);
+router.delete('/:id', isAdmin(), deleteReviewById);
 
 module.exports = router;

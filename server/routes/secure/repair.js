@@ -7,10 +7,12 @@ const router = require('express').Router(),
     deleteRepair
   } = require('../../controllers/repair');
 
-router.post('/', createRepair);
+const isAdmin = require('../../middleware/authorization');
+
+router.post('/', isAdmin(), createRepair);
 router.get('/:id', getSpecificRepair);
 router.get('/', getAllRepairs);
-router.put('/:id', updateRepair);
-router.delete('/:id', deleteRepair);
+router.put('/:id', isAdmin(), updateRepair);
+router.delete('/:id', isAdmin(), deleteRepair);
 
 module.exports = router;
