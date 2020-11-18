@@ -4,7 +4,7 @@ import {} from '@material-ui/core';
 const RepairCarousel = () => {
   return (
     <div>
-      <h1>This is the repair image carousel</h1>
+      <h1>Repair Carousel Component</h1>
     </div>
   );
 };

@@ -1,22 +1,16 @@
 import React from 'react';
 import RepairCarousel from '../components/RepairCarousel';
 import SearchBar from '../components/SearchBar';
+import SearchResult from '../components/SearchResult';
 
 const ShopList = () => {
   return (
     <div>
       <SearchBar />
       <RepairCarousel />
+      <SearchResult />
     </div>
   );
-
-  //random repair or parts image component using math.random
-
-  //search filters
-
-  //clickable search results
-
-  //social media component
 };
 
 export default ShopList;
