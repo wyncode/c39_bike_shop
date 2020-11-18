@@ -27,7 +27,6 @@ passport.use(
     } else {
       data = cyclist;
     }
-    console.log(data);
     return done(null, data);
   })
 );

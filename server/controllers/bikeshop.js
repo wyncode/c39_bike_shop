@@ -164,6 +164,19 @@ exports.deleteBikeshop = async (req, res) => {
   }
 };
 
+exports.uploadLogo = async (req, res) => {
+  try {
+    const response = await cloudinary.uploader.upload(
+      req.files.logo.tempFilePath
+    );
+    req.bikeshop.logo = response.secure_url;
+    await req.user.save();
+    res.json(response);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 exports.updatePassword = async (req, res) => {
   try {
     req.user.password = req.body.password;

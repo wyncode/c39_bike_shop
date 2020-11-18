@@ -97,9 +97,14 @@ const bikeshopSchema = new mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Repair'
       }
-    ]
+    ],
+    admin: {
+      type: Boolean,
+      required: true,
+      default: true
+    }
   },
-  { timestap: true }
+  { timestamps: true }
 );
 
 bikeshopSchema.virtual('shop', {

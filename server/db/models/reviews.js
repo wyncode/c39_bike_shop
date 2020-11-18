@@ -14,9 +14,9 @@ const reviewSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Bikeshop'
     },
-    cyclist: {
+    reviewer: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'cyclist'
+      ref: 'reviewer'
     }
   },
   { timestamps: true }

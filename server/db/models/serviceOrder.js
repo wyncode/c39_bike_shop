@@ -52,12 +52,12 @@ const serviceOrderSchema = new mongoose.Schema({
 serviceOrderSchema.virtual('serviceOrder', {
   ref: 'Bikeshop',
   localField: '_id',
-  foreignField: 'BikeShop'
+  foreignField: 'serviceOrder'
 });
 serviceOrderSchema.virtual('serviceOrder', {
   ref: 'Cyclist',
   localField: '_id',
-  foreignField: 'Cyclist'
+  foreignField: 'serviceOrder'
 });
 
 const ServiceOrder = mongoose.model('ServiceOrder', serviceOrderSchema);

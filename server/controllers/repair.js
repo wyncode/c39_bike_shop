@@ -7,7 +7,7 @@ exports.createRepair = async (req, res) => {
   try {
     const repair = await new Repair({
       ...req.body,
-      bikeshop: req.user._id
+      bikeshop: req.bikeshop._id
     });
     await repair.save();
     res.status(200).send(repair);
@@ -73,7 +73,7 @@ exports.getSpecificRepair = async (req, res) => {
     return res.status(400).json({ message: 'not a valid repair' });
 
   try {
-    const repair = await repair.findOne({ _id, bikeshop: req.user._id });
+    const repair = await repair.findOne({ _id, bikeshop: req.bikeshop._id });
     if (!repair) return res.status(400).json({ message: 'repair not found' });
     res.status(200).json(repair);
   } catch (error) {

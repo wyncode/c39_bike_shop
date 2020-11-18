@@ -71,9 +71,13 @@ const cyclistSchema = new mongoose.Schema(
     ],
     avatar: {
       type: String
+    },
+    serviceOrder: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ServiceOrder'
     }
   },
-  { timestap: true }
+  { timestamps: true }
 );
 
 //Creating relation between Cyclist and order

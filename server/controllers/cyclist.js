@@ -169,8 +169,8 @@ exports.uploadAvatar = async (req, res) => {
     const response = await cloudinary.uploader.upload(
       req.files.avatar.tempFilePath
     );
-    req.user.avatar = response.secure_url;
-    await req.user.save();
+    req.cyclist.avatar = response.secure_url;
+    await req.cyclist.save();
     res.json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
