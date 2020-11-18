@@ -42,39 +42,34 @@ exports.getCurrentBikeshop = async (req, res) => {
 // ***********************************************//
 // Update a bikeshop
 // ***********************************************//
-exports.updateCurrentBikeshop = async (req, res) => {
-  const updates = Object.keys(req.body); // => ['email', 'name', 'password']
-  const allowedUpdates = [
-    // make global
-  ];
-  const isValidOperation = updates.every((update) =>
-    allowedUpdates.includes(update)
-  );
-  if (!isValidOperation)
-    return res.status(400).json({ message: 'Invalid updates' });
-  try {
-    //Loop through each update, and change the value for the current bikeshop to the value coming from the body
-    updates.forEach((update) => (req.bikeshop[update] = req.body[update]));
-    //save the updated bikeshop in the db
-    await req.bikeshop.save();
-    //send the updated bikeshop as a response
-    res.json(req.bikeshop);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+exports.updateBikeshop = (req, res) => {
+  Bikeshop.findByIdAndUpdate(req.params.id)
+    .then((bikeshop) => {
+      if (!bikeshop) {
+        return res.status(404).json('Error: Bikeshop not found!');
+      }
+      res.status(204).json(bikeshop);
+    })
+    .catch((err) => {
+      res.status(500).json('Error: ' + err);
+    });
 };
 
 // ***********************************************//
 // Delete a bikeshop
 // ***********************************************//
 
-exports.deleteBikeshop = async (req, res) => {
-  try {
-    await req.bikeshop.remove();
-    res.json({ message: 'bikeshop deleted' });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+exports.deleteBikeshop = (req, res) => {
+  Bikeshop.findByIdAndDelete(req.params.id)
+    .then((bikeshop) => {
+      if (!bikeshop) {
+        return res.status(404).json('Error: Bikeshop not found!');
+      }
+      res.status(204).json(bikeshop);
+    })
+    .catch((err) => {
+      res.status(500).json('Error: ' + err);
+    });
 };
 
 exports.uploadLogo = async (req, res) => {
@@ -83,7 +78,7 @@ exports.uploadLogo = async (req, res) => {
       req.files.logo.tempFilePath
     );
     req.bikeshop.logo = response.secure_url;
-    await req.user.save();
+    await req.bikeshop.save();
     res.json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
