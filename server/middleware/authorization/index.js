@@ -1,6 +1,6 @@
 const isAdmin = () => {
   return (req, res, next) => {
-    if (!req.bikeshop.admin) {
+    if (!req.user.admin) {
       return res.status(401).json({ message: 'access denied' });
     }
     next();

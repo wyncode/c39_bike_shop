@@ -5,8 +5,9 @@ const router = require('express').Router(),
     updateCurrentBikeshop,
     deleteBikeshop
   } = require('../../controllers/Bikeshop');
+const isAdmin = require('../../middleware/authorization');
 
-router.post('/', createBikeshop);
+router.post('/', isAdmin(), createBikeshop);
 router.get('/:id', getCurrentBikeshop);
 router.patch('/:id', updateCurrentBikeshop);
 router.delete('/', deleteBikeshop);
