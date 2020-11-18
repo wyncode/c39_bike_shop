@@ -2,6 +2,7 @@ import React from 'react';
 import { AppContextProvider } from './context/AppContext';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Pages/Home';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 
