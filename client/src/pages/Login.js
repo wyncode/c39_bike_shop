@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Form, Button, Image } from 'react-bootstrap';
 
 const Login = () => {
-  const handleChange = (e) => {};
+  const handleChange = () => {};
 
   return (
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
