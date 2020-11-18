@@ -1,5 +1,3 @@
-const { createBikeshop, loginBikeshop } = require('../../controllers/bikeshop');
-
 const router = require('express').Router(),
   {
     createCyclist,
