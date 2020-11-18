@@ -1,11 +1,17 @@
 import React from 'react';
+import { FormControl } from 'react-bootstrap';
 
 const SearchBar = () => {
-  const onChange = () => {};
+  const handleSearch = () => {};
 
   return (
     <div>
-      <h1>Search Bar Component</h1>
+      <FormControl
+        onChange={handleSearch}
+        type="text"
+        placeholder="Select Your Bike Shop"
+        size="lg"
+      />
     </div>
   );
 };
