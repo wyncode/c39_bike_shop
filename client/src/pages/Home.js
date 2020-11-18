@@ -1,6 +1,6 @@
 import React from 'react';
 import HeroImage from '../components/HeroImage';
-// import HowItWorks from '../components/HowItWorks';
+import HowItWorks from '../components/HowItWorks';
 // import InfoCards from '../components/InfoCards';
 // import FeaturedShops from '../components/FeaturedShops';
 // import AboutUs from '../components/AboutUs';
@@ -11,10 +11,7 @@ const Home = () => {
     <div>
       <Navigation />
       <HeroImage />
-      {/* <HowItWorks />
-      <InfoCards />
-      <FeaturedShops />
-      <AboutUs />  */}
+      <HowItWorks />
     </div>
   );
 };
