@@ -1,13 +1,14 @@
 import React from 'react';
+// import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function HeroImage() {
   return (
     <div>
-      <h1>Heropage</h1>
+      <img></img>
+      <div>
+        <p>bike</p>
+      </div>
     </div>
-
-    // <div>
-    //   <h1>This is the Hero Image</h1>
-    // </div>
   );
 }
