@@ -1,10 +1,20 @@
 import React from 'react';
-import {} from '@material-ui/core';
+import { Carousel } from 'react-bootstrap';
 
 const RepairCarousel = () => {
   return (
     <div>
-      <h1>Repair Carousel Component</h1>
+      <Carousel>
+        <Carousel.Item interval={3000}>
+          <h1>Image 1</h1>
+        </Carousel.Item>
+        <Carousel.Item interval={3000}>
+          <h1>Image 2</h1>
+        </Carousel.Item>
+        <Carousel.Item interval={3000}>
+          <h1>Image 3</h1>
+        </Carousel.Item>
+      </Carousel>
     </div>
   );
 };
