@@ -43,24 +43,22 @@ const cyclistSchema = new mongoose.Schema(
       type: String,
       trim: true
     },
-    bicycles: [
-      {
-        bike: {
-          bikeName: {
-            type: String,
-            trim: true
-          },
-          bikeModel: {
-            type: String,
-            trim: true
-          },
-          bikeType: {
-            type: String,
-            trim: true
-          }
+    bicycles: {
+      bike: {
+        bikeName: {
+          type: String,
+          trim: true
+        },
+        bikeModel: {
+          type: String,
+          trim: true
+        },
+        bikeType: {
+          type: String,
+          trim: true
         }
       }
-    ],
+    },
     tokens: [
       {
         token: {
