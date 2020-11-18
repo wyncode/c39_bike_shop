@@ -4,7 +4,7 @@ const router = require('express').Router(),
     updateCurrentCyclist
   } = require('../../controllers/cyclist');
 
-router.get('/me', getCurrentCyclist);
-router.patch('/me', updateCurrentCyclist);
+router.get('/:id', getCurrentCyclist);
+router.patch('/:id', updateCurrentCyclist);
 
 module.exports = router;

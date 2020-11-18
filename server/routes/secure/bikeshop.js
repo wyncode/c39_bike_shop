@@ -7,8 +7,8 @@ const router = require('express').Router(),
   } = require('../../controllers/Bikeshop');
 
 router.post('/', createBikeshop);
-router.get('/me', getCurrentBikeshop);
-router.patch('/me', updateCurrentBikeshop);
+router.get('/:id', getCurrentBikeshop);
+router.patch('/:id', updateCurrentBikeshop);
 router.delete('/', deleteBikeshop);
 
 module.exports = router;
