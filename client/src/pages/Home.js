@@ -9,7 +9,7 @@ import Navigation from '../components/navigation';
 const Home = () => {
   return (
     <div>
-      <HeroImage />
+      {/* <HeroImage /> */}
       <Navigation />
       {/* <HowItWorks />
       <InfoCards />
