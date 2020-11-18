@@ -1,9 +1,12 @@
 import React from 'react';
+import { Card } from 'react-bootstrap';
 
 const SearchResult = () => {
   return (
     <div>
-      <h1>Search Result Component</h1>
+      <Card style={{ width: '16rem' }}>
+        <Card.Img src="" alt="Bicycle Parts" />
+      </Card>
     </div>
   );
 };
