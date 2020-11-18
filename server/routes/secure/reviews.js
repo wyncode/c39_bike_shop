@@ -6,7 +6,7 @@ const {
   getReviewById,
   updateReview,
   deleteReviewById
-} = require('../controllers/Review');
+} = require('../controllers/reviews');
 
 router.route('/').get(getAllReviews);
 router.route('/').post(addReview);
