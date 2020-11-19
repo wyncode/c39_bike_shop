@@ -9,11 +9,12 @@ exports.getAllReviews = (req, res) => {
 
 exports.addReview = (req, res) => {
   const newReview = new Review(req.body);
-  newReview.bikeshop = req.params.Bikeshop_id;
-  return Bikeshop.findById(req.params.Bikeshop_id)
+  newReview.bikeshop = req.params.bikeshop_id;
+  newReview.cyclist = req.user.cyclist;
+  return Bikeshop.findById(req.params.bikeshop_id)
     .then((bikeshop) => {
       newReview.save().then((createReview) => {
-        bikeshop.Reviews.push(createReview._id);
+        bikeshop.reviews.push(createReview._id);
         bikeshop
           .save()
           .then(res.json(createReview))

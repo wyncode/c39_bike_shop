@@ -44,17 +44,33 @@ exports.getCurrentBikeshop = async (req, res) => {
 // ***********************************************//
 // Update a bikeshop
 // ***********************************************//
-exports.updateBikeshop = (req, res) => {
-  Bikeshop.findByIdAndUpdate(req.params.id)
-    .then((bikeshop) => {
-      if (!bikeshop) {
-        return res.status(404).json('Error: Bikeshop not found!');
-      }
-      res.status(204).json(bikeshop);
-    })
-    .catch((err) => {
-      res.status(500).json('Error: ' + err);
+exports.updateBikeshop = async (req, res) => {
+  const updates = Object.keys(req.body);
+  const allowedUpdates = [
+    'shopName',
+    'email',
+    'logo',
+    'shopContact',
+    'website'
+  ];
+  const isValidOperation = updates.every((update) =>
+    allowedUpdates.includes(update)
+  );
+  if (!isValidOperation)
+    return res.status(400).json({ message: 'invalid updates' });
+
+  try {
+    const bikeshop = await Bikeshop.findOne({
+      owner: req.user._id
     });
+    if (!bikeshop)
+      return res.status(404).json({ message: 'Bikeshop not found' });
+    updates.forEach((update) => (bikeshop[update] = req.body[update]));
+    await bikeshop.save();
+    res.status(200).json(bikeshop);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 // ***********************************************//

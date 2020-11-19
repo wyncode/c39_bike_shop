@@ -10,7 +10,8 @@ exports.createCyclist = async (req, res) => {
       name,
       zipcode,
       phone,
-      bicycles
+      bicycles,
+      user: req.user._id
     });
 
     const user = await User.findById(req.user._id);
@@ -36,20 +37,22 @@ exports.getCurrentCyclist = async (req, res) => {
 // Update a cyclist
 // ***********************************************//
 exports.updateCurrentCyclist = async (req, res) => {
-  const updates = Object.keys(req.body); // => ['email', 'name', 'password']
-  const allowedUpdates = ['name', 'zipcode', 'favBikeshop', 'bicycle'];
+  const updates = Object.keys(req.body);
+  const allowedUpdates = ['name', 'zipcode', 'phone', 'bicycles'];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );
   if (!isValidOperation)
-    return res.status(400).json({ message: 'Invalid updates' });
+    return res.status(400).json({ message: 'invalid updates' });
+
   try {
-    //Loop through each update, and change the value for the current cyclist to the value coming from the body
-    updates.forEach((update) => (req.cyclist[update] = req.body[update]));
-    //save the updated cyclist in the db
-    await req.cyclist.save();
-    //send the updated cyclist as a response
-    res.json(req.cyclist);
+    const cyclist = await Cyclist.findOne({
+      user: req.user._id
+    });
+    if (!cyclist) return res.status(404).json({ message: 'cyclist not found' });
+    updates.forEach((update) => (cyclist[update] = req.body[update]));
+    await cyclist.save();
+    res.status(200).json(cyclist);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

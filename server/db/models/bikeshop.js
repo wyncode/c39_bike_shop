@@ -65,7 +65,7 @@ const bikeshopSchema = new mongoose.Schema(
         ref: 'Cyclist'
       }
     ],
-    user: {
+    owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     },

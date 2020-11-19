@@ -6,6 +6,10 @@ const cyclistSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     },
+    name: {
+      type: String,
+      trim: true
+    },
     zipcode: {
       type: String,
       trim: true

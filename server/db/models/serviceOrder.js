@@ -49,12 +49,12 @@ const serviceOrderSchema = new mongoose.Schema({
     }
   ]
 });
-serviceOrderSchema.virtual('serviceOrder', {
+serviceOrderSchema.virtual('bikeshop', {
   ref: 'Bikeshop',
   localField: '_id',
   foreignField: 'serviceOrder'
 });
-serviceOrderSchema.virtual('serviceOrder', {
+serviceOrderSchema.virtual('cyclist', {
   ref: 'Cyclist',
   localField: '_id',
   foreignField: 'serviceOrder'
