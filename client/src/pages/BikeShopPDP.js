@@ -10,7 +10,7 @@ const BikeShopPDP = () => {
       <RepairCarousel />
       <BikeShopCard />
       <Container>
-        <Button variant="danger">Select Repairs</Button>
+        <Button className="btn-pink-lg">Select Repairs</Button>
       </Container>
       <Container>
         <Link className="mt-4" to="/Shoplist">

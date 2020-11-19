@@ -1,0 +1,14 @@
+.btn-pink-lg {
+  width: 326px;
+  height: 44px;
+  left: 20px;
+  top: 177px;
+  background: #ec4568;
+  border-radius: 45px;
+}
+
+.btn-pink-sm {
+  border-radius: 45px;
+  background: #ec4568 !important;
+  width: 30vw;
+}
