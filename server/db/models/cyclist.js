@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cyclistSchema = new mongoose.Schema(
   {
     user: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.SchemaTypes.ObjectId,
       ref: 'User'
     },
     name: {
@@ -18,8 +18,8 @@ const cyclistSchema = new mongoose.Schema(
       type: String,
       trim: true
     },
-    bicycles: {
-      bike: {
+    bicycles: [
+      {
         bikeName: {
           type: String,
           trim: true
@@ -33,11 +33,7 @@ const cyclistSchema = new mongoose.Schema(
           trim: true
         }
       }
-    },
-    serviceOrder: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'ServiceOrder'
-    }
+    ]
   },
   { timestamps: true }
 );
@@ -50,7 +46,7 @@ cyclistSchema.virtual('serviceOrders', {
 });
 
 //Creating relationship between Cyclist and Review
-cyclistSchema.virtual('reviewer', {
+cyclistSchema.virtual('reviews', {
   ref: 'Review',
   localField: '_id',
   foreignField: 'reviewer'

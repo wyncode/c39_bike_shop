@@ -37,12 +37,7 @@ const userSchema = new mongoose.Schema(
     },
     admin: {
       type: Boolean,
-      required: true,
       default: false
-    },
-    cyclist: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'Cyclist'
     },
     tokens: [
       {
@@ -66,6 +61,12 @@ userSchema.virtual('bikeshop', {
   ref: 'Bikeshop',
   localField: '_id',
   foreignField: 'owner'
+});
+
+userSchema.virtual('cyclist', {
+  ref: 'Cyclist',
+  localField: '_id',
+  foreignField: 'user'
 });
 
 // By naming this method toJSON we don't need to call it to run because the express response will do it for us.

@@ -9,14 +9,6 @@ const serviceOrderSchema = new mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: 'Cyclist'
   },
-  repairs: [
-    {
-      repair: {
-        type: Schema.Types.ObjectId,
-        ref: 'Repair'
-      }
-    }
-  ],
   dropoffDate: {
     type: Date
   },
@@ -49,13 +41,9 @@ const serviceOrderSchema = new mongoose.Schema({
     }
   ]
 });
-serviceOrderSchema.virtual('bikeshop', {
-  ref: 'Bikeshop',
-  localField: '_id',
-  foreignField: 'serviceOrder'
-});
-serviceOrderSchema.virtual('cyclist', {
-  ref: 'Cyclist',
+
+serviceOrderSchema.virtual('repairs', {
+  ref: 'Repair',
   localField: '_id',
   foreignField: 'serviceOrder'
 });

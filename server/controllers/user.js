@@ -5,12 +5,13 @@ const User = require('../db/models/user'),
 // Create a user
 // ***********************************************//
 exports.createUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, admin } = req.body;
   try {
     const user = new User({
       name,
       email,
-      password
+      password,
+      admin
     });
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, {

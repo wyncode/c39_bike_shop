@@ -1,4 +1,5 @@
 const Bikeshop = require('../db/models/bikeshop');
+const User = require('../db/models/user');
 
 //UNAUTHENTICATED
 
@@ -38,7 +39,8 @@ exports.createBikeshop = async (req, res) => {
 // Get current bikeshop
 // ***********************************************//
 exports.getCurrentBikeshop = async (req, res) => {
-  res.json(req.bikeshop);
+  const user = await User.findById(req.user._id).populate('bikeshop');
+  res.send(user.bikeshop);
 };
 
 // ***********************************************//
