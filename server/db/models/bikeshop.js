@@ -50,7 +50,23 @@ const bikeshopSchema = new mongoose.Schema(
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
-    }
+    },
+    reviews: [
+      {
+        review: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Review'
+        }
+      }
+    ],
+    repairs: [
+      {
+        repair: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Repair'
+        }
+      }
+    ]
   },
   { timestamps: true }
 );
@@ -61,20 +77,8 @@ bikeshopSchema.virtual('serviceOrders', {
   foreignField: 'bikeshop'
 });
 
-bikeshopSchema.virtual('repairs', {
-  ref: 'Repair',
-  localField: '_id',
-  foreignField: 'bikeshop'
-});
-
 bikeshopSchema.virtual('cyclists', {
   ref: 'Cyclist',
-  localField: '_id',
-  foreignField: 'bikeshop'
-});
-
-bikeshopSchema.virtual('reviews', {
-  ref: 'Review',
   localField: '_id',
   foreignField: 'bikeshop'
 });

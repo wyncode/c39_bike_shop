@@ -1,20 +1,35 @@
-const Repair = require('../db/models/repair');
+const Repair = require('../db/models/repair'),
+  Bikeshop = require('../db/models/bikeshop');
 
 // ***********************************************//
 // create repair
 // ***********************************************//
 exports.createRepair = async (req, res) => {
-  try {
-    const repair = new Repair({
-      ...req.body,
-      bikeshop: req.user.bikeshop._id
-    });
-    await repair.save();
-    res.status(200).send(repair);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+  const newRepair = new Repair(req.body);
+  newRepair.bikeshop = req.params.bikeshop_id;
+  return Bikeshop.findById(req.params.bikeshop_id)
+    .then((bikeshop) => {
+      newRepair.save().then((createRepair) => {
+        bikeshop.repairs.push(createRepair._id);
+        bikeshop
+          .save()
+          .then(res.json(createRepair))
+          .catch((err) => res.status(500).json('Error: ' + err));
+      });
+    })
+    .catch((err) => res.status(500).json('Error: ' + err));
 };
+// try {
+//   const repair = new Repair({
+//     ...req.body,
+//     bikeshop: req.user.bikeshop._id
+//   });
+//   await repair.save();
+//   res.status(200).send(repair);
+// } catch (error) {
+//   res.status(400).json({ error: error.message });
+// }
+
 // ***********************************************//
 // change repair
 // ***********************************************//
