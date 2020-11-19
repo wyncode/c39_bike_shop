@@ -1,6 +1,12 @@
 const Cyclist = require('../db/models/cyclist');
 const User = require('../db/models/user');
 
+exports.getAllCyclist = (req, res) => {
+  Cyclist.find()
+    .then((cyclist) => res.status(200).json(cyclist))
+    .catch((err) => res.status(500).json('Error: ' + err));
+};
+
 // AUTHENTICATED REQUESTS
 exports.createCyclist = async (req, res) => {
   const { name, zipcode, phone, bicycles } = req.body;

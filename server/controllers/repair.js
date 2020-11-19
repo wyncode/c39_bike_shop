@@ -5,7 +5,7 @@ const Repair = require('../db/models/repair');
 // ***********************************************//
 exports.createRepair = async (req, res) => {
   try {
-    const repair = await new Repair({
+    const repair = new Repair({
       ...req.body,
       bikeshop: req.user.bikeshop._id
     });
