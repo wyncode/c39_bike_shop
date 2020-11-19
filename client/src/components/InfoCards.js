@@ -1,26 +1,46 @@
 import React from 'react';
+import { Container, Button, Image, CardDeck, Card } from 'react-bootstrap';
 
 export default function InfoCards() {
   return (
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Community</h5>
-        <a href="#" class="btn btn-primary">
-          What's Going 305?
-        </a>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Events or Local Rides</h5>
-        <a href="#" class="btn btn-primary">
-          Find Events and Local Group Rides
-        </a>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Trails and Local Favorite Routes</h5>
-        <a href="#" class="btn btn-primary">
-          Go to Trails and Routes
-        </a>
-      </div>
-    </div>
+    <CardDeck>
+      <Card>
+        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer>
+      </Card>
+      <Card>
+        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>Community</Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer>
+      </Card>
+      <Card>
+        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This card has even longer content than the
+            first to show that equal height action.
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer>
+      </Card>
+    </CardDeck>
   );
 }
