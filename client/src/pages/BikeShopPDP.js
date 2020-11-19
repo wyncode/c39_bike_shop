@@ -1,14 +1,16 @@
 import React from 'react';
 import { Container, Button } from 'react-bootstrap';
-import RepairCarousel from '../components/RepairCarousel';
+import Map from '../components/Map';
 import BikeShopCard from '../components/BikeShopCard';
 import { Link } from 'react-router-dom';
+import ShopInfo from '../components/ShopInfo';
 
 const BikeShopPDP = () => {
   return (
     <Container>
-      <RepairCarousel />
+      <Map />
       <BikeShopCard />
+      <ShopInfo />
       <Container>
         <Button className="btn-pink-lg">Select Repairs</Button>
       </Container>
