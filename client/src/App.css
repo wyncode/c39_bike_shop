@@ -1,11 +1,29 @@
-/* JUST FOR DEMO PURPORSES, REPLACE WITH YOUR OWN CODE */
+@import url('https://fonts.googleapis.com/css2?family=Actor&family=Khand:wght@300;400;500;600;700&family=Sarina&display=swap');
 
-#demo {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.btn-pink-sm {
+  border-radius: 45px;
+  background: #ec4568 !important;
+  width: 30vw;
 }
 
-/* END DEMO */
+.btn-pink-lg {
+  width: 326px;
+  height: 44px;
+  left: 20px;
+  top: 177px;
+  background: #ec4568 !important;
+  border-radius: 45px;
+}
+
+.HeroTitle {
+  font-family: 'Khand';
+  font-size: 7vw;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+.HeroImage {
+  background-size: cover;
+}

@@ -1,20 +1,19 @@
 import React from 'react';
-import Card from './components/Card';
-import HowItWorks from './components/HowItWorks';
-import InfoCards from './components/InfoCards';
-import FeaturedShops from './components/FeaturedShops';
-import AboutUs from './components/AboutUs';
-import SocialMedia from './components/SocialMedia';
+import HeroImage from '../components/HeroImage';
+import InfoCards from '../components/InfoCards';
+import FeaturedShops from '../components/FeaturedShops';
+// import AboutUs from '../components/AboutUs';
+import Navigation from '../components/navigation';
+import { Container } from 'react-bootstrap';
 
 const Home = () => {
   return (
-    <div>
-      <Card />
-      <HowItWorks />
+    <>
+      <Navigation />
+      <HeroImage />
       <InfoCards />
       <FeaturedShops />
-      <AboutUs />
-    </div>
+    </>
   );
 };
 

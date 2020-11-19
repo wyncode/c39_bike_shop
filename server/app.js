@@ -39,7 +39,7 @@ app.use('/api/*', passport.authenticate('jwt', { session: false }));
 app.use('/api/repair', repairRouter);
 app.use('/api/cyclist', cyclistRouter);
 app.use('/api/bikeshop', bikeshopRouter);
-app.use('/api/review', reviewRouter);
+app.use('/api/reviews', reviewRouter);
 
 if (process.env.NODE_ENV === 'production') {
   // Handle React routing, return all requests to React app
