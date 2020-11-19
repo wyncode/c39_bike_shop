@@ -1,4 +1,5 @@
 import React from 'react';
+
 import HeroImage from '../components/HeroImage';
 import HowItWorks from '../components/HowItWorks';
 import InfoCards from '../components/InfoCards';
