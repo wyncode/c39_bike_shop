@@ -1,6 +1,5 @@
 const Cyclist = require('../db/models/cyclist');
 const User = require('../db/models/user');
-const Review = require('../db/models/reviews');
 
 // AUTHENTICATED REQUESTS
 exports.createCyclist = async (req, res) => {
@@ -14,11 +13,7 @@ exports.createCyclist = async (req, res) => {
       user: req.user._id
     });
 
-    const user = await User.findById(req.user._id);
-
-    user.cyclist = cyclist._id;
-
-    await Promise.all([cyclist.save(), user.save()]);
+    await cyclist.save();
     res.status(201).json(cyclist);
   } catch (e) {
     res.status(400).json({ error: e.toString() });
@@ -30,7 +25,7 @@ exports.createCyclist = async (req, res) => {
 // ***********************************************//
 exports.getCurrentCyclist = async (req, res) => {
   const user = await User.findById(req.user._id).populate('cyclist');
-  res.json(user);
+  res.json(user.cyclist);
 };
 
 // ***********************************************//
