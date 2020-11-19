@@ -10,6 +10,7 @@ const Shoplist = () => {
       <Container>
         <SearchBar />
         <RepairCarousel />
+        <h3>Bike Shops</h3>
         <SearchResults />
       </Container>
     </div>
