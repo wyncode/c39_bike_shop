@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import {
   Container,
   Button,
@@ -10,20 +12,48 @@ import {
 
 export default function FeaturedShops() {
   return (
-    <div>
-      <Container>
-        <Carousel>
-          <Carousel.Item interval={3000}>
-            <h1>Image 1</h1>
-          </Carousel.Item>
-          <Carousel.Item interval={3000}>
-            <h1>Image 2</h1>
-          </Carousel.Item>
-          <Carousel.Item interval={3000}>
-            <Card.Img variant="top" src="https://i.imgur.com/gADnyXW.png" />
-          </Carousel.Item>
-        </Carousel>
-      </Container>
-    </div>
+    <CardDeck>
+      <Card className="InfoCard">
+        <Link>
+          <Card.Img variant="top" src="https://i.imgur.com/GmNnvw7.png" />
+          <Card.ImgOverlay>
+            <Card.Body>
+              <Card.Title>Community</Card.Title>
+            </Card.Body>
+          </Card.ImgOverlay>
+        </Link>
+      </Card>
+
+      <Card className="FeaturedShops">
+        <Link>
+          <Card.Img variant="top" src="https://i.imgur.com/oc2roV8.png" />
+          <Card.ImgOverlay>
+            <Card.Body>
+              <Card.Title>Events</Card.Title>
+            </Card.Body>
+          </Card.ImgOverlay>
+        </Link>
+      </Card>
+      <Card className="FeaturedShops">
+        <Link>
+          <Card.Img variant="top" src="https://i.imgur.com/k0uHv0t.png" />
+          <Card.ImgOverlay>
+            <Card.Body>
+              <Card.Title>Trails & Routes</Card.Title>
+            </Card.Body>
+          </Card.ImgOverlay>
+        </Link>
+      </Card>
+      <Card className="FeaturedShops">
+        <Link>
+          <Card.Img variant="top" src="https://i.imgur.com/BoRI9vo.png" />
+          <Card.ImgOverlay>
+            <Card.Body>
+              <Card.Title>Trails & Routes</Card.Title>
+            </Card.Body>
+          </Card.ImgOverlay>
+        </Link>
+      </Card>
+    </CardDeck>
   );
 }
