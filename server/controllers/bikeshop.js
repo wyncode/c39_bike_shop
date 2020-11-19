@@ -24,8 +24,10 @@ exports.createBikeshop = async (req, res) => {
       shopContact,
       email,
       website,
-      repairs
+      repairs,
+      owner: req.user._id
     });
+    await bikeshop.save();
     res.status(201).json(bikeshop);
   } catch (e) {
     res.status(400).json({ error: e.toString() });

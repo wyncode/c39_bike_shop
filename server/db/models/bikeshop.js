@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+  validator = require('validator');
 
 const bikeshopSchema = new mongoose.Schema(
   {
@@ -10,9 +11,7 @@ const bikeshopSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      unique: true,
       trim: true,
-      required: true,
       validate(value) {
         if (!validator.isEmail(value)) {
           throw new Error('Email is invalid');
@@ -66,6 +65,10 @@ const bikeshopSchema = new mongoose.Schema(
         ref: 'Cyclist'
       }
     ],
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
     repairs: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -80,12 +83,6 @@ bikeshopSchema.virtual('shop', {
   ref: 'ServiceOrder',
   localField: '_id',
   foreignField: 'shop'
-});
-
-bikeshopSchema.virtual('bikeshop', {
-  ref: 'Review',
-  localField: '_id',
-  foreignField: 'bikeshop'
 });
 
 const Bikeshop = mongoose.model('Bikeshop', bikeshopSchema);

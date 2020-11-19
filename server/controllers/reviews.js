@@ -9,13 +9,13 @@ exports.getAllReviews = (req, res) => {
 
 exports.addReview = (req, res) => {
   const newReview = new Review(req.body);
-  newReview.Bikeshop = req.params.Bikeshop_id;
+  newReview.bikeshop = req.params.Bikeshop_id;
   return Bikeshop.findById(req.params.Bikeshop_id)
-    .then((Bikeshop) => {
+    .then((bikeshop) => {
       newReview.save().then((createReview) => {
-        //does this line work?
-        Bikeshop.Reviews.push(createReview._id);
-        Bikeshop.save()
+        bikeshop.Reviews.push(createReview._id);
+        bikeshop
+          .save()
           .then(res.json(createReview))
           .catch((err) => res.status(500).json('Error: ' + err));
       });
