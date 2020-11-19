@@ -19,7 +19,7 @@ const Repairs = () => {
 
         <h4 className="mt-5">Select a time and date for appoinment</h4>
 
-        <Button className="d-flex justify-content-center " size="lg" block>
+        <Button className="dbtn-pink-lg" size="lg" block>
           {' '}
           Select Appointment
         </Button>
