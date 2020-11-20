@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Container, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function HeroImage() {
   return (
@@ -9,7 +10,17 @@ export default function HeroImage() {
         <Card.Title className="HeroTitle">
           Easily Track My Bike Repairs
         </Card.Title>
-        <Button className="btn-pink-lg ml-auto">Start My Bike Repair</Button>
+
+        <Card className="btn-holder">
+          <Button className="btn-pink-md ml-auto" style={{ fontSize: '2vw' }}>
+            <Link
+              to="/shoplist"
+              style={{ color: 'whitesmoke', textDecoration: 'none' }}
+            >
+              Start My Bike Repair{' '}
+            </Link>
+          </Button>
+        </Card>
       </Card.ImgOverlay>
     </Card>
   );

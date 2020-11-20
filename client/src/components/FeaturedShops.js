@@ -7,7 +7,7 @@ export default function FeaturedShops() {
   return (
     <>
       <h1 className="f-shops">Featured Shops</h1>
-      <CardDeck className="ml-2">
+      <CardDeck className="ml-2 mr-2">
         <Card className="FeaturedShops">
           <Link>
             <Card.Img variant="top" src="https://i.imgur.com/GmNnvw7.png" />
