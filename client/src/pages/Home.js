@@ -4,7 +4,7 @@ import InfoCards from '../components/InfoCards';
 import FeaturedShops from '../components/FeaturedShops';
 import AboutUs from '../components/AboutUs';
 import Navigation from '../components/navigation';
-import SocialMedia from '../components/SocialMedia';
+import Footer from '../components/Footer';
 import '../components/styles/homepage.css';
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
       <InfoCards />
       <FeaturedShops />
       <AboutUs />
-      <SocialMedia />
+      <Footer />
     </>
   );
 };

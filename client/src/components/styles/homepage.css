@@ -13,12 +13,13 @@
   background-size: cover;
 }
 
-.InfoCard {
+.imgtitle {
   font-family: 'Actor';
-  font-weight: 400 !important;
-  color: whitesmoke;
-  text-shadow: 2px 2px 2px 0px #000000 !important;
-  border-radius: 45px;
+  font-weight: 400;
+  font-size: 4vw;
+  color: whitesmoke !important;
+  text-shadow: 2px 2px 2px #000000;
+  padding-top: 0px;
 }
 
 .aboutus {
@@ -67,4 +68,13 @@
   font-size: 1.7vw;
   font-weight: 400;
   text-align: left;
+}
+
+.ft-link {
+  color: #ec4568;
+  text-decoration: none;
+  font-family: Khand;
+  font-size: 1.7vw;
+  font-weight: 400;
+  text-align: center;
 }

@@ -11,16 +11,17 @@ export default function HeroImage() {
           Easily Track My Bike Repairs
         </Card.Title>
 
-        <Card className="btn-holder">
-          <Button className="btn-pink-md ml-auto" style={{ fontSize: '2vw' }}>
-            <Link
-              to="/shoplist"
-              style={{ color: 'whitesmoke', textDecoration: 'none' }}
-            >
-              Start My Bike Repair{' '}
-            </Link>
-          </Button>
-        </Card>
+        <Button
+          className="btn-pink-md ml-auto btn-holder"
+          style={{ fontSize: '2vw' }}
+        >
+          <Link
+            to="/shoplist"
+            style={{ color: 'whitesmoke', textDecoration: 'none' }}
+          >
+            Start My Bike Repair{' '}
+          </Link>
+        </Button>
       </Card.ImgOverlay>
     </Card>
   );
