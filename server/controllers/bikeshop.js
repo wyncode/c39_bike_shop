@@ -14,13 +14,12 @@ exports.getAllBikeshops = (req, res) => {
 exports.getBikeshopById = async (req, res) => {
   try {
     let obj = {};
-    const filter = req.params.id;
-    const resp = await Bikeshop.findById(filter).populate('reviews');
+    // const filter = req.params.id;
+    const resp = await Bikeshop.findById(req.params.id).populate('reviews');
     const reviewsArr = await resp.reviews;
 
     const reviews = await Promise.all(
       reviewsArr.map(async (item) => {
-        console.log(item);
         const results = await Review.find().where('_id').in(item._id).exec();
         return results;
       })
