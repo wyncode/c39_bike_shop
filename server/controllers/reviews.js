@@ -1,4 +1,5 @@
-const Bikeshop = require('../db/models/Bikeshop'),
+const Bikeshop = require('../db/models/bikeshop'),
+
   Review = require('../db/models/reviews');
 
 exports.getAllReviews = (req, res) => {
@@ -7,19 +8,20 @@ exports.getAllReviews = (req, res) => {
     .catch((err) => res.status(500).json('Error: ' + err));
 };
 
-exports.addReview = (req, res) => {
-  const newReview = new Review(req.body);
-  newReview.Bikeshop = req.params.Bikeshop_id;
-  return Bikeshop.findById(req.params.Bikeshop_id)
-    .then((Bikeshop) => {
-      newReview.save().then((createReview) => {
-        Bikeshop.Reviews.push(createReview._id);
-        Bikeshop.save()
-          .then(res.json(createReview))
-          .catch((err) => res.status(500).json('Error: ' + err));
-      });
-    })
-    .catch((err) => res.status(500).json('Error: ' + err));
+exports.addReview = async (req, res) => {
+  try {
+    const newReview = new Review(req.body);
+    newReview.bikeshop = req.params.bikeshop_id;
+    newReview.reviewer = req.user._id;
+    const bikeshop = await Bikeshop.findById(req.params.bikeshop_id);
+    const createReview = await newReview.save();
+    await bikeshop.reviews.push(createReview._id);
+    await bikeshop.save();
+    res.json(createReview);
+  } catch (error) {
+    console.log(error.message);
+  }
+
 };
 
 exports.getReviewById = (req, res) => {
@@ -35,7 +37,6 @@ exports.deleteReviewById = (req, res) => {
       if (!review) {
         return res.status(404).json('Error: Review not found!');
       }
-
       res.status(204).json(review);
     })
     .catch((err) => {

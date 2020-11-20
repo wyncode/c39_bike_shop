@@ -1,18 +1,15 @@
 const router = require('express').Router(),
   {
+    createBikeshop,
     getCurrentBikeshop,
-    updateCurrentBikeshop,
-    logoutBikeshop,
-    logoutAllDevices,
-    deleteBikeshop,
-    updatePassword
+    updateBikeshop,
+    deleteBikeshop
   } = require('../../controllers/Bikeshop');
+const isAdmin = require('../../middleware/authorization');
 
-router.get('/me', getCurrentBikeshop);
-router.patch('/me', updateCurrentBikeshop);
-router.post('/logout', logoutBikeshop);
-router.post('/logoutall', logoutAllDevices);
-router.delete('/', deleteBikeshop);
-router.put('/password', updatePassword);
+router.post('/', isAdmin(), createBikeshop);
+router.get('/:id', getCurrentBikeshop);
+router.patch('/:id', isAdmin(), updateBikeshop);
+router.delete('/', isAdmin(), deleteBikeshop);
 
 module.exports = router;
