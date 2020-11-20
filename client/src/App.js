@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import Repairs from './pages/Repairs';
 import BikeShopPDP from './pages/BikeShopPDP';
 import Appointment from './pages/Apointment';
+import Summary from './pages/Summary';
 import './App.css';
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/BikeShopPDP" component={BikeShopPDP} />
           <Route exact path="/Appointment" component={Appointment} />
+          <Route exact path="/Summary" component={Summary} />
         </Switch>
       </BrowserRouter>
     </AppContextProvider>

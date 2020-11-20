@@ -1,3 +1,5 @@
+/* @import url(‘https://fonts.googleapis.com/css2?family=Actor&family=Khand:wght@300;400;500;600;700&family=Sarina&display=swap’); */
+
 .btn-pink-lg {
   width: 326px;
   height: 44px;
@@ -11,4 +13,8 @@
   border-radius: 45px;
   background: #ec4568 !important;
   width: 30vw;
+}
+
+.progress-bar {
+  background-color: #ec4568;
 }
