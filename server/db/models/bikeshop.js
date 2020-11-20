@@ -1,48 +1,31 @@
-const { ObjectID, ObjectId } = require('mongodb');
 const mongoose = require('mongoose'),
-  validator = require('validator'),
-  bcrypt = require('jsonwebtoken');
+  validator = require('validator');
 
-const bikeshopSchema = new mongoose.Schema({
-  BikeShopName: {
-    type: String,
-    unique: true,
-    trim: true,
-    required: true
-  },
-  email: {
-    type: String,
-    unique: true,
-    trim: true,
-    required: true,
-    validate(value) {
-      if (!validator.isEmail(value)) {
-        throw new Error('Email is invalid');
+const bikeshopSchema = new mongoose.Schema(
+  {
+    shopName: {
+      type: String,
+      unique: true,
+      trim: true,
+      required: true
+    },
+    email: {
+      type: String,
+      trim: true,
+      validate(value) {
+        if (!validator.isEmail(value)) {
+          throw new Error('Email is invalid');
+        }
       }
-    }
-  },
-  password: {
-    type: String,
-    trim: true,
-    required: true,
-    validate(value) {
-      if (value.toLowerCase().includes('password')) {
-        throw new Error('Password cannot be password.');
-      }
-      if (value.length < 8) {
-        throw new Error('Password must be at least 8 characters.');
-      }
-    }
-  },
-  logo: {
-    type: String
-  },
-  website: {
-    type: String,
-    trim: true
-  },
-  shopContact: [
-    {
+    },
+    logo: {
+      type: String
+    },
+    website: {
+      type: String,
+      trim: true
+    },
+    shopContact: {
       street: {
         type: String,
         required: true,
@@ -63,86 +46,43 @@ const bikeshopSchema = new mongoose.Schema({
         required: true,
         trim: true
       }
-    }
-  ],
-  tokens: [
-    {
-      token: {
-        type: String,
-        required: true
-      }
-    }
-  ],
-  reviews: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Review'
-    }
-  ],
-  serviceOrders: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'ServiceOrder'
-    }
-  ],
-  cyclists: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Cyclist'
-    }
-  ],
-  repairs: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Repair'
-    }
-  ]
-});
-
-bikeshopSchema.virtual('Bikeshop', {
-  ref: 'Bikeshop',
-  localField: '_id',
-  foreignField: 'Shop'
-});
-
-bikeshopSchema.methods.toJSON = function () {
-  const bikeshop = this;
-  const bikeshopObject = bikeshop.toObject();
-  delete bikeshopObject.password;
-  delete bikeshopObject.tokens;
-  return bikeshopObject;
-};
-
-bikeshopSchema.methods.generateAuthToken = async function () {
-  const bikeshop = this;
-  const token = jwt.sign(
-    {
-      _id: bikeshop._id.toString(),
-      name: bikeshop.name
     },
-    process.env.JWT_SECRET,
-    { expiresIn: '24h' }
-  );
-  bikeshop.tokens = bikeshop.tokens.concat({ token });
-  await bikeshop.save();
-  return token;
-};
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
+    reviews: [
+      {
+        review: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Review'
+        }
+      }
+    ],
+    repairs: [
+      {
+        repair: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Repair'
+        }
+      }
+    ]
+  },
+  { timestamps: true }
+);
 
-bikeshopSchema.statics.findByCredentials = async (email, password) => {
-  const bikeshop = await Bikeshop.findOne({ email });
-  if (!bikeshop) throw new Error('Bikeshop not found');
-  const isMatch = await bcrypt.compare(password, bikeshop.password);
-  if (!isMatch) throw new Error('Invalid password, try again.');
-  return bikeshop;
-};
+bikeshopSchema.virtual('serviceOrders', {
+  ref: 'ServiceOrder',
+  localField: '_id',
+  foreignField: 'bikeshop'
+});
 
-bikeshopSchema.pre('save', async function (next) {
-  const bikeshop = this;
-  if (bikeshop.isModified('password'))
-    bikeshop.password = await bcrypt.hash(bikeshop.password, 8);
-  next();
+bikeshopSchema.virtual('cyclists', {
+  ref: 'Cyclist',
+  localField: '_id',
+  foreignField: 'bikeshop'
 });
 
 const Bikeshop = mongoose.model('Bikeshop', bikeshopSchema);
 
-module.exports = bikeshopSchema;
+module.exports = Bikeshop;

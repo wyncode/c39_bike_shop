@@ -1,32 +1,69 @@
-const bikeshop = require('../db/models/bikeshop'),
-  jwt = require('jsonwebtoken');
+const Bikeshop = require('../db/models/bikeshop');
+const User = require('../db/models/user');
+const Review = require('../db/models/reviews');
+const Repair = require('../db/models/repair');
 
+//UNAUTHENTICATED
+
+exports.getAllBikeshops = (req, res) => {
+  Bikeshop.find()
+    .then((bikeshops) => res.status(200).json(bikeshops))
+    .catch((err) => res.status(500).json('Error: ' + err));
+};
+
+exports.getBikeshopById = async (req, res) => {
+  try {
+    let obj = {};
+    const filter = req.params.id;
+    const resp = await Bikeshop.findById(filter).populate('reviews');
+    const reviewsArr = await resp.reviews;
+
+    const reviews = await Promise.all(
+      reviewsArr.map(async (item) => {
+        console.log(item);
+        const results = await Review.find().where('_id').in(item._id).exec();
+        return results;
+      })
+    );
+    reviewsFlat = reviews.flat();
+
+    const repairsArr = await resp.repairs;
+    const repairs = await Promise.all(
+      repairsArr.map(async (item) => {
+        const repResults = await Repair.find().where('_id').in(item._id).exec();
+        return repResults;
+      })
+    );
+    repairsFlat = repairs.flat();
+
+    obj = {
+      _id: resp._id,
+      shopName: resp.shopName,
+      email: resp.email,
+      shopContact: resp.shopContact,
+      website: resp.website,
+      repairs: repairsFlat,
+      reviews: reviewsFlat
+    };
+    return res.json(obj);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// AUTHENTICATED REQUESTS
 exports.createBikeshop = async (req, res) => {
-  const {
-    BikeShopName,
-    email,
-    password,
-    phoneNumber,
-    logo,
-    shopContact,
-    website
-  } = req.body;
+  const { shopName, shopContact, email, website, repairs } = req.body;
   try {
     const bikeshop = new Bikeshop({
-      BikeShopName,
-      email,
-      password,
-      phoneNumber,
-      logo,
+      shopName,
       shopContact,
-      website
+      email,
+      website,
+      repairs,
+      owner: req.user._id
     });
-    const token = await bikeshop.generateAuthToken();
-    res.cookie('jwt', token, {
-      httpOnly: true,
-      sameSite: 'Strict',
-      secure: process.env.NODE_ENV !== 'production' ? false : true
-    });
+    await bikeshop.save();
     res.status(201).json(bikeshop);
   } catch (e) {
     res.status(400).json({ error: e.toString() });
@@ -34,130 +71,42 @@ exports.createBikeshop = async (req, res) => {
 };
 
 // ***********************************************//
-// Login a bikeshop
-// ***********************************************//
-exports.loginBikeshop = async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    const bikeshop = await Bikeshop.findByCredentials(email, password);
-    const token = await bikeshop.generateAuthToken();
-    res.cookie('jwt', token, {
-      httpOnly: true,
-      sameSite: 'Strict',
-      secure: process.env.NODE_ENV !== 'production' ? false : true
-    });
-    res.json(bikeshop);
-  } catch (e) {
-    res.status(400).json({ error: e.toString() });
-  }
-};
-
-// ******************************
-// Password Reset Request
-// This route sends an email that the
-// bikeshop must click within 10 minutes
-// to reset their password.
-// ******************************
-exports.requestPasswordReset = async (req, res) => {
-  try {
-    const { email } = req.query;
-    const bikeshop = await Bikeshop.findOne({ email });
-    if (!bikeshop) throw new Error('bikeshop not found');
-    const token = jwt.sign(
-      { _id: bikeshop._id.toString(), name: bikeshop.name },
-      process.env.JWT_SECRET,
-      { expiresIn: '10m' }
-    );
-    forgotPasswordEmail(email, token);
-    res.json({ message: 'reset password email sent!' });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-exports.passwordRedirect = async (req, res) => {
-  const { token } = req.params;
-  try {
-    jwt.verify(token, process.env.JWT_SECRET, function (err) {
-      if (err) throw new Error(err.message);
-    });
-    res.cookie('jwt', token, {
-      httpOnly: true,
-      maxAge: 600000,
-      sameSite: 'Strict'
-    });
-    res.redirect(process.env.URL + '/update-password');
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-// AUTHENTICATED REQUESTS
-
-// ***********************************************//
 // Get current bikeshop
 // ***********************************************//
 exports.getCurrentBikeshop = async (req, res) => {
-  res.json(req.bikeshop);
+  const user = await User.findById(req.user._id).populate('bikeshop');
+  res.send(user.bikeshop);
 };
 
 // ***********************************************//
 // Update a bikeshop
 // ***********************************************//
-exports.updateCurrentBikeshop = async (req, res) => {
-  const updates = Object.keys(req.body); // => ['email', 'name', 'password']
+exports.updateBikeshop = async (req, res) => {
+  const updates = Object.keys(req.body);
   const allowedUpdates = [
-    'name',
+    'shopName',
     'email',
-    'password',
-    'avatar',
-    'bicycle',
-    'zipcode'
+    'logo',
+    'shopContact',
+    'website'
   ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );
   if (!isValidOperation)
-    return res.status(400).json({ message: 'Invalid updates' });
-  try {
-    //Loop through each update, and change the value for the current bikeshop to the value coming from the body
-    updates.forEach((update) => (req.bikeshop[update] = req.body[update]));
-    //save the updated bikeshop in the db
-    await req.bikeshop.save();
-    //send the updated bikeshop as a response
-    res.json(req.bikeshop);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
+    return res.status(400).json({ message: 'invalid updates' });
 
-// ***********************************************//
-// Logout a bikeshop
-// ***********************************************//
-exports.logoutBikeshop = async (req, res) => {
   try {
-    req.bikeshop.tokens = req.bikeshop.tokens.filter((token) => {
-      return token.token !== req.cookies.jwt;
+    const bikeshop = await Bikeshop.findOne({
+      owner: req.user._id
     });
-    await req.bikeshop.save();
-    res.clearCookie('jwt');
-    res.json({ message: 'logged out!' });
+    if (!bikeshop)
+      return res.status(404).json({ message: 'Bikeshop not found' });
+    updates.forEach((update) => (bikeshop[update] = req.body[update]));
+    await bikeshop.save();
+    res.status(200).json(bikeshop);
   } catch (error) {
     res.status(400).json({ error: error.message });
-  }
-};
-// ***********************************************//
-// Logout all devices
-// ***********************************************//
-
-exports.logoutAllDevices = async (req, res) => {
-  try {
-    req.bikeshop.tokens = [];
-    await req.bikeshop.save();
-    res.clearCookie('jwt');
-    res.json({ message: 'logged out from all devices!' });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
   }
 };
 
@@ -165,23 +114,27 @@ exports.logoutAllDevices = async (req, res) => {
 // Delete a bikeshop
 // ***********************************************//
 
-exports.deleteBikeshop = async (req, res) => {
-  try {
-    await req.bikeshop.remove();
-    sendCancellationEmail(req.bikeshop.email, req.bikeshop.name);
-    res.clearCookie('jwt');
-    res.json({ message: 'bikeshop deleted' });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+exports.deleteBikeshop = (req, res) => {
+  Bikeshop.findByIdAndDelete(req.params.id)
+    .then((bikeshop) => {
+      if (!bikeshop) {
+        return res.status(404).json('Error: Bikeshop not found!');
+      }
+      res.status(204).json(bikeshop);
+    })
+    .catch((err) => {
+      res.status(500).json('Error: ' + err);
+    });
 };
 
-exports.updatePassword = async (req, res) => {
+exports.uploadLogo = async (req, res) => {
   try {
-    req.user.password = req.body.password;
-    await req.user.save();
-    res.clearCookie('jwt');
-    res.status(200).json({ message: 'password updated successfully!' });
+    const response = await cloudinary.uploader.upload(
+      req.files.logo.tempFilePath
+    );
+    req.bikeshop.logo = response.secure_url;
+    await req.bikeshop.save();
+    res.json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

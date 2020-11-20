@@ -1,23 +1,17 @@
 const router = require('express').Router(),
   {
-    createCyclist,
-    loginCyclist,
+    createUser,
+    loginUser,
     requestPasswordReset,
     passwordRedirect
-  } = require('../../controllers/cyclist');
+  } = require('../../controllers/user'),
+  { getAllBikeshops, getBikeshopById } = require('../../controllers/bikeshop');
 
-const {
-  createBikeshop,
-  loginBikeshop,
-  requestPasswordReset,
-  passwordRedirect
-} = require('../../controllers/bikeshop');
-
-router.post('/', createCyclist);
-router.post('/login', loginCyclist);
-router.post('/bikeshop', createBikeshop);
-router.post('/loginbikeshop', loginBikeshop);
+router.post('/', createUser);
+router.post('/login', loginUser);
 router.get('/password', requestPasswordReset);
 router.get('/password/:token', passwordRedirect);
+router.get('/bikeshop', getAllBikeshops);
+router.get('/bikeshop/:id', getBikeshopById);
 
 module.exports = router;

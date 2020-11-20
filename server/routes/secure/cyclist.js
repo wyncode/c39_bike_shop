@@ -1,18 +1,16 @@
+const { route } = require('../open');
+
 const router = require('express').Router(),
   {
+    getAllCyclist,
     getCurrentCyclist,
     updateCurrentCyclist,
-    logoutCyclist,
-    logoutAllDevices,
-    deleteCyclist,
-    updatePassword
+    createCyclist
   } = require('../../controllers/cyclist');
 
-router.get('/me', getCurrentCyclist);
-router.patch('/me', updateCurrentCyclist);
-router.post('/logout', logoutCyclist);
-router.post('/logoutall', logoutAllDevices);
-router.delete('/', deleteCyclist);
-router.put('/password', updatePassword);
+router.post('/', createCyclist);
+router.get('/', getAllCyclist);
+router.get('/:id', getCurrentCyclist);
+router.patch('/:id', updateCurrentCyclist);
 
 module.exports = router;

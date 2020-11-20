@@ -1,20 +1,26 @@
-const Repair = require('../db/models/repair');
+const Repair = require('../db/models/repair'),
+  Bikeshop = require('../db/models/bikeshop');
 
 // ***********************************************//
 // create repair
 // ***********************************************//
+
 exports.createRepair = async (req, res) => {
   try {
-    const repair = await new Repair({
-      ...req.body,
-      bikeshop: req.user._id
-    });
-    await repair.save();
-    res.status(200).send(repair);
+    console.log('I am running!');
+    const newRepair = new Repair(req.body);
+    newRepair.bikeshop = req.params.bikeshop_id;
+    const bikeshop = await Bikeshop.findById(req.params.bikeshop_id);
+    const createRepair = await newRepair.save();
+    await bikeshop.repairs.push(createRepair._id);
+    await bikeshop.save();
+
+    res.json(createRepair);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.log(error.message);
   }
 };
+
 // ***********************************************//
 // change repair
 // ***********************************************//
@@ -36,7 +42,7 @@ exports.updateRepair = async (req, res) => {
   try {
     const repair = await Repair.findOne({
       _id: req.params.id,
-      bikeshop: req.bikeshop._id
+      bikeshop: req.user.bikeshop._id
     });
     if (!repair) return res.status(404).json({ message: 'repair not found' });
     updates.forEach((update) => (repair[update] = req.body[update]));
@@ -54,7 +60,7 @@ exports.deleteRepair = async (req, res) => {
   try {
     const repair = await Repair.findOneAndDelete({
       _id: req.params.id,
-      owner: req.user._id
+      bikeshop: req.user.bikeshop._id
     });
     if (!repair) return res.status(404).json({ message: 'repair not found' });
     res.status(200).json({ message: 'repair has been deleted' });
@@ -73,7 +79,7 @@ exports.getSpecificRepair = async (req, res) => {
     return res.status(400).json({ message: 'not a valid repair' });
 
   try {
-    const repair = await repair.findOne({ _id, bikeshop: req.user._id });
+    const repair = await repair.findOne({ _id });
     if (!repair) return res.status(400).json({ message: 'repair not found' });
     res.status(200).json(repair);
   } catch (error) {
