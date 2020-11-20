@@ -5,17 +5,18 @@ exports.createOrder = async (req, res) => {
   const newOrder = new ServiceOrder(req.body);
   newOrder.bikeshop = req.body.bikeshop;
   newOrder.cyclist = req.user._id;
-  console.log(newOrder);
+
   try {
     const bikeshop = await Bikeshop.findById(req.body.bikeshop);
-    console.log(bikeshop);
+
     const order = new ServiceOrder({
       ...req.body
     });
     await order.save();
-    console.log(order);
+
     await bikeshop.orders.push(order);
     await bikeshop.save();
+
     res.status(201).json(order);
   } catch (e) {
     res.status(400).json({ error: e.toString() });

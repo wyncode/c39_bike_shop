@@ -18,19 +18,11 @@ const cyclistSchema = new mongoose.Schema(
       type: String,
       trim: true
     },
-    bicycles: [
+    bikes: [
       {
-        bikeName: {
-          type: String,
-          trim: true
-        },
-        bikeModel: {
-          type: String,
-          trim: true
-        },
-        bikeType: {
-          type: String,
-          trim: true
+        bike: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Bicycle'
         }
       }
     ]

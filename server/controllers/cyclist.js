@@ -32,6 +32,7 @@ exports.createCyclist = async (req, res) => {
 // ***********************************************//
 
 exports.getCurrentCyclist = async (req, res) => {
+  const match = {};
   try {
     const cyclist = await Cyclist.findById({ _id: req.params.id }).populate(
       'bicycles'
