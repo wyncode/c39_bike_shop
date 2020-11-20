@@ -1,5 +1,7 @@
 const Bikeshop = require('../db/models/bikeshop');
 const User = require('../db/models/user');
+const Review = require('../db/models/reviews');
+const Repair = require('../db/models/repair');
 
 //UNAUTHENTICATED
 
@@ -9,11 +11,44 @@ exports.getAllBikeshops = (req, res) => {
     .catch((err) => res.status(500).json('Error: ' + err));
 };
 
-exports.getBikeshopById = (req, res) => {
-  const filter = req.params.id;
-  Bikeshop.findById(filter)
-    .then((resp) => res.json(resp))
-    .catch((err) => res.status(500).json('Error: ' + err));
+exports.getBikeshopById = async (req, res) => {
+  try {
+    let obj = {};
+    const filter = req.params.id;
+    const resp = await Bikeshop.findById(filter).populate('reviews');
+    const reviewsArr = await resp.reviews;
+
+    const reviews = await Promise.all(
+      reviewsArr.map(async (item) => {
+        console.log(item);
+        const results = await Review.find().where('_id').in(item._id).exec();
+        return results;
+      })
+    );
+    reviewsFlat = reviews.flat();
+
+    const repairsArr = await resp.repairs;
+    const repairs = await Promise.all(
+      repairsArr.map(async (item) => {
+        const repResults = await Repair.find().where('_id').in(item._id).exec();
+        return repResults;
+      })
+    );
+    repairsFlat = repairs.flat();
+
+    obj = {
+      _id: resp._id,
+      shopName: resp.shopName,
+      email: resp.email,
+      shopContact: resp.shopContact,
+      website: resp.website,
+      repairs: repairsFlat,
+      reviews: reviewsFlat
+    };
+    return res.json(obj);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 // AUTHENTICATED REQUESTS

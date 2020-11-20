@@ -20,20 +20,6 @@ exports.addReview = async (req, res) => {
   } catch (error) {
     console.log(error.message);
   }
-  // const newReview = new Review(req.body);
-  // newReview.bikeshop = req.params.bikeshop_id;
-  // newReview.reviewer = req.user._id;
-  // return Bikeshop.findById(req.params.bikeshop_id)
-  //   .then((bikeshop) => {
-  //     newReview.save().then((createReview) => {
-  //       bikeshop.reviews.push(createReview._id);
-  //       bikeshop
-  //         .save()
-  //         .then(res.json(createReview))
-  //         .catch((err) => res.status(500).json('Error: ' + err.message));
-  //     });
-  //   })
-  //   .catch((err) => res.status(500).json('Error: ' + err));
 };
 
 exports.getReviewById = (req, res) => {
