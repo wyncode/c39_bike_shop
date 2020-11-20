@@ -1,5 +1,4 @@
 const Bikeshop = require('../db/models/bikeshop'),
-
   Review = require('../db/models/reviews');
 
 exports.getAllReviews = (req, res) => {
@@ -21,7 +20,6 @@ exports.addReview = async (req, res) => {
   } catch (error) {
     console.log(error.message);
   }
-
 };
 
 exports.getReviewById = (req, res) => {

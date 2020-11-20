@@ -1,5 +1,6 @@
 const Cyclist = require('../db/models/cyclist');
 const User = require('../db/models/user');
+const ServiceOrder = require('../db/models/serviceOrder');
 
 exports.getAllCyclist = (req, res) => {
   Cyclist.find()
@@ -18,7 +19,7 @@ exports.createCyclist = async (req, res) => {
       bicycles,
       user: req.user._id
     });
-
+    console.log(cyclist);
     await cyclist.save();
     res.status(201).json(cyclist);
   } catch (e) {
@@ -29,9 +30,17 @@ exports.createCyclist = async (req, res) => {
 // ***********************************************//
 // Get current cyclist
 // ***********************************************//
+
 exports.getCurrentCyclist = async (req, res) => {
-  const user = await User.findById(req.user._id).populate('cyclist');
-  res.json(user.cyclist);
+  const match = {};
+  try {
+    const cyclist = await Cyclist.findById({ _id: req.params.id }).populate(
+      'bicycles'
+    );
+    res.status(200).json({ cyclist });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 // ***********************************************//

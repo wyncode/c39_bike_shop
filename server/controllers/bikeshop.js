@@ -1,9 +1,8 @@
-
 const Bikeshop = require('../db/models/bikeshop');
 const User = require('../db/models/user');
 const Review = require('../db/models/reviews');
 const Repair = require('../db/models/repair');
-
+const ServiceOrder = require('../db/models/serviceOrder');
 
 //UNAUTHENTICATED
 
@@ -12,42 +11,29 @@ exports.getAllBikeshops = (req, res) => {
     .then((bikeshops) => res.status(200).json(bikeshops))
     .catch((err) => res.status(500).json('Error: ' + err));
 };
-
 exports.getBikeshopById = async (req, res) => {
   try {
-    let obj = {};
-    const filter = req.params.id;
-    const resp = await Bikeshop.findById(filter).populate('reviews');
-    const reviewsArr = await resp.reviews;
-
-    const reviews = await Promise.all(
-      reviewsArr.map(async (item) => {
-        console.log(item);
-        const results = await Review.find().where('_id').in(item._id).exec();
-        return results;
-      })
-    );
-    reviewsFlat = reviews.flat();
-
-    const repairsArr = await resp.repairs;
-    const repairs = await Promise.all(
-      repairsArr.map(async (item) => {
-        const repResults = await Repair.find().where('_id').in(item._id).exec();
-        return repResults;
-      })
-    );
-    repairsFlat = repairs.flat();
-
-    obj = {
+    let bikeShop = {};
+    let resp = await Bikeshop.findById(req.params.id);
+    const reviewIdArr = resp.reviews.map((item) => item._id);
+    const repairsIdArr = resp.repairs.map((item) => item._id);
+    const ordersIdArr = resp.orders.map((item) => item._id);
+    const reviews = await Review.find().where('_id').in(reviewIdArr).exec();
+    const repairs = await Repair.find().where('_id').in(repairsIdArr).exec();
+    const orders = await ServiceOrder.find()
+      .where('_id')
+      .in(ordersIdArr)
+      .exec();
+    bikeShop.data = {
+      shopContact: resp.shopContact,
       _id: resp._id,
       shopName: resp.shopName,
-      email: resp.email,
-      shopContact: resp.shopContact,
-      website: resp.website,
-      repairs: repairsFlat,
-      reviews: reviewsFlat
+      email: resp.email
     };
-    return res.json(obj);
+    bikeShop.reviews = reviews;
+    bikeShop.repairs = repairs;
+    bikeShop.orders = orders;
+    return res.json(bikeShop);
   } catch (err) {
     console.log(err);
   }

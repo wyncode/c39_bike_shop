@@ -66,16 +66,18 @@ const bikeshopSchema = new mongoose.Schema(
           ref: 'Repair'
         }
       }
+    ],
+    orders: [
+      {
+        order: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'ServiceOrder'
+        }
+      }
     ]
   },
   { timestamps: true }
 );
-
-bikeshopSchema.virtual('serviceOrders', {
-  ref: 'ServiceOrder',
-  localField: '_id',
-  foreignField: 'bikeshop'
-});
 
 bikeshopSchema.virtual('cyclists', {
   ref: 'Cyclist',
