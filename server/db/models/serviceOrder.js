@@ -3,13 +3,11 @@ const mongoose = require('mongoose');
 const serviceOrderSchema = new mongoose.Schema({
   bikeshop: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Bikeshop',
-    required: true
+    ref: 'Bikeshop'
   },
   cyclist: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Cyclist',
-    required: true
+    ref: 'Cyclist'
   },
   dropoffDate: {
     type: Date

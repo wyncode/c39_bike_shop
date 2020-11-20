@@ -69,8 +69,10 @@ const bikeshopSchema = new mongoose.Schema(
     ],
     orders: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'ServiceOrder'
+        order: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'ServiceOrder'
+        }
       }
     ]
   },

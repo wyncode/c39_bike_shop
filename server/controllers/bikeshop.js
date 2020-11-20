@@ -2,6 +2,7 @@ const Bikeshop = require('../db/models/bikeshop');
 const User = require('../db/models/user');
 const Review = require('../db/models/reviews');
 const Repair = require('../db/models/repair');
+const ServiceOrder = require('../db/models/serviceOrder');
 
 //UNAUTHENTICATED
 
@@ -16,8 +17,13 @@ exports.getBikeshopById = async (req, res) => {
     let resp = await Bikeshop.findById(req.params.id);
     const reviewIdArr = resp.reviews.map((item) => item._id);
     const repairsIdArr = resp.repairs.map((item) => item._id);
+    const ordersIdArr = resp.orders.map((item) => item._id);
     const reviews = await Review.find().where('_id').in(reviewIdArr).exec();
     const repairs = await Repair.find().where('_id').in(repairsIdArr).exec();
+    const orders = await ServiceOrder.find()
+      .where('_id')
+      .in(ordersIdArr)
+      .exec();
     bikeShop.data = {
       shopContact: resp.shopContact,
       _id: resp._id,
@@ -26,6 +32,7 @@ exports.getBikeshopById = async (req, res) => {
     };
     bikeShop.reviews = reviews;
     bikeShop.repairs = repairs;
+    bikeShop.orders = orders;
     return res.json(bikeShop);
   } catch (err) {
     console.log(err);
