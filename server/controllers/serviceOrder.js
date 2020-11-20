@@ -2,19 +2,36 @@ const ServiceOrder = require('../db/models/serviceOrder');
 const Bikeshop = require('../db/models/bikeshop');
 
 exports.createOrder = async (req, res) => {
+  const newOrder = new ServiceOrder(req.body);
   try {
-    const newOrder = new ServiceOrder(req.body);
-    newOrder.bikeshop = req.body.bikeshop;
-    newOrder.cyclist = req.user._id;
-    const bikeshop = await Bikeshop.findById(req.body.bikeshop);
-    const createOrder = await newOrder.save();
-    await bikeshop.orders.push(createOrder._id);
-    await bikeshop.save();
-    res.json(createOrder);
-  } catch (error) {
-    console.log(error.message);
+    const order = new ServiceOrder({
+      ...req.body
+    });
+    await order.save();
+    res.status(201).json(order);
+  } catch (e) {
+    res.status(400).json({ error: e.toString() });
   }
 };
+
+// exports.createOrder = async (req, res) => {
+//   try {
+//     const newOrder = new ServiceOrder(req.body);
+//     newOrder.bikeshop = req.body.bikeshop;
+//     newOrder.cyclist = req.user._id;
+//     console.log(newOrder)
+//     const bikeshop = await Bikeshop.findById(req.body.bikeshop);
+//     console.log(bikeshop)
+//     const createOrder = await newOrder.save();
+//     console.log(newOrder)
+//     await bikeshop.orders.push(createOrder._id);
+//     await bikeshop.save();
+
+//     res.json(createOrder);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
 
 exports.getAllOrders = (req, res) => {
   ServiceOrder.find()
@@ -24,7 +41,7 @@ exports.getAllOrders = (req, res) => {
 
 exports.updateOrder = async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ['dropoffDate', 'expectedPickup', 'progress'];
+  const allowedUpdates = ['progress', 'dropoffDate', 'expectedPickup'];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );
