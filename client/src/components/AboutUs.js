@@ -1,19 +1,22 @@
-// import React from 'react';
-// import { Card, Container } from 'react-bootstrap';
+import React from 'react';
+import { Card, Container } from 'react-bootstrap';
 
-// export default function AboutUs() {
-//   return (
-//     <Card style={{ width: '18rem' }}>
-//     <Card.Body>
-//       <Card.Title>Card Title</Card.Title>
-//       <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-//       <Card.Text>
-//         Some quick example text to build on the card title and make up the bulk of
-//         the card's content.
-//       </Card.Text>
-//       <Card.Link href="#">Card Link</Card.Link>
-//       <Card.Link href="#">Another Link</Card.Link>
-//     </Card.Body>
-//   </Card>
-//   )
-// }
+export default function AboutUs() {
+  return (
+    <Card style={{ width: '85rem' }}>
+      <Card.Body>
+        <Card.Title style={{ fontsize: '50vw', color: '#EC4568' }}>
+          About Us
+        </Card.Title>
+        <Card.Text>
+          Tofu adaptogen tacos master cleanse. Tote bag offal fashion axe
+          freegan blog wayfarers try-hard keffiyeh jianbing gastropub +1
+          chambray. Roof party chia vice echo park 8-bit vape. Quinoa copper mug
+          gluten-free hoodie narwhal. Roof party chia vice, echo park 8-bit
+          humblebrag mustache 90's vape. Quinoa taxidermy. Kombucha copper mug
+          gluten-free blog hoodie narwhal.
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  );
+}

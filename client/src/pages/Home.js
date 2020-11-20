@@ -4,6 +4,7 @@ import InfoCards from '../components/InfoCards';
 import FeaturedShops from '../components/FeaturedShops';
 import AboutUs from '../components/AboutUs';
 import Navigation from '../components/navigation';
+import SocialMedia from '../components/SocialMedia';
 import { Container } from 'react-bootstrap';
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <InfoCards />
       <FeaturedShops />
       <AboutUs />
+      <SocialMedia />
     </>
   );
 };
