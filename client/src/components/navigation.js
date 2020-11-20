@@ -1,83 +1,54 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-import { Navbar } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, Dropdown, Image } from 'react-bootstrap';
 const navigation = () => {
   return (
-    <>
-      <navbar class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-          The Bike Shop
-        </a>
-        {/* <a class="navbar-brand" href="#">Log In</a>  */}
-        {/* <button
-        // class="navbar-toggler"
-        // type="button"
-        // data-toggle="collapse"
-        // data-target="#navbarNavDropdown"
-        // aria-controls="navbarNavDropdown"
-        // aria-expanded="false"
-        // aria-label="Toggle navigation"
+    <Navbar bg="light" expand="lg">
+      <Navbar.Brand
+        style={{ fontFamily: 'Sarina', color: '#ec4568' }}
+        as={Link}
+        to="/"
       >
-        <span class="navbar-toggler-icon"></span>
-      </button> */}
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Bike Shops <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Community
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Events
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Trails & Routes
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                About Us
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Log In
-              </a>
-            </li>
-          </ul>
-        </div>
-      </navbar>
-    </>
+        <Image
+          className="mr-4"
+          src={'https://imgur.com/xZizVWI.png'}
+          height={50}
+          width={50}
+          roundedCircle
+        />
+        The Bike Shop
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav " />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto ml-auto">
+          <Nav.Item className="mr-5">Bike Shops</Nav.Item>
+          <Nav.Item className="mr-5">Community</Nav.Item>
+          <Nav.Item className="mr-5">Events</Nav.Item>
+          <Nav.Item className="mr-5">Trails</Nav.Item>
+          <Nav.Item className="mr-5">About Us</Nav.Item>
+        </Nav>
+        <Nav>
+          <Nav.Item>
+            <Dropdown drop="down" className="mr-1">
+              <Dropdown.Toggle variant="">
+                <Image
+                  src={'https://imgur.com/PCEcljZ.png'}
+                  height={50}
+                  width={50}
+                  roundedCircle
+                />
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} to="/profile">
+                  Profile
+                </Dropdown.Item>
+                {/* <Logout /> */}
+              </Dropdown.Menu>
+            </Dropdown>
+          </Nav.Item>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
-
 export default navigation;
-
-{
-  /* <div>
-      <nav class="navbar navbar-light bg-light">
-        <a href="#" class="navbar-brand">
-          The Bike Shop
-        </a>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              Cyclist
-            </a>
-            
-          </li>
-          
-        </ul>
-      </nav>
-    </div> */
-}
