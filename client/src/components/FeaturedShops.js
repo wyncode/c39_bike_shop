@@ -12,48 +12,44 @@ import {
 
 export default function FeaturedShops() {
   return (
-    <CardDeck>
-      <Card className="InfoCard">
-        <Link>
-          <Card.Img variant="top" src="https://i.imgur.com/GmNnvw7.png" />
-          <Card.ImgOverlay>
+    <>
+      <h1 className="HeroTitle">Featured Shops</h1>
+      <CardDeck>
+        <Card className="FeaturedShops">
+          <Link>
+            <Card.Img variant="top" src="https://i.imgur.com/GmNnvw7.png" />
             <Card.Body>
-              <Card.Title>Community</Card.Title>
+              <Card.Title>No Boundaries</Card.Title>
             </Card.Body>
-          </Card.ImgOverlay>
-        </Link>
-      </Card>
+          </Link>
+        </Card>
 
-      <Card className="FeaturedShops">
-        <Link>
-          <Card.Img variant="top" src="https://i.imgur.com/oc2roV8.png" />
-          <Card.ImgOverlay>
+        <Card className="FeaturedShops">
+          <Link>
+            <Card.Img variant="top" src="https://i.imgur.com/oc2roV8.png" />
             <Card.Body>
-              <Card.Title>Events</Card.Title>
+              <Card.Title>Bike Tech</Card.Title>
             </Card.Body>
-          </Card.ImgOverlay>
-        </Link>
-      </Card>
-      <Card className="FeaturedShops">
-        <Link>
-          <Card.Img variant="top" src="https://i.imgur.com/k0uHv0t.png" />
-          <Card.ImgOverlay>
+          </Link>
+        </Card>
+        <Card className="FeaturedShops">
+          <Link>
+            <Card.Img variant="top" src="https://i.imgur.com/k0uHv0t.png" />
             <Card.Body>
-              <Card.Title>Trails & Routes</Card.Title>
+              <Card.Title>The Miami Bike Shop</Card.Title>
             </Card.Body>
-          </Card.ImgOverlay>
-        </Link>
-      </Card>
-      <Card className="FeaturedShops">
-        <Link>
-          <Card.Img variant="top" src="https://i.imgur.com/BoRI9vo.png" />
-          <Card.ImgOverlay>
+          </Link>
+        </Card>
+        <Card className="FeaturedShops">
+          <Link>
+            <Card.Img variant="top" src="https://i.imgur.com/BoRI9vo.png" />
             <Card.Body>
-              <Card.Title>Trails & Routes</Card.Title>
+              <Card.Title>Miami Bikes</Card.Title>
             </Card.Body>
-          </Card.ImgOverlay>
-        </Link>
-      </Card>
-    </CardDeck>
+          </Link>
+        </Card>
+      </CardDeck>
+      <h5 className="HeroTitle">The Bike Shop</h5>
+    </>
   );
 }
