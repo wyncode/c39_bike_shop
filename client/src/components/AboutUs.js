@@ -8,7 +8,7 @@ export default function AboutUs() {
         <Card.Title style={{ fontsize: '50vw', color: '#EC4568' }}>
           About Us
         </Card.Title>
-        <Card.Text>
+        <Card.Text style={{ width: '85rem' }}>
           Tofu adaptogen tacos master cleanse. Tote bag offal fashion axe
           freegan blog wayfarers try-hard keffiyeh jianbing gastropub +1
           chambray. Roof party chia vice echo park 8-bit vape. Quinoa copper mug

@@ -1,15 +1,15 @@
-// import React from 'react';
-// import { Container } from 'react-bootstrap';
-// import Calendar from '../components/Calendar';
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import Calendar from '../components/Calendar';
 
-// const Appointment = () => {
-//   return (
-//     <div>
-//       <Container>
-//         <Calendar />
-//       </Container>
-//     </div>
-//   );
-// };
+const Appointment = () => {
+  return (
+    <div>
+      <Container>
+        <Calendar />
+      </Container>
+    </div>
+  );
+};
 
-// export default Appointment;
+export default Appointment;

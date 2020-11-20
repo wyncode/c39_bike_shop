@@ -52,3 +52,26 @@
   text-align: left;
   color: #ec4568;
 }
+
+.title {
+  font-family: sarina;
+  font-size: 7vw;
+  text-align: center;
+  color: #ec4568;
+}
+
+.f-shops {
+  font-size: 400;
+  font-family: Khand;
+  font-size: 3.5vw;
+  margin-top: 25px;
+  margin-left: 5px;
+}
+
+.FeaturedShops {
+  background: transparent !important;
+  border: 0px transparent !important;
+  color: #5d5d5d;
+  font-family: Actor;
+  font-size: 1.7vw;
+}
