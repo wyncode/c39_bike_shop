@@ -55,14 +55,14 @@ exports.deleteOrderById = (req, res) => {
     });
 };
 
-exports.getOrderById = (req, res) => {
-  ServiceOrder.findById(req.params.id).then((order) => {
+exports.getOrderById = async (req, res) => {
+  try {
+    const order = ServiceOrder.findById(req.params.id);
     if (!order) {
       return res.status(404).json('Error: Order not found!');
     }
-    res
-      .status(200)
-      .json(order)
-      .catch((err) => res.status(500).json('Error: ' + err));
-  });
+    await res.status(200).json(order);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
