@@ -10,12 +10,16 @@ import Repairs from './pages/Repairs';
 import BikeShopPDP from './pages/BikeShopPDP';
 import Appointment from './pages/Appointment';
 import './App.css';
+import RepairPopUp from './components/RepairPopUp';
+import Navigation from './components/navigation';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
     // Navbar goes betwen BrowserRouter and Switch
     <AppContextProvider>
       <BrowserRouter>
+        <Navigation />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/Repairs" component={Repairs} />
@@ -25,7 +29,9 @@ const App = () => {
           <Route exact path="/Confirmation" component={Confirmation} />
           <Route exact path="/BikeShopPDP" component={BikeShopPDP} />
           <Route exact path="/Appointment" component={Appointment} />
+          <Route exact path="/RepairsPop" component={RepairPopUp} />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </AppContextProvider>
     //social media component goes between switch and browser router

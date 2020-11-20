@@ -6,18 +6,6 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <Container className="d-flex  flex-column">
-      <Form>
-        <Form.Group className="d-flex" controlId="formBasicEmail">
-          <Form.Control
-            style={{ width: '61vw', display: 'inline-block' }}
-            type="email"
-            placeholder="Enter email"
-          />
-          <Button className="btn-pink-sm-sq ml-2" type="submit">
-            Submit
-          </Button>
-        </Form.Group>
-      </Form>
       <Container className="socialContainer">
         <div className="socialHolder">
           <FacebookShareButton url={`yourpageurl`}>
