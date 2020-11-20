@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Dropdown, Image } from 'react-bootstrap';
-const navigation = () => {
+const Navigation = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand
@@ -51,4 +51,4 @@ const navigation = () => {
     </Navbar>
   );
 };
-export default navigation;
+export default Navigation;

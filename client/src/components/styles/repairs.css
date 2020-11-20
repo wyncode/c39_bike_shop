@@ -26,3 +26,24 @@
   width: 10vw;
   border: transparent;
 }
+h1 {
+  font-family: 'Khand';
+  color: #898989;
+}
+
+h2 {
+  font-family: 'Khand';
+  color: #898989;
+}
+.filBtn {
+  background: rgba(236, 69, 104, 0.75) !important;
+  border: none;
+  border-radius: 10px;
+}
+
+.btnRep {
+  background: transparent !important;
+  color: #000000;
+  border: 1px solid #898989;
+  border-radius: 4px;
+}

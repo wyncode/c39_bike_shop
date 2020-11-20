@@ -23,6 +23,15 @@
   border-radius: 45px;
   border: transparent;
 }
+
+.btn-pink-xlg {
+  width: 50vw;
+  height: 7vh;
+  font-size: 2vw;
+  background: #ec4568 !important;
+  border-radius: 45px;
+  border: transparent;
+}
 .btn-pink-md {
   width: 26vw;
   height: 10vh;
