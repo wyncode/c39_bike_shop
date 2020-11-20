@@ -1,0 +1,28 @@
+.modal-bd {
+  font-family: 'Khand' !important;
+}
+
+.close-btn {
+  border: transparent;
+  background: transparent;
+}
+
+.modal-ft {
+  border: transparent;
+  background: transparent;
+}
+
+.btnModal {
+  border: transparent;
+  background: transparent;
+  color: #000000;
+  text-decoration: underline;
+  text-align: left;
+}
+
+.btn-pink-sm-md {
+  border-radius: 45px;
+  background: #ec4568 !important;
+  width: 10vw;
+  border: transparent;
+}

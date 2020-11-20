@@ -5,12 +5,14 @@
   border-radius: 45px;
   background: #ec4568 !important;
   width: 20vw;
+  border: transparent;
 }
 
 .btn-pink-sm-sq {
   border-radius: 5px;
   background: #ec4568 !important;
   width: 20vw;
+  border: transparent;
 }
 .btn-pink-lg {
   width: 26vw;
@@ -19,6 +21,7 @@
   top: 177px;
   background: #ec4568 !important;
   border-radius: 45px;
+  border: transparent;
 }
 .btn-pink-md {
   width: 26vw;

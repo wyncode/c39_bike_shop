@@ -4,6 +4,7 @@ import { Button, Container } from 'react-bootstrap';
 import FilterRepair from '../components/FilterRepair';
 import RepairSelection from '../components/RepairSelection';
 import { Link } from 'react-router-dom';
+import '../components/styles/repairs.css';
 
 const Repairs = () => {
   return (

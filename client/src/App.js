@@ -10,6 +10,7 @@ import Repairs from './pages/Repairs';
 import BikeShopPDP from './pages/BikeShopPDP';
 import Appointment from './pages/Appointment';
 import './App.css';
+import RepairPopUp from './components/RepairPopUp';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route exact path="/Confirmation" component={Confirmation} />
           <Route exact path="/BikeShopPDP" component={BikeShopPDP} />
           <Route exact path="/Appointment" component={Appointment} />
+          <Route exact path="/RepairsPop" component={RepairPopUp} />
         </Switch>
       </BrowserRouter>
     </AppContextProvider>
