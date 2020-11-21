@@ -37,7 +37,7 @@ const Summary = () => {
         <Card.Title className="instruction-header">
           Drop off instructions
         </Card.Title>
-        <Card.Text>
+        <Card.Text className="instructions">
           Lumbersexual gochujang tbh, venmo kogi 90's four dollar toast
           gluten-free portland. Heirloom shoreditch four dollar toast
           typewriter, craft beer franzen glossier bitters brunch raw denim
@@ -48,11 +48,18 @@ const Summary = () => {
           shoreditch woke.
         </Card.Text>
 
-        <Button className="btn-pink-lg">Create account</Button>
-        <Card.Text className="instructions">
+        <Button
+          className="btn-pink-lg"
+          style={{ width: '61vw', marginleft: 'auto', marginright: 'auto' }}
+        >
+          Create account
+        </Button>
+        <Card.Text className="cr-acc-desc">
           Create an account in order to track the bike repair progress.
         </Card.Text>
-        <Link to="/Repairs">Edit Repairs</Link>
+        <Link to="/Repairs" className="edit-link">
+          Edit Repairs
+        </Link>
       </Card>
     </div>
   );
