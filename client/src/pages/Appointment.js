@@ -1,21 +1,24 @@
 import React from 'react';
-import { Container, Button, ProgressBar } from 'react-bootstrap';
+import { Container, Button, Image } from 'react-bootstrap';
 import Calendar from '../components/Calendar';
+import '../components/styles/appointment.css';
 
 const Appointment = () => {
   return (
     <div>
-      <ProgressBar now={33}></ProgressBar>
+      <Image
+        src="https://i.imgur.com/dFUTb3p.png"
+        className="progress-gear"
+      ></Image>
       <Container>
-        <h1>The Miami Bike Shop</h1>
-        <h1>Select a date</h1>
+        <h1 className="title">The Miami Bike Shop</h1>
+        <h1 className="select">Select a date</h1>
       </Container>
       <Container>
         <Calendar />
       </Container>
       <Container>
-        <Button className="btn-pink-lg" size="lg" block>
-          {' '}
+        <Button className="btn-pink-lg" href="/summary">
           Continue
         </Button>
       </Container>
