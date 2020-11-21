@@ -32,3 +32,8 @@
   background: transparent;
   border: none;
 }
+
+.shopcard {
+  display: flex !important;
+  flex-direction: row;
+}

@@ -1,0 +1,52 @@
+.vector {
+  position: absolute;
+  left: 12.02%;
+  right: 12.03%;
+  top: 3.64%;
+  bottom: 32.12%;
+  /* background: linear-gradient(90deg, #D2D3D4 71.2%, #D2D3D4 100%); */
+
+  height: 146.4688262939453px;
+  width: 254.43040466308594px;
+  left: 40.279541015625px;
+  top: 8.294921875px;
+  border-radius: 0px;
+}
+
+.confirmtitle {
+  height: 24px;
+  width: 250px;
+  left: 22px;
+  top: 126px;
+  border-radius: nullpx;
+  font-family: Khand;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.vector1 {
+  padding: 3rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dropoff {
+  width: 335px;
+  height: 62px;
+  left: 22px;
+  background: #eae8e8;
+  box-shadow: 0px 0px 4px #ec456a;
+  border-radius: 4px;
+}
+
+.bikecard {
+  width: 113px;
+  height: 94px;
+  left: 20px;
+  top: 634px;
+}
