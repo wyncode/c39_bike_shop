@@ -8,7 +8,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Repairs from './pages/Repairs';
 import BikeShopPDP from './pages/BikeShopPDP';
-import Appointment from './pages/Apointment';
+import Appointment from './pages/Appointment';
 import Summary from './pages/Summary';
 import './App.css';
 
