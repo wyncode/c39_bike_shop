@@ -3,6 +3,7 @@ import ConfirmTitle from '../components/ConfirmTitle';
 import BikeImg from '../components/BikeImg';
 import AwaitBike from '../components/AwaitBike';
 import BikeShopCard from '../components/BikeShopCard';
+import Estimate from '../components/Estimate';
 // import InfoCards from '../components/InfoCards';
 // import FeaturedShops from '../components/FeaturedShops';
 // import AboutUs from '../components/AboutUs';
@@ -18,6 +19,7 @@ const Confirmation = () => {
       <BikeImg />
       <AwaitBike />
       <BikeShopCard />
+      <Estimate />
     </>
   );
 };
