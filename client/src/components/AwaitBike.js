@@ -5,10 +5,14 @@ const AwaitBike = () => {
   return (
     <div>
       <h1 className="awaitingtitle">Awaiting bike drop off</h1>
-      <Card>
-        <Card.Header className="datetime">
-          Drop off date: 11-22-22 Drop off time: 11:11AM
-        </Card.Header>
+      <Card className="datetime d-flex flex-row">
+        <Card.Body className="dateBody d-flex flex-row">
+          <Card.Img src="https://imgur.com/mJ2AXNm.png"></Card.Img>
+          <div className="datetime">
+            <Card.Text>11-22-22</Card.Text>
+            <Card.Text>11:11AM</Card.Text>
+          </div>
+        </Card.Body>
       </Card>
       <Card>
         <Card.Text className="repairtime">

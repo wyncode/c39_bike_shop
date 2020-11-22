@@ -56,21 +56,13 @@
 
   color: #ec4568;
 }
-
+/* 
 .datetime {
-  position: center;
-  width: 24.52vw;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  width: 25rem;
-  /* height: 62px; */
-  /* left: 22px; */
-  /* top: 455px; */
+ 
+} */
 
-  background: #eae8e8;
-  box-shadow: 0px 0px 4px #ec456a;
-  /* border-radius: 4px; */
+.clockpic {
+  width: 100px;
 }
 
 .repairtime {
