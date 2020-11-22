@@ -92,6 +92,15 @@
   text-align: left;
 }
 
+.estimateline {
+  position: absolute;
+  width: 220px;
+  height: 0px;
+  /* left: 23px; */
+  margin-top: 0;
+  border: 0.5px solid #ec4568;
+}
+
 .estimate1 {
   font-family: Karma;
   font-style: normal;

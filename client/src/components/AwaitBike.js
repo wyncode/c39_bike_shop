@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Form, Container, ListGroup } from 'react-bootstrap';
+import { Card, Form, Container, ListGroup, Header } from 'react-bootstrap';
 
 const AwaitBike = () => {
   return (
@@ -7,7 +7,6 @@ const AwaitBike = () => {
       <h1 className="awaitingtitle">Awaiting bike drop off</h1>
       <Card>
         <Card.Header className="datetime">
-          {' '}
           Drop off date: 11-22-22 Drop off time: 11:11AM
         </Card.Header>
       </Card>
