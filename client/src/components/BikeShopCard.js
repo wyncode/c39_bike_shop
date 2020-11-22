@@ -15,10 +15,12 @@ const BikeShopCard = () => {
         </Container>
         <Card className="text-center">
           <Card.Body>
-            <Card.Title>City Bikes</Card.Title>
-            <Card.Text>888 Bike Chain Road, Miami, Florida, 33137</Card.Text>
-            <Card.Text>305-305-3053</Card.Text>
-            <Card.Text>Reviews</Card.Text>
+            <Card.Title className="shopinfo">City Bikes</Card.Title>
+            <Card.Text className="shopinfo">
+              888 Bike Chain Road, Miami, Florida, 33137
+            </Card.Text>
+            <Card.Text className="shopinfo">305-305-3053</Card.Text>
+            <Card.Text className="shopinfo">Reviews</Card.Text>
           </Card.Body>
         </Card>
       </Card>
