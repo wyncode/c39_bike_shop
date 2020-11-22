@@ -12,7 +12,6 @@ import Appointment from './pages/Appointment';
 import './App.css';
 import RepairPopUp from './components/RepairPopUp';
 import Navigation from './components/navigation';
-import Footer from './components/Footer';
 
 const App = () => {
   return (

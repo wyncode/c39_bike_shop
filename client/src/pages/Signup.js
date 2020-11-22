@@ -43,7 +43,7 @@ const SignUp = ({ history }) => {
               type="email"
               placeholder="Enter your email."
               size="lg"
-              onSubmit={handleSignUp}
+              onSubmit={handleChange}
             />
           </Form.Group>
         </Form.Group>
@@ -55,7 +55,7 @@ const SignUp = ({ history }) => {
             type="email"
             placeholder="Enter email again."
             size="lg"
-            onSubmit={handleSignUp}
+            onSubmit={handleChange}
           />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
@@ -65,7 +65,7 @@ const SignUp = ({ history }) => {
           <Form.Control
             type="password"
             placeholder="Create a password with a least 8 characters"
-            onSubmit={handleSignUp}
+            onSubmit={handleChange}
           />
         </Form.Group>
         <Form.Group controlId="formBasicName">
@@ -77,13 +77,13 @@ const SignUp = ({ history }) => {
         <Form.Group controlId="formBasicPhone">
           <Form.Label>What's your phone number?</Form.Label>
         </Form.Group>
-        <Form.Group>
+        {/* <Form.Group>
           <Form.Control
             type="name"
             placeholder="Enter your phone number."
-            onSubmit={handleSignUp}
+            onSubmit={handleChange}
           />
-        </Form.Group>
+        </Form.Group> */}
         <p>Do you prefer email or text notifications?</p>
         <Form.Group controlId="formBasicCheckbox">
           <Form.Check
