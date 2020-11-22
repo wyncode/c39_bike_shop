@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <Container className="d-flex  flex-column">
+    <Container className="page-footer d-flex  flex-column">
       <Container className="socialContainer">
         <div className="socialHolder">
           <FacebookShareButton url={`yourpageurl`}>

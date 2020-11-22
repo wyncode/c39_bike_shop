@@ -3,6 +3,7 @@ import HeroImage from '../components/HeroImage';
 import InfoCards from '../components/InfoCards';
 import FeaturedShops from '../components/FeaturedShops';
 import AboutUs from '../components/AboutUs';
+import Footer from '../components/Footer';
 import '../components/styles/homepage.css';
 import { Form, Button } from 'react-bootstrap';
 
@@ -25,6 +26,7 @@ const Home = () => {
           </Button>
         </Form.Group>
       </Form>
+      <Footer />
     </>
   );
 };
