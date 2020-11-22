@@ -9,7 +9,7 @@ const AwaitBike = () => {
         <Card.Header className="datetime">11-22-22 11:11AM</Card.Header>
       </Card>
       <Card>
-        <Card.Text>
+        <Card.Text className="repairtime">
           Simple repairs may take up to 24-48 hours. In more complex cases,
           repairs may take longer.
         </Card.Text>
