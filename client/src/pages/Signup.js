@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, Image } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -26,16 +26,32 @@ const SignUp = ({ history }) => {
   };
 
   return (
-    <Container className="ds-flex justify-content-center">
-      <h1>Welcome to The Bike Shop!</h1>
-      <Button size="lg" block>
-        {' '}
-        Sign Up With Facebook{' '}
-      </Button>
-      <p>or</p>
-      <h2>Sign up with your email address</h2>
-      <h4>Have an account? Login</h4>
-      <Form onSubmit={handleSignUp}>
+    <Container
+      className="ds-flex justify-content-center align-items-center"
+      width="700px"
+    >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: '20px'
+        }}
+      >
+        {/* <Image src="https://imgur.com/9pCKdyL.png" alt="progress-3"  height="65px" width="400px" className="mt-4" /> */}
+        <h1>Welcome to The Bike Shop!</h1>
+        <Button className="btn-pink-xlg" size="lg" block>
+          {' '}
+          Sign Up With Facebook{' '}
+        </Button>
+        <hr />
+        <p>or</p>
+        <hr />
+        <h2>Sign up with your email address</h2>
+        <Link to="/login">Have an account? Login</Link>
+      </div>
+      <Form onSubmit={handleSignUp} className="d-flex flex-column">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>What is your email?</Form.Label>
           <Form.Group>
@@ -74,16 +90,6 @@ const SignUp = ({ history }) => {
         <Form.Group>
           <Form.Control type="name" placeholder="Enter your profile name." />
         </Form.Group>
-        <Form.Group controlId="formBasicPhone">
-          <Form.Label>What's your phone number?</Form.Label>
-        </Form.Group>
-        {/* <Form.Group>
-          <Form.Control
-            type="name"
-            placeholder="Enter your phone number."
-            onSubmit={handleChange}
-          />
-        </Form.Group> */}
         <p>Do you prefer email or text notifications?</p>
         <Form.Group controlId="formBasicCheckbox">
           <Form.Check
@@ -97,13 +103,13 @@ const SignUp = ({ history }) => {
             label="I prefer to receive email notifications "
           />
         </Form.Group>
-        <Button variant="primary" type="submit" size="lg">
+        <Button variant="primary" type="submit" className="btn-pink-sm m-auto">
           Finished
         </Button>
+        <Link className="m-auto" to="/login">
+          Already have an account? Login.
+        </Link>
       </Form>
-      <Link className="mt-4" to="/login">
-        Already have an account? Login.
-      </Link>
     </Container>
   );
 };
