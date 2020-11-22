@@ -37,3 +37,35 @@
   display: flex !important;
   flex-direction: row;
 }
+
+.bikecardimg {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.shopimg {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-family: Khand;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.shopinfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.shopimg1 {
+  position: absolute;
+  width: 113px;
+  height: 94px;
+  left: 20px;
+  /* top: 634px; */
+}
