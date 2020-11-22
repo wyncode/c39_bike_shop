@@ -29,14 +29,21 @@ const Login = ({ history }) => {
 
   return (
     <Container>
-      <Form
-        className="d-flex align-items-center justify-content-between "
-        onSubmit={handleLogin}
-      >
+      <Form className="d-flex" onSubmit={handleLogin}>
         <Card>
           <Card.Title className="logintitle">
             Welcome to the Bikeshop
           </Card.Title>
+          <Card.Img
+            src="https://imgur.com/NB8piSE.png"
+            alt="crank"
+            className="crank"
+          />
+          <Card.ImgOverlay className="d-flex">
+            <Card.Body className="LoginNotice">
+              Log in to track your repair progress.
+            </Card.Body>
+          </Card.ImgOverlay>
         </Card>
         <Form.Group className="d-flex flex-column">
           <Form.Group
@@ -49,7 +56,6 @@ const Login = ({ history }) => {
                 thumbnail
                 className="tn"
               />
-              {/* <Form.Check type="checkbox" style={{fontFamily:"Actor", fontSize:"22px"}}label="Cyclist" /> */}
             </Form.Group>
             <Form.Group>
               <Image
@@ -57,7 +63,6 @@ const Login = ({ history }) => {
                 thumbnail
                 className="tn"
               />
-              {/* <Form.Check type="checkbox" style={{fontFamily:"Actor", fontSize:"22px"}} label="Bikeshop" /> */}
             </Form.Group>
           </Form.Group>
           <Form.Group>
@@ -91,7 +96,7 @@ const Login = ({ history }) => {
               Login
             </Button>
           </Form.Group>
-          <Link className="mt-4" to="/signup">
+          <Link className="mt-4 text-center" to="/signup">
             Need an Account? Sign up.
           </Link>
         </Form.Group>
