@@ -1,4 +1,4 @@
-const router = require('express').Router();
+const router = require('express').Router({ mergeParams: true });
 
 const {
   getAllReviews,
@@ -7,9 +7,11 @@ const {
   deleteReviewById
 } = require('../../controllers/reviews');
 
-router.route('/').get(getAllReviews);
-router.route('/').post(addReview);
-router.route('/:id').get(getReviewById);
-router.route('/:id').delete(deleteReviewById);
+const isAdmin = require('../../middleware/authorization');
+
+router.get('/', getAllReviews);
+router.post('/:bikeshop_id/review', addReview);
+router.get('/:id', getReviewById);
+router.delete('/:id', isAdmin(), deleteReviewById);
 
 module.exports = router;

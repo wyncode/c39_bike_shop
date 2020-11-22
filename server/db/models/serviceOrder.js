@@ -2,29 +2,18 @@ const mongoose = require('mongoose');
 
 const serviceOrderSchema = new mongoose.Schema({
   bikeshop: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Bikeshop'
   },
   cyclist: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Cyclist'
   },
-  repairs: [
-    {
-      repair: {
-        type: Schema.Types.ObjectId,
-        ref: 'Repair'
-      }
-    }
-  ],
   dropoffDate: {
     type: Date
   },
   expectedPickup: {
     type: Date
-  },
-  diagnostic: {
-    type: Boolean
   },
   progress: [
     {
@@ -48,16 +37,6 @@ const serviceOrderSchema = new mongoose.Schema({
       }
     }
   ]
-});
-serviceOrderSchema.virtual('serviceOrder', {
-  ref: 'Bikeshop',
-  localField: '_id',
-  foreignField: 'serviceOrder'
-});
-serviceOrderSchema.virtual('serviceOrder', {
-  ref: 'Cyclist',
-  localField: '_id',
-  foreignField: 'serviceOrder'
 });
 
 const ServiceOrder = mongoose.model('ServiceOrder', serviceOrderSchema);

@@ -1,4 +1,8 @@
 const Bikeshop = require('../db/models/bikeshop');
+const User = require('../db/models/user');
+const Review = require('../db/models/reviews');
+const Repair = require('../db/models/repair');
+const ServiceOrder = require('../db/models/serviceOrder');
 
 //UNAUTHENTICATED
 
@@ -7,12 +11,32 @@ exports.getAllBikeshops = (req, res) => {
     .then((bikeshops) => res.status(200).json(bikeshops))
     .catch((err) => res.status(500).json('Error: ' + err));
 };
-
-exports.getBikeshopById = (req, res) => {
-  const filter = req.params.id;
-  Bikeshop.findById(filter)
-    .then((resp) => res.json(resp))
-    .catch((err) => res.status(500).json('Error: ' + err));
+exports.getBikeshopById = async (req, res) => {
+  try {
+    let bikeShop = {};
+    let resp = await Bikeshop.findById(req.params.id);
+    const reviewIdArr = resp.reviews.map((item) => item._id);
+    const repairsIdArr = resp.repairs.map((item) => item._id);
+    const ordersIdArr = resp.orders.map((item) => item._id);
+    const reviews = await Review.find().where('_id').in(reviewIdArr).exec();
+    const repairs = await Repair.find().where('_id').in(repairsIdArr).exec();
+    const orders = await ServiceOrder.find()
+      .where('_id')
+      .in(ordersIdArr)
+      .exec();
+    bikeShop.data = {
+      shopContact: resp.shopContact,
+      _id: resp._id,
+      shopName: resp.shopName,
+      email: resp.email
+    };
+    bikeShop.reviews = reviews;
+    bikeShop.repairs = repairs;
+    bikeShop.orders = orders;
+    return res.json(bikeShop);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 // AUTHENTICATED REQUESTS
@@ -24,8 +48,10 @@ exports.createBikeshop = async (req, res) => {
       shopContact,
       email,
       website,
-      repairs
+      repairs,
+      owner: req.user._id
     });
+    await bikeshop.save();
     res.status(201).json(bikeshop);
   } catch (e) {
     res.status(400).json({ error: e.toString() });
@@ -36,29 +62,37 @@ exports.createBikeshop = async (req, res) => {
 // Get current bikeshop
 // ***********************************************//
 exports.getCurrentBikeshop = async (req, res) => {
-  res.json(req.bikeshop);
+  const user = await User.findById(req.user._id).populate('bikeshop');
+  res.send(user.bikeshop);
 };
 
 // ***********************************************//
 // Update a bikeshop
 // ***********************************************//
-exports.updateCurrentBikeshop = async (req, res) => {
-  const updates = Object.keys(req.body); // => ['email', 'name', 'password']
+exports.updateBikeshop = async (req, res) => {
+  const updates = Object.keys(req.body);
   const allowedUpdates = [
-    // make global
+    'shopName',
+    'email',
+    'logo',
+    'shopContact',
+    'website'
   ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );
   if (!isValidOperation)
-    return res.status(400).json({ message: 'Invalid updates' });
+    return res.status(400).json({ message: 'invalid updates' });
+
   try {
-    //Loop through each update, and change the value for the current bikeshop to the value coming from the body
-    updates.forEach((update) => (req.bikeshop[update] = req.body[update]));
-    //save the updated bikeshop in the db
-    await req.bikeshop.save();
-    //send the updated bikeshop as a response
-    res.json(req.bikeshop);
+    const bikeshop = await Bikeshop.findOne({
+      owner: req.user._id
+    });
+    if (!bikeshop)
+      return res.status(404).json({ message: 'Bikeshop not found' });
+    updates.forEach((update) => (bikeshop[update] = req.body[update]));
+    await bikeshop.save();
+    res.status(200).json(bikeshop);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -68,13 +102,17 @@ exports.updateCurrentBikeshop = async (req, res) => {
 // Delete a bikeshop
 // ***********************************************//
 
-exports.deleteBikeshop = async (req, res) => {
-  try {
-    await req.bikeshop.remove();
-    res.json({ message: 'bikeshop deleted' });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+exports.deleteBikeshop = (req, res) => {
+  Bikeshop.findByIdAndDelete(req.params.id)
+    .then((bikeshop) => {
+      if (!bikeshop) {
+        return res.status(404).json('Error: Bikeshop not found!');
+      }
+      res.status(204).json(bikeshop);
+    })
+    .catch((err) => {
+      res.status(500).json('Error: ' + err);
+    });
 };
 
 exports.uploadLogo = async (req, res) => {
@@ -83,7 +121,7 @@ exports.uploadLogo = async (req, res) => {
       req.files.logo.tempFilePath
     );
     req.bikeshop.logo = response.secure_url;
-    await req.user.save();
+    await req.bikeshop.save();
     res.json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });

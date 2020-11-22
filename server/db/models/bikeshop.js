@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+  validator = require('validator');
 
 const bikeshopSchema = new mongoose.Schema(
   {
@@ -10,9 +11,7 @@ const bikeshopSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      unique: true,
       trim: true,
-      required: true,
       validate(value) {
         if (!validator.isEmail(value)) {
           throw new Error('Email is invalid');
@@ -48,42 +47,40 @@ const bikeshopSchema = new mongoose.Schema(
         trim: true
       }
     },
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
     reviews: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review'
-      }
-    ],
-    serviceOrders: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'ServiceOrder'
-      }
-    ],
-    cyclists: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Cyclist'
+        review: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Review'
+        }
       }
     ],
     repairs: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Repair'
+        repair: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Repair'
+        }
+      }
+    ],
+    orders: [
+      {
+        order: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'ServiceOrder'
+        }
       }
     ]
   },
   { timestamps: true }
 );
 
-bikeshopSchema.virtual('shop', {
-  ref: 'ServiceOrder',
-  localField: '_id',
-  foreignField: 'shop'
-});
-
-bikeshopSchema.virtual('bikeshop', {
-  ref: 'Review',
+bikeshopSchema.virtual('cyclists', {
+  ref: 'Cyclist',
   localField: '_id',
   foreignField: 'bikeshop'
 });

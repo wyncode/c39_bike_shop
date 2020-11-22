@@ -1,11 +1,46 @@
-/* JUST FOR DEMO PURPORSES, REPLACE WITH YOUR OWN CODE */
+@import url('https://fonts.googleapis.com/css2?family=Actor&family=Khand:wght@300;400;500;600;700&family=Sarina&display=swap');
 
-#demo {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+/* these are global */
+.btn-pink-sm {
+  border-radius: 45px;
+  background: #ec4568 !important;
+  width: 20vw;
+  border: transparent;
 }
 
-/* END DEMO */
+.btn-pink-sm-sq {
+  border-radius: 5px;
+  background: #ec4568 !important;
+  width: 20vw;
+  border: transparent;
+}
+.btn-pink-lg {
+  width: 26vw;
+  height: 6vh;
+  left: 20px;
+  top: 177px;
+  background: #ec4568 !important;
+  border-radius: 45px;
+  border: transparent;
+}
+
+.btn-pink-xlg {
+  width: 50vw;
+  height: 7vh;
+  font-size: 2vw;
+  background: #ec4568 !important;
+  border-radius: 45px;
+  border: transparent;
+}
+.btn-pink-md {
+  width: 26vw;
+  height: 10vh;
+  background: #ec4568 !important;
+  border-radius: 45px;
+  border: 0px transparent;
+}
+
+.card {
+  background: transparent;
+  border: none;
+}

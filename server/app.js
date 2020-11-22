@@ -10,11 +10,11 @@ const express = require('express'),
   cyclistRouter = require('./routes/secure/cyclist'),
   bikeshopRouter = require('./routes/secure/bikeshop'),
   reviewRouter = require('./routes/secure/reviews'),
-  orderRouter = requires('./routes/secure/serviceOrder.js');
-(passport = require('./middleware/authentication/index')),
-  (fileUpload = require('express-fileupload')),
-  (cookieParser = require('cookie-parser')),
-  (path = require('path'));
+  orderRouter = requires('./routes/secure/serviceOrder.js'),
+  passport = require('./middleware/authentication/index'),
+  fileUpload = require('express-fileupload'),
+  cookieParser = require('cookie-parser'),
+  path = require('path');
 
 // Parse incoming JSON into objects
 app.use(express.json());

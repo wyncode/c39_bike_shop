@@ -3,11 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fullcalendar/daygrid": "^5.4.0",
+    "@fullcalendar/interaction": "^5.4.0",
+    "@fullcalendar/react": "^5.4.0",
     "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
     "moment": "^2.29.1",
     "moment-range": "^4.0.2",
     "react": "^16.14.0",
+    "react-bootstrap": "^1.4.0",
     "react-dom": "^16.14.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
   "scripts": {

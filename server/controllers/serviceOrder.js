@@ -66,5 +66,3 @@ exports.deleteServiceOrder = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
-// need a get all routes with sorting available
