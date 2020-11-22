@@ -25,6 +25,14 @@ const cyclistSchema = new mongoose.Schema(
           ref: 'Bicycle'
         }
       }
+    ],
+    orders: [
+      {
+        order: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'serviceOrder'
+        }
+      }
     ]
   },
   { timestamps: true }
@@ -37,6 +45,11 @@ cyclistSchema.virtual('serviceOrders', {
   foreignField: 'cyclist'
 });
 
+cyclistSchema.virtual('bicycle', {
+  ref: 'Bicycle',
+  localField: '_id',
+  foreignField: 'owner'
+});
 //Creating relationship between Cyclist and Review
 cyclistSchema.virtual('reviews', {
   ref: 'Review',

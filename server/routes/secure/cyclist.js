@@ -1,5 +1,3 @@
-const { route } = require('../open');
-
 const router = require('express').Router(),
   {
     getAllCyclist,
