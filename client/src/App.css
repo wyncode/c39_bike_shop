@@ -45,13 +45,11 @@
   border: none;
 }
 
-.tn {
-  height: 20vh;
-  width: 7vw;
-  margin-right: 5px;
-  background: #c4c4c4;
+.input {
+  border: 1px solid #707070;
+  box-sizing: border-box;
   border-radius: 5px;
-}
-.login-card {
-  background-image: url('https://imgur.com/NB8piSE.png');
+  background: transparent;
+  width: 332px;
+  height: 50px;
 }

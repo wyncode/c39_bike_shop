@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Actor&family=Khand:wght@300;400;500;600;700&family=Sarina&display=swap');
+
+* {
+  font-family: 'Actor';
+}
+.tn {
+  height: 20vh;
+  width: 7vw;
+  margin-right: 5px;
+  background: #c4c4c4;
+  border-radius: 5px;
+}
+
+.logintitle {
+  margin-left: 20px;
+  font-family: 'Khand', sans-serif !important;
+  font-size: 9.5vw;
+  font-weight: 400;
+}
+.formlabel {
+  font-family: 'Actor';
+  font-weight: 400;
+  font-size: 1.5vw;
+}

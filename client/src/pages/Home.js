@@ -5,12 +5,13 @@ import FeaturedShops from '../components/FeaturedShops';
 import AboutUs from '../components/AboutUs';
 import Footer from '../components/Footer';
 import '../components/styles/homepage.css';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 
 const Home = () => {
   return (
     <>
       <HeroImage />
+
       <InfoCards />
       <FeaturedShops />
       <AboutUs />
@@ -26,6 +27,7 @@ const Home = () => {
           </Button>
         </Form.Group>
       </Form>
+
       <Footer />
     </>
   );
