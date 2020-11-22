@@ -12,6 +12,7 @@ import Appointment from './pages/Appointment';
 import './App.css';
 import RepairPopUp from './components/RepairPopUp';
 import Navigation from './components/navigation';
+import Profile from './pages/profile';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           <Route exact path="/BikeShopPDP" component={BikeShopPDP} />
           <Route exact path="/Appointment" component={Appointment} />
           <Route exact path="/RepairsPop" component={RepairPopUp} />
+          <Route exact path="/Profile" component={Profile} />
         </Switch>
       </BrowserRouter>
     </AppContextProvider>
