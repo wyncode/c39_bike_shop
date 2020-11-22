@@ -5,13 +5,12 @@ const router = require('express').Router(),
     requestPasswordReset,
     passwordRedirect
   } = require('../../controllers/user'),
-  { getAllBikeshops, getBikeshopById } = require('../../controllers/bikeshop');
+  { getAllBikeshops } = require('../../controllers/bikeshop');
 
 router.post('/', createUser);
 router.post('/login', loginUser);
 router.get('/password', requestPasswordReset);
 router.get('/password/:token', passwordRedirect);
 router.get('/bikeshop', getAllBikeshops);
-router.get('/bikeshop/:id', getBikeshopById);
 
 module.exports = router;

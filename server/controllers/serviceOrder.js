@@ -1,25 +1,24 @@
 const ServiceOrder = require('../db/models/serviceOrder');
 const Bikeshop = require('../db/models/bikeshop');
+const Cyclist = require('../db/models/cyclist');
 const Repair = require('../db/models/repair');
 
 exports.createOrder = async (req, res) => {
-  const newOrder = new ServiceOrder(req.body);
-  newOrder.bikeshop = req.body.bikeshop;
-  newOrder.cyclist = req.user._id;
-  newOrder.repair = req.repair_id;
-
   try {
-    const bikeshop = await Bikeshop.findById(req.body.bikeshop);
+    const newOrder = new ServiceOrder(req.body);
 
-    const order = new ServiceOrder({
-      ...req.body
-    });
-    await order.save();
+    const [cyclist, bikeshop] = await Promise.all([
+      Cyclist.findById(req.body.cyclist),
+      Bikeshop.findById(req.body.bikeshop)
+    ]);
 
-    await bikeshop.orders.push(order);
-    await bikeshop.save();
+    console.log('i found ');
 
-    res.status(201).json(order);
+    cyclist.orders.push(newOrder);
+    bikeshop.orders.push(newOrder);
+    await Promise.all([bikeshop.save(), cyclist.save(), newOrder.save()]);
+
+    res.status(201).json(newOrder);
   } catch (e) {
     res.status(400).json({ error: e.toString() });
   }

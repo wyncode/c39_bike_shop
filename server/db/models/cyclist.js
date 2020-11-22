@@ -20,18 +20,14 @@ const cyclistSchema = new mongoose.Schema(
     },
     bikes: [
       {
-        bike: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'Bicycle'
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Bicycle'
       }
     ],
     orders: [
       {
-        order: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'serviceOrder'
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'serviceOrder'
       }
     ]
   },

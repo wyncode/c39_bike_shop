@@ -13,27 +13,15 @@ exports.getAllBikeshops = (req, res) => {
 };
 exports.getBikeshopById = async (req, res) => {
   try {
-    let bikeShop = {};
-    let resp = await Bikeshop.findById(req.params.id);
-    const reviewIdArr = resp.reviews.map((item) => item._id);
-    const repairsIdArr = resp.repairs.map((item) => item._id);
-    const ordersIdArr = resp.orders.map((item) => item._id);
-    const reviews = await Review.find().where('_id').in(reviewIdArr).exec();
-    const repairs = await Repair.find().where('_id').in(repairsIdArr).exec();
-    const orders = await ServiceOrder.find()
-      .where('_id')
-      .in(ordersIdArr)
-      .exec();
-    bikeShop.data = {
-      shopContact: resp.shopContact,
-      _id: resp._id,
-      shopName: resp.shopName,
-      email: resp.email
-    };
-    bikeShop.reviews = reviews;
-    bikeShop.repairs = repairs;
-    bikeShop.orders = orders;
-    return res.json(bikeShop);
+    const bikeshop = await Bikeshop.findById(req.params.id)
+      .populate({
+        path: 'reviews',
+        model: 'Review',
+        populate: [{ path: 'cyclist', model: 'Cyclist' }]
+      })
+      .populate('repairs');
+
+    return res.json(bikeshop);
   } catch (err) {
     console.log(err);
   }
@@ -62,7 +50,25 @@ exports.createBikeshop = async (req, res) => {
 // Get current bikeshop
 // ***********************************************//
 exports.getCurrentBikeshop = async (req, res) => {
-  const user = await User.findById(req.user._id).populate('bikeshop');
+  const user = await User.findById(req.user._id).populate({
+    path: 'bikeshop',
+    populate: [
+      {
+        path: 'orders',
+        model: 'ServiceOrder',
+        populate: [{ path: 'cyclist', model: 'Cyclist' }]
+      },
+      {
+        path: 'repairs',
+        model: 'Repair'
+      },
+      {
+        path: 'reviews',
+        model: 'Review',
+        populate: [{ path: 'cyclist', model: 'Cyclist' }]
+      }
+    ]
+  });
   res.send(user.bikeshop);
 };
 

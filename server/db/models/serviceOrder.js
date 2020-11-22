@@ -11,10 +11,8 @@ const serviceOrderSchema = new mongoose.Schema({
   },
   repairs: [
     {
-      repair: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Repair'
-      }
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Repair'
     }
   ],
   dropoffDate: {

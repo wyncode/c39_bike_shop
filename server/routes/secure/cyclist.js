@@ -8,7 +8,7 @@ const router = require('express').Router(),
 
 router.post('/', createCyclist);
 router.get('/', getAllCyclist);
-router.get('/:id', getCurrentCyclist);
+router.get('/me', getCurrentCyclist);
 router.patch('/:id', updateCurrentCyclist);
 
 module.exports = router;

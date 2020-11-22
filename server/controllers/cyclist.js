@@ -1,6 +1,5 @@
-const Cyclist = require('../db/models/cyclist');
-const ServiceOrder = require('../db/models/serviceOrder');
-const Bicycles = require('../db/models/bicycle');
+const Cyclist = require('../db/models/cyclist'),
+  User = require('../db/models/user');
 
 exports.getAllCyclist = (req, res) => {
   Cyclist.find()
@@ -33,27 +32,21 @@ exports.createCyclist = async (req, res) => {
 
 exports.getCurrentCyclist = async (req, res) => {
   try {
-    let cyclist = {};
-    let resp = await Cyclist.findById(req.params.id);
-    const ordersIdArr = resp.orders.map((item) => item._id);
-    const bikesIdArr = resp.bikes.map((item) => item._id);
-    const orders = await ServiceOrder.find()
-      .where('_id')
-      .in(ordersIdArr)
-      .exec();
-    const bikes = await Bicycles.find().where('_id').in(bikesIdArr).exec();
-    cyclist.data = {
-      _id: resp._id,
-      name: resp.name,
-      zipcode: resp.zipcode,
-      phone: resp.phone,
-      user: resp.user
-    };
-
-    cyclist.bikes = bikes;
-    cyclist.orders = orders;
-
-    res.status(200).json(cyclist);
+    const user = await User.findById(req.user._id).populate({
+      path: 'cyclist',
+      populate: {
+        path: 'orders',
+        model: 'ServiceOrder',
+        populate: [
+          { path: 'bikeshop', model: 'Bikeshop' },
+          { path: 'repairs', model: 'Repair' }
+        ]
+      }
+    });
+    res.send({
+      user,
+      cyclist: user.cyclist
+    });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
