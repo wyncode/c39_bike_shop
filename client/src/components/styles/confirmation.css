@@ -51,6 +51,35 @@
   top: 634px;
 }
 
+.awaitingtitle {
+  font-family: Khand;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 24px;
+  /* identical to box height, or 100% */
+
+  text-align: center;
+
+  color: #ec4568;
+}
+
+.datetime {
+  position: center;
+  width: 335px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25rem;
+  /* height: 62px; */
+  /* left: 22px; */
+  /* top: 455px; */
+
+  background: #eae8e8;
+  box-shadow: 0px 0px 4px #ec456a;
+  /* border-radius: 4px; */
+}
+
 .estimate {
   font-family: Khand;
   font-style: normal;
@@ -65,4 +94,14 @@
   font-weight: normal;
   font-size: 14px;
   line-height: 24px;
+}
+
+.dropoffp {
+  font-family: Karma;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
 }
