@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Image, Card, ListGroup, Button } from 'react-bootstrap';
+import { Image, Card, ListGroup, Button, Container } from 'react-bootstrap';
 import BikeShopCard from '../components/BikeShopCard';
 import '../components/styles/summary.css';
 
 const Summary = () => {
   return (
-    <div>
+    <Container>
       <Image
         src="https://i.imgur.com/SwJrGN2.png"
         alt="Progress Bar"
@@ -38,14 +38,8 @@ const Summary = () => {
           Drop off instructions
         </Card.Title>
         <Card.Text className="instructions">
-          Lumbersexual gochujang tbh, venmo kogi 90's four dollar toast
-          gluten-free portland. Heirloom shoreditch four dollar toast
-          typewriter, craft beer franzen glossier bitters brunch raw denim
-          williamsburg edison bulb church-key. Semiotics distillery raclette,
-          tbh cray ethical meh DIY mumblecore health goth. Palo santo waistcoat
-          prism art party vinyl glossier man bun, subway tile squid
-          farm-to-table pour-over. Selvage master cleanse 8-bit kitsch
-          shoreditch woke.
+          Please bring your bicycles into the lobby and ask to speak with JP
+          regarding your appointment.
         </Card.Text>
 
         <Button
@@ -61,7 +55,7 @@ const Summary = () => {
           Edit Repairs
         </Link>
       </Card>
-    </div>
+    </Container>
   );
 };
 

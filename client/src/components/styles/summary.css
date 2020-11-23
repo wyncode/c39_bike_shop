@@ -1,11 +1,8 @@
 .Progress-Gear {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   width: 165.63px;
   height: 35.24px;
-  left: 105px;
-  top: 102px;
 }
 
 .summary-title {
