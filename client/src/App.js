@@ -13,6 +13,7 @@ import './App.css';
 import RepairPopUp from './components/RepairPopUp';
 import Navigation from './components/navigation';
 import Footer from './components/Footer';
+import ShopOwner from './pages/ShopOwner';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route exact path="/BikeShopPDP" component={BikeShopPDP} />
           <Route exact path="/Appointment" component={Appointment} />
           <Route exact path="/RepairsPop" component={RepairPopUp} />
+          <Route exact path="/ShopOwner" component={ShopOwner} />
         </Switch>
         <Footer />
       </BrowserRouter>
