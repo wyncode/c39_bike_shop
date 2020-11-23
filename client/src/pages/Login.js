@@ -1,47 +1,106 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Form, Button, Image } from 'react-bootstrap';
+import { Container, Form, Button, Image, Card } from 'react-bootstrap';
+import '../components/styles/login.css';
+import { AppContext } from '../context/AppContext';
+import axios from 'axios';
+import swal from 'sweetalert';
 
-const Login = () => {
-  const handleChange = () => {};
+const Login = ({ history }) => {
+  const { setCurrentUser } = useContext(AppContext);
+  const [formData, setFormData] = useState(null);
+
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+    console.log(formData);
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/api/login', formData);
+      setCurrentUser(response.data);
+      sessionStorage.setItem('user', response.data);
+      history.push('/');
+    } catch (error) {
+      swal(`Oops!`, 'Something went wrong.');
+    }
+  };
 
   return (
-    <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <h1 className="mb-4">Welcome to the BikeShop</h1>
-      <Form style={{ width: 300 }}>
-        <Form.Group controlId="formBasicCheckbox" className>
-          <Image src="holder.js/171x180" thumbnail />
-          <Form.Check type="checkbox" label="Cyclist" />
-          <Image src="holder.js/171x180" thumbnail />
-          <Form.Check type="checkbox" label="Bikeshop" />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label htmlFor="email">Email Address</Form.Label>
-          <Form.Control
-            id="email"
-            type="email"
-            placeholder="Email Address"
-            name="email"
-            onChange={handleChange}
+    <Container>
+      <Form className="d-flex" onSubmit={handleLogin}>
+        <Card>
+          <Card.Title className="logintitle">
+            Welcome to the Bikeshop
+          </Card.Title>
+          <Card.Img
+            src="https://imgur.com/NB8piSE.png"
+            alt="crank"
+            className="crank"
           />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            id="password"
-            type="password"
-            placeholder="Password"
-            name="password"
-            onChange={handleChange}
-          />
-        </Form.Group>
-        <Form.Group className="d-flex justify-content-center">
-          <Button type="submit">Login</Button>
+          <Card.ImgOverlay className="d-flex">
+            <Card.Body className="LoginNotice">
+              Log in to track your repair progress.
+            </Card.Body>
+          </Card.ImgOverlay>
+        </Card>
+        <Form.Group className="d-flex flex-column">
+          <Form.Group
+            controlId="formBasicCheckbox"
+            className="d-flex mt-3 justify-content-around"
+          >
+            <Form.Group>
+              <Image
+                src="https://imgur.com/vGj6QjL.png"
+                thumbnail
+                className="tn"
+              />
+            </Form.Group>
+            <Form.Group>
+              <Image
+                src="https://imgur.com/tAuaIZp.png"
+                thumbnail
+                className="tn"
+              />
+            </Form.Group>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor="email" className="formlabel">
+              Profile Name
+            </Form.Label>
+            <Form.Control
+              id="email"
+              type="email"
+              placeholder="Email Address"
+              name="email"
+              className="input"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor="password" className="formlabel">
+              Password
+            </Form.Label>
+            <Form.Control
+              id="password"
+              type="password"
+              placeholder="Password"
+              name="password"
+              className="input"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="d-flex justify-content-center">
+            <Button type="submit" className="btn-pink-sm">
+              Login
+            </Button>
+          </Form.Group>
+          <Link className="mt-4 text-center" to="/signup">
+            Need an Account? Sign up.
+          </Link>
         </Form.Group>
       </Form>
-      <Link className="mt-4" to="/signup">
-        Need an Account? Sign up.
-      </Link>
     </Container>
   );
 };
