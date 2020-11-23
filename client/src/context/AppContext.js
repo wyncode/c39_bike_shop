@@ -21,7 +21,7 @@ export const AppContextProvider = ({ children }) => {
           setCurrentUser(data);
         })
         .catch((error) => {
-          swal(`Oops!`, error.message);
+          swal(`You Hit the Deck!`, error.message);
         });
     }
   }, [user, currentUser]);
