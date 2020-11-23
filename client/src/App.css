@@ -44,3 +44,12 @@
   background: transparent;
   border: none;
 }
+
+.input {
+  border: 1px solid #707070;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: transparent;
+  width: 332px;
+  height: 50px;
+}

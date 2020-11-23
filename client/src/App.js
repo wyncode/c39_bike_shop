@@ -33,7 +33,6 @@ const App = () => {
           <Route exact path="/RepairsPop" component={RepairPopUp} />
           <Route exact path="/ShopOwner" component={ShopOwner} />
         </Switch>
-        <Footer />
       </BrowserRouter>
     </AppContextProvider>
     //social media component goes between switch and browser router

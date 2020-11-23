@@ -90,3 +90,8 @@
   align-items: space-evenly;
   justify-content: center;
 }
+
+.wrapper {
+  width: 1400px;
+  margin: 0 auto;
+}
