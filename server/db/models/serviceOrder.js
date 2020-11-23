@@ -9,6 +9,12 @@ const serviceOrderSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Cyclist'
   },
+  repairs: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Repair'
+    }
+  ],
   dropoffDate: {
     type: Date
   },
