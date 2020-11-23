@@ -19,7 +19,7 @@ const Confirmation = () => {
         <p className="dropoffp">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec non
           suspendisse adipiscing augue sit. Praesent convallis elit tempor
-          habitant.
+          habitant. Bikes are cool .
         </p>
       </div>
     </>
