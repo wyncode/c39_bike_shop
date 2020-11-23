@@ -9,28 +9,28 @@ export default function FeaturedShops() {
       <h1 className="f-shops">Featured Shops</h1>
       <CardDeck className="ml-2 mr-2">
         <Card className="FeaturedShops">
-          <Link>
+          <Link to="#">
             <Card.Img variant="top" src="https://i.imgur.com/GmNnvw7.png" />
           </Link>
           <Card.Title>No Boundaries</Card.Title>
         </Card>
 
         <Card className="FeaturedShops">
-          <Link>
+          <Link to="#">
             <Card.Img variant="top" src="https://i.imgur.com/oc2roV8.png" />
           </Link>
 
-          <Card.Title clas>Bike Tech</Card.Title>
+          <Card.Title>Bike Tech</Card.Title>
         </Card>
         <Card className="FeaturedShops">
-          <Link>
+          <Link to="#">
             <Card.Img variant="top" src="https://i.imgur.com/k0uHv0t.png" />
           </Link>
 
           <Card.Title>The Miami Bike Shop</Card.Title>
         </Card>
         <Card className="FeaturedShops">
-          <Link>
+          <Link to="#">
             <Card.Img variant="top" src="https://i.imgur.com/BoRI9vo.png" />
           </Link>
 
