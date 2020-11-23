@@ -17,19 +17,7 @@ const cyclistSchema = new mongoose.Schema(
     phone: {
       type: String,
       trim: true
-    },
-    bikes: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Bicycle'
-      }
-    ],
-    orders: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'serviceOrder'
-      }
-    ]
+    }
   },
   { timestamps: true }
 );
@@ -41,7 +29,7 @@ cyclistSchema.virtual('serviceOrders', {
   foreignField: 'cyclist'
 });
 
-cyclistSchema.virtual('bicycle', {
+cyclistSchema.virtual('bikes', {
   ref: 'Bicycle',
   localField: '_id',
   foreignField: 'owner'

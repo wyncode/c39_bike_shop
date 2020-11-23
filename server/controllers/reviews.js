@@ -1,5 +1,4 @@
-const Bikeshop = require('../db/models/bikeshop'),
-  Review = require('../db/models/reviews');
+const Review = require('../db/models/reviews');
 
 exports.getAllReviews = (req, res) => {
   Review.find()
@@ -12,10 +11,9 @@ exports.addReview = async (req, res) => {
     const newReview = new Review(req.body);
     newReview.bikeshop = req.params.bikeshop_id;
     newReview.reviewer = req.user._id;
-    const bikeshop = await Bikeshop.findById(req.params.bikeshop_id);
+
     const createReview = await newReview.save();
-    await bikeshop.reviews.push(createReview._id);
-    await bikeshop.save();
+
     res.json(createReview);
   } catch (error) {
     console.log(error.message);

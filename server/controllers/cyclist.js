@@ -3,6 +3,7 @@ const Cyclist = require('../db/models/cyclist'),
 
 exports.getAllCyclist = (req, res) => {
   Cyclist.find()
+    .populate('serviceOrders')
     .then((cyclist) => res.status(200).json(cyclist))
     .catch((err) => res.status(500).json('Error: ' + err));
 };
@@ -35,7 +36,7 @@ exports.getCurrentCyclist = async (req, res) => {
     const user = await User.findById(req.user._id).populate({
       path: 'cyclist',
       populate: {
-        path: 'orders',
+        path: 'serviceOrders',
         model: 'ServiceOrder',
         populate: [
           { path: 'bikeshop', model: 'Bikeshop' },
@@ -43,9 +44,15 @@ exports.getCurrentCyclist = async (req, res) => {
         ]
       }
     });
+
+    const cyclist = user.cyclist;
+
     res.send({
       user,
-      cyclist: user.cyclist
+      cyclist: {
+        ...cyclist.toObject(),
+        serviceOrders: cyclist.serviceOrders
+      }
     });
   } catch (error) {
     res.status(400).json({ error: error.message });

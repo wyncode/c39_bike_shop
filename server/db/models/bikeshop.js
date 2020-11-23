@@ -25,56 +25,56 @@ const bikeshopSchema = new mongoose.Schema(
       type: String,
       trim: true
     },
-    shopContact: {
-      street: {
-        type: String,
-        required: true,
-        trim: true
-      },
-      city: {
-        type: String,
-        required: true,
-        trim: true
-      },
-      state: {
-        type: String,
-        required: true,
-        trim: true
-      },
-      zipCode: {
-        type: String,
-        required: true,
-        trim: true
-      }
-    },
+    // shopContact: {
+    //   street: {
+    //     type: String,
+    //     required: true,
+    //     trim: true
+    //   },
+    //   city: {
+    //     type: String,
+    //     required: true,
+    //     trim: true
+    //   },
+    //   state: {
+    //     type: String,
+    //     required: true,
+    //     trim: true
+    //   },
+    //   zipCode: {
+    //     type: String,
+    //     required: true,
+    //     trim: true
+    //   }
+    // },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
-    },
-    reviews: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review'
-      }
-    ],
-    repairs: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Repair'
-      }
-    ],
-    orders: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'ServiceOrder'
-      }
-    ]
+    }
   },
   { timestamps: true }
 );
 
 bikeshopSchema.virtual('cyclists', {
   ref: 'Cyclist',
+  localField: '_id',
+  foreignField: 'bikeshop'
+});
+
+bikeshopSchema.virtual('serviceOrders', {
+  ref: 'ServiceOrder',
+  localField: '_id',
+  foreignField: 'bikeshop'
+});
+
+bikeshopSchema.virtual('repairs', {
+  ref: 'Repair',
+  localField: '_id',
+  foreignField: 'bikeshop'
+});
+
+bikeshopSchema.virtual('reviews', {
+  ref: 'Review',
   localField: '_id',
   foreignField: 'bikeshop'
 });

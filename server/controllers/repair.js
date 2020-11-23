@@ -1,5 +1,4 @@
-const Repair = require('../db/models/repair'),
-  Bikeshop = require('../db/models/bikeshop');
+const Repair = require('../db/models/repair');
 
 // ***********************************************//
 // create repair
@@ -7,13 +6,10 @@ const Repair = require('../db/models/repair'),
 
 exports.createRepair = async (req, res) => {
   try {
-    console.log('I am running!');
     const newRepair = new Repair(req.body);
     newRepair.bikeshop = req.params.bikeshop_id;
-    const bikeshop = await Bikeshop.findById(req.params.bikeshop_id);
+
     const createRepair = await newRepair.save();
-    await bikeshop.repairs.push(createRepair._id);
-    await bikeshop.save();
 
     res.json(createRepair);
   } catch (error) {

@@ -1,22 +1,11 @@
 const ServiceOrder = require('../db/models/serviceOrder');
-const Bikeshop = require('../db/models/bikeshop');
-const Cyclist = require('../db/models/cyclist');
 const Repair = require('../db/models/repair');
 
 exports.createOrder = async (req, res) => {
   try {
     const newOrder = new ServiceOrder(req.body);
 
-    const [cyclist, bikeshop] = await Promise.all([
-      Cyclist.findById(req.body.cyclist),
-      Bikeshop.findById(req.body.bikeshop)
-    ]);
-
-    console.log('i found ');
-
-    cyclist.orders.push(newOrder);
-    bikeshop.orders.push(newOrder);
-    await Promise.all([bikeshop.save(), cyclist.save(), newOrder.save()]);
+    await newOrder.save();
 
     res.status(201).json(newOrder);
   } catch (e) {

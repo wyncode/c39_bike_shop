@@ -9,12 +9,6 @@ const serviceOrderSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Cyclist'
   },
-  repairs: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Repair'
-    }
-  ],
   dropoffDate: {
     type: Date
   },
@@ -43,6 +37,12 @@ const serviceOrderSchema = new mongoose.Schema({
       }
     }
   ]
+});
+
+serviceOrderSchema.virtual('repairs', {
+  ref: 'Repair',
+  localField: '_id',
+  foreignField: 'serviceOrder'
 });
 
 const ServiceOrder = mongoose.model('ServiceOrder', serviceOrderSchema);

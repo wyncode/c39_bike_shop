@@ -1,8 +1,5 @@
 const Bikeshop = require('../db/models/bikeshop');
 const User = require('../db/models/user');
-const Review = require('../db/models/reviews');
-const Repair = require('../db/models/repair');
-const ServiceOrder = require('../db/models/serviceOrder');
 
 //UNAUTHENTICATED
 
@@ -54,7 +51,7 @@ exports.getCurrentBikeshop = async (req, res) => {
     path: 'bikeshop',
     populate: [
       {
-        path: 'orders',
+        path: 'serviceOrders',
         model: 'ServiceOrder',
         populate: [{ path: 'cyclist', model: 'Cyclist' }]
       },
@@ -69,7 +66,18 @@ exports.getCurrentBikeshop = async (req, res) => {
       }
     ]
   });
-  res.send(user.bikeshop);
+
+  const bikeshop = user.bikeshop;
+
+  res.send({
+    user,
+    bikeshop: {
+      ...bikeshop.toObject(),
+      serviceOrders: bikeshop.serviceOrders,
+      repairs: bikeshop.repairs,
+      reviews: bikeshop.reviews
+    }
+  });
 };
 
 // ***********************************************//
