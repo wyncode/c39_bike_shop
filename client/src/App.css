@@ -14,6 +14,7 @@
   width: 20vw;
   border: transparent;
 }
+
 .btn-pink-lg {
   width: 26vw;
   height: 6vh;
@@ -21,6 +22,7 @@
   top: 177px;
   background: #ec4568 !important;
   border-radius: 45px;
+  font-family: 'Actor';
   border: transparent;
 }
 
