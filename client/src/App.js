@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 import ShopOwner from './pages/ShopOwner';
 import BikeControl from './pages/BikeControl';
 
+
 const App = () => {
   return (
     // Navbar goes betwen BrowserRouter and Switch
