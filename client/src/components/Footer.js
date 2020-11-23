@@ -11,28 +11,36 @@ const Footer = () => {
           <FacebookShareButton url={`yourpageurl`}>
             <Image src="https://imgur.com/08OgolE.png" />
           </FacebookShareButton>
-          <Link className="ft-link">About Us</Link>
+          <Link className="ft-link" to="#">
+            About Us
+          </Link>
         </div>
 
         <div className="socialHolder">
-          <Link>
+          <Link to="#">
             <Image src="https://imgur.com/LC3p6Ye.png" />
           </Link>
 
-          <Link className="ft-link">Trails</Link>
+          <Link className="ft-link" to="#">
+            Trails
+          </Link>
         </div>
         <div className="socialHolder">
           <TwitterShareButton url={`yourpageurl`}>
             <Image src="https://imgur.com/GcgKgv1.png" />
           </TwitterShareButton>
-          <Link className="ft-link">Events</Link>
+          <Link className="ft-link" to="#">
+            Events
+          </Link>
         </div>
         <div className="socialHolder">
-          <Link>
+          <Link to="#">
             {' '}
             <Image src="https://imgur.com/Wv38VLb.png" />
           </Link>
-          <Link className="ft-link">Bike Shops</Link>
+          <Link className="ft-link" to="#">
+            Bike Shops
+          </Link>
         </div>
       </Container>
     </Container>
