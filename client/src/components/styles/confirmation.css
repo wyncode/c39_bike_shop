@@ -104,20 +104,16 @@
 
 .dropofftitle {
   font-family: Khand;
-  font-size: 24px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
+  font-size: 24px;
   line-height: 24px;
-  letter-spacing: 0px;
-  text-align: left;
 }
 
-.dropofftext {
+.dropoffp {
   font-family: Karma;
-  font-size: 14px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 18px;
-  letter-spacing: 0px;
-  text-align: left;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
 }
