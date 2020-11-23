@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Container, Image } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
 import { FacebookShareButton, TwitterShareButton } from 'react-share';
 import { Link } from 'react-router-dom';
 
