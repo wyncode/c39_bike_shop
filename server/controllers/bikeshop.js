@@ -4,7 +4,6 @@ const Review = require('../db/models/reviews');
 const Repair = require('../db/models/repair');
 const ServiceOrder = require('../db/models/serviceOrder');
 
-
 //UNAUTHENTICATED
 
 exports.getAllBikeshops = (req, res) => {
