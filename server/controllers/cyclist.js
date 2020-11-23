@@ -1,6 +1,5 @@
-const Cyclist = require('../db/models/cyclist');
-const User = require('../db/models/user');
-const ServiceOrder = require('../db/models/serviceOrder');
+const Cyclist = require('../db/models/cyclist'),
+  User = require('../db/models/user');
 
 exports.getAllCyclist = (req, res) => {
   Cyclist.find()
@@ -32,12 +31,22 @@ exports.createCyclist = async (req, res) => {
 // ***********************************************//
 
 exports.getCurrentCyclist = async (req, res) => {
-  const match = {};
   try {
-    const cyclist = await Cyclist.findById({ _id: req.params.id }).populate(
-      'bicycles'
-    );
-    res.status(200).json({ cyclist });
+    const user = await User.findById(req.user._id).populate({
+      path: 'cyclist',
+      populate: {
+        path: 'orders',
+        model: 'ServiceOrder',
+        populate: [
+          { path: 'bikeshop', model: 'Bikeshop' },
+          { path: 'repairs', model: 'Repair' }
+        ]
+      }
+    });
+    res.send({
+      user,
+      cyclist: user.cyclist
+    });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

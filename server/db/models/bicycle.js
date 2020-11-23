@@ -12,6 +12,10 @@ const bicycleSchema = new mongoose.Schema({
   bikeType: {
     type: String,
     trim: true
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Cyclist'
   }
 });
 
