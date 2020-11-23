@@ -1,5 +1,3 @@
-const ServiceOrder = require('./db/models/serviceOrder');
-
 //import the DB connection
 require('./db/config/index');
 const express = require('express'),
@@ -10,7 +8,7 @@ const express = require('express'),
   cyclistRouter = require('./routes/secure/cyclist'),
   bikeshopRouter = require('./routes/secure/bikeshop'),
   reviewRouter = require('./routes/secure/reviews'),
-  orderRouter = require('./routes/secure/serviceOrder.js'),
+  orderRouter = require('./routes/secure/serviceorder'),
   passport = require('./middleware/authentication/index'),
   fileUpload = require('express-fileupload'),
   cookieParser = require('cookie-parser'),
