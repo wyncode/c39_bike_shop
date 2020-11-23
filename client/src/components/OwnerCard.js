@@ -1,11 +1,16 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Image } from 'react-bootstrap';
 
 const OwnerCard = () => {
   return (
     <div class="d-flex justify-content-center">
       <Card>
-        <Card.Img variant="top" src="https://i.imgur.com/dzTEdUH.png" />
+        <Image
+          style={{ height: '250px', width: '300px' }}
+          variant="top"
+          src="https://i.imgur.com/dzTEdUH.png"
+          thumbnail
+        />
         <Card.Body>
           <Card.Title
             className="ownershopname"

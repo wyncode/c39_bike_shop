@@ -1,18 +1,20 @@
 import React from 'react';
 import OwnerCard from '../components/OwnerCard';
 import OwnerSearchBar from '../components/OwnerSearchBar';
-import OpenOrders from '../components/OpenOrders';
-import CompletedOrders from '../components/CompletedOrders';
+import Orders from '../components/Orders';
 import '../components/styles/ownerorderlist.css';
+import { Container } from 'react-bootstrap';
 
 const ShopOwner = () => {
   return (
-    <>
+    <Container>
       <OwnerCard />
       <OwnerSearchBar />
-      <OpenOrders />
-      <CompletedOrders />
-    </>
+      <h1>Open Orders</h1>
+      <Orders />
+      <h1>Closed Orders</h1>
+      <Orders />
+    </Container>
   );
 };
 
