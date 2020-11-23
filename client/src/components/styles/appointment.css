@@ -1,0 +1,22 @@
+.progress-gear {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-family: Khand;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  color: #5d5d5d;
+}
+
+.select {
+  font-family: Khand;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 24px;
+  color: #5d5d5d;
+}

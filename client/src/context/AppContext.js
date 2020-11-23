@@ -9,6 +9,7 @@ export const AppContextProvider = ({ children }) => {
   // const [loading, setLoading] = useState(false);
   // const [search, setSearch] = useState('');
   const user = sessionStorage.getItem('user');
+  const [bikeshops, setBikeshops] = useState([]);
 
   useEffect(() => {
     if (user && !currentUser) {
@@ -20,16 +21,22 @@ export const AppContextProvider = ({ children }) => {
           setCurrentUser(data);
         })
         .catch((error) => {
-          swal(`Oops!`, error.toString());
+          swal(`You Hit the Deck!`, error.message);
         });
     }
-  }, [currentUser, user]);
+  }, [user, currentUser]);
 
   return (
     <AppContext.Provider
       value={{
         currentUser,
-        setCurrentUser
+        setCurrentUser,
+        loading,
+        setLoading,
+        search,
+        setSearch,
+        bikeshops,
+        setBikeshops
       }}
     >
       {children}

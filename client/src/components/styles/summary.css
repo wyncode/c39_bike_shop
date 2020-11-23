@@ -1,0 +1,88 @@
+.Progress-Gear {
+  display: block;
+  margin: auto;
+  width: 165.63px;
+  height: 35.24px;
+}
+
+.summary-title {
+  font-family: Khand;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 24px;
+  color: #5d5d5d;
+}
+
+.summary {
+  font-family: Karma;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.repair-list {
+  font-family: Actor;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  text-decoration-line: underline;
+  color: #000000;
+}
+
+.dropoff {
+  font-family: Khand;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  color: #5d5d5d;
+}
+
+.location {
+  font-family: Khand;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 24px;
+  color: #5d5d5d;
+}
+
+.instruction-header {
+  font-family: Khand;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 24px;
+  color: #5d5d5d;
+}
+
+.instructions {
+  font-family: Karma;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.cr-acc-desc {
+  font-family: Karma;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.edit-link {
+  font-family: Actor;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  text-decoration-line: underline;
+  color: #818181;
+}

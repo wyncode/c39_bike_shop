@@ -1,22 +1,29 @@
-// import React from 'react';
-// import HeroImage from '../components/HeroImage';
-// import InfoCards from '../components/InfoCards';
-// import FeaturedShops from '../components/FeaturedShops';
-// import AboutUs from '../components/AboutUs';
-// import Navigation from '../components/navigation';
-// import SocialMedia from '../components/SocialMedia';
+import React from 'react';
+import BikeImg from '../components/BikeImg';
+import AwaitBike from '../components/AwaitBike';
+import BikeShopCard from '../components/BikeShopCard';
+import Estimate from '../components/Estimate';
+import '../components/styles/confirmation.css';
+import '../App.css';
 
-// const Home = () => {
-//   return (
-//     <>
-//       <Navigation />
-//       <HeroImage />
-//       <InfoCards />
-//       <FeaturedShops />
-//       <AboutUs />
-//       <SocialMedia />
-//     </>
-//   );
-// };
+const Confirmation = () => {
+  return (
+    <>
+      <h1 className="confirmtitle">You are all set!</h1>
+      <BikeImg />
+      <AwaitBike />
+      <BikeShopCard />
+      <Estimate />
+      <div>
+        <h1 className="dropofftitle">Drop Off Instructions</h1>
+        <p className="dropoffp">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec non
+          suspendisse adipiscing augue sit. Praesent convallis elit tempor
+          habitant. Bikes are cool .
+        </p>
+      </div>
+    </>
+  );
+};
 
-// export default Home;
+export default Confirmation;

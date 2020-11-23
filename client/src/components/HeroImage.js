@@ -9,9 +9,7 @@ export default function HeroImage() {
         <Card.Title className="HeroTitle">
           Easily Track My Bike Repairs
         </Card.Title>
-        <Button className="btn-pink-sm btn-holder ml-auto">
-          Start My Bike Repair
-        </Button>
+        <Button className="btn-pink-sm btn-holder ml-auto">Get Started</Button>
       </Card.ImgOverlay>
     </Card>
   );

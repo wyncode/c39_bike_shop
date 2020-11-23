@@ -15,7 +15,8 @@ const Profile = () => {
             roundedCircle
           />
         </Card>
-        <SideBar className="mt-5" />
+
+        <SideBar />
         <UserInfo />
       </Container>
     </div>
