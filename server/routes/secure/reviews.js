@@ -3,8 +3,8 @@ const router = require('express').Router({ mergeParams: true });
 const {
   getAllReviews,
   addReview,
-  deleteReviewById,
-  getReviewById
+  getReviewById,
+  deleteReviewById
 } = require('../../controllers/reviews');
 
 const isAdmin = require('../../middleware/authorization');
