@@ -11,12 +11,19 @@ import BikeShopPDP from './pages/BikeShopPDP';
 import Appointment from './pages/Appointment';
 import Summary from './pages/Summary';
 import './App.css';
+import RepairPopUp from './components/RepairPopUp';
+import Navigation from './components/navigation';
+import Footer from './components/Footer';
+import ShopOwner from './pages/ShopOwner';
+import BikeControl from './pages/BikeControl';
+
 
 const App = () => {
   return (
     // Navbar goes betwen BrowserRouter and Switch
     <AppContextProvider>
       <BrowserRouter>
+        <Navigation />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/Repairs" component={Repairs} />
@@ -27,6 +34,9 @@ const App = () => {
           <Route exact path="/BikeShopPDP" component={BikeShopPDP} />
           <Route exact path="/Appointment" component={Appointment} />
           <Route exact path="/Summary" component={Summary} />
+          <Route exact path="/RepairsPop" component={RepairPopUp} />
+          <Route exact path="/ShopOwner" component={ShopOwner} />
+          <Route exact path="/BikeControl" component={BikeControl} />
         </Switch>
       </BrowserRouter>
     </AppContextProvider>

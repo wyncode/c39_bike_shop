@@ -1,5 +1,5 @@
-const Cyclist = require('../db/models/cyclist');
-const User = require('../db/models/user');
+const Cyclist = require('../db/models/cyclist'),
+  User = require('../db/models/user');
 
 exports.getAllCyclist = (req, res) => {
   Cyclist.find()
@@ -18,7 +18,7 @@ exports.createCyclist = async (req, res) => {
       bicycles,
       user: req.user._id
     });
-
+    console.log(cyclist);
     await cyclist.save();
     res.status(201).json(cyclist);
   } catch (e) {
@@ -29,9 +29,27 @@ exports.createCyclist = async (req, res) => {
 // ***********************************************//
 // Get current cyclist
 // ***********************************************//
+
 exports.getCurrentCyclist = async (req, res) => {
-  const user = await User.findById(req.user._id).populate('cyclist');
-  res.json(user.cyclist);
+  try {
+    const user = await User.findById(req.user._id).populate({
+      path: 'cyclist',
+      populate: {
+        path: 'orders',
+        model: 'ServiceOrder',
+        populate: [
+          { path: 'bikeshop', model: 'Bikeshop' },
+          { path: 'repairs', model: 'Repair' }
+        ]
+      }
+    });
+    res.send({
+      user,
+      cyclist: user.cyclist
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 // ***********************************************//

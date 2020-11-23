@@ -1,0 +1,49 @@
+.modal-bd {
+  font-family: 'Khand' !important;
+}
+
+.close-btn {
+  border: transparent;
+  background: transparent;
+}
+
+.modal-ft {
+  border: transparent;
+  background: transparent;
+}
+
+.btnModal {
+  border: transparent;
+  background: transparent;
+  color: #000000;
+  text-decoration: underline;
+  text-align: left;
+}
+
+.btn-pink-sm-md {
+  border-radius: 45px;
+  background: #ec4568 !important;
+  width: 10vw;
+  border: transparent;
+}
+h1 {
+  font-family: 'Khand';
+  color: #898989;
+}
+
+h2 {
+  font-family: 'Khand';
+  color: #898989;
+}
+.filBtn {
+  background: rgba(236, 69, 104, 0.75) !important;
+  border: none;
+  border-radius: 10px;
+}
+
+.btnRep {
+  background: transparent !important;
+  color: #000000;
+  border: 1px solid #898989;
+  border-radius: 4px;
+}

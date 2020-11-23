@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Dropdown, Image } from 'react-bootstrap';
-const navigation = () => {
+const Navigation = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand
@@ -21,7 +21,9 @@ const navigation = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav " />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto ml-auto">
-          <Nav.Item className="mr-5">Bike Shops</Nav.Item>
+          <Link to="/Shoplist">
+            <Nav.Item className="mr-5"> Bike Shops</Nav.Item>
+          </Link>
           <Nav.Item className="mr-5">Community</Nav.Item>
           <Nav.Item className="mr-5">Events</Nav.Item>
           <Nav.Item className="mr-5">Trails</Nav.Item>
@@ -51,4 +53,4 @@ const navigation = () => {
     </Navbar>
   );
 };
-export default navigation;
+export default Navigation;

@@ -3,6 +3,7 @@ const router = require('express').Router({ mergeParams: true });
 const {
   getAllReviews,
   addReview,
+  getReviewById,
   deleteReviewById
 } = require('../../controllers/reviews');
 
