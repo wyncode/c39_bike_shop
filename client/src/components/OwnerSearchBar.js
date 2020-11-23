@@ -7,7 +7,7 @@ const OwnerSearchBar = () => {
   return (
     <div>
       <Container>
-        <h1 className="ownertitle">Welcome</h1>
+        <h1 class="d-flex justify-content-center">Welcome</h1>
         <FormControl
           onChange={handleSearch}
           type="text"
