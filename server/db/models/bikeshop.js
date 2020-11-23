@@ -47,6 +47,14 @@ const bikeshopSchema = new mongoose.Schema(
         trim: true
       }
     },
+    longitude: {
+      type: String,
+      trim: true
+    },
+    latitude: {
+      type: String,
+      trim: true
+    },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
