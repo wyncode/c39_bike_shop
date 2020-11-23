@@ -9,6 +9,7 @@ import Signup from './pages/Signup';
 import Repairs from './pages/Repairs';
 import BikeShopPDP from './pages/BikeShopPDP';
 import Appointment from './pages/Appointment';
+import Summary from './pages/Summary';
 import './App.css';
 import RepairPopUp from './components/RepairPopUp';
 import Navigation from './components/navigation';
@@ -32,6 +33,7 @@ const App = () => {
           <Route exact path="/Confirmation" component={Confirmation} />
           <Route exact path="/BikeShopPDP" component={BikeShopPDP} />
           <Route exact path="/Appointment" component={Appointment} />
+          <Route exact path="/Summary" component={Summary} />
           <Route exact path="/RepairsPop" component={RepairPopUp} />
           <Route exact path="/ShopOwner" component={ShopOwner} />
           <Route exact path="/BikeControl" component={BikeControl} />
