@@ -1,0 +1,31 @@
+.sidebar {
+  background-color: whitesmoke !important;
+  color: #ec4568 !important;
+}
+
+.profileTop {
+  background-image: url('https://imgur.com/ky2VSB5.png');
+  width: 100%;
+}
+.profileImg {
+  height: 200px;
+  width: 200px;
+  background: gray;
+  margin-top: 200px;
+  margin-bottom: -30px;
+  border: 4px whitesmoke solid;
+}
+
+.userName {
+  font-family: 'Khand';
+  font-size: 2vw;
+}
+.profilePage {
+  background-size: cover;
+  background: rgb(211, 211, 211);
+  background: radial-gradient(
+    circle,
+    rgba(211, 211, 211, 1) 4%,
+    rgba(105, 105, 105, 1) 60%
+  );
+}
