@@ -1,37 +1,20 @@
-import React, { useState } from 'react';
-import { Container, FormControl } from 'react-bootstrap';
-import axios from 'axios';
+import React, { useContext } from 'react';
+import { Container, Form } from 'react-bootstrap';
 
-const SearchBar = () => {
-  const [bikeShops, setBikeShops] = useState([]);
-  const [loading, setLoading] = useState(false);
+import { AppContext } from '../context/AppContext';
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const response = await axios
-        .get(`api/bikeshop/${e}`)
-        .then((response) => response.json)
-        .then((data) => set);
-      console.log(response);
-      // const data = data.json
-      // console.log(data)
-    } catch (err) {
-      throw err;
-    }
-  };
-
+const SearchBar = ({ handleSearchProp }) => {
   return (
     <div>
       <Container>
-        <FormControl
-          onChange={handleSearch}
-          type="text"
-          placeholder="Enter your zip code"
-          size="lg"
-        />
+        <Form>
+          <Form.Control
+            onChange={handleSearchProp}
+            type="number"
+            placeholder="Enter your zip code"
+            size="lg"
+          />
+        </Form>
       </Container>
     </div>
   );
