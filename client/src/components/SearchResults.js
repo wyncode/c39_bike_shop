@@ -7,8 +7,6 @@ const SearchResults = () => {
     <div>
       <Container>
         <BikeShopCard />
-        <BikeShopCard />
-        <BikeShopCard />
       </Container>
     </div>
   );

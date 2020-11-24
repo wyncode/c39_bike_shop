@@ -13,7 +13,6 @@ import Summary from './pages/Summary';
 import './App.css';
 import RepairPopUp from './components/RepairPopUp';
 import Navigation from './components/navigation';
-import Footer from './components/Footer';
 import ShopOwner from './pages/ShopOwner';
 import BikeControl from './pages/BikeControl';
 

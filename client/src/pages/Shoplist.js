@@ -8,6 +8,7 @@ const Shoplist = () => {
   return (
     <div>
       <Container>
+        <h1 className="srch-hdr">Select your Bike Shop:</h1>
         <SearchBar />
         <Map />
         <h3>Bike Shops</h3>
