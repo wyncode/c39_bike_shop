@@ -1,4 +1,10 @@
 const User = require('../db/models/user'),
+  cloudinary = require('cloudinary').v2,
+  {
+    sendWelcomeEmail,
+    sendCancellationEmail,
+    forgotPasswordEmail
+  } = require('../emails/index'),
   jwt = require('jsonwebtoken');
 
 // ***********************************************//
@@ -13,6 +19,7 @@ exports.createUser = async (req, res) => {
       password,
       admin
     });
+    sendWelcomeEmail(user.email, user.name);
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, {
       httpOnly: true,
@@ -60,6 +67,7 @@ exports.requestPasswordReset = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: '10m' }
     );
+    forgotPasswordEmail(email, token);
     res.json({ message: 'reset password email sent!' });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -153,6 +161,7 @@ exports.logoutAllDevices = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     await req.user.remove();
+    sendCancellationEmail(req.user.email, req.user.name);
     res.clearCookie('jwt');
     res.json({ message: 'user deleted' });
   } catch (error) {
