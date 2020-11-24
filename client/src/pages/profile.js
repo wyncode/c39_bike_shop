@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Container, Image, Card, Button, Collapse } from 'react-bootstrap';
+import { Container, Image, Card } from 'react-bootstrap';
 import SideBar from '../components/SideBar';
-import UserInfo from '../components/UserInfo';
+import Chat from '../components/Chat';
 import '../components/styles/profile.css';
 import FileUploader from '../components/Fileuploader';
 
 const Profile = () => {
-  const [open, setOpen] = useState(false);
   return (
     <>
       <div className="profilePage">
@@ -17,36 +16,21 @@ const Profile = () => {
               className="profileImg"
               roundedCircle
             />
-            <div className="coverPhotoUpload">
-              <FileUploader />
-            </div>
           </Card>
           <div className="upload">
             <FileUploader />
           </div>
           <div className="mt-3 heading">
-            <h1>User Profile</h1>
-            <Button
-              onClick={() => setOpen(!open)}
-              aria-controls="example-collapse-text"
-              aria-expanded={open}
-            >
-              click
-            </Button>
-            <Collapse in={open}>
-              <div id="example-collapse-text">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. Nihil anim keffiyeh
-                helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                ea proident.
-              </div>
-            </Collapse>
+            <h1 className="userName">User Profile</h1>
+            <p>I am an avid cyclist who......</p>
+            <h6>email</h6>
+            <h6>zipcode</h6>
           </div>
         </Container>
       </div>
       <Container className="d-flex justify-content-center">
         <SideBar />
-        <UserInfo />
+        <Chat />
       </Container>
     </>
   );

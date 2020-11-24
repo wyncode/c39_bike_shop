@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Card } from 'react-bootstrap';
+import { Form, Card, Button } from 'react-bootstrap';
 
 const General = () => {
   return (
@@ -23,10 +23,6 @@ const General = () => {
         </Form.Group>
         <Form.Group>
           <Form.Group>
-            <Form.Label>Current Password</Form.Label>
-            <Form.Control type="password" />
-          </Form.Group>
-          <Form.Group>
             <Form.Label>New Password</Form.Label>
             <Form.Control type="password" />
           </Form.Group>
@@ -35,6 +31,7 @@ const General = () => {
             <Form.Control type="password" />
           </Form.Group>
         </Form.Group>
+        <Button>Submit Changes</Button>
       </Form>
     </Card>
   );

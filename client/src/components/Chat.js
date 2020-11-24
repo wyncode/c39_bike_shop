@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import './styles/profile.css';
 
-const UserInfo = () => {
+const Chat = () => {
   return (
     <Card className="mt-5 chatbox" fluid>
       <Card.Body className="d-flex chat mb-5">
@@ -25,4 +25,4 @@ const UserInfo = () => {
   );
 };
 
-export default UserInfo;
+export default Chat;

@@ -1,10 +1,14 @@
 import React from 'react';
+import { Tab, Row, Col, ListGroup, Card } from 'react-bootstrap';
+import './styles/profile.css';
 
 const Bicycle = () => {
   return (
-    <div>
-      <h1>This will house bikes and updates</h1>
-    </div>
+    <Card>
+      <Card.Title>Bike Name</Card.Title>
+      <Card.Text>Bike Model</Card.Text>
+      <Card.Text>Bike Type</Card.Text>
+    </Card>
   );
 };
 

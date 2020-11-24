@@ -1,6 +1,7 @@
 .sidebar {
-  background-color: whitesmoke !important;
+  background-color: white !important;
   color: #ec4568 !important;
+  border: none;
 }
 
 .profileTop {
@@ -18,7 +19,8 @@
 
 .userName {
   font-family: 'Khand';
-  font-size: 2vw;
+  font-size: 10vw;
+  color: grey;
 }
 .profilePage {
   background: linear-gradient(180deg, #40fff7 0%, rgba(196, 196, 196, 0) 100%);
@@ -39,7 +41,7 @@
 }
 
 .heading {
-  border-bottom: 2px black solid;
+  border-bottom: 1px grey solid;
   font-family: 'Khand';
   color: black;
   text-align: center;
@@ -52,4 +54,17 @@
 .coverPhotoUpload {
   margin-top: -50px;
   margin-left: 95%;
+}
+.addBio {
+  background: transparent;
+  border: none;
+  color: #ec4568;
+}
+.addBio:focus,
+.addBio:active,
+.addBio:hover {
+  color: #ec4568;
+  background-color: #fff;
+  border-color: #ccc;
+  outline: 0;
 }
