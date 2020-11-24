@@ -13,7 +13,7 @@
   background: gray;
   margin-top: 200px;
   margin-bottom: -30px;
-  border: 4px whitesmoke solid;
+  border: 5px whitesmoke solid;
 }
 
 .userName {
@@ -21,8 +21,6 @@
   font-size: 2vw;
 }
 .profilePage {
-  background-size: cover;
-  background: rgb(211, 211, 211);
   background: linear-gradient(180deg, #40fff7 0%, rgba(196, 196, 196, 0) 100%);
 }
 
@@ -43,4 +41,15 @@
 .heading {
   border-bottom: 2px black solid;
   font-family: 'Khand';
+  color: black;
+  text-align: center;
+}
+
+.upload {
+  margin-left: 52%;
+  z-index: 1;
+}
+.coverPhotoUpload {
+  margin-top: -50px;
+  margin-left: 95%;
 }
