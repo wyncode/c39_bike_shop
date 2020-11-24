@@ -7,8 +7,8 @@ import FileUploader from '../components/Fileuploader';
 
 const Profile = () => {
   return (
-    <div>
-      <Container className="profilePage d-flex align-items-center flex-column">
+    <div className="profilePage">
+      <Container className=" d-flex align-items-center flex-column">
         <Card className="d-flex align-items-center profileTop mt-3">
           <Image
             src="https://imgur.com/PCEcljZ.png"
@@ -19,11 +19,10 @@ const Profile = () => {
         <FileUploader />
 
         <h1 className="mt-5 heading">User Profile</h1>
-
-        <Container className="d-flex justify-content-center">
-          <SideBar />
-          <UserInfo />
-        </Container>
+      </Container>
+      <Container className="d-flex justify-content-center">
+        <SideBar />
+        <UserInfo />
       </Container>
     </div>
   );

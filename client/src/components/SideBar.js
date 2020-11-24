@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tab, Row, Col, ListGroup, Container } from 'react-bootstrap';
+import { Tab, Row, Col, ListGroup, Card } from 'react-bootstrap';
 import General from './General';
 import Bicycles from './Bicycle';
 import Review from './Review';
@@ -8,11 +8,11 @@ import Order from './Order';
 
 const SideBar = () => {
   return (
-    <Container className="mt-5">
+    <Card className="mt-5">
       <Tab.Container>
-        <Row className="d-flex align-items-center justify-content-center ">
+        <Row className="d-flex align-items-center justify-content-center  ">
           <Col sm={10} className="md-3 pt-0">
-            <ListGroup defaultActiveKey="#link1">
+            <ListGroup defaultActiveKey="#link1" horizontal>
               <ListGroup.Item action href="#link1" className="sidebar">
                 General
               </ListGroup.Item>
@@ -45,7 +45,7 @@ const SideBar = () => {
           </Col>
         </Row>
       </Tab.Container>
-    </Container>
+    </Card>
   );
 };
 
