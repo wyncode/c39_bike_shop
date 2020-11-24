@@ -11,9 +11,13 @@ const SearchBar = () => {
     setLoading(true);
 
     try {
-      const data = await axios.get(`api/bikeshop`);
-      const response = data.json;
+      const response = await axios
+        .get(`api/bikeshop/${e}`)
+        .then((response) => response.json)
+        .then((data) => set);
       console.log(response);
+      // const data = data.json
+      // console.log(data)
     } catch (err) {
       throw err;
     }
