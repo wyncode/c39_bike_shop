@@ -29,3 +29,22 @@
     rgba(105, 105, 105, 1) 60%
   );
 }
+
+.chatbox {
+  background: whitesmoke;
+  height: 40vh;
+}
+.profileImg-sm {
+  height: 3vh;
+  width: 3vw;
+  background: grey;
+}
+
+.chat {
+  background: grey;
+}
+
+.heading {
+  border-bottom: 2px black solid;
+  font-family: 'Khand';
+}
