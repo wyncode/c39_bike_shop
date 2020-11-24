@@ -23,11 +23,7 @@
 .profilePage {
   background-size: cover;
   background: rgb(211, 211, 211);
-  background: radial-gradient(
-    circle,
-    rgba(211, 211, 211, 1) 4%,
-    rgba(105, 105, 105, 1) 60%
-  );
+  background: linear-gradient(180deg, #40fff7 0%, rgba(196, 196, 196, 0) 100%);
 }
 
 .chatbox {
