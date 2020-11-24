@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Image, Card, Form } from 'react-bootstrap';
+import { Container, Image, Card } from 'react-bootstrap';
 import SideBar from '../components/SideBar';
 import UserInfo from '../components/UserInfo';
 import '../components/styles/profile.css';
