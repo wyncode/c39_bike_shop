@@ -1,7 +1,6 @@
 const router = require('express').Router(),
   {
     createRepair,
-    getSpecificRepair,
     getAllRepairs,
     updateRepair,
     deleteRepair
