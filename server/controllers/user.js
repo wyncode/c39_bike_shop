@@ -4,7 +4,7 @@ const User = require('../db/models/user'),
     sendWelcomeEmail,
     sendCancellationEmail,
     forgotPasswordEmail
-  } = require('../emails/index'),
+  } = require('../notifications/emails/index'),
   jwt = require('jsonwebtoken');
 
 // ***********************************************//
