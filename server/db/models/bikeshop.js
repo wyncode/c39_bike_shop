@@ -18,6 +18,10 @@ const bikeshopSchema = new mongoose.Schema(
         }
       }
     },
+    phone: {
+      type: String,
+      trim: true
+    },
     logo: {
       type: String
     },
