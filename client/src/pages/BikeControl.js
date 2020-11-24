@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Container, Button } from 'react-bootstrap';
+import { Card, Container, Button, ProgressBar } from 'react-bootstrap';
 // import RepairControl from '../components/RepairControl';
 import Orders from '../components/Orders';
 
@@ -20,20 +20,21 @@ const BikeControl = () => {
           className="bikepic"
           src="https://i.imgur.com/ty0FCH0.png"
         ></Card.Img>
+        <ProgressBar now={60} className="mt-4" />
       </Container>
       <hr style={{ border: '0.5px solid #EC4568' }} />
-      <Container className="button">
-        <Button>Received</Button>
+      <Container className="button d-flex flex-column align-items-center">
+        <Button className="btn-pink-sm">Received</Button>
         <br />
-        <Button>Diagnosed</Button>
+        <Button className="btn-pink-sm">Diagnosed</Button>
         <br />
-        <Button>Parts Ordered</Button>
+        <Button className="btn-pink-sm">Parts Ordered</Button>
         <br />
-        <Button>Repair in Progress</Button>
+        <Button className="btn-pink-sm">Repair in Progress</Button>
         <br />
-        <Button>Delayed</Button>
+        <Button className="btn-pink-sm">Delayed</Button>
         <br />
-        <Button>Ready for Pick Up</Button>
+        <Button className="btn-pink-sm">Ready for Pick Up</Button>
       </Container>
 
       <hr style={{ border: '0.5px solid #EC4568' }} />

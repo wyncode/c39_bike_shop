@@ -5,6 +5,8 @@ import './styles/repairs.css';
 const RepairPopUp = () => {
   const handleClick = () => {};
   const [open, setOpen] = useState(false);
+  //jandleclick will add repair to service order route is api/order
+
   return (
     <Modal.Dialog>
       <Modal.Header className="close-btn" closeButton></Modal.Header>
@@ -39,13 +41,10 @@ const RepairPopUp = () => {
           </svg>{' '}
         </Button>
         <Collapse in={open}>
-          <div id="example-collapse-text">asdasdfasfasf</div>
+          <div id="example-collapse-text">Repair.name</div>
         </Collapse>
 
-        <h6 className="mt-4">
-          Repairs may typically take up to 24-48 hours for completion. In some
-          cases repairs take longer
-        </h6>
+        <h6 className="mt-4">Repair.description</h6>
         <Form className="d-flex flex-column mt-5">
           <Form.Group>
             <Form.Check type="checkbox" label="Select this repair" />
