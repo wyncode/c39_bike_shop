@@ -11,6 +11,7 @@ const SignUp = ({ history }) => {
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
+    console.log(formData);
   };
 
   const handleSignUp = async (e) => {
@@ -50,7 +51,7 @@ const SignUp = ({ history }) => {
         <h2>Sign up with your email address</h2>
         <Link to="/login">Have an account? Login</Link>
       </div>
-      <Form onSubmit={handleSignUp} className="d-flex flex-column">
+      <Form onChange={handleSignUp} className="d-flex flex-column">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>What is your email?</Form.Label>
           <Form.Group>
@@ -58,7 +59,7 @@ const SignUp = ({ history }) => {
               type="email"
               placeholder="Enter your email."
               size="lg"
-              onSubmit={handleChange}
+              onChange={handleChange}
             />
           </Form.Group>
         </Form.Group>
@@ -70,17 +71,15 @@ const SignUp = ({ history }) => {
             type="email"
             placeholder="Enter email again."
             size="lg"
-            onSubmit={handleChange}
+            onChange={handleChange}
           />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Create a password</Form.Label>
-        </Form.Group>
-        <Form.Group>
           <Form.Control
             type="password"
             placeholder="Create a password with a least 8 characters"
-            onSubmit={handleChange}
+            onChange={handleChange}
           />
         </Form.Group>
         <Form.Group controlId="formBasicName">
