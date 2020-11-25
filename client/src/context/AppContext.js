@@ -10,6 +10,7 @@ export const AppContextProvider = ({ children }) => {
   const [search, setSearch] = useState('');
   const user = sessionStorage.getItem('user');
   const [bikeshops, setBikeshops] = useState([]);
+  const [RepairSelection, setRepairSelection] = useState([]);
 
   useEffect(() => {
     if (user && !currentUser) {
