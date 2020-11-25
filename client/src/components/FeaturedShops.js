@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { CardDeck, Card, Container } from 'react-bootstrap';
+import { CardDeck, Card } from 'react-bootstrap';
 
 export default function FeaturedShops() {
   return (

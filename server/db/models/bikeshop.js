@@ -18,6 +18,10 @@ const bikeshopSchema = new mongoose.Schema(
         }
       }
     },
+    phone: {
+      type: String,
+      trim: true
+    },
     logo: {
       type: String
     },
@@ -46,6 +50,14 @@ const bikeshopSchema = new mongoose.Schema(
         required: true,
         trim: true
       }
+    },
+    longitude: {
+      type: String,
+      trim: true
+    },
+    latitude: {
+      type: String,
+      trim: true
     },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
