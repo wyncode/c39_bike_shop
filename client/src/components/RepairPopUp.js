@@ -1,71 +1,63 @@
 import React, { useState } from 'react';
-import { Toast, Button, Form, Collapse, Container } from 'react-bootstrap';
+import { Modal, Button, Form, ModalFooter, Collapse } from 'react-bootstrap';
+import './styles/repairs.css';
 
 const RepairPopUp = () => {
   const handleClick = () => {};
   const [open, setOpen] = useState(false);
   return (
-    <div
-      aria-live="polite"
-      aria-atomic="true"
-      style={{
-        position: 'relative',
-        minHeight: '100px'
-      }}
-    >
-      <Toast
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0
-        }}
-      >
-        <Container>
-          <Toast.Header className="d-flex justify-content-end"></Toast.Header>
+    <Modal.Dialog>
+      <Modal.Header className="close-btn" closeButton></Modal.Header>
 
-          <Toast.Body className="d-flex flex-column justify-content-center">
-            <strong>Repair Name:</strong>
-            <Toast.Body>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              gravida interdum nisi, quis tempus justo pharetra vitae. Ut luctus
-              finibus libero, accumsan molestie enim semper aliquet.
-            </Toast.Body>
-            <Toast.Body>
-              <Button
-                onClick={() => setOpen(!open)}
-                aria-controls="example-collapse-text"
-                aria-expanded={open}
-                size="sm"
-              >
-                Learn More
-              </Button>
-              <Collapse in={open}>
-                <div id="example-collapse-text">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life
-                  accusamus terry richardson ad squid. Nihil anim keffiyeh
-                  helvetica, craft beer labore wes anderson cred nesciunt
-                  sapiente ea proident.
-                </div>
-              </Collapse>
-            </Toast.Body>
-          </Toast.Body>
+      <Modal.Body className="d-flex flex-column justify-content-center modal-bd">
+        <h1 className="modal-bd">Repair Name:</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+          gravida interdum nisi, quis tempus justo pharetra vitae. Ut luctus
+          finibus libero, accumsan molestie enim semper aliquet.
+        </p>
 
-          <Toast.Body>
-            <strong>
-              Repairs may typically take up to 24-48 hours for completion. In
-              some cases repairs take longer
-            </strong>
-          </Toast.Body>
+        <Button
+          className="btnModal"
+          size="sm"
+          onClick={() => setOpen(!open)}
+          aria-controls="example-collapse-text"
+          aria-expanded={open}
+        >
+          Learn More{' '}
+          <svg
+            width="9"
+            height="6"
+            viewBox="0 0 9 6"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.41176 6L0.438236 0.75L8.38529 0.75L4.41176 6Z"
+              fill="black"
+            />
+          </svg>{' '}
+        </Button>
+        <Collapse in={open}>
+          <div id="example-collapse-text">asdasdfasfasf</div>
+        </Collapse>
 
-          <Form className="mt-2">
+        <h6 className="mt-4">
+          Repairs may typically take up to 24-48 hours for completion. In some
+          cases repairs take longer
+        </h6>
+        <Form className="d-flex flex-column mt-5">
+          <Form.Group>
             <Form.Check type="checkbox" label="Select this repair" />
-            <div class="d-flex align-items-center justify-content-center mt-4">
-              <Button onClick={handleClick}>Confirm</Button>
-            </div>
-          </Form>
-        </Container>
-      </Toast>
-    </div>
+          </Form.Group>
+        </Form>
+      </Modal.Body>
+      <ModalFooter className="d-flex justify-content-center modal-ft">
+        <Button onClick={handleClick} className="btn-pink-sm-md mt-2">
+          Confirm
+        </Button>
+      </ModalFooter>
+    </Modal.Dialog>
   );
 };
 

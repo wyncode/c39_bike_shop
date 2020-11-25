@@ -18,20 +18,16 @@ const cyclistSchema = new mongoose.Schema(
       type: String,
       trim: true
     },
-    bicycles: [
+    bikes: [
       {
-        bikeName: {
-          type: String,
-          trim: true
-        },
-        bikeModel: {
-          type: String,
-          trim: true
-        },
-        bikeType: {
-          type: String,
-          trim: true
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Bicycle'
+      }
+    ],
+    orders: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'serviceOrder'
       }
     ]
   },
@@ -45,6 +41,11 @@ cyclistSchema.virtual('serviceOrders', {
   foreignField: 'cyclist'
 });
 
+cyclistSchema.virtual('bicycle', {
+  ref: 'Bicycle',
+  localField: '_id',
+  foreignField: 'owner'
+});
 //Creating relationship between Cyclist and Review
 cyclistSchema.virtual('reviews', {
   ref: 'Review',

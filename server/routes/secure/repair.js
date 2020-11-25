@@ -1,7 +1,6 @@
 const router = require('express').Router(),
   {
     createRepair,
-    getSpecificRepair,
     getAllRepairs,
     updateRepair,
     deleteRepair
@@ -10,7 +9,6 @@ const router = require('express').Router(),
 const isAdmin = require('../../middleware/authorization');
 
 router.post('/:bikeshop_id', isAdmin(), createRepair);
-router.get('/:id', getSpecificRepair);
 router.get('/', getAllRepairs);
 router.put('/:id', isAdmin(), updateRepair);
 router.delete('/:id', isAdmin(), deleteRepair);

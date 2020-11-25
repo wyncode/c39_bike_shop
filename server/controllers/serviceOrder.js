@@ -1,18 +1,26 @@
 const ServiceOrder = require('../db/models/serviceOrder');
 const Bikeshop = require('../db/models/bikeshop');
+const Cyclist = require('../db/models/cyclist');
+const Repair = require('../db/models/repair');
 
 exports.createOrder = async (req, res) => {
   try {
     const newOrder = new ServiceOrder(req.body);
-    newOrder.bikeshop = req.body.bikeshop;
-    newOrder.cyclist = req.user._id;
-    const bikeshop = await Bikeshop.findById(req.body.bikeshop);
-    const createOrder = await newOrder.save();
-    await bikeshop.orders.push(createOrder._id);
-    await bikeshop.save();
-    res.json(createOrder);
-  } catch (error) {
-    console.log(error.message);
+
+    const [cyclist, bikeshop] = await Promise.all([
+      Cyclist.findById(req.body.cyclist),
+      Bikeshop.findById(req.body.bikeshop)
+    ]);
+
+    console.log('i found ');
+
+    cyclist.orders.push(newOrder);
+    bikeshop.orders.push(newOrder);
+    await Promise.all([bikeshop.save(), cyclist.save(), newOrder.save()]);
+
+    res.status(201).json(newOrder);
+  } catch (e) {
+    res.status(400).json({ error: e.toString() });
   }
 };
 
@@ -24,7 +32,7 @@ exports.getAllOrders = (req, res) => {
 
 exports.updateOrder = async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ['dropoffDate', 'expectedPickup', 'progress'];
+  const allowedUpdates = ['progress', 'dropoffDate', 'expectedPickup'];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );
@@ -57,11 +65,20 @@ exports.deleteOrderById = (req, res) => {
 
 exports.getOrderById = async (req, res) => {
   try {
-    const order = ServiceOrder.findById(req.params.id);
-    if (!order) {
-      return res.status(404).json('Error: Order not found!');
-    }
-    await res.status(200).json(order);
+    let resp = await ServiceOrder.findById(req.params.id);
+    let order = {};
+    order.data = {
+      _id: resp._id,
+      dropoffDate: resp.dropoffDate,
+      expectedPickup: resp.expectedPickup,
+      progress: resp.progress
+    };
+
+    const repairsIdArr = resp.repairs.map((item) => item._id);
+    const repairs = await Repair.find().where('_id').in(repairsIdArr).exec();
+    order.repairs = repairs;
+
+    res.status(200).json(order);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

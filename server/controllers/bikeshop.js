@@ -2,6 +2,7 @@ const Bikeshop = require('../db/models/bikeshop');
 const User = require('../db/models/user');
 const Review = require('../db/models/reviews');
 const Repair = require('../db/models/repair');
+const ServiceOrder = require('../db/models/serviceOrder');
 
 //UNAUTHENTICATED
 
@@ -13,36 +14,15 @@ exports.getAllBikeshops = (req, res) => {
 
 exports.getBikeshopById = async (req, res) => {
   try {
-    let obj = {};
-    const resp = await Bikeshop.findById(req.params.id).populate('reviews');
-    const reviewsArr = await resp.reviews;
-    const reviews = await Promise.all(
-      reviewsArr.map(async (item) => {
-        const results = await Review.find().where('_id').in(item._id).exec();
-        return results;
+    const bikeshop = await Bikeshop.findById(req.params.id)
+      .populate({
+        path: 'reviews',
+        model: 'Review',
+        populate: [{ path: 'cyclist', model: 'Cyclist' }]
       })
-    );
-    reviewsFlat = reviews.flat();
+      .populate('repairs');
 
-    const repairsArr = await resp.repairs;
-    const repairs = await Promise.all(
-      repairsArr.map(async (item) => {
-        const repResults = await Repair.find().where('_id').in(item._id).exec();
-        return repResults;
-      })
-    );
-    repairsFlat = repairs.flat();
-
-    obj = {
-      _id: resp._id,
-      shopName: resp.shopName,
-      email: resp.email,
-      shopContact: resp.shopContact,
-      website: resp.website,
-      repairs: repairsFlat,
-      reviews: reviewsFlat
-    };
-    return res.json(obj);
+    return res.json(bikeshop);
   } catch (err) {
     console.log(err);
   }
@@ -71,7 +51,25 @@ exports.createBikeshop = async (req, res) => {
 // Get current bikeshop
 // ***********************************************//
 exports.getCurrentBikeshop = async (req, res) => {
-  const user = await User.findById(req.user._id).populate('bikeshop');
+  const user = await User.findById(req.user._id).populate({
+    path: 'bikeshop',
+    populate: [
+      {
+        path: 'orders',
+        model: 'ServiceOrder',
+        populate: [{ path: 'cyclist', model: 'Cyclist' }]
+      },
+      {
+        path: 'repairs',
+        model: 'Repair'
+      },
+      {
+        path: 'reviews',
+        model: 'Review',
+        populate: [{ path: 'cyclist', model: 'Cyclist' }]
+      }
+    ]
+  });
   res.send(user.bikeshop);
 };
 

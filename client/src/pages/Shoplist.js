@@ -1,8 +1,8 @@
 import React from 'react';
 import Map from '../components/Map';
 import SearchBar from '../components/SearchBar';
-import SearchResults from '../components/SearchResults';
 import { Container } from 'react-bootstrap';
+import BikeShopCard from '../components/BikeShopCard';
 
 const Shoplist = () => {
   return (
@@ -11,7 +11,7 @@ const Shoplist = () => {
         <SearchBar />
         <Map />
         <h3>Bike Shops</h3>
-        <SearchResults />
+        <BikeShopCard />
       </Container>
     </div>
   );

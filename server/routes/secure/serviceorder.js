@@ -12,8 +12,8 @@ const isAdmin = require('../../middleware/authorization');
 
 router.get('/', getAllOrders);
 router.post('/', createOrder);
-router.patch('/:id', isAdmin(), updateOrder);
-router.delete('/:id', isAdmin(), deleteOrderById),
-  router.get('/:id', getOrderById);
+router.patch('/:id', updateOrder);
+router.delete('/:id', isAdmin(), deleteOrderById);
+router.get('/:id', getOrderById);
 
 module.exports = router;

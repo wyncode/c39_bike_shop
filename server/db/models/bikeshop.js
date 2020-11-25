@@ -18,6 +18,10 @@ const bikeshopSchema = new mongoose.Schema(
         }
       }
     },
+    phone: {
+      type: String,
+      trim: true
+    },
     logo: {
       type: String
     },
@@ -47,24 +51,28 @@ const bikeshopSchema = new mongoose.Schema(
         trim: true
       }
     },
+    longitude: {
+      type: String,
+      trim: true
+    },
+    latitude: {
+      type: String,
+      trim: true
+    },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     },
     reviews: [
       {
-        review: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'Review'
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review'
       }
     ],
     repairs: [
       {
-        repair: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'Repair'
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Repair'
       }
     ],
     orders: [
