@@ -4,8 +4,9 @@ import '../App.css';
 
 const BikeShopCard = ({ bikeshop }) => {
   return (
+    // Can we put an href on the card?
     <div>
-      <Card className="d-flex flex-row">
+      <Card href="/bikeshopPDP" className="d-flex flex-row">
         <Card.Body>
           <Card.Img
             className="shopimg1"
