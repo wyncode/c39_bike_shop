@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, Image, Card } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
+import '../components/styles/login.css';
 
 const SignUp = ({ history }) => {
   const { setCurrentUser } = useContext(AppContext);
@@ -11,6 +12,7 @@ const SignUp = ({ history }) => {
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
+    console.log(formData);
   };
 
   const handleSignUp = async (e) => {
@@ -30,64 +32,75 @@ const SignUp = ({ history }) => {
       className="ds-flex justify-content-center align-items-center"
       width="700px"
     >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: '20px'
-        }}
-      >
-        <h1>Welcome to The Bike Shop!</h1>
-        <Button className="btn-pink-xlg" size="lg" block>
-          {' '}
-          Sign Up With Facebook{' '}
-        </Button>
-        <hr />
-        <p>or</p>
-        <hr />
-        <h2>Sign up with your email address</h2>
-        <Link to="/login">Have an account? Login</Link>
-      </div>
       <Form onSubmit={handleSignUp} className="d-flex flex-column">
+        <h1 className="m-auto">Welcome to The Bike Shop!</h1>
+
+        <Form.Label className="text-center">
+          {' '}
+          Are you a Cyclist or a Shop Owner?
+        </Form.Label>
+        <div className="d-flex justify-content-evenly m-auto">
+          <Form.Group>
+            <Button className="btn-Selection">
+              <Image
+                src="https://imgur.com/vGj6QjL.png"
+                thumbnail
+                className="tn"
+              />
+            </Button>
+          </Form.Group>
+          <Form.Group>
+            <Button className="btn-Selection">
+              <Image
+                src="https://imgur.com/tAuaIZp.png"
+                thumbnail
+                className="tn"
+              />
+            </Button>
+          </Form.Group>
+        </div>
+
+        <h2 className="m-auto">Sign up with your email address</h2>
+        <Link to="/login" className="m-auto">
+          Have an account? Login
+        </Link>
+
+        <Form.Group controlId="formBasicName">
+          <Form.Label>What should we call you?</Form.Label>
+        </Form.Group>
+        <Form.Group>
+          <Form.Control
+            type="name"
+            placeholder="Enter your profile name."
+            id="name"
+            onChange={handleChange}
+            name="name"
+          />
+        </Form.Group>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>What is your email?</Form.Label>
+        </Form.Group>
+        <Form.Group>
           <Form.Group>
             <Form.Control
               type="email"
               placeholder="Enter your email."
               size="lg"
-              onSubmit={handleChange}
+              onChange={handleChange}
+              id="email"
+              name="email"
             />
           </Form.Group>
         </Form.Group>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Confirm your email</Form.Label>
-        </Form.Group>
-        <Form.Group>
-          <Form.Control
-            type="email"
-            placeholder="Enter email again."
-            size="lg"
-            onSubmit={handleChange}
-          />
-        </Form.Group>
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Create a password</Form.Label>
-        </Form.Group>
-        <Form.Group>
           <Form.Control
             type="password"
             placeholder="Create a password with a least 8 characters"
-            onSubmit={handleChange}
+            onChange={handleChange}
+            id="password"
+            name="password"
           />
-        </Form.Group>
-        <Form.Group controlId="formBasicName">
-          <Form.Label>What should we call you?</Form.Label>
-        </Form.Group>
-        <Form.Group>
-          <Form.Control type="name" placeholder="Enter your profile name." />
         </Form.Group>
         <p>Do you prefer email or text notifications?</p>
         <Form.Group controlId="formBasicCheckbox">

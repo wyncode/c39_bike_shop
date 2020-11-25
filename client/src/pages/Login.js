@@ -12,7 +12,6 @@ const Login = ({ history }) => {
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.log(formData);
   };
 
   const handleLogin = async (e) => {
