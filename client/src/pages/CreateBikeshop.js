@@ -23,11 +23,11 @@ const CreateCyclist = ({ history }) => {
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/cyclist', formData);
-      const avatar = new FormData();
-      avatar.append('avatar', image, image.name);
-      sessionStorage.setItem('cyclist', response.data);
-      setCurrentUser(response.data.cyclist);
+      const response = await axios.post('/api/bikeshop', formData);
+      const logo = new FormData();
+      logo.append('logo', image, image.name);
+      sessionStorage.setItem('bikeshop', response.data);
+      setCurrentUser(response.data.bikeshop);
       history.push('/');
     } catch (error) {
       swal('SignUp Error: ', error.toString());
@@ -42,26 +42,26 @@ const CreateCyclist = ({ history }) => {
       width="700px"
     >
       <div className="d-flex flex-column align-items-center justify-content-center">
-        <h1>Create Your User Profile</h1>
-        <Image src="https://imgur.com/vGj6QjL.png" height="200px" />
+        <h1>Create Your Bikeshop Profile</h1>
+        <Image src="https://imgur.com/tAuaIZp.png" height="200px" />
       </div>
       <Form onSubmit={handleCreate} className="d-flex flex-column">
         <Form.Group>
           <Form.File
             id="exampleFormControlFile1"
-            label="Upload a profile picture"
-            name="avatar"
+            label="Upload your logo"
+            name="logo"
             onChange={handleImageSelect}
           />
         </Form.Group>
         <Form.Group controlId="formBasic">
-          <Form.Label>What is your zipcode?</Form.Label>
+          <Form.Label>What is your shop's name?</Form.Label>
 
           <Form.Control
             type="text"
-            placeholder="Enter your zipcode."
+            placeholder="Enter your shop name."
             size="lg"
-            name="zipcode"
+            name="shopName"
             onChange={handleChange}
           />
         </Form.Group>
@@ -75,32 +75,57 @@ const CreateCyclist = ({ history }) => {
             onChange={handleChange}
           />
         </Form.Group>
+        <Form.Group controlId="formBasicPhone">
+          <Form.Label>
+            If you have store email, please enter it below
+          </Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email here "
+            size="lg"
+            name="email"
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="formBasicPhone">
+          <Form.Label>
+            If you have store has a website, please enter it below
+          </Form.Label>
+          <Form.Control
+            type="url"
+            placeholder="Enter Website Here"
+            size="lg"
+            name="website"
+            onChange={handleChange}
+          />
+        </Form.Group>
         <Form.Group>
-          <Form.Label>Add a Bike to your profile</Form.Label>
+          <Form.Label>Enter your store address</Form.Label>
           <Form.Row>
             <Form.Control
               type="text"
-              placeholder="BikeName"
-              name="bikeName"
+              placeholder="street"
+              name="street"
               onChange={handleChange}
             />
             <Form.Control
               type="text"
-              placeholder="Bike Model"
-              name="bikeModel"
+              placeholder="city"
+              name="city"
               onChange={handleChange}
             />
-            <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Label>What type of bike is it?</Form.Label>
-              <Form.Control as="select" name="bikeType" onChange={handleChange}>
-                <option>Road</option>
-                <option>Mountain</option>
-                <option>Commuter</option>
-                <option>Cruiser</option>
-                <option>Hybrid</option>
-                <option>Other</option>
-              </Form.Control>
-            </Form.Group>
+            <Form.Control
+              type="text"
+              placeholder="state"
+              name="state"
+              onChange={handleChange}
+            />
+            <Form.Control
+              type="text"
+              placeholder="zipCode"
+              name="zipCode"
+              onChange={handleChange}
+            />
           </Form.Row>
         </Form.Group>
 

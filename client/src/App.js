@@ -17,6 +17,7 @@ import Profile from './pages/profile';
 import ShopOwner from './pages/ShopOwner';
 import BikeControl from './pages/BikeControl';
 import CreateCyclist from './pages/CreateCyclist';
+import CreateBikeShop from './pages/CreateBikeshop';
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           <Route exact path="/Summary" component={Summary} />
           <Route exact path="/RepairsPop" component={RepairPopUp} />
           <Route exact path="/Cyclist" component={CreateCyclist} />
+          <Route exact path="/BikeShop" component={CreateBikeShop} />
           <Route exact path="/Profile" component={Profile} />
           <Route exact path="/ShopOwner" component={ShopOwner} />
           <Route exact path="/BikeControl" component={BikeControl} />
