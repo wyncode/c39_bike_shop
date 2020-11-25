@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Form, Button, Image, Card } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
@@ -19,13 +19,27 @@ const SignUp = ({ history }) => {
     e.preventDefault();
     try {
       const response = await axios.post('/api', formData);
+      console.log(response.data);
       sessionStorage.setItem('user', response.data);
-      setCurrentUser(response.data.user);
-      history.push('/');
+      setCurrentUser(response.data);
+      if (response.data.admin) {
+        history.push('/Bikeshop');
+      } else {
+        history.push('/Cyclist');
+      }
     } catch (error) {
       swal('SignUp Error: ', error.toString());
     }
   };
+
+  const setAdministrator = (val) => {
+    // setAdmin(val);
+    setFormData({ ...FormData, admin: val });
+  };
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
 
   return (
     <Container
@@ -41,7 +55,10 @@ const SignUp = ({ history }) => {
         </Form.Label>
         <div className="d-flex justify-content-evenly m-auto">
           <Form.Group>
-            <Button className="btn-Selection">
+            <Button
+              className="btn-Selection"
+              onClick={() => setAdministrator(false)}
+            >
               <Image
                 src="https://imgur.com/vGj6QjL.png"
                 thumbnail
@@ -50,7 +67,10 @@ const SignUp = ({ history }) => {
             </Button>
           </Form.Group>
           <Form.Group>
-            <Button className="btn-Selection">
+            <Button
+              className="btn-Selection"
+              onClick={() => setAdministrator(true)}
+            >
               <Image
                 src="https://imgur.com/tAuaIZp.png"
                 thumbnail

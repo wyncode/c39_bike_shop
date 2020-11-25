@@ -1,12 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import '../App.css';
 
 const BikeShopCard = ({ bikeshop }) => {
   return (
-    // Can we put an href on the card?
     <div>
-      <Card href="/bikeshopPDP" className="d-flex flex-row">
+      <Card className="d-flex flex-row">
         <Card.Body>
           <Card.Img
             className="shopimg1"
