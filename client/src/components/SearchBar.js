@@ -1,18 +1,20 @@
-import React from 'react';
-import { Container, FormControl } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Container, Form } from 'react-bootstrap';
 
-const SearchBar = () => {
-  const handleSearch = () => {};
+import { AppContext } from '../context/AppContext';
 
+const SearchBar = ({ handleSearchProp }) => {
   return (
     <div>
       <Container>
-        <FormControl
-          onChange={handleSearch}
-          type="text"
-          placeholder="Select Your Bike Shop"
-          size="lg"
-        />
+        <Form>
+          <Form.Control
+            onChange={handleSearchProp}
+            type="number"
+            placeholder="Enter your zip code"
+            size="lg"
+          />
+        </Form>
       </Container>
     </div>
   );

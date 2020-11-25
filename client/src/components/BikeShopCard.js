@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import '../App.css';
 
-const BikeShopCard = () => {
+const BikeShopCard = ({ bikeshop }) => {
   return (
     <div>
       <Card className="d-flex flex-row">
@@ -15,10 +15,13 @@ const BikeShopCard = () => {
         </Card.Body>
 
         <Card.Body>
-          <Card.Title>City Bikes</Card.Title>
-          <Card.Text>888 Bike Chain Road, Miami, Florida, 33137</Card.Text>
-          <Card.Text>305-305-3053</Card.Text>
-          <Card.Text>305-305-3053</Card.Text>
+          <Card.Title>{bikeshop?.shopName}</Card.Title>
+          <Card.Text>
+            {bikeshop?.shopContact.street} {bikeshop?.shopContact.city}{' '}
+            {bikeshop?.shopContact.state} {bikeshop?.shopContact.zipCode}
+          </Card.Text>
+          <Card.Text>{bikeshop?.shopContact.email}</Card.Text>
+          <Card.Text>{bikeshop?.shopContact.website}</Card.Text>
         </Card.Body>
       </Card>
     </div>
