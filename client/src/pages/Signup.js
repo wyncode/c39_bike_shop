@@ -51,28 +51,33 @@ const SignUp = ({ history }) => {
         <h2>Sign up with your email address</h2>
         <Link to="/login">Have an account? Login</Link>
       </div>
-      <Form onChange={handleSignUp} className="d-flex flex-column">
+      <Form onSubmit={handleSignUp} className="d-flex flex-column">
+        <Form.Group controlId="formBasicName">
+          <Form.Label>What should we call you?</Form.Label>
+        </Form.Group>
+        <Form.Group>
+          <Form.Control
+            type="name"
+            placeholder="Enter your profile name."
+            id="name"
+            onChange={handleChange}
+            name="name"
+          />
+        </Form.Group>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>What is your email?</Form.Label>
+        </Form.Group>
+        <Form.Group>
           <Form.Group>
             <Form.Control
               type="email"
               placeholder="Enter your email."
               size="lg"
               onChange={handleChange}
+              id="email"
+              name="email"
             />
           </Form.Group>
-        </Form.Group>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Confirm your email</Form.Label>
-        </Form.Group>
-        <Form.Group>
-          <Form.Control
-            type="email"
-            placeholder="Enter email again."
-            size="lg"
-            onChange={handleChange}
-          />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Create a password</Form.Label>
@@ -80,13 +85,9 @@ const SignUp = ({ history }) => {
             type="password"
             placeholder="Create a password with a least 8 characters"
             onChange={handleChange}
+            id="password"
+            name="password"
           />
-        </Form.Group>
-        <Form.Group controlId="formBasicName">
-          <Form.Label>What should we call you?</Form.Label>
-        </Form.Group>
-        <Form.Group>
-          <Form.Control type="name" placeholder="Enter your profile name." />
         </Form.Group>
         <p>Do you prefer email or text notifications?</p>
         <Form.Group controlId="formBasicCheckbox">
