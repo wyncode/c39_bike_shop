@@ -18,7 +18,7 @@ exports.createCyclist = async (req, res) => {
       bicycles,
       user: req.user._id
     });
-    console.log(cyclist);
+
     await cyclist.save();
     res.status(201).json(cyclist);
   } catch (e) {
@@ -41,6 +41,10 @@ exports.getCurrentCyclist = async (req, res) => {
           { path: 'bikeshop', model: 'Bikeshop' },
           { path: 'repairs', model: 'Repair' }
         ]
+      },
+      populate: {
+        path: 'bikes',
+        model: 'Bicycle'
       }
     });
     res.send({
