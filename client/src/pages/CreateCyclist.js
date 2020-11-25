@@ -7,10 +7,16 @@ import swal from 'sweetalert';
 const SignUp = ({ history }) => {
   const { setCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
+  const [preview, setPreview] = useState(null);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     console.log(formData);
+  };
+
+  const handleImageSelect = (e) => {
+    setPreview(URL.createObjectURL(e.target.files[0]));
+    setImage(e.target.files[0]);
   };
 
   const handleCreate = async (e) => {
@@ -42,6 +48,7 @@ const SignUp = ({ history }) => {
             id="exampleFormControlFile1"
             label="Upload a profile picture"
             name="avatar"
+            onChange={handleImageSelect}
           />
         </Form.Group>
         <Form.Group controlId="formBasic">
