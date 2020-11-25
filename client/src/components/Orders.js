@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Orders = () => {
   return (
     <div class="d-flex justify-content-center">
-      <Card style={{ width: '80vw' }}>
+      <Card style={{ width: '50vw' }}>
         <ListGroup variant="flush">
           <Link>
             <ListGroup.Item>Traci Levine #4444</ListGroup.Item>

@@ -1,6 +1,7 @@
 .sidebar {
-  background-color: whitesmoke !important;
+  background-color: white !important;
   color: #ec4568 !important;
+  border: none;
 }
 
 .profileTop {
@@ -13,19 +14,57 @@
   background: gray;
   margin-top: 200px;
   margin-bottom: -30px;
-  border: 4px whitesmoke solid;
+  border: 5px whitesmoke solid;
 }
 
 .userName {
   font-family: 'Khand';
-  font-size: 2vw;
+  font-size: 10vw;
+  color: grey;
 }
 .profilePage {
-  background-size: cover;
-  background: rgb(211, 211, 211);
-  background: radial-gradient(
-    circle,
-    rgba(211, 211, 211, 1) 4%,
-    rgba(105, 105, 105, 1) 60%
-  );
+  background: linear-gradient(180deg, #40fff7 0%, rgba(196, 196, 196, 0) 100%);
+}
+
+.chatbox {
+  background: whitesmoke;
+  height: 40vh;
+}
+.profileImg-sm {
+  height: 3vh;
+  width: 3vw;
+  background: grey;
+}
+
+.chat {
+  background: grey;
+}
+
+.heading {
+  border-bottom: 1px grey solid;
+  font-family: 'Khand';
+  color: black;
+  text-align: center;
+}
+
+.upload {
+  margin-left: 52%;
+  z-index: 1;
+}
+.coverPhotoUpload {
+  margin-top: -50px;
+  margin-left: 95%;
+}
+.addBio {
+  background: transparent;
+  border: none;
+  color: #ec4568;
+}
+.addBio:focus,
+.addBio:active,
+.addBio:hover {
+  color: #ec4568;
+  background-color: #fff;
+  border-color: #ccc;
+  outline: 0;
 }

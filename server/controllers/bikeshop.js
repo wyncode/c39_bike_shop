@@ -11,6 +11,7 @@ exports.getAllBikeshops = (req, res) => {
     .then((bikeshops) => res.status(200).json(bikeshops))
     .catch((err) => res.status(500).json('Error: ' + err));
 };
+
 exports.getBikeshopById = async (req, res) => {
   try {
     const bikeshop = await Bikeshop.findById(req.params.id)
