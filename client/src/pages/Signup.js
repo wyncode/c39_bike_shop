@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, Image, Card } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
+import '../components/styles/login.css';
 
 const SignUp = ({ history }) => {
   const { setCurrentUser } = useContext(AppContext);
@@ -31,27 +32,39 @@ const SignUp = ({ history }) => {
       className="ds-flex justify-content-center align-items-center"
       width="700px"
     >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: '20px'
-        }}
-      >
-        <h1>Welcome to The Bike Shop!</h1>
-        <Button className="btn-pink-xlg" size="lg" block>
-          {' '}
-          Sign Up With Facebook{' '}
-        </Button>
-        <hr />
-        <p>or</p>
-        <hr />
-        <h2>Sign up with your email address</h2>
-        <Link to="/login">Have an account? Login</Link>
-      </div>
       <Form onSubmit={handleSignUp} className="d-flex flex-column">
+        <h1 className="m-auto">Welcome to The Bike Shop!</h1>
+
+        <Form.Label className="text-center">
+          {' '}
+          Are you a Cyclist or a Shop Owner?
+        </Form.Label>
+        <div className="d-flex justify-content-evenly m-auto">
+          <Form.Group>
+            <Button className="btn-Selection">
+              <Image
+                src="https://imgur.com/vGj6QjL.png"
+                thumbnail
+                className="tn"
+              />
+            </Button>
+          </Form.Group>
+          <Form.Group>
+            <Button className="btn-Selection">
+              <Image
+                src="https://imgur.com/tAuaIZp.png"
+                thumbnail
+                className="tn"
+              />
+            </Button>
+          </Form.Group>
+        </div>
+
+        <h2 className="m-auto">Sign up with your email address</h2>
+        <Link to="/login" className="m-auto">
+          Have an account? Login
+        </Link>
+
         <Form.Group controlId="formBasicName">
           <Form.Label>What should we call you?</Form.Label>
         </Form.Group>
