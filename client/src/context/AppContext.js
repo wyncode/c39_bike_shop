@@ -36,7 +36,8 @@ export const AppContextProvider = ({ children }) => {
         search,
         setSearch,
         bikeshops,
-        setBikeshops
+        setBikeshops,
+        setRepairSelection
       }}
     >
       {children}
