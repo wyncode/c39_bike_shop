@@ -13,7 +13,9 @@ const express = require('express'),
   passport = require('./middleware/authentication/index'),
   fileUpload = require('express-fileupload'),
   cookieParser = require('cookie-parser'),
-  path = require('path');
+  path = require('path'),
+  http = require('http'),
+  MessgaingResponse = require('twilio').twiml.MessagingResponse;
 
 // Parse incoming JSON into objects
 app.use(express.json());
@@ -39,6 +41,14 @@ app.use(
 //Authenticated Routes
 app.use('/api/*', passport.authenticate('jwt', { session: false }));
 
+//twilio
+app.post('/sms', (req, res) => {
+  const twiml = new MessagingResponse();
+  twiml.message('The Robots are coming! Head for the hills!');
+  res.writeHead(200, { 'Content-Type': 'text/xm;' });
+  res.end(twiml.toString());
+});
+
 app.use('/api/user', userRouter);
 app.use('/api/cyclist', cyclistRouter);
 app.use('/api/bikeshop', bikeshopRouter);
@@ -55,5 +65,9 @@ if (process.env.NODE_ENV === 'production') {
     );
   });
 }
+
+http.createServer(app).listen(1337, () => {
+  console.log('Express server listening on port 1337');
+});
 
 module.exports = app;
