@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Form, Button, Image } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -39,7 +39,6 @@ const SignUp = ({ history }) => {
           marginTop: '20px'
         }}
       >
-        {/* <Image src="https://imgur.com/9pCKdyL.png" alt="progress-3"  height="65px" width="400px" className="mt-4" /> */}
         <h1>Welcome to The Bike Shop!</h1>
         <Button className="btn-pink-xlg" size="lg" block>
           {' '}

@@ -70,24 +70,6 @@ exports.deleteRepair = async (req, res) => {
 };
 
 // ***********************************************//
-// Get a specific Repair
-// ***********************************************//
-
-exports.getSpecificRepair = async (req, res) => {
-  const _id = req.params.id;
-  if (!mongoose.Types.ObjectId.isValid(_id))
-    return res.status(400).json({ message: 'not a valid repair' });
-
-  try {
-    const repair = await repair.findOne({ _id });
-    if (!repair) return res.status(400).json({ message: 'repair not found' });
-    res.status(200).json(repair);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-// ***********************************************//
 // Get a all repairs
 // ***********************************************//
 

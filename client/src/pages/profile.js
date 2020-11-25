@@ -1,19 +1,26 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Container, Image, Card } from 'react-bootstrap';
+import SideBar from '../components/SideBar';
+import UserInfo from '../components/UserInfo';
+import '../components/styles/profile.css';
 
-const profile = () => {
+const Profile = () => {
   return (
-    <Form>
-      <Form.Group>
-        <Form.Label>UserName</Form.Label>
-        <Button>Update Username</Button>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Phone Number </Form.Label>
-        <Form.Control></Form.Control>
-      </Form.Group>
-    </Form>
+    <div>
+      <Container className="profilePage d-flex align-items-center flex-column">
+        <Card className="d-flex flex-column align-items-center profileTop mt-3">
+          <Image
+            src="https://imgur.com/PCEcljZ.png"
+            className="profileImg"
+            roundedCircle
+          />
+        </Card>
+
+        <SideBar />
+        <UserInfo />
+      </Container>
+    </div>
   );
 };
 
-export default profile;
+export default Profile;

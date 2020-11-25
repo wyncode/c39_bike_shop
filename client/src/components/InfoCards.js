@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Button, Image, CardDeck, Card } from 'react-bootstrap';
+import { CardDeck, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export default function InfoCards() {

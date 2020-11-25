@@ -61,14 +61,14 @@ userSchema.virtual('bikeshop', {
   ref: 'Bikeshop',
   localField: '_id',
   foreignField: 'owner',
-  onlyOne: true
+  justOne: true
 });
 
 userSchema.virtual('cyclist', {
   ref: 'Cyclist',
   localField: '_id',
   foreignField: 'user',
-  onlyOne: true
+  justOne: true
 });
 
 // By naming this method toJSON we don't need to call it to run because the express response will do it for us.
