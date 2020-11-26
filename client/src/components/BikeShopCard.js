@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
+import { Image, Container, Card } from 'react-bootstrap';
 import '../App.css';
 
 const BikeShopCard = ({ bikeshop }) => {
@@ -8,25 +8,26 @@ const BikeShopCard = ({ bikeshop }) => {
   return (
     <div>
       <Card
-        className="d-flex flex-row"
+        className="bikeshopCard"
         onClick={() => history.push(`/bikeshoppdp/${bikeshop._id}`)}
       >
-        <Card.Body>
-          <Card.Img
-            className="shopimg1"
-            src="https://i.imgur.com/50JZigU.png"
-            alt="Bike Shop Logo"
-          />
-        </Card.Body>
+        <Image
+          src="https://imgur.com/gADnyXW.png"
+          alt="bikeshop logo"
+          className="bikeshopLogo"
+        />
 
-        <Card.Body>
-          <Card.Title>{bikeshop?.shopName}</Card.Title>
-          <Card.Text>
-            {bikeshop?.shopContact.street} {bikeshop?.shopContact.city}{' '}
+        <Card.Body
+          className="d-flex flex-column align-item-between"
+          className="shopContact"
+        >
+          <Card.Title className="shopName">{bikeshop?.shopName}</Card.Title>
+          <Card.Text className="shopData">
+            {bikeshop?.shopContact.street} {bikeshop?.shopContact.city},{' '}
             {bikeshop?.shopContact.state} {bikeshop?.shopContact.zipCode}
           </Card.Text>
-          <Card.Text>{bikeshop?.shopContact.email}</Card.Text>
-          <Card.Text>{bikeshop?.shopContact.website}</Card.Text>
+          <Card.Text className="shopData">{bikeshop?.phone}</Card.Text>
+          <Card.Text className="shopData reviewData">Reviews ****</Card.Text>
         </Card.Body>
       </Card>
     </div>
