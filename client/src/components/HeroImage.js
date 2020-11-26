@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useHistory } from 'react';
 import { Card, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
-const HeroImage = () => {
+export default function HeroImage() {
+  let history = useHistory();
+  const handleClick = () => {
+    history.push('/login');
+  };
+
   return (
     <Card>
       <Card.Img src="https://imgur.com/ky2VSB5.png" alt="Hero Image" />
@@ -10,12 +14,15 @@ const HeroImage = () => {
         <Card.Title className="HeroTitle">
           Easily Track My Bike Repairs
         </Card.Title>
-        <Link to="/signup" className="btn-holder ml-auto">
-          <Button className="btn-pink-sm ">Get Started</Button>
-        </Link>
+        <Button
+          className="btn-pink-sm btn-holder ml-auto"
+          onClick={handleClick}
+        >
+          Get Started
+        </Button>
       </Card.ImgOverlay>
     </Card>
   );
-};
+}
 
 export default HeroImage;
