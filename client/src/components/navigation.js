@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Dropdown, Image } from 'react-bootstrap';
 import Logout from './Logout';
-import Login from '../pages/Login';
 
 const Navigation = () => {
   return (

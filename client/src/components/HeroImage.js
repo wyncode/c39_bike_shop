@@ -1,12 +1,7 @@
-import React, { useHistory } from 'react';
+import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
-export default function HeroImage() {
-  let history = useHistory();
-  const handleClick = () => {
-    history.push('/login');
-  };
-
+const HeroImage = ({ history }) => {
   return (
     <Card>
       <Card.Img src="https://imgur.com/ky2VSB5.png" alt="Hero Image" />
@@ -16,11 +11,15 @@ export default function HeroImage() {
         </Card.Title>
         <Button
           className="btn-pink-sm btn-holder ml-auto"
-          onClick={handleClick}
+          onSubmit={() => {
+            history.push('/signup');
+          }}
         >
           Get Started
         </Button>
       </Card.ImgOverlay>
     </Card>
   );
-}
+};
+
+export default HeroImage;

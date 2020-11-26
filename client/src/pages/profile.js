@@ -5,7 +5,7 @@ import Chat from '../components/Chat';
 import '../components/styles/profile.css';
 import FileUploader from '../components/Fileuploader';
 
-const Profile = () => {
+const Profile = ({ user }) => {
   return (
     <>
       <div className="profilePage">
