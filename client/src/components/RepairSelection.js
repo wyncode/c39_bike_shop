@@ -17,9 +17,6 @@ const RepairSelection = ({ repair }) => {
 
   return (
     <Container className="mt-4">
-      <h2>Select your repairs</h2>
-
-      {/* //we need to on click that triggers therepair pop up */}
       <Button
         className="d-flex justify-content-between btnRep"
         size="lg"
