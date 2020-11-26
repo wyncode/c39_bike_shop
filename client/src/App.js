@@ -11,11 +11,8 @@ import BikeShopPDP from './pages/BikeShopPDP';
 import Appointment from './pages/Appointment';
 import Summary from './pages/Summary';
 import './App.css';
-import RepairPopUp from './components/RepairPopUp';
 import Navigation from './components/navigation';
-
 import Profile from './pages/profile';
-
 import ShopOwner from './pages/ShopOwner';
 import BikeControl from './pages/BikeControl';
 import CreateCyclist from './pages/CreateCyclist';
@@ -37,7 +34,6 @@ const App = () => {
           <Route exact path="/BikeShopPDP/:id" component={BikeShopPDP} />
           <Route exact path="/Appointment" component={Appointment} />
           <Route exact path="/Summary" component={Summary} />
-          <Route exact path="/RepairsPop" component={RepairPopUp} />
           <Route exact path="/Cyclist" component={CreateCyclist} />
           <Route exact path="/BikeShop" component={CreateBikeShop} />
           <Route exact path="/Profile" component={Profile} />
