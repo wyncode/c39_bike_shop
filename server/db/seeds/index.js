@@ -2,7 +2,6 @@ if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 //Import the DB connection
 require('../config/index');
 
-const { lorem } = require('faker');
 const User = require('../models/user'),
   Cyclist = require('../models/cyclist'),
   Bikeshop = require('../models/bikeshop'),
@@ -118,7 +117,16 @@ const dbReset = async () => {
     }
   }
   await Repair.insertMany(repairsToCreate);
-  console.log('inserted repairs!');
+
+  const savedRepairs = await Repair.find();
+  repairs.push(...savedRepairs);
+
+  for (let i = 0; i < repairs.length; i++) {
+    const repair = repairs[i];
+    const bikeshopToUpdate = await Bikeshop.findById(repair.bikeshop);
+    bikeshopToUpdate.repairs.push(repair);
+    await bikeshopToUpdate.save();
+  }
 
   for (let i = 0; i < cyclists.length; i++) {
     for (let i = 0; i < 3; i++) {
