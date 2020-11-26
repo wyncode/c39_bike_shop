@@ -23,9 +23,9 @@ const SignUp = ({ history }) => {
       sessionStorage.setItem('user', response.data);
       setCurrentUser(response.data);
       if (response.data.admin) {
-        history.push('/Bikeshop');
+        history.push('/bikeshop');
       } else {
-        history.push('/Cyclist');
+        history.push('/cyclist');
       }
     } catch (error) {
       swal('SignUp Error: ', error.toString());
