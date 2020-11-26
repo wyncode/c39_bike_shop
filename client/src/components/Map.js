@@ -1,5 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
+import ReactMapboxGl from 'react-mapbox-gl';
+import '../components/styles/shoplist.css';
 
 const Map = () => {
   return (
