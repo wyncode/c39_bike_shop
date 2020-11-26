@@ -10,7 +10,8 @@ export const AppContextProvider = ({ children }) => {
   const [search, setSearch] = useState('');
   const user = sessionStorage.getItem('user');
   const [bikeshops, setBikeshops] = useState([]);
-  const [RepairSelection, setRepairSelection] = useState([]);
+  const [repair, setRepair] = useState([]);
+  const [bikeshop, setBikeshop] = useState(null);
 
   useEffect(() => {
     if (user && !currentUser) {
@@ -38,7 +39,10 @@ export const AppContextProvider = ({ children }) => {
         setSearch,
         bikeshops,
         setBikeshops,
-        setRepairSelection
+        setRepair,
+        repair,
+        bikeshop,
+        setBikeshop
       }}
     >
       {children}

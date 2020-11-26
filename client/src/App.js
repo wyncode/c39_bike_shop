@@ -14,7 +14,6 @@ import './App.css';
 import RepairPopUp from './components/RepairPopUp';
 import Navigation from './components/navigation';
 
-
 import Profile from './pages/profile';
 
 import ShopOwner from './pages/ShopOwner';
@@ -35,7 +34,7 @@ const App = () => {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/Confirmation" component={Confirmation} />
-          <Route exact path="/BikeShopPDP" component={BikeShopPDP} />
+          <Route exact path="/BikeShopPDP/:id" component={BikeShopPDP} />
           <Route exact path="/Appointment" component={Appointment} />
           <Route exact path="/Summary" component={Summary} />
           <Route exact path="/RepairsPop" component={RepairPopUp} />

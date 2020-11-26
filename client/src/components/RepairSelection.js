@@ -1,30 +1,83 @@
-import React from 'react';
-import { Container, Button, Image } from 'react-bootstrap';
+import React, { useState } from 'react';
+import {
+  Modal,
+  Button,
+  Form,
+  ModalFooter,
+  Collapse,
+  Container
+} from 'react-bootstrap';
 
-const RepairSelection = () => {
+const RepairSelection = ({ repair }) => {
+  const handleClick = () => {};
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <Container className="mt-4">
       <h2>Select your repairs</h2>
-      <Button className="d-flex justify-content-between btnRep" size="lg" block>
-        <p>Flat Tire Tube Replacement</p>
-        <p>$15.00</p>
+
+      {/* //we need to on click that triggers therepair pop up */}
+      <Button
+        className="d-flex justify-content-between btnRep"
+        size="lg"
+        block
+        onClick={handleShow}
+      >
+        <p>{repair?.repair}</p>
+        <p>{repair?.price}</p>
       </Button>
-      <Button className="d-flex justify-content-between btnRep" size="lg" block>
-        <p>Wheel Truing(excludes tube price)</p>
-        <p>$15.00</p>
-      </Button>
-      <Button className="d-flex justify-content-between btnRep" size="lg" block>
-        <p>Cassette/Cog/Freewheel install or removal</p>
-        <p>$15.00</p>
-      </Button>
-      <Button className="d-flex justify-content-between btnRep" size="lg" block>
-        Brake/Gear cable install w/ adjustment
-        <p>$15.00</p>
-      </Button>
-      <Button className="d-flex justify-content-between btnRep" size="lg" block>
-        Bike wash and Tune Up
-        <p>$15.00</p>
-      </Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Dialog>
+          <Modal.Header className="close-btn" closeButton></Modal.Header>
+
+          <Modal.Body className="d-flex flex-column justify-content-center modal-bd">
+            <h1 className="modal-bd">{repair?.name}</h1>
+            <p>{repair?.description}</p>
+            <Button
+              className="btnModal"
+              size="sm"
+              onClick={() => setShow(!show)}
+              aria-controls="example-collapse-text"
+              aria-expanded={show}
+            >
+              Learn More{' '}
+              <svg
+                width="9"
+                height="6"
+                viewBox="0 0 9 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4.41176 6L0.438236 0.75L8.38529 0.75L4.41176 6Z"
+                  fill="black"
+                />
+              </svg>{' '}
+            </Button>
+            <Collapse in={show}>
+              <div id="example-collapse-text">asdasdfasfasf</div>
+            </Collapse>
+
+            <h6 className="mt-4">
+              Repairs may typically take up to 24-48 hours for completion. In
+              some cases repairs take longer
+            </h6>
+            <Form className="d-flex flex-column mt-5">
+              <Form.Group>
+                <Form.Check type="checkbox" label="Select this repair" />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <ModalFooter className="d-flex justify-content-center modal-ft">
+            <Button onClick={handleClick} className="btn-pink-sm-md mt-2">
+              Confirm
+            </Button>
+          </ModalFooter>
+        </Modal.Dialog>
+      </Modal>
     </Container>
   );
 };

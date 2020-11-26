@@ -1,13 +1,13 @@
 import React from 'react';
 import { Card, Container } from 'react-bootstrap';
 
-const ShopInfo = () => {
+const ShopInfo = ({ bikeshop }) => {
   return (
     <div>
       <Container>
         <Card>
           <Card.Body>
-            <Card.Title>Hipster Bike Shop</Card.Title>
+            <Card.Title>{bikeshop?.shopName}</Card.Title>
             <Card.Text>
               Pop-up bicycle rights polaroid kickstarter intelligentsia cray, +1
               artisan hoodie selfies biodiesel church-key blog taxidermy
