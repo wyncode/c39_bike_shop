@@ -1,7 +1,6 @@
 const ServiceOrder = require('../db/models/serviceOrder');
 const Bikeshop = require('../db/models/bikeshop');
 const Cyclist = require('../db/models/cyclist');
-const Repair = require('../db/models/repair');
 
 exports.createOrder = async (req, res) => {
   try {
@@ -64,22 +63,10 @@ exports.deleteOrderById = (req, res) => {
 };
 
 exports.getOrderById = async (req, res) => {
-  try {
-    let resp = await ServiceOrder.findById(req.params.id);
-    let order = {};
-    order.data = {
-      _id: resp._id,
-      dropoffDate: resp.dropoffDate,
-      expectedPickup: resp.expectedPickup,
-      progress: resp.progress
-    };
+  const order = await ServiceOrder.findById(req.order._id)
+    .populate('bikeshop')
+    .populate('repairs')
+    .populate('cyclist');
 
-    const repairsIdArr = resp.repairs.map((item) => item._id);
-    const repairs = await Repair.find().where('_id').in(repairsIdArr).exec();
-    order.repairs = repairs;
-
-    res.status(200).json(order);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+  res.send(order);
 };
