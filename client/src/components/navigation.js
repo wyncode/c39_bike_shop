@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Dropdown, Image } from 'react-bootstrap';
+import Logout from './Logout';
+
 const Navigation = () => {
   return (
     <Navbar bg="light" expand="lg">
@@ -44,7 +46,7 @@ const Navigation = () => {
                 <Dropdown.Item as={Link} to="/profile">
                   Profile
                 </Dropdown.Item>
-                {/* <Logout /> */}
+                <Logout />
               </Dropdown.Menu>
             </Dropdown>
           </Nav.Item>
