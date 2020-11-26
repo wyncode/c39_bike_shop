@@ -44,9 +44,9 @@
   text-decoration: underline;
 }
 .shopContact {
-  height: 10vh;
   width: 100%;
   margin-right: 0px;
+  margin-left: 20px;
 }
 .bikeshopCard {
   margin-top: 5px;
@@ -58,6 +58,9 @@
 .reviewCard {
   width: 75%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .footer {
   width: 100%;
@@ -73,5 +76,6 @@
   text-decoration: underline;
   color: #818181;
   font-family: 'Actor';
-  font-size: 1rem !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 10px;
 }

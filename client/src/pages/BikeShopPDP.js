@@ -25,18 +25,10 @@ const BikeShopPDP = ({ match, history }) => {
       <Container className="d-flex flex-column align-items-center justify-content-center">
         <Map />
         <BikeShopCard bikeshop={bikeshop} />
-        <div className="review">
-          <hr
-            style={{
-              color: '#ec4568',
-              background: '#ec4568',
-              height: 0.5,
-              width: '50%',
-              border: '0.5px solid #ec4568'
-            }}
-          />
+        <hr className="pink-line-page-break" />
+        <Card className="review">
           <Review bikeshop={bikeshop} />
-        </div>
+        </Card>
         <Button
           className="btn-pink-lg-lng"
           onClick={() => history.push(`/repairs/${bikeshop?._id}`)}
@@ -48,6 +40,7 @@ const BikeShopPDP = ({ match, history }) => {
           Back to Bike Shop List
         </Link>
       </Container>
+      <Footer />
     </>
   );
 };
