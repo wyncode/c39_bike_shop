@@ -1,7 +1,8 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const HeroImage = ({ history }) => {
+const HeroImage = () => {
   return (
     <Card>
       <Card.Img src="https://imgur.com/ky2VSB5.png" alt="Hero Image" />
@@ -9,14 +10,9 @@ const HeroImage = ({ history }) => {
         <Card.Title className="HeroTitle">
           Easily Track My Bike Repairs
         </Card.Title>
-        <Button
-          className="btn-pink-sm btn-holder ml-auto"
-          onSubmit={() => {
-            history.push('/signup');
-          }}
-        >
-          Get Started
-        </Button>
+        <Link to="/Signup" className="btn-holder ml-auto">
+          <Button className="btn-pink-sm ">Get Started</Button>
+        </Link>
       </Card.ImgOverlay>
     </Card>
   );
