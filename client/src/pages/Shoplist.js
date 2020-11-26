@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import Map from '../components/Map';
 import SearchBar from '../components/SearchBar';
-
+import 'mapbox-gl/dist/mapbox-gl.css';
 import { Container, Card } from 'react-bootstrap';
 import Footer from '../components/Footer';
 import '../components/styles/shoplist.css';
@@ -9,6 +9,7 @@ import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import BikeShopCard from '../components/BikeShopCard';
 import swal from 'sweetalert';
+import ReactMapboxGl from 'react-mapbox-gl';
 
 const Shoplist = () => {
   const { setBikeshops, search, loading, bikeshops, setSearch } = useContext(
@@ -24,6 +25,12 @@ const Shoplist = () => {
   };
 
   // setLoading(true);
+
+  //create mapboxfunction
+
+  const Mapbox = ReactMapboxGl({
+    accessToken: process.env.REACT_APP_MAPBOX_API_KEY
+  });
 
   useEffect(() => {
     axios
@@ -43,6 +50,7 @@ const Shoplist = () => {
           <Card.Text className="srch-hdr">Select your Bike Shop:</Card.Text>
           <SearchBar handleSearchProp={handleSearch} loading={loading} />
         </Card>
+        {/* // Here we render Mapbox */}
         <Map />
 
         <Card>
