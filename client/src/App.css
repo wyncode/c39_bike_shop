@@ -34,6 +34,18 @@
   border-radius: 45px;
   border: transparent;
 }
+
+.btn-pink-lg-lng {
+  width: 43vw;
+  height: 6vh;
+  left: 20px;
+  top: 177px;
+  background: #ec4568 !important;
+  border-radius: 45px;
+  font-family: 'Actor';
+  border: transparent;
+}
+
 .btn-pink-md {
   width: 26vw;
   height: 10vh;
@@ -54,4 +66,11 @@
   background: transparent;
   width: 332px;
   height: 50px;
+}
+
+.pink-line-page-break {
+  background: #ec4568;
+  height: 0.5;
+  width: 50%;
+  border: 0.5 solid #ec4568;
 }

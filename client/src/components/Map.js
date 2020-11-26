@@ -1,11 +1,15 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
 
 const Map = () => {
   return (
     <div>
       <Container>
-        <h1>Map Component</h1>
+        <Image
+          className="map"
+          src="https://thumbs.dreamstime.com/z/square-map-river-streets-parks-vector-54040512.jpg"
+          alt="map"
+        />
       </Container>
     </div>
   );
