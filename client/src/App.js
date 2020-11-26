@@ -19,7 +19,7 @@ import CreateCyclist from './pages/CreateCyclist';
 import CreateBikeShop from './pages/CreateBikeshop';
 import Events from './pages/Events';
 import Trails from './pages/Trails';
-import Community from './pages/community';
+import Community from './pages/Community';
 import AboutUs from './components/AboutUs';
 
 const App = () => {
