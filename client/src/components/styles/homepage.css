@@ -82,16 +82,35 @@
 }
 .socialContainer {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
+  margin-top: 10px;
 }
 .socialHolder {
   display: flex;
-  flex-direction: column;
-  align-items: space-evenly;
-  justify-content: center;
+  justify-content: space-evenly;
+}
+.linkHolder {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .wrapper {
   width: 1400px;
   margin: 0 auto;
+}
+
+.page-footer {
+  margin-top: 10px;
+  height: 5%;
+}
+.socialImg {
+  height: 5vh;
+  width: 3vw;
+}
+
+.line {
+  background: #ec4568;
+  border: 1px solid #ec4568;
+  width: 100%;
 }
