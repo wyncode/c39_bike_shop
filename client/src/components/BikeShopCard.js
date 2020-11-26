@@ -4,9 +4,13 @@ import { Card } from 'react-bootstrap';
 import '../App.css';
 
 const BikeShopCard = ({ bikeshop }) => {
+  const history = useHistory();
   return (
     <div>
-      <Card className="d-flex flex-row">
+      <Card
+        className="d-flex flex-row"
+        onClick={() => history.push(`/bikeshoppdp/${bikeshop._id}`)}
+      >
         <Card.Body>
           <Card.Img
             className="shopimg1"

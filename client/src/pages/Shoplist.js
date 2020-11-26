@@ -10,7 +10,6 @@ import axios from 'axios';
 import BikeShopCard from '../components/BikeShopCard';
 import swal from 'sweetalert';
 
-
 const Shoplist = () => {
   const { setBikeshops, search, loading, bikeshops, setSearch } = useContext(
     AppContext
@@ -55,9 +54,6 @@ const Shoplist = () => {
         })}
 
         <Footer />
-
-        
-    
       </Container>
     </div>
   );
