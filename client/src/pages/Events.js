@@ -1,43 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Form, Card } from 'react-bootstrap';
+import EventCard from '../components/EventCard';
 
 const Events = () => {
-  //this needs work but will be events page
-  const [search, setSearch] = useState('');
-  const [apiData, setApiData] = useState({});
+  const [apiData, setApiData] = useState([]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setSearch(event.target.elements.searchbar.value);
-  };
   useEffect(() => {
     const fetchData = async () => {
-      let response = await axios.get(
-        `http://www.BikeReg.com/api/search/${search}`
-      );
-
-      setApiData(response.data);
+      await axios({
+        method: 'GET',
+        url: '/api/events'
+      }).then((response) => {
+        setApiData(response.data);
+        console.log(response.data);
+      });
     };
     fetchData();
-  }, [search]);
-
-  console.log(apiData);
+  }, []);
 
   return (
     <div>
-      <Form onSubmit={handleSubmit} style={{ margin: '2rem' }}>
-        <Form.Row>
-          <Form.Control
-            id="searchbar"
-            size="lg"
-            type="text"
-            placeholder="Search for something!"
-          ></Form.Control>
-        </Form.Row>
-      </Form>
-
-      <Card></Card>
+      {apiData &&
+        apiData.map((event) => {
+          return <EventCard key={event._id} id={event._id} event={event} />;
+        })}
     </div>
   );
 };
