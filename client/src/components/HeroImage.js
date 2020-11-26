@@ -10,7 +10,7 @@ const HeroImage = () => {
         <Card.Title className="HeroTitle">
           Easily Track My Bike Repairs
         </Card.Title>
-        <Link to="/Signup" className="btn-holder ml-auto">
+        <Link to="/signup" className="btn-holder ml-auto">
           <Button className="btn-pink-sm ">Get Started</Button>
         </Link>
       </Card.ImgOverlay>

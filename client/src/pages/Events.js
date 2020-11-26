@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Form, Card } from 'react-bootstrap';
 
 const Events = () => {
+  //this needs work but will be events page
   const [search, setSearch] = useState('');
   const [apiData, setApiData] = useState({});
 

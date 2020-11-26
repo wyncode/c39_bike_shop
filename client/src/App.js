@@ -17,6 +17,10 @@ import ShopOwner from './pages/ShopOwner';
 import BikeControl from './pages/BikeControl';
 import CreateCyclist from './pages/CreateCyclist';
 import CreateBikeShop from './pages/CreateBikeshop';
+import Events from './pages/Events';
+import Trails from './pages/Trails';
+import Community from './pages/community';
+import AboutUs from './components/AboutUs';
 
 const App = () => {
   return (
@@ -30,6 +34,10 @@ const App = () => {
           <Route exact path="/Shoplist" component={Shoplist} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Signup" component={Signup} />
+          <Route exact path="/trails" component={Trails} />
+          <Route exact path="/community" component={Community} />
+          <Route exact path="/aboutus" component={AboutUs} />
+          <Route exact path="/events" component={Events} />
           <Route exact path="/Confirmation" component={Confirmation} />
           <Route exact path="/BikeShopPDP/:id" component={BikeShopPDP} />
           <Route exact path="/Appointment" component={Appointment} />
