@@ -47,3 +47,13 @@ h2 {
   border: 1px solid #898989;
   border-radius: 4px;
 }
+
+.appName {
+  align-self: start;
+  font-family: 'Khand';
+  font-size: 3rem;
+}
+.bicycleImage {
+  height: 50%;
+  width: 50%;
+}
