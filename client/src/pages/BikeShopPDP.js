@@ -10,14 +10,15 @@ import axios from 'axios';
 const BikeShopPDP = ({ match, history }) => {
   const { setBikeshop, bikeshop } = useContext(AppContext);
   const id = match.params.id;
+
   useEffect(() => {
     axios
       .get(`/api/bikeshop/find/${id}`, { withCredentials: true })
       .then(({ data }) => {
-        console.log(data);
         setBikeshop(data);
       });
   }, []);
+
   return (
     <Container>
       <Map />
@@ -26,7 +27,7 @@ const BikeShopPDP = ({ match, history }) => {
       <Container>
         <Button
           className="btn-pink-lg"
-          onClick={() => history.push(`/repairs/${bikeshop._id}`)}
+          onClick={() => history.push(`/repairs/${bikeshop?._id}`)}
         >
           Select Repairs
         </Button>

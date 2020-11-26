@@ -31,21 +31,9 @@ const cyclistSchema = new mongoose.Schema(
       }
     ]
   },
-  { timestamps: true }
+  { timestamps: true, toJSON: { virtuals: true } }
 );
 
-//Creating relation between Cyclist and order
-cyclistSchema.virtual('serviceOrders', {
-  ref: 'ServiceOrder',
-  localField: '_id',
-  foreignField: 'cyclist'
-});
-
-cyclistSchema.virtual('bicycle', {
-  ref: 'Bicycle',
-  localField: '_id',
-  foreignField: 'owner'
-});
 //Creating relationship between Cyclist and Review
 cyclistSchema.virtual('reviews', {
   ref: 'Review',
