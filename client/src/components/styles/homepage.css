@@ -95,3 +95,18 @@
   width: 1400px;
   margin: 0 auto;
 }
+
+.page-footer {
+  margin-top: 10px;
+  height: 5%;
+}
+.socialImg {
+  height: 5vh;
+  width: 3vw;
+}
+
+.line {
+  background: #ec4568;
+  border: 1px solid #ec4568;
+  width: 100%;
+}
