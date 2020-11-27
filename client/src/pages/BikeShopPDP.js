@@ -22,11 +22,6 @@ const BikeShopPDP = ({ match, history }) => {
       });
   }, []);
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const handleChange = (e) => {
     setReviewData({ ...reviewData, [e.target.name]: e.target.value });
   };
@@ -50,16 +45,21 @@ const BikeShopPDP = ({ match, history }) => {
     }
   };
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <Container className="d-flex flex-column align-items-center justify-content-center">
         <Map />
         <BikeShopCard bikeshop={bikeshop} />
         <hr className="pink-line-page-break" />
-        <Button onSubmit={handleShow}>Add a Review</Button>
+        <Button onClick={handleShow}>Add a Review</Button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Dialog>
-            <Modal.Header closeButton>
+            <Modal.Header className="close-btn" closeButton>
               <Modal.Title>Add A Review</Modal.Title>
             </Modal.Header>
             <Modal.Body>
