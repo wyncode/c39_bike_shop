@@ -26,7 +26,6 @@ const Navigation = () => {
           <Nav.Item as={Link} to="/shoplist" className="mr-5">
             Bike Shops
           </Nav.Item>
-
           <Nav.Item as={Link} to="/community" className="mr-5">
             Community
           </Nav.Item>
