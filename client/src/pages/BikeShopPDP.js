@@ -26,10 +26,8 @@ const BikeShopPDP = ({ match, history }) => {
   const handleChange = (e) => {
     setReviewData({ ...reviewData, [e.target.name]: e.target.value });
   };
-  console.log(reviewData);
 
   const handleSubmit = async (e) => {
-    const form = e.target;
     e.preventDefault();
     try {
       const formData = new FormData();

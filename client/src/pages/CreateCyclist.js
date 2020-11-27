@@ -5,28 +5,41 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 const CreateCyclist = ({ history }) => {
-  const { setCurrentUser, setCyclist, cyclist } = useContext(AppContext);
+  const { setCurrentUser, setCyclist, cyclist, currentUser } = useContext(
+    AppContext
+  );
   const [formData, setFormData] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const [image, setImage] = useState(null);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     console.log(formData);
   };
 
-  const handleImageSelect = (e) => {
-    setPreview(URL.createObjectURL(e.target.files[0]));
-    setImage(e.target.files[0]);
-  };
-
   const handleCreate = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await axios.post('/api/cyclist', formData);
-      sessionStorage.setItem('cyclist', response.data);
-      setCyclist(response.data.cyclist);
-      history.push('/');
+      const cyclistData = new FormData();
+      cyclistData.append('zipcode', formData.zipcode);
+      cyclistData.append('phone', formData.phone);
+      cyclistData.append('user', currentUser);
+      // cyclistData.append('bikeName', cyclistData.bike.bikeName);
+      // cyclistData.append('bikeModel', cyclistData.bike.bikeModel);
+      // cyclistData.append('bikeType', cyclistData.bike.bikeType);
+      console.log(cyclistData);
+      const updatedCyclist = await axios({
+        method: 'POST',
+        url: `/api/cyclist`,
+        withCredentials: true,
+        cyclistData
+      });
+      console.log(updatedCyclist.data);
+      setCyclist(updatedCyclist.data);
+      // setCyclist(..., updatedCyclist.data )
+      // setCyclist(formData);
+      // history.push('/');
+
+      swal("Let's start riding");
     } catch (error) {
       swal('SignUp Error: ', error.toString());
     }
@@ -43,14 +56,6 @@ const CreateCyclist = ({ history }) => {
         <Image src="https://imgur.com/vGj6QjL.png" height="200px" />
       </div>
       <Form onSubmit={handleCreate} className="d-flex flex-column">
-        <Form.Group>
-          <Form.File
-            id="exampleFormControlFile1"
-            label="Upload a profile picture"
-            name="avatar"
-            onChange={handleImageSelect}
-          />
-        </Form.Group>
         <Form.Group controlId="formBasic">
           <Form.Label>What is your zipcode?</Form.Label>
 
@@ -73,13 +78,7 @@ const CreateCyclist = ({ history }) => {
           />
         </Form.Group>
 
-        <Button
-          type="submit"
-          className="btn-pink-sm m-auto"
-          onClick={() => {
-            history.push('/Shoplist');
-          }}
-        >
+        <Button type="submit" className="btn-pink-sm m-auto">
           Finished
         </Button>
       </Form>
