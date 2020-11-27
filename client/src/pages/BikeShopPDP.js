@@ -36,7 +36,7 @@ const BikeShopPDP = ({ match, history }) => {
           Select Repairs
         </Button>
 
-        <Link className="mt-4 shoplistLink" to="/Shoplist">
+        <Link className="mt-4 shoplistLink" to="/shoplist">
           Back to Bike Shop List
         </Link>
       </Container>
