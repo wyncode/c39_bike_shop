@@ -489,6 +489,11 @@ axios@^0.19.2:
   dependencies:
     follow-redirects "1.5.10"
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> c1aa5af... updates
 axios@^0.21.0:
   version "0.21.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.0.tgz#26df088803a2350dff2c27f96fef99fe49442aca"
