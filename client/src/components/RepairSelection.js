@@ -11,11 +11,7 @@ import {
 } from 'react-bootstrap';
 
 const RepairSelection = ({ repair }) => {
-  // console.log(repair)
   const { orders, bikeshop, currentUser, cyclist } = useContext(AppContext);
-  console.log('BIKESHOP', bikeshop);
-  console.log('CURRENTUSER', currentUser);
-  console.log('Cyclist', cyclist);
 
   const handleSubmit = async () => {
     const body = {

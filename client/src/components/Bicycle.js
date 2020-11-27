@@ -48,6 +48,8 @@ const Bicycle = ({ match, history }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+const Bicycle = () => {
+  const handleChange = () => {};
   return (
     <>
       <Button onClick={handleShow}>Add Bicycle</Button>

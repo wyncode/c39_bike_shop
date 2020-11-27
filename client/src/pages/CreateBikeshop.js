@@ -58,12 +58,12 @@ const CreateBikeshop = ({ history }) => {
       </div>
       <Form onSubmit={handleCreate} className="d-flex flex-column">
         <Form.Group>
-          <Form.File
+          {/* <Form.File
             id="exampleFormControlFile1"
             label="Upload your logo"
             name="logo"
             onChange={handleImageSelect}
-          />
+          /> */}
         </Form.Group>
         <Form.Group controlId="formBasic">
           <Form.Label>What is your shop's name?</Form.Label>
