@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import Map from '../components/Map';
 import SearchBar from '../components/SearchBar';
-
 import { Container, Card } from 'react-bootstrap';
 import Footer from '../components/Footer';
 import '../components/styles/shoplist.css';
