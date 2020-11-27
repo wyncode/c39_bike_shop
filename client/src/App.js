@@ -18,6 +18,10 @@ import ShopOwner from './pages/ShopOwner';
 import BikeControl from './pages/BikeControl';
 import CreateCyclist from './pages/CreateCyclist';
 import CreateBikeShop from './pages/CreateBikeshop';
+import Events from './pages/Events';
+import Trails from './pages/Trails';
+import Community from './pages/Community';
+import AboutUs from './components/AboutUs';
 
 const App = () => {
   return (
@@ -27,6 +31,10 @@ const App = () => {
         <Navigation />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/trails" component={Trails} />
+          <Route exact path="/community" component={Community} />
+          <Route exact path="/aboutus" component={AboutUs} />
+          <Route exact path="/events" component={Events} />
           <PrivateRoute exact path="/repairs/:id" component={Repairs} />
           <Route exact path="/shoplist" component={Shoplist} />
           <Route exact path="/login" component={Login} />
@@ -40,6 +48,7 @@ const App = () => {
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/shopOwner" component={ShopOwner} />
           <PrivateRoute exact path="/bikeControl" component={BikeControl} />
+
         </Switch>
       </BrowserRouter>
     </AppContextProvider>

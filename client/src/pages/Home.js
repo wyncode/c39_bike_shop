@@ -11,7 +11,6 @@ const Home = () => {
   return (
     <>
       <HeroImage />
-
       <InfoCards />
       <FeaturedShops />
       <AboutUs />

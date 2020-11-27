@@ -104,7 +104,13 @@ const CreateCyclist = ({ history }) => {
           </Form.Row>
         </Form.Group>
 
-        <Button type="submit" className="btn-pink-sm m-auto">
+        <Button
+          type="submit"
+          className="btn-pink-sm m-auto"
+          onClick={() => {
+            history.push('/Shoplist');
+          }}
+        >
           Finished
         </Button>
       </Form>

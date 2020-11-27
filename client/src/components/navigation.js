@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Dropdown, Image } from 'react-bootstrap';
 import Logout from './Logout';
-import Login from '../pages/Login';
 
 const Navigation = () => {
   return (
@@ -24,13 +23,22 @@ const Navigation = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav " />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto ml-auto">
-          <Link to="/Shoplist">
-            <Nav.Item className="mr-5"> Bike Shops</Nav.Item>
-          </Link>
-          <Nav.Item className="mr-5">Community</Nav.Item>
-          <Nav.Item className="mr-5">Events</Nav.Item>
-          <Nav.Item className="mr-5">Trails</Nav.Item>
-          <Nav.Item className="mr-5">About Us</Nav.Item>
+          <Nav.Item as={Link} to="/shoplist" className="mr-5">
+            Bike Shops
+          </Nav.Item>
+
+          <Nav.Item as={Link} to="/community" className="mr-5">
+            Community
+          </Nav.Item>
+          <Nav.Item as={Link} to="/events" className="mr-5">
+            Events
+          </Nav.Item>
+          <Nav.Item as={Link} to="/trails" className="mr-5">
+            Trails
+          </Nav.Item>
+          <Nav.Item as={Link} to="/aboutus" className="mr-5">
+            About Us
+          </Nav.Item>
         </Nav>
         <Nav>
           <Nav.Item>

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-export default function HeroImage() {
+const HeroImage = () => {
   return (
     <Card>
       <Card.Img src="https://imgur.com/ky2VSB5.png" alt="Hero Image" />
@@ -9,8 +10,12 @@ export default function HeroImage() {
         <Card.Title className="HeroTitle">
           Easily Track My Bike Repairs
         </Card.Title>
-        <Button className="btn-pink-sm btn-holder ml-auto">Get Started</Button>
+        <Link to="/signup" className="btn-holder ml-auto">
+          <Button className="btn-pink-sm ">Get Started</Button>
+        </Link>
       </Card.ImgOverlay>
     </Card>
   );
-}
+};
+
+export default HeroImage;

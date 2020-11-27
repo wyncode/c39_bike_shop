@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Image } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
 import RepairSelection from '../components/RepairSelection';

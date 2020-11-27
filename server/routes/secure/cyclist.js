@@ -1,3 +1,5 @@
+const { route } = require('../open');
+
 const router = require('express').Router(),
   {
     getAllCyclist,
@@ -8,7 +10,7 @@ const router = require('express').Router(),
 
 router.post('/', createCyclist);
 router.get('/', getAllCyclist);
-router.get('/me', getCurrentCyclist);
+router.get('/:id', getCurrentCyclist);
 router.patch('/:id', updateCurrentCyclist);
 
 module.exports = router;
