@@ -1,25 +1,14 @@
 import React from 'react';
 
-const Review = ({ reviews }) => {
-  const total = review.length;
-
+const Review = ({ review }) => {
   return (
     <div>
-      <div className="reviewsHeader">
-        <div className="stars">
-          <img src={require('../images/stars.png')} alt="reviews" />
-          {total === 1 ? `${total} Review` : `${total} Reviews`}
-        </div>
-        <button className="button"> + Review</button>
-      </div>
+      <div className="reviewsHeader"></div>
       <ul>
-        {reviews?.map((review) => (
+        {review?.map((review) => (
           <li key={review._id} className="list">
             <div>
-              <p className="stars">
-                <img src={'#'} alt="reviews" />
-                {review.rating}
-              </p>
+              <p className="stars">{review.rating}</p>
               <p>{review.review}</p>
             </div>
           </li>

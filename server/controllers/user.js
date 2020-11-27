@@ -96,7 +96,7 @@ exports.getCurrentUser = async (req, res) => {
 // Update a user
 // ***********************************************//
 exports.updateCurrentUser = async (req, res) => {
-  const updates = Object.keys(req.body); // => ['email', 'name', 'password']
+  const updates = Object.keys(req.body);
   const allowedUpdates = ['name', 'email', 'password', 'avatar'];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
@@ -104,11 +104,8 @@ exports.updateCurrentUser = async (req, res) => {
   if (!isValidOperation)
     return res.status(400).json({ message: 'Invalid updates' });
   try {
-    //Loop through each update, and change the value for the current user to the value coming from the body
     updates.forEach((update) => (req.user[update] = req.body[update]));
-    //save the updated user in the db
     await req.user.save();
-    //send the updated user as a response
     res.json(req.user);
   } catch (error) {
     res.status(400).json({ error: error.message });

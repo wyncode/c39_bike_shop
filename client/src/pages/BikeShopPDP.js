@@ -26,8 +26,14 @@ const BikeShopPDP = ({ match, history }) => {
         <Map />
         <BikeShopCard bikeshop={bikeshop} />
         <hr className="pink-line-page-break" />
+        <Button onSubmit={() => history.push(`/review/${bikeshop?._id}`)}>
+          Add a Review
+        </Button>
         <Card className="review">
-          <Review bikeshop={bikeshop} />
+          {bikeshop &&
+            bikeshop.reviews?.map((review) => (
+              <Review key={review._id} review={bikeshop.reviews} />
+            ))}
         </Card>
         <Button
           className="btn-pink-lg-lng"

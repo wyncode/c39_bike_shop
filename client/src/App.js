@@ -39,16 +39,15 @@ const App = () => {
           <Route exact path="/shoplist" component={Shoplist} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
-          <PrivarRoute exact path="/confirmation" component={Confirmation} />
-          <Route exact path="/bikeshopdp/:id" component={BikeShopPDP} />
+          <PrivateRoute exact path="/confirmation" component={Confirmation} />
+          <Route exact path="/bikeshoppdp/:id" component={BikeShopPDP} />
           <PrivateRoute exact path="/appointment" component={Appointment} />
-          <PrivatRoute exact path="/summary" component={Summary} />
+          <PrivateRoute exact path="/summary" component={Summary} />
           <PrivateRoute exact path="/cyclist" component={CreateCyclist} />
           <PrivateRoute exact path="/bikeShop" component={CreateBikeShop} />
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/shopOwner" component={ShopOwner} />
           <PrivateRoute exact path="/bikeControl" component={BikeControl} />
-
         </Switch>
       </BrowserRouter>
     </AppContextProvider>
