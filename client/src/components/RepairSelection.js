@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AppContext } from '../context/AppContext';
+import axios from 'axios';
 import {
   Modal,
   Button,
@@ -9,7 +11,24 @@ import {
 } from 'react-bootstrap';
 
 const RepairSelection = ({ repair }) => {
-  const handleClick = () => {};
+  // console.log(repair)
+  const { bikeshop, currentUser } = useContext(AppContext);
+  console.log('BIKESHOP', bikeshop);
+  console.log('CURRENTUSER', currentUser);
+
+  const handleSubmit = async () => {
+    const body = {
+      bikeshop: bikeshop._id, // needs to be the ID
+      cyclist: currentUser._id, // needs to be the ID
+      repairs: repair._id // needs to be the ID
+    };
+    const { data } = await axios.post('/api/order', {
+      data: body,
+      withCredentials: true
+    });
+    console.log(data);
+    // do whatever you need to with the data
+  };
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -69,7 +88,7 @@ const RepairSelection = ({ repair }) => {
             </Form>
           </Modal.Body>
           <ModalFooter className="d-flex justify-content-center modal-ft">
-            <Button onClick={handleClick} className="btn-pink-sm-md mt-2">
+            <Button onClick={handleSubmit} className="btn-pink-sm-md mt-2">
               Confirm
             </Button>
           </ModalFooter>

@@ -3,19 +3,27 @@ const Bikeshop = require('../db/models/bikeshop');
 const Cyclist = require('../db/models/cyclist');
 
 exports.createOrder = async (req, res) => {
-  try {
-    const newOrder = new ServiceOrder(req.body);
+  // console.log('here')
+  // console.log(req.body)
+  console.log(req.body.data);
 
-    const [cyclist, bikeshop] = await Promise.all([
-      Cyclist.findById(req.body.cyclist),
-      Bikeshop.findById(req.body.bikeshop)
+  try {
+    const { bikeshop, cyclist, repairs } = req.body.data;
+    const newOrder = new ServiceOrder({
+      bikeshop,
+      cyclist,
+      repairs: [repairs]
+    });
+    const order = await newOrder.save();
+    // console.log(order);
+    const [cyclistDB, bikeshopDB] = await Promise.all([
+      Cyclist.findById(req.body.data.cyclist),
+      Bikeshop.findById(req.body.data.bikeshop)
     ]);
 
-    console.log('i found ');
-
-    cyclist.orders.push(newOrder);
-    bikeshop.orders.push(newOrder);
-    await Promise.all([bikeshop.save(), cyclist.save(), newOrder.save()]);
+    cyclistDB.orders.push(order._id);
+    bikeshopDB.orders.push(order._id);
+    await Promise.all([bikeshopDB.save(), cyclistDB.save()]);
 
     res.status(201).json(newOrder);
   } catch (e) {
