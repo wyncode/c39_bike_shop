@@ -1,5 +1,4 @@
 import React from 'react';
-import BikeImg from '../components/BikeImg';
 import AwaitBike from '../components/AwaitBike';
 import BikeShopCard from '../components/BikeShopCard';
 import Estimate from '../components/Estimate';
@@ -10,7 +9,6 @@ const Confirmation = () => {
   return (
     <>
       <h1 className="confirmtitle">You are all set!</h1>
-      <BikeImg />
       <AwaitBike />
       <BikeShopCard />
       <Estimate />
