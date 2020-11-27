@@ -4,37 +4,48 @@ import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
 
-const CreateCyclist = ({ history }) => {
-  const { setCurrentUser } = useContext(AppContext);
+const CreateBikeshop = ({ history }) => {
+  const { setCurrentUser, setBikeshop, bikeshop, currentUser } = useContext(
+    AppContext
+  );
   const [formData, setFormData] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const [image, setImage] = useState(null);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     console.log(formData);
   };
 
-  const handleImageSelect = (e) => {
-    setPreview(URL.createObjectURL(e.target.files[0]));
-    setImage(e.target.files[0]);
-  };
-
   const handleCreate = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await axios.post('/api/bikeshop', formData);
-      const logo = new FormData();
-      logo.append('logo', image, image.name);
-      sessionStorage.setItem('bikeshop', response.data);
-      setCurrentUser(response.data.bikeshop);
+      const bikeshopData = new FormData();
+      // this information is not append information
+      bikeshopData.append('shopName', formData.shopName);
+      bikeshopData.append('email', formData.email);
+      bikeshopData.append('phone', formData.phone);
+      bikeshopData.append('logo', formData.logo);
+      bikeshopData.append('website', formData.website);
+      bikeshopData.append('email', formData.email);
+      bikeshopData.append('street', formData.shopContact.street);
+      bikeshopData.append('city', formData.shopContact.city);
+      bikeshopData.append('state', formData.shopContact.state);
+      bikeshopData.append('street', formData.shopContact.zipcode);
+      const updatedBikeshop = await axios({
+        method: 'POST',
+        url: `/api/bikeshop`,
+        withCredentials: true,
+        bikeshopData
+      });
+      console.log(updatedBikeshop.data);
+      setBikeshop(updatedBikeshop.data);
       history.push('/');
+      swal('Start your store!');
     } catch (error) {
       swal('SignUp Error: ', error.toString());
     }
+    console.log(bikeshop);
   };
-
-  console.log(setCurrentUser);
 
   return (
     <Container
@@ -143,4 +154,4 @@ const CreateCyclist = ({ history }) => {
   );
 };
 
-export default CreateCyclist;
+export default CreateBikeshop;

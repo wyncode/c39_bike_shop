@@ -20,13 +20,10 @@ const CreateCyclist = ({ history }) => {
 
     try {
       const cyclistData = new FormData();
+      // this information is not append information
       cyclistData.append('zipcode', formData.zipcode);
       cyclistData.append('phone', formData.phone);
       cyclistData.append('user', currentUser);
-      // cyclistData.append('bikeName', cyclistData.bike.bikeName);
-      // cyclistData.append('bikeModel', cyclistData.bike.bikeModel);
-      // cyclistData.append('bikeType', cyclistData.bike.bikeType);
-      console.log(cyclistData);
       const updatedCyclist = await axios({
         method: 'POST',
         url: `/api/cyclist`,
@@ -35,10 +32,7 @@ const CreateCyclist = ({ history }) => {
       });
       console.log(updatedCyclist.data);
       setCyclist(updatedCyclist.data);
-      // setCyclist(..., updatedCyclist.data )
-      // setCyclist(formData);
-      // history.push('/');
-
+      history.push('/');
       swal("Let's start riding");
     } catch (error) {
       swal('SignUp Error: ', error.toString());
