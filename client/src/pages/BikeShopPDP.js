@@ -12,6 +12,7 @@ import swal from 'sweetalert';
 const BikeShopPDP = ({ match, history }) => {
   const { setBikeshop, bikeshop, user } = useContext(AppContext);
   const [reviewData, setReviewData] = useState(null);
+
   const id = match.params.id;
 
   useEffect(() => {
@@ -25,19 +26,22 @@ const BikeShopPDP = ({ match, history }) => {
   const handleChange = (e) => {
     setReviewData({ ...reviewData, [e.target.name]: e.target.value });
   };
+  console.log(reviewData);
 
   const handleSubmit = async (e) => {
     const form = e.target;
     e.preventDefault();
     try {
+      const formData = new FormData();
+      formData.append('rating', reviewData.rating);
+      formData.append('review', reviewData.review);
       await axios({
         method: 'POST',
         url: `/api/review/${id}/review`,
         withCredentials: true,
-        data: reviewData,
-        bikeshop: bikeshop._id,
-        cyclist: user._id
+        formData
       });
+
       swal('New Review!', 'You review has been added!', 'success');
       setReviewData(null);
     } catch (error) {
@@ -93,10 +97,7 @@ const BikeShopPDP = ({ match, history }) => {
           </Modal.Dialog>
         </Modal>
         <Card className="review">
-          {bikeshop &&
-            bikeshop.reviews?.map((review) => (
-              <Review key={review._id} review={bikeshop.reviews} />
-            ))}
+          <Review review={bikeshop} />
         </Card>
         <Button
           className="btn-pink-lg-lng"
