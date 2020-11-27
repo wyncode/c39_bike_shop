@@ -2,3 +2,11 @@
   font-size: 5rem;
   font-weight: 700;
 }
+
+react-rater-active {
+  color: #00fff9;
+}
+
+.list {
+  width: 100%;
+}
