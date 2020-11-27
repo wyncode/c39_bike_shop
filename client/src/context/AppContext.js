@@ -12,6 +12,7 @@ export const AppContextProvider = ({ children }) => {
   const [bikeshops, setBikeshops] = useState([]);
   const [repair, setRepair] = useState([]);
   const [bikeshop, setBikeshop] = useState(null);
+  const [order, setOrder] = useState([]);
 
   useEffect(() => {
     if (user && !currentUser) {
@@ -42,7 +43,9 @@ export const AppContextProvider = ({ children }) => {
         setRepair,
         repair,
         bikeshop,
-        setBikeshop
+        setBikeshop,
+        order,
+        setOrder
       }}
     >
       {children}

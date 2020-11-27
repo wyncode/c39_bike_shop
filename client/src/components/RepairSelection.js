@@ -12,21 +12,28 @@ import {
 
 const RepairSelection = ({ repair }) => {
   // console.log(repair)
-  const { bikeshop, currentUser } = useContext(AppContext);
+  const { orders, bikeshop, currentUser } = useContext(AppContext);
   console.log('BIKESHOP', bikeshop);
   console.log('CURRENTUSER', currentUser);
 
   const handleSubmit = async () => {
     const body = {
       bikeshop: bikeshop._id, // needs to be the ID
-      cyclist: currentUser._id, // needs to be the ID
+      cyclist: cyclist._id, // needs to be the ID
       repairs: repair._id // needs to be the ID
     };
-    const { data } = await axios.post('/api/order', {
-      data: body,
-      withCredentials: true
-    });
-    console.log(data);
+    try {
+      const { data } = await axios.post('/api/order', {
+        data: body,
+        withCredentials: true
+      });
+      console.log(data);
+      orders.push(data);
+      console.log(orders);
+    } catch (error) {
+      console.log(error);
+    }
+
     // do whatever you need to with the data
   };
   const [show, setShow] = useState(false);
