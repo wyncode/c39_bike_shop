@@ -5,7 +5,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 const CreateCyclist = ({ history }) => {
-  const { setCurrentUser } = useContext(AppContext);
+  const { setCurrentUser, setCyclist, cyclist } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
   const [preview, setPreview] = useState(null);
   const [image, setImage] = useState(null);
@@ -24,17 +24,14 @@ const CreateCyclist = ({ history }) => {
     e.preventDefault();
     try {
       const response = await axios.post('/api/cyclist', formData);
-      const avatar = new FormData();
-      avatar.append('avatar', image, image.name);
       sessionStorage.setItem('cyclist', response.data);
-      setCurrentUser(response.data.cyclist);
+      setCyclist(response.data.cyclist);
       history.push('/');
     } catch (error) {
       swal('SignUp Error: ', error.toString());
     }
+    console.log(cyclist);
   };
-
-  console.log(setCurrentUser);
 
   return (
     <Container
