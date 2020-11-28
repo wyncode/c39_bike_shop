@@ -1,25 +1,24 @@
 import React from 'react';
 import BikeShopCard from '../components/BikeShopCard';
 import '../components/styles/confirmation.css';
-import { Image, Card } from 'react-bootstrap';
+import { Image, Card, Container } from 'react-bootstrap';
 
 const Confirmation = () => {
   return (
     <>
       <h1 className="confirmtitle">You are all set!</h1>
       <Image
-        src="https://imgur.com/wE9rGJ8.png"
+        src="https://i.imgur.com/UyR3ZxG.png"
         className="mt-5 mb-5 bicycleImage"
       />
       <h1 className="awaitingtitle">Awaiting bike drop off</h1>
-      <Card className="datetime d-flex flex-row">
-        <Card.Body className="dateBody d-flex flex-row">
-          <Card.Img src="https://imgur.com/mJ2AXNm.png"></Card.Img>
-          <div className="datetime">
-            <Card.Text>11-22-22</Card.Text>
-            <Card.Text>11:11AM</Card.Text>
-          </div>
-        </Card.Body>
+      <Card>
+        <Container className="DT">
+          <Card.Body>12/25/20</Card.Body>
+        </Container>
+        <Container className="DT">
+          <Card.Body>5:00PM</Card.Body>
+        </Container>
       </Card>
       <Card>
         <Card.Text className="repairtime">

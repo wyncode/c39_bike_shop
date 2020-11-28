@@ -19,6 +19,7 @@
   font-weight: bold;
   font-size: 36px;
   line-height: 24px;
+  margin: 2rem;
 }
 
 .vector1 {
@@ -56,10 +57,11 @@
 
   color: #ec4568;
 }
-/* 
+
 .datetime {
- 
-} */
+  display: flex;
+  width: 100px;
+}
 
 .clockpic {
   width: 100px;
@@ -116,4 +118,20 @@
   font-weight: normal;
   font-size: 14px;
   line-height: 24px;
+}
+
+/* .datetime1 {
+  display: flex;
+  justify-content: column;
+  text-align: column;
+} */
+
+.DT {
+  font-family: Karma;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: center;
 }
