@@ -13,7 +13,7 @@ const Home = () => {
       <HeroImage />
       <InfoCards />
       <FeaturedShops />
-      <Link className="mt-3 mb-5" to="/aboutus">
+      <Link className="mt-3 mb-5" to="/aboutus" className="aboutus">
         {' '}
         About Us
       </Link>

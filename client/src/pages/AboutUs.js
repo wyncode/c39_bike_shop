@@ -1,32 +1,35 @@
 import React from 'react';
 import { Card, CardDeck, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import '../components/styles/aboutus.css';
 
 const AboutUs = () => {
   return (
     <Container className="aboutus">
+      <h1>About Us</h1>
       <CardDeck className="aboutus">
         <Card className="aboutuscard">
-          <Link to="/community">
-            <Container className="aboutuspic">
-              <Card.Img variant="top" src="https://i.imgur.com/dzTEdUH.png" />
-            </Container>
-          </Link>
-          <Card.Title>Traci</Card.Title>
+          <Container className="aboutuspic">
+            <Card.Img
+              variant="top"
+              className="img"
+              src="https://i.imgur.com/7EqArky.jpeg"
+            />
+          </Container>
+          <Card.Title>Traci Levine</Card.Title>
           <Card.Text>
             Traci is an avid passionate cyclist who enjoys long rides on
             Pinetree Drive. She is passionate about web development and wants to
             create an app for all cyclist.
           </Card.Text>
         </Card>
-
         <Card className="aboutuscard">
-          <Link to="/events">
-            <Container className="aboutuspic">
-              <Card.Img variant="top" src="https://imgur.com/LtAHycg.png" />
-            </Container>
-          </Link>
+          <Container className="aboutuspic">
+            <Card.Img
+              className="img"
+              variant="top"
+              src="https://imgur.com/LtAHycg.png"
+            />
+          </Container>
           <Card.Title>Danny Nieves</Card.Title>
           <Card.Text>
             As a Full-Stack Web Developer, Danny has been able to draw from his
@@ -36,11 +39,13 @@ const AboutUs = () => {
           </Card.Text>
         </Card>
         <Card className="aboutuscard">
-          <Link to="/trails">
-            <Container className="aboutuspic">
-              <Card.Img variant="top" src="https://i.imgur.com/gPUcWnT.jpg?1" />
-            </Container>
-          </Link>
+          <Container className="aboutuspic">
+            <Card.Img
+              className="img"
+              variant="top"
+              src="https://i.imgur.com/gPUcWnT.jpg?1"
+            />
+          </Container>
           <Card.Title>JP Castrillon</Card.Title>
           <Card.Text>
             JP is passionate about riding his bikes. He was once quoted, "the
