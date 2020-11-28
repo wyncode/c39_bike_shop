@@ -12,7 +12,7 @@ const AddAppointmentModal = (props) => {
     setLoading(true);
     try {
       axios.patch(
-        'api/:id',
+        '/api/:id',
         { dropoffDate: props.date },
         { withCredentials: true }
       );
