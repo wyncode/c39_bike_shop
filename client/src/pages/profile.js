@@ -8,7 +8,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import { AppContext } from '../context/AppContext';
 
-const Profile = ({ history: { push } }) => {
+const Profile = ({ history }) => {
   const { currentUser, setCurrentUser, setLoading } = useContext(AppContext);
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
