@@ -76,3 +76,17 @@ We love working on web developement and riding our bikes. During our cohort, we 
 "styled-components": "^5.2.1",
 "sweetalert": "^2.1.2",
 "validator": "^13.1.17"
+
+## Available build commands
+
+- `yarn dev`: Runs BOTH your Express.JS and React developer environment locally at the same time. Any logs coming from Express will be prefaced with `[0]`, any logs from `create-react-app` will be prefaced with `[1]`.
+- `yarn server`: Runs JUST your Express.JS server.
+- `yarn client`: Runs JUST your front-end React app.
+
+## Runs on Herkoku
+
+https://thebikeshop305.herokuapp.com/
+
+## Testing
+
+- Not testing required.
