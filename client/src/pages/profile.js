@@ -13,11 +13,11 @@ const Profile = ({ history }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
 
-  //Here we want to get the image of the user.
   const handleImageSelect = (e) => {
     setPreview(URL.createObjectURL(e.target.files[0]));
     setImage(e.target.files[0]);
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
