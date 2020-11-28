@@ -20,7 +20,7 @@ const General = () => {
 
       sessionStorage.setItem('user', response.data);
 
-      setCurrentUser(response);
+      setCurrentUser(response.data);
     } catch (error) {
       swal('You put on the wrong kit! Error: ', error.toString());
     }

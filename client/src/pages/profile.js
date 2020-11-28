@@ -35,6 +35,7 @@ const Profile = ({ history: { push } }) => {
       //We are pulling up the
       setCurrentUser({ ...currentUser, avatar: updatedUser.data.secure_url });
       swal('Looking Good!', 'Your image has been updated!', 'success');
+      history.push('/avatar');
     } catch (error) {
       swal('You have been dropped!', 'Ooops, something went wrong.');
     }

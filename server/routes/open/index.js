@@ -14,10 +14,7 @@ router.get('/password', requestPasswordReset);
 router.get('/password/:token', passwordRedirect);
 router.get('/bikeshop', getAllBikeshops);
 router.get('/bikeshop/find/:id', getBikeshopById);
-<<<<<<< HEAD
 router.get('/events', getAllEvents);
 router.post('/events', createEvent);
-=======
->>>>>>> c1aa5af... updates
 
 module.exports = router;

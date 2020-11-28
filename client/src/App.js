@@ -13,7 +13,7 @@ import Appointment from './pages/Appointment';
 import Summary from './pages/Summary';
 import './App.css';
 import Navigation from './components/navigation';
-import Profile from './pages/profile';
+import Profile from './pages/Profile';
 import ShopOwner from './pages/ShopOwner';
 import BikeControl from './pages/BikeControl';
 import CreateCyclist from './pages/CreateCyclist';
@@ -48,7 +48,6 @@ const App = () => {
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/shopOwner" component={ShopOwner} />
           <PrivateRoute exact path="/bikeControl" component={BikeControl} />
-
         </Switch>
       </BrowserRouter>
     </AppContextProvider>
