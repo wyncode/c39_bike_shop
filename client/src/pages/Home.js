@@ -13,15 +13,7 @@ const Home = () => {
       <HeroImage />
       <InfoCards />
       <FeaturedShops />
-      <Link
-        className="mt-3 mb-5"
-        style={{
-          color: '#818181',
-          textDecoration: 'underline',
-          fontSize: '2vw'
-        }}
-        to="/aboutus"
-      >
+      <Link className="mt-3 mb-5" to="/aboutus">
         {' '}
         About Us
       </Link>

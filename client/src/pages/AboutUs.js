@@ -1,50 +1,54 @@
 import React from 'react';
-import { Card, CardGroup } from 'react-bootstrap';
+import { Card, CardDeck, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import '../components/styles/aboutus.css';
 
 const AboutUs = () => {
   return (
-    <CardGroup>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
+    <Container className="aboutus">
+      <CardDeck className="aboutus">
+        <Card className="aboutuscard">
+          <Link to="/community">
+            <Container className="aboutuspic">
+              <Card.Img variant="top" src="https://i.imgur.com/dzTEdUH.png" />
+            </Container>
+          </Link>
+          <Card.Title>Traci</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Traci is an avid passionate cyclist who enjoys long rides on
+            Pinetree Drive. She is passionate about web development and wants to
+            create an app for all cyclist.
           </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
+        </Card>
+
+        <Card className="aboutuscard">
+          <Link to="/events">
+            <Container className="aboutuspic">
+              <Card.Img variant="top" src="https://imgur.com/LtAHycg.png" />
+            </Container>
+          </Link>
+          <Card.Title>Danny Nieves</Card.Title>
           <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.{' '}
+            As a Full-Stack Web Developer, Danny has been able to draw from his
+            background in Hospitality Management and his passion for cycling to
+            help collaborate on an application to connect cyclists to repairs
+            with an ease of access they never had before.
           </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
+        </Card>
+        <Card className="aboutuscard">
+          <Link to="/trails">
+            <Container className="aboutuspic">
+              <Card.Img variant="top" src="https://i.imgur.com/gPUcWnT.jpg?1" />
+            </Container>
+          </Link>
+          <Card.Title>JP Castrillon</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+            JP is passionate about riding his bikes. He was once quoted, "the
+            best code I've wrote, have come after a long bike ride.".
           </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-    </CardGroup>
+        </Card>
+      </CardDeck>
+    </Container>
   );
 };
 
