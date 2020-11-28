@@ -13,7 +13,7 @@ import Appointment from './pages/Appointment';
 import Summary from './pages/Summary';
 import './App.css';
 import Navigation from './components/navigation';
-import Profile from './pages/Profile';
+import Profile from './pages/profile';
 import ShopOwner from './pages/ShopOwner';
 import BikeControl from './pages/BikeControl';
 import CreateCyclist from './pages/CreateCyclist';
