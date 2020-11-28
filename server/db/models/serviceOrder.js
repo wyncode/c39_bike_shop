@@ -21,6 +21,9 @@ const serviceOrderSchema = new mongoose.Schema({
   expectedPickup: {
     type: Date
   },
+  description: {
+    type: String
+  },
   progress: [
     {
       received: {
