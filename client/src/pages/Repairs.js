@@ -39,7 +39,7 @@ const Repairs = ({ match }) => {
         ))}
 
         <Container className="mt-5 d-flex flex-column align-items-center justify-content-center">
-          <Button className="btn-pink-xlg" block>
+          <Button className="btn-pink-xlg" block href="/appointment">
             {' '}
             Select Appointment
           </Button>
