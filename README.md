@@ -2,7 +2,7 @@
 
 ## What is it?
 
-The Bike Shop is the most reliable place to track your bike repairs for both cyclist and bike shop owners by adding your zipcode, selecting your bike shop, choosing your repairs, and tracking them. The Bike Shop, made by the bike lover by the bike lover.
+The Bike Shop is the most reliable place to track your bike repairs for both cyclist and bike shop owners by adding your zipcode, selecting your bike shop, choosing your repairs, and tracking them. The Bike Shop, made by the bike lover for the bike lover.
 
 ## Status
 
@@ -14,13 +14,11 @@ The Bike Shop 1.0
 
 ## Why
 
-Due to the pandemic and recent popularity of commuting on bike, many bike owners are swamped with large bike repair orders. At the same time, bike owners drop off their bikes for repairs with wait time over a week without knowing when their bike will be ready. This app will bridge the gap between both shop owner and bike owner for fast efficient communications. Along with The Bike Shop, cyclist will be able to see what is going on in the community, events, and local trails.
+Due to the pandemic and recent popularity of commuting on bike, many bike shops are swamped with large bike repair orders. At the same time, cyclists drop off their bikes for repairs with a wait time of over a week without knowing when their bike will be ready. This app will bridge the gap between both shop owners and cyclists for fast efficient communication. Along with The Bike Shop, cyclist will be able to see what is going on in the community, events, and local trails.
 
 ## Who are we?
 
 We love working on web developement and riding our bikes. During our cohort, we found that riding our bikes was a great way to stay fit and mentally sharp!
-
-## Setup
 
 ## Setup
 
