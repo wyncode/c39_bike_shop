@@ -42,16 +42,15 @@ We love working on web developement and riding our bikes. During our cohort, we 
 "react-router-dom": "^5.2.0",
 "react-scripts": "3.4.3",
 "react-share": "^4.3.1",
+"react-chat-widget": "^3.0.5",
+"react-rater": "^5.1.1",
 "sweetalert": "^2.1.2",
 "styled-components": "^5.2.1"
+
 
 ## Dependencies Root
 
 "dependencies": {
-"@fullcalendar/daygrid": "^5.4.0",
-"@fullcalendar/interaction": "^5.4.0",
-"@fullcalendar/react": "^5.4.0",
-"@material-ui/core": "^4.11.1",
 "@sendgrid/mail": "^7.4.0",
 "axios": "^0.21.0",
 "bcryptjs": "^2.4.3",
@@ -70,9 +69,6 @@ We love working on web developement and riding our bikes. During our cohort, we 
 "passport": "^0.4.1",
 "passport-facebook": "^3.0.0",
 "passport-jwt": "^4.0.0",
-"react-share": "^4.3.1",
-"styled-components": "^5.2.1",
-"sweetalert": "^2.1.2",
 "validator": "^13.1.17"
 
 ## Available build commands
