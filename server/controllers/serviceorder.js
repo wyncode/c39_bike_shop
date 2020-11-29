@@ -30,7 +30,12 @@ exports.getAllOrders = (req, res) => {
 
 exports.updateOrder = async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ['progress', 'dropoffDate', 'expectedPickup'];
+  const allowedUpdates = [
+    'progress',
+    'dropOffDate',
+    'expectedPickup',
+    'description'
+  ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );

@@ -15,8 +15,11 @@ const serviceOrderSchema = new mongoose.Schema({
       ref: 'Repair'
     }
   ],
-  dropoffDate: {
+  dropOffDate: {
     type: Date
+  },
+  description: {
+    type: String
   },
   expectedPickup: {
     type: Date
