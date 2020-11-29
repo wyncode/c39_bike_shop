@@ -8,24 +8,10 @@ import swal from 'sweetalert';
 import axios from 'axios';
 
 const RepairControl = () => {
-  const [isActive, setActive] = useState('false');
   const [formData, setFormData] = useState(null);
   const { order, setLoading } = useContext(AppContext);
-  const [tracker, setTracker] = useState(0);
+  const [percentageRange, setProgress] = useState(0);
 
-  useEffect(() => {
-    let num = 0;
-    for (key in order.progress) {
-      if (Object.values(order.progress[key])[0] === true) {
-        num++;
-      }
-      setTracker(num);
-    }
-  }, []);
-
-  const handleToggle = (val) => {
-    setActive(!isActive);
-  };
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     console.log(formData);
@@ -41,58 +27,46 @@ const RepairControl = () => {
         { progress },
         { withCredentials: true }
       );
+      console.log(data);
+      setProgress([data]);
       swal('Congrats! You have won this stage of the tour!');
     } catch (error) {
       swal('You made no progress! Turn around and try again!');
     }
+    console.log(progress);
   };
-
-  const setProgress = (val) => {
-    setFormData({ ...FormData, progress: val });
-  };
-
-  const progress = order.progress;
 
   return (
     <Container>
       <h1> Repairs Control</h1>
       <Orders order={order} />
-      <p>Insert description here </p>
-      <ProgressBar className={isActive ? `tracker${tracker}` : ''} />
+      <ProgressBar percentageRange={percentageRange} />
       <hr className="pink-line-page-break" />
       <Button
         className="btn-pink-lg-lng"
-        onSubmit={handleSubmit}
         onChange={handleChange}
-        onClick={handleToggle}
-        onClick={() => setProgress(true)}
+        onClick={setProgress(percentRange < 100 ? percentRange + 20 : 100)}
       >
         Received
       </Button>
       <Button
         className="btn-pink-lg-lng"
-        onSubmit={handleSubmit}
         onChange={handleChange}
-        onClick={handleToggle}
-        onClick={() => setProgress(true)}
+        onClick={setProgress(percentRange < 100 ? percentRange + 20 : 100)}
       >
         Diagnosed
       </Button>
       <Button
         className="btn-pink-lg-lng"
-        onSubmit={handleSubmit}
         onChange={handleChange}
-        onClick={handleToggle}
-        onClick={() => setProgress(true)}
+        onClick={setProgress(percentRange < 100 ? percentRange + 20 : 100)}
       >
         Parts Ordered
       </Button>
       <Button
         className="btn-pink-lg-lng"
-        onSubmit={handleSubmit}
         onChange={handleChange}
-        onClick={handleToggle}
-        onClick={() => setProgress(true)}
+        onClick={setProgress(percentRange < 100 ? percentRange + 20 : 100)}
       >
         Repair in progress
       </Button>
@@ -100,8 +74,7 @@ const RepairControl = () => {
         className="btn-pink-lg-lng"
         onSubmit={handleSubmit}
         onChange={handleChange}
-        onClick={handleToggle}
-        onClick={() => setProgress(true)}
+        onClick={setProgress(percentRange < 100 ? percentRange + 20 : 100)}
       >
         Delayed
       </Button>
@@ -109,7 +82,6 @@ const RepairControl = () => {
         className="btn-pink-lg-lng"
         onSubmit={handleSubmit}
         onChange={handleChange}
-        onClick={handleToggle}
         onClick={() => setProgress(true)}
       >
         Ready for pick up
