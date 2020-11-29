@@ -13,6 +13,7 @@ export const AppContextProvider = ({ children }) => {
   const [repair, setRepair] = useState([]);
   const [bikeshop, setBikeshop] = useState(null);
   const [order, setOrder] = useState(null);
+  const [appointments, setAppointments] = useState([]);
 
   const fetchCurrentUser = () => {
     axios
@@ -54,7 +55,9 @@ export const AppContextProvider = ({ children }) => {
         bikeshop,
         setBikeshop,
         order,
-        setOrder
+        setOrder,
+        appointments,
+        setAppointments
       }}
     >
       {children}
