@@ -17,12 +17,9 @@ const Map = () => {
       }}
       center={[-80.1918, 25.7617]}
     >
-      {/* <Marker coordinates={[longitude, latitude]} className="marker">
-        <img
-          className="marker-icon"
-        
-        />
-      </Marker> */}
+      <Marker coordinates={[-80.1918, 25.7617]} className="marker">
+        <img className="marker-icon" />
+      </Marker>
       <ZoomControl />
     </MapBox>
   );
