@@ -7,12 +7,11 @@ import swal from 'sweetalert';
 const CreateCyclist = ({ history }) => {
   const { setCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
-  const [preview, setPreview] = useState(null);
+  const [setPreview] = useState(null);
   const [image, setImage] = useState(null);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.log(formData);
   };
 
   const handleImageSelect = (e) => {
@@ -33,8 +32,6 @@ const CreateCyclist = ({ history }) => {
       swal('SignUp Error: ', error.toString());
     }
   };
-
-  console.log(setCurrentUser);
 
   return (
     <Container

@@ -4,7 +4,7 @@ import { Image } from 'react-bootstrap';
 import axios from 'axios';
 import swal from 'sweetalert';
 import { AppContext } from '../context/AppContext';
-// Style the Button component
+
 const FileUploader = (props) => {
   const { currentUser, setCurrentUser } = useContext(AppContext);
   const UploadButton = styled.button`
@@ -14,15 +14,11 @@ const FileUploader = (props) => {
     width: 50px;
     z-index: 1;
   `;
-  // Create a reference to the hidden file input element
   const hiddenFileInput = useRef(null);
-  // Programatically click the hidden file input element
-  // when the Button component is clicked
   const handleClick = (event) => {
     hiddenFileInput.current.click();
   };
-  // Call a function (passed as a prop from the parent component)
-  // to handle the user-selected file
+
   const handleChange = (event) => {
     const fileUploaded = event.target.files[0];
     props.handleFile(fileUploaded);

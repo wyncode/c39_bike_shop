@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Container, Form } from 'react-bootstrap';
-
-import { AppContext } from '../context/AppContext';
 
 const SearchBar = ({ handleSearchProp }) => {
   return (

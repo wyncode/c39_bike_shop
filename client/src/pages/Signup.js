@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Form, Button, Image, Card } from 'react-bootstrap';
+import { Container, Form, Button, Image } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -12,14 +12,12 @@ const SignUp = ({ history }) => {
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.log(formData);
   };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('/api', formData);
-      console.log(response.data);
       sessionStorage.setItem('user', response.data);
       setCurrentUser(response.data);
       if (response.data.admin) {
@@ -33,13 +31,10 @@ const SignUp = ({ history }) => {
   };
 
   const setAdministrator = (val) => {
-    // setAdmin(val);
     setFormData({ ...FormData, admin: val });
   };
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+  useEffect(() => {}, [formData]);
 
   return (
     <Container

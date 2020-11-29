@@ -12,7 +12,6 @@ const Events = () => {
         url: '/api/events'
       }).then((response) => {
         setApiData(response.data);
-        console.log(response.data);
       });
     };
     fetchData();

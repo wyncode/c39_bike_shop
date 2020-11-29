@@ -8,7 +8,6 @@ import '../components/styles/repairs.css';
 
 const Repairs = ({ match }) => {
   const { bikeshop, setBikeshop } = useContext(AppContext);
-
   const { id } = match.params;
 
   useEffect(() => {
@@ -22,7 +21,7 @@ const Repairs = ({ match }) => {
         setBikeshop(response.data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  });
 
   return (
     <>
@@ -33,7 +32,6 @@ const Repairs = ({ match }) => {
           className="mt-5 mb-5 bicycleImage"
         />
         <h2>Select your repairs</h2>
-
         {(bikeshop?.repairs || []).map((repair) => (
           <RepairSelection key={repair._id} repair={repair} />
         ))}

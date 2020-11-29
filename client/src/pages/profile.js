@@ -4,42 +4,11 @@ import SideBar from '../components/SideBar';
 import Chat from '../components/Chat';
 import '../components/styles/profile.css';
 import FileUploader from '../components/Fileuploader';
-import axios from 'axios';
-import swal from 'sweetalert';
 import { AppContext } from '../context/AppContext';
 
 const Profile = ({ history }) => {
-  const { currentUser, setCurrentUser, setLoading } = useContext(AppContext);
-  const [image, setImage] = useState(null);
-  const [preview, setPreview] = useState(null);
-
-  //Here we want to get the image of the user.
-  const handleImageSelect = (e) => {
-    setPreview(URL.createObjectURL(e.target.files[0]));
-    setImage(e.target.files[0]);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const avatar = new FormData();
-    avatar.append('avatar', image, image.name);
-    try {
-      const updatedUser = await axios({
-        method: 'POST',
-        url: '/api/cyclist/avatar',
-        data: avatar,
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      //We are pulling up the
-      setCurrentUser({ ...currentUser, avatar: updatedUser.data.secure_url });
-      swal('Looking Good!', 'Your image has been updated!', 'success');
-      history.push('/avatar');
-    } catch (error) {
-      swal('You have been dropped!', 'Ooops, something went wrong.');
-    }
-  };
+  const { currentUser } = useContext(AppContext);
+  const [preview] = useState(null);
 
   return (
     <>

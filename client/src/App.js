@@ -25,7 +25,6 @@ import AboutUs from './components/AboutUs';
 
 const App = () => {
   return (
-    // Navbar goes betwen BrowserRouter and Switch
     <AppContextProvider>
       <BrowserRouter>
         <Navigation />
@@ -51,7 +50,6 @@ const App = () => {
         </Switch>
       </BrowserRouter>
     </AppContextProvider>
-    //social media component goes between switch and browser router
   );
 };
 

@@ -10,7 +10,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 const BikeShopPDP = ({ match, history }) => {
-  const { setBikeshop, bikeshop, user } = useContext(AppContext);
+  const { setBikeshop, bikeshop } = useContext(AppContext);
   const [reviewData, setReviewData] = useState(null);
 
   const id = match.params.id;
@@ -21,15 +21,15 @@ const BikeShopPDP = ({ match, history }) => {
       .then(({ data }) => {
         setBikeshop(data);
       });
-  }, []);
+  });
 
   const handleChange = (e) => {
     setReviewData({ ...reviewData, [e.target.name]: e.target.value });
   };
-  console.log(reviewData);
 
   const handleSubmit = async (e) => {
     const form = e.target;
+    console.log(form);
     e.preventDefault();
     try {
       const formData = new FormData();
@@ -50,7 +50,6 @@ const BikeShopPDP = ({ match, history }) => {
   };
 
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 

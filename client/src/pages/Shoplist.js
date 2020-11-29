@@ -17,12 +17,9 @@ const Shoplist = () => {
     return bikeshop?.shopContact.zipCode.includes(search);
   });
 
-  // const [loading, setLoading] = useState(false);
   const handleSearch = async (e) => {
     setSearch(e.target.value);
   };
-
-  // setLoading(true);
 
   useEffect(() => {
     axios
@@ -33,7 +30,7 @@ const Shoplist = () => {
       .catch((error) => {
         swal(`You hit the Deck! `, 'Something went wrong.');
       });
-  }, [loading]);
+  });
 
   return (
     <div>
@@ -48,7 +45,6 @@ const Shoplist = () => {
           <Card.Title className="fltr-txt">Filter By</Card.Title>
         </Card>
         {filteredBikeshops?.map((bikeshop) => {
-          console.log(bikeshop);
           return <BikeShopCard bikeshop={bikeshop} key={bikeshop._id} />;
         })}
 

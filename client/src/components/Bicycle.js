@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tab, Row, Col, ListGroup, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import './styles/profile.css';
 
 const Bicycle = () => {
