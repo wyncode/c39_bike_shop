@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import './styles/repairs.css';
 import Orders from './Orders';
 import ProgressBar from './ProgressBar';
-import { AppContext } from '../context/AppContext';
+// import { AppContext } from '../context/AppContext';
+import axios from 'axios';
+import swal from 'sweetalert';
 
 const RepairControl = ({ match }) => {
   const [progress, setProgress] = useState('false');
   const [isActive, setActive] = useState('false');
   const [formData, setFormData] = useState(null);
-  const { order, setOrder } = useContext(AppContext);
+  // const { order, setOrder } = useContext(AppContext);
 
   const id = match.params.id;
 
@@ -25,21 +27,21 @@ const RepairControl = ({ match }) => {
     e.preventDefault();
     try {
       const response = await axios.patch(`/api/order/${id}`, formData);
-      setOrder(response.data);
+      // setOrder(response.data);
       swal('Congrats! You have won this stage of the tour!');
     } catch (error) {
       swal('You made no progress! Turn around and try again!');
     }
   };
 
-  const setProgress = (val) => {
-    setFormData({ ...FormData, progress: val });
-  };
+  // const setProgress = (val) => {
+  //   setFormData({ ...FormData, progress: val });
+  // };
 
   return (
     <Container>
       <h1> Repairs Control</h1>
-      <Orders order={order} />
+      {/* <Orders order={order} /> */}
       <p>Insert description here </p>
       <ProgressBar className={isActive ? 'tracker 1' || 'tracker2' : ''} />
       <hr className="pink-line-page-break" />
