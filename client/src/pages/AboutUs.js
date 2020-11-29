@@ -46,7 +46,7 @@ const AboutUs = () => {
               src="https://i.imgur.com/gPUcWnT.jpg?1"
             />
           </Container>
-          <Card.Title>JP Castrillon</Card.Title>
+          <Card.Title>Juan Pablo "JP" Castrillon</Card.Title>
           <Card.Text>
             JP is passionate about riding his bikes. He was once quoted, "the
             best code I've wrote, have come after a long bike ride.".
