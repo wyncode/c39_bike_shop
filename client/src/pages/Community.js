@@ -4,9 +4,14 @@ import { Card, Container, Image } from 'react-bootstrap';
 const Community = () => {
   return (
     <Container>
+      <h1></h1>
       <Card>
-        <Card.Header className="">Miami's Best Coffee Shop!</Card.Header>
-        <Card.Img variant="top" src="https://i.imgur.com/2S31JGZ.jpg" />
+        <Card.Header class="header">Miami's Best Coffee Shop!</Card.Header>
+        <Card.Img
+          className="img"
+          variant="top"
+          src="https://i.imgur.com/2S31JGZ.jpg"
+        />
         <Card.Body>
           <Card.Text>
             Pay a visit to the Rapha Miami cafe shop for a great post ride
