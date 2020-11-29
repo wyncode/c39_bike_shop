@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Container, Button } from 'react-bootstrap';
 import './styles/repairs.css';
 import Orders from './Orders';
@@ -11,6 +11,17 @@ const RepairControl = () => {
   const [isActive, setActive] = useState('false');
   const [formData, setFormData] = useState(null);
   const { order, setLoading } = useContext(AppContext);
+  const [tracker, setTracker] = useState(0);
+
+  useEffect(() => {
+    let num = 0;
+    for (key in order.progress) {
+      if (Object.values(order.progress[key])[0] === true) {
+        num++;
+      }
+      setTracker(num);
+    }
+  }, []);
 
   const handleToggle = (val) => {
     setActive(!isActive);
@@ -40,12 +51,14 @@ const RepairControl = () => {
     setFormData({ ...FormData, progress: val });
   };
 
+  const progress = order.progress;
+
   return (
     <Container>
       <h1> Repairs Control</h1>
       <Orders order={order} />
       <p>Insert description here </p>
-      <ProgressBar className={isActive ? 'tracker 1' || 'tracker2' : ''} />
+      <ProgressBar className={isActive ? `tracker${tracker}` : ''} />
       <hr className="pink-line-page-break" />
       <Button
         className="btn-pink-lg-lng"
