@@ -7,13 +7,10 @@ import { AppContext } from '../context/AppContext';
 import swal from 'sweetalert';
 import axios from 'axios';
 
-const RepairControl = ({ match }) => {
-  const [progress, setProgress] = useState('false');
+const RepairControl = () => {
   const [isActive, setActive] = useState('false');
   const [formData, setFormData] = useState(null);
-  const { order, setOrder } = useContext(AppContext);
-
-  const id = match.params.id;
+  const { order, setLoading } = useContext(AppContext);
 
   const handleToggle = (val) => {
     setActive(!isActive);
@@ -25,18 +22,23 @@ const RepairControl = ({ match }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const progress = e.target.elements.progress.value;
+    setLoading(true);
     try {
-      const response = await axios.patch(`/api/order/${id}`, formData);
-      setOrder(response.data);
+      const { data } = await axios.patch(
+        `/api/order/${order._id}`,
+        { progress },
+        { withCredentials: true }
+      );
       swal('Congrats! You have won this stage of the tour!');
     } catch (error) {
       swal('You made no progress! Turn around and try again!');
     }
   };
 
-  // const setProgress = (val) => {
-  //   setFormData({ ...FormData, progress: val });
-  // };
+  const setProgress = (val) => {
+    setFormData({ ...FormData, progress: val });
+  };
 
   return (
     <Container>
