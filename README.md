@@ -29,21 +29,31 @@ We love working on web developement and riding our bikes. During our cohort, we 
 
 ## Dependencies-Client
 
-"@fullcalendar/daygrid": "^5.4.0",
-"@fullcalendar/interaction": "^5.4.0",
-"@fullcalendar/react": "^5.4.0",
-"axios": "^0.21.0",
-"bootstrap": "^4.5.3",
-"moment": "^2.29.1",
-"moment-range": "^4.0.2",
-"react": "^16.14.0",
-"react-bootstrap": "^1.4.0",
-"react-dom": "^16.14.0",
-"react-router-dom": "^5.2.0",
-"react-scripts": "3.4.3",
-"react-share": "^4.3.1",
-"sweetalert": "^2.1.2",
-"styled-components": "^5.2.1"
+|        Client Side        |       Server Side       |     |     |     |
+| :-----------------------: | :---------------------: | --- | --- | --- |
+|   @fullcalendar/daygrid   |     @sendgrid/mail      |     |     |     |
+| @fullcalendar/interaction |        bcryptjs         |     |     |     |
+|         bootstrap         |       cloudinary        |     |     |     |
+|       moment-range        |      concurrently       |     |     |     |
+|      react-bootstrap      |      cookie-parser      |     |     |     |
+|      react-scroll-to      |   express-file-upload   |     |     |     |
+|           axios           |          faker          |     |     |     |
+|     styled-components     |      jsonwebtoken       |     |     |     |
+|        sweetalert         |         mongodb         |     |     |     |
+|  react-paypal-button-v2   |        mongoose         |     |     |     |
+|           react           |    passport-facebook    |     |     |     |
+|         react-dom         |        passport         |     |     |     |
+|       react-map-jl        | passport-local-mongoose |     |     |     |
+|     react-router-dom      |      passport-jwt       |     |     |     |
+|       react-scripts       |     passport-local      |     |     |     |
+|        react-tabs         |        validator        |     |     |     |
+|      react-spinners       |         moment          |     |     |     |
+|          moment           |          cors           |     |     |     |
+|        Sweet Alert        |      jsonwebtoken       |     |     |     |
+|        React-Rater        |         mbreact         |     |     |     |
+|        React-Share        |         express         |     |     |     |
+|          moment           |                         |     |     |     |
+|     React-Chat-Widgit     |
 
 ## Dependencies Root
 
