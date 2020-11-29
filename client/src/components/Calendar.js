@@ -9,10 +9,20 @@ import { AppContext } from '../context/AppContext';
 const Calendar = () => {
   const [modalShow, setModalShow] = useState(false);
   const [appointmentDate, setAppointmentDate] = useState(null);
-  // const {loading, setLoading} = useContext(AppContext);
+  const { loading, setLoading } = useContext(AppContext);
+
+  useEffect(() => {
+    const updateAppointments = appointments.map((task) => {
+      const title = appointment.description;
+      const date = appointment.dueDate;
+      return { title, date };
+    });
+    setEvents(updateAppointments);
+  }, [appointments, loading, setLoading]);
 
   const handleDateClick = (e) => {
     setAppointmentDate(e.dateStr);
+    console.log(e.dateStr);
     setModalShow(true);
   };
 
