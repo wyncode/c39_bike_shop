@@ -1,20 +1,21 @@
 import React from 'react';
 import { Image, Card } from 'react-bootstrap';
 import BikeShopCard from '../components/BikeShopCard';
+import '../components/styles/repairtracker.css';
 
 const RepairTracker = () => {
   return (
     <>
-      <h1 className="confirmtitle">Repairs Tracker</h1>
+      <h1 class="text-center">Repairs Tracker</h1>
       <Image
         src="https://imgur.com/wE9rGJ8.png"
         className="mt-5 mb-5 bicycleImage"
       />
-      <h1 className="awaitingtitle">Currently in Repair</h1>
-      <Card className="datetime d-flex flex-row"></Card>
+      <h1 class="text-center">Currently in Repair</h1>
+      <Card class="text-center"></Card>
       <Card></Card>
       <BikeShopCard />
-      <h1>Add service order here</h1>
+      <h1 class="text-center">Add service order here</h1>
       <div>
         <h1 className="dropofftitle">Repairs Selected</h1>
         <p className="dropoffp">
