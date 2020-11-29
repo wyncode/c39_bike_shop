@@ -1,16 +1,14 @@
 import React from 'react';
-import { Image, Card } from 'react-bootstrap';
+import { Image, Card, Container } from 'react-bootstrap';
 import BikeShopCard from '../components/BikeShopCard';
 import '../components/styles/repairtracker.css';
+import ProgressBar from '../components/ProgressBar';
 
 const RepairTracker = () => {
   return (
     <>
       <h1 class="text-center">Repairs Tracker</h1>
-      <Image
-        src="https://imgur.com/wE9rGJ8.png"
-        className="mt-5 mb-5 bicycleImage"
-      />
+      <ProgressBar />
       <h1 class="text-center">Currently in Repair</h1>
       <Card class="text-center"></Card>
       <Card></Card>
@@ -23,6 +21,9 @@ const RepairTracker = () => {
           to additional shop fees, taxes or other necessary repairs.
         </p>
       </div>
+      <p>Flat Tire Repair: $20</p>
+      <hr className="line" />
+      <p>Sub Total: $20</p>
     </>
   );
 };
