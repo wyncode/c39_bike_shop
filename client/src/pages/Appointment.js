@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Button, Image } from 'react-bootstrap';
 import Calendar from '../components/Calendar';
+import { AppContext } from '../context/AppContext';
 import '../components/styles/appointment.css';
 
 const Appointment = () => {
+  const { order } = useContext(AppContext);
+  console.log('ello', order);
   return (
     <div>
       <Image

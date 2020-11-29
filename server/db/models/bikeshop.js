@@ -82,7 +82,7 @@ const bikeshopSchema = new mongoose.Schema(
       }
     ]
   },
-  { timestamps: true }
+  { timestamps: true, toJSON: { virtuals: true } }
 );
 
 bikeshopSchema.virtual('cyclists', {

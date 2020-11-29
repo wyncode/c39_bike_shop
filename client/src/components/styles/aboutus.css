@@ -1,0 +1,18 @@
+.aboutuscard {
+  background: transparent !important;
+  border: 0px transparent !important;
+  color: #5d5d5d;
+  font-family: Actor;
+  font-size: 1.7vw;
+}
+
+.aboutus {
+  display: flex;
+  flex-direction: column;
+  font-size: 50px;
+  padding: 2rem;
+}
+
+.img {
+  width: 550px;
+}

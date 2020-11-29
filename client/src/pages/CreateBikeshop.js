@@ -4,37 +4,37 @@ import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
 
-const CreateCyclist = ({ history }) => {
-  const { setCurrentUser } = useContext(AppContext);
+const CreateBikeshop = ({ history }) => {
+  const { fetchCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const [image, setImage] = useState(null);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     console.log(formData);
   };
 
-  const handleImageSelect = (e) => {
-    setPreview(URL.createObjectURL(e.target.files[0]));
-    setImage(e.target.files[0]);
-  };
-
   const handleCreate = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await axios.post('/api/bikeshop', formData);
-      const logo = new FormData();
-      logo.append('logo', image, image.name);
-      sessionStorage.setItem('bikeshop', response.data);
-      setCurrentUser(response.data.bikeshop);
-      history.push('/');
+      const bikeshopData = new FormData();
+      // this information is not append information
+      Object.entries(formData).forEach(([field, value]) =>
+        bikeshopData.append(field, value)
+      );
+
+      await axios.post('/api/bikeshop', bikeshopData, {
+        withCredentials: true
+      });
+
+      await fetchCurrentUser();
+
+      // history.push('/');
+      swal('Start your store!');
     } catch (error) {
       swal('SignUp Error: ', error.toString());
     }
   };
-
-  console.log(setCurrentUser);
 
   return (
     <Container
@@ -47,12 +47,12 @@ const CreateCyclist = ({ history }) => {
       </div>
       <Form onSubmit={handleCreate} className="d-flex flex-column">
         <Form.Group>
-          <Form.File
+          {/* <Form.File
             id="exampleFormControlFile1"
             label="Upload your logo"
             name="logo"
             onChange={handleImageSelect}
-          />
+          /> */}
         </Form.Group>
         <Form.Group controlId="formBasic">
           <Form.Label>What is your shop's name?</Form.Label>
@@ -129,13 +129,7 @@ const CreateCyclist = ({ history }) => {
           </Form.Row>
         </Form.Group>
 
-        <Button
-          type="submit"
-          className="btn-pink-sm m-auto"
-          onClick={() => {
-            history.push('/Shoplist');
-          }}
-        >
+        <Button type="submit" className="btn-pink-sm m-auto">
           Finished
         </Button>
       </Form>
@@ -143,4 +137,4 @@ const CreateCyclist = ({ history }) => {
   );
 };
 
-export default CreateCyclist;
+export default CreateBikeshop;

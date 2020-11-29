@@ -26,10 +26,8 @@ const BikeShopPDP = ({ match, history }) => {
   const handleChange = (e) => {
     setReviewData({ ...reviewData, [e.target.name]: e.target.value });
   };
-  console.log(reviewData);
 
   const handleSubmit = async (e) => {
-    const form = e.target;
     e.preventDefault();
     try {
       const formData = new FormData();
@@ -106,7 +104,7 @@ const BikeShopPDP = ({ match, history }) => {
           Select Repairs
         </Button>
 
-        <Link className="mt-4 shoplistLink" to="/Shoplist">
+        <Link className="mt-4 shoplistLink" to="/shoplist">
           Back to Bike Shop List
         </Link>
       </Container>
