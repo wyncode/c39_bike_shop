@@ -17,6 +17,7 @@ const SignUp = ({ history }) => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
+
       const { data } = await axios.post('/api', formData);
 
       console.log('SIGNED UP THE USER', {
@@ -28,6 +29,7 @@ const SignUp = ({ history }) => {
       setCurrentUser(data);
 
       data.admin ? history.push('/bikeshop') : history.push('/cyclist');
+
     } catch (error) {
       swal('SignUp Error: ', error.toString());
     }

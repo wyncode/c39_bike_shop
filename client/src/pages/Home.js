@@ -2,10 +2,10 @@ import React from 'react';
 import HeroImage from '../components/HeroImage';
 import InfoCards from '../components/InfoCards';
 import FeaturedShops from '../components/FeaturedShops';
-import AboutUs from '../components/AboutUs';
 import Footer from '../components/Footer';
 import '../components/styles/homepage.css';
 import { Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -13,7 +13,10 @@ const Home = () => {
       <HeroImage />
       <InfoCards />
       <FeaturedShops />
-      <AboutUs />
+      <Link className="mt-3 mb-5" to="/aboutus" className="aboutus">
+        {' '}
+        About Us
+      </Link>
       <Form className="d-flex justify-content-center">
         <Form.Group className="d-flex" controlId="formBasicEmail">
           <Form.Control

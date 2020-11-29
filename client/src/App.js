@@ -21,7 +21,7 @@ import CreateBikeShop from './pages/CreateBikeshop';
 import Events from './pages/Events';
 import Trails from './pages/Trails';
 import Community from './pages/Community';
-import AboutUs from './components/AboutUs';
+import AboutUs from './pages/AboutUs';
 
 const App = () => {
   return (
