@@ -1,27 +1,48 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Card, Modal, Form, Button } from 'react-bootstrap';
+import React, { useEffect, useContext, useState } from 'react';
+import { Card, Modal, Button, Form } from 'react-bootstrap';
+import './styles/profile.css';
+import axios from 'axios';
 import swal from 'sweetalert';
 import { AppContext } from '../context/AppContext';
 import Bike from './Bike';
-import './styles/profile.css';
-import axios from 'axios';
 
-const Bicycle = () => {
+const Bicycle = ({ match }) => {
   const [formData, setFormData] = useState(null);
   const { fetchCurrentUser } = useContext(AppContext);
 
+  const id = match.params.id;
+
+  useEffect(() => {
+    axios
+      .get(`/api/cyclist/find/${id}`, { withCredentials: true })
+      .then(({ data }) => {
+        fetchCurrentUser(data);
+      });
+  }, []);
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...FormData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
+    const form = e.target;
     e.preventDefault();
     try {
-      await axios.post(`/api/bike`, formData, { withCredentials: true });
-      await fetchCurrentUser();
+      const Data = new FormData();
+      Data.append('bikeName', formData.bikeName);
+      Data.append('bikeModel', formData.bikeModel);
+      Data.append('bikeType', formData);
+      await axios({
+        method: 'POST',
+        url: `/api/${id}/bike`,
+        withCredentials: true,
+        Data
+      });
+
+      swal('New Bike!', 'Get Riding!', 'success');
       setFormData(null);
     } catch (error) {
-      swal('Oops!', 'Something went wrong');
+      console.log(error);
     }
   };
 
@@ -46,7 +67,6 @@ const Bicycle = () => {
                   <Form.Control
                     type="text"
                     placeholder="BikeName"
-                    ad
                     name="bikeName"
                     onChange={handleChange}
                   />
