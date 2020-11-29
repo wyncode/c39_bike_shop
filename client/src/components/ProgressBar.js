@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
-export const ProgressBar = () => {
+export const ProgressBarContainer = () => {
   return (
     <div>
       <Card className="bg-dark">

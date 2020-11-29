@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Container, Button } from 'react-bootstrap';
 import './styles/repairs.css';
 import Orders from './Orders';
-import ProgressBar from './ProgressBar';
+import ProgressBarContainer from './ProgressBar';
 import { AppContext } from '../context/AppContext';
 import swal from 'sweetalert';
 import axios from 'axios';
@@ -10,11 +10,14 @@ import axios from 'axios';
 const RepairControl = () => {
   const [formData, setFormData] = useState(null);
   const { order, setLoading } = useContext(AppContext);
-  const [percentageRange, setProgress] = useState(0);
+  const [percentRange, setProgress] = useState(0);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     console.log(formData);
+  };
+  const handleClick = () => {
+    setProgress(percentRange < 100 ? percentRange + 20 : 100);
   };
 
   const handleSubmit = async (e) => {
@@ -37,52 +40,52 @@ const RepairControl = () => {
   };
 
   return (
-    <Container>
+    <Container className="d-flex flex-column align-items-center">
       <h1> Repairs Control</h1>
       <Orders order={order} />
-      <ProgressBar percentageRange={percentageRange} />
+      <ProgressBarContainer percentRange={percentRange} />
       <hr className="pink-line-page-break" />
       <Button
-        className="btn-pink-lg-lng"
+        className="btn-pink-lg-lng mb-2"
         onChange={handleChange}
-        onClick={setProgress(percentRange < 100 ? percentRange + 20 : 100)}
+        onClick={handleClick}
       >
         Received
       </Button>
       <Button
-        className="btn-pink-lg-lng"
+        className="btn-pink-lg-lng mb-2"
         onChange={handleChange}
-        onClick={setProgress(percentRange < 100 ? percentRange + 20 : 100)}
+        onClick={handleClick}
       >
         Diagnosed
       </Button>
       <Button
-        className="btn-pink-lg-lng"
+        className="btn-pink-lg-lng mb-2"
         onChange={handleChange}
-        onClick={setProgress(percentRange < 100 ? percentRange + 20 : 100)}
+        onClick={handleClick}
       >
         Parts Ordered
       </Button>
       <Button
-        className="btn-pink-lg-lng"
+        className="btn-pink-lg-lng mb-2"
         onChange={handleChange}
-        onClick={setProgress(percentRange < 100 ? percentRange + 20 : 100)}
+        onClick={handleClick}
       >
         Repair in progress
       </Button>
       <Button
-        className="btn-pink-lg-lng"
+        className="btn-pink-lg-lng mb-2"
         onSubmit={handleSubmit}
         onChange={handleChange}
-        onClick={setProgress(percentRange < 100 ? percentRange + 20 : 100)}
+        onClick={handleClick}
       >
         Delayed
       </Button>
       <Button
-        className="btn-pink-lg-lng"
+        className="btn-pink-lg-lng mb-2"
         onSubmit={handleSubmit}
         onChange={handleChange}
-        onClick={() => setProgress(true)}
+        onClick={handleClick}
       >
         Ready for pick up
       </Button>
