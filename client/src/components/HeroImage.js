@@ -1,7 +1,8 @@
-import React, { useHistory } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 
-export default function HeroImage() {
+const HeroImage = () => {
   let history = useHistory();
   const handleClick = () => {
     history.push('/login');
@@ -23,6 +24,6 @@ export default function HeroImage() {
       </Card.ImgOverlay>
     </Card>
   );
-}
+};
 
 export default HeroImage;
