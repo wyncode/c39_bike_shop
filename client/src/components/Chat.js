@@ -1,27 +1,50 @@
-import React from 'react';
-import { Card } from 'react-bootstrap';
+import React, { useEffect } from 'react';
 import './styles/profile.css';
+import {
+  Widget,
+  addResponseMessage,
+  addUserMessage,
+  addLinkSnippet
+} from 'react-chat-widget';
+import 'react-chat-widget/lib/styles.css';
+import axios from 'axios';
+import swal from 'sweetalert';
 
 const Chat = () => {
+  useEffect(() => {
+    addResponseMessage('Welcome to the BikeShop! How may we assit you?');
+  }, []);
+
+  const handleNewUserMessage = async (newMessage) => {
+    console.log(`New Message incoming! ${newMessage}`);
+    try {
+      axios({
+        method: 'POST',
+        url: `/api/chat`,
+        body: JSON.stringify(),
+        withCredentials: true
+      });
+    } catch (error) {
+      swal('Sorry! There are no ride leaders available at this time!');
+    }
+    await addResponseMessage(
+      `Sure. I would love to help you let me check on that!`
+    );
+    await addLinkSnippet({
+      title: 'Search the for a Bikeshop',
+      link: '/shoplist'
+    });
+  };
+
   return (
-    <Card className="mt-5 chatbox" fluid>
-      <Card.Body className="d-flex chat mb-5">
-        <Card.Img
-          className="profileImg-sm"
-          src="https://imgur.com/PCEcljZ.png"
-          alt="username"
-        />
-        <Card.Text>Hi. I would like to place and Order.</Card.Text>
-      </Card.Body>
-      <Card.Body className="d-flex chat ml-5">
-        <Card.Text>Sure. What do you need fixed?</Card.Text>
-        <Card.Img
-          className="profileImg-sm"
-          src="https://imgur.com/Wv38VLb.png"
-          alt="bikeshop"
-        />
-      </Card.Body>
-    </Card>
+    <div>
+      <Widget
+        handleNewUserMessage={handleNewUserMessage}
+        title="Contact the Bikeshop"
+        subtitle="Reach out with all your questions!"
+        // profileAvatar={logo ? avatar : ''}
+      />
+    </div>
   );
 };
 

@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
+import React, { useState, useContext } from 'react';
+import { Container, Button } from 'react-bootstrap';
 import './styles/repairs.css';
 import Orders from './Orders';
 import ProgressBar from './ProgressBar';
 import { AppContext } from '../context/AppContext';
+import swal from 'sweetalert';
+import axios from 'axios';
 
 const RepairControl = ({ match }) => {
   const [progress, setProgress] = useState('false');
@@ -32,9 +34,9 @@ const RepairControl = ({ match }) => {
     }
   };
 
-  const setProgress = (val) => {
-    setFormData({ ...FormData, progress: val });
-  };
+  // const setProgress = (val) => {
+  //   setFormData({ ...FormData, progress: val });
+  // };
 
   return (
     <Container>
