@@ -3,7 +3,8 @@ import ReactMapboxGl, { ZoomControl, Marker } from 'react-mapbox-gl';
 import '../components/styles/shoplist.css';
 
 const MapBox = ReactMapboxGl({
-  accessToken: process.env.REACT_APP_MAPBOX_API_KEY
+  accessToken:
+    'pk.eyJ1IjoidGVsZXZpbmUiLCJhIjoiY2tnYTQ5MnJrMDNpZTJ6b2puZGJxZ21qZCJ9.Euhc3Q37uKKWBj6wlq3uSg'
 });
 
 const Map = () => {
@@ -14,6 +15,7 @@ const Map = () => {
         height: '600px',
         width: '850px'
       }}
+      center={[-80.1918, 25.7617]}
     >
       {/* <Marker coordinates={[longitude, latitude]} className="marker">
         <img
