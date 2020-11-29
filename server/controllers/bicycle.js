@@ -8,14 +8,12 @@ exports.addBike = async (req, res) => {
 
     const user = await User.findById(req.user._id).populate('cyclist');
     const cyclistId = user.cyclist._id;
-
+    console.log(cyclistId);
     newBike.owner = cyclistId;
-
     const cyclist = await Cyclist.findById(cyclistId);
-    cyclist.bikes.push(createBike._id);
+    cyclist.bikes.push(newBike._id);
 
     await Promise.all([newBike.save(), cyclist.save()]);
-
     res.json(newBike);
   } catch (error) {
     console.log(error.message);

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Card, Modal, Form, Button } from 'react-bootstrap';
 import swal from 'sweetalert';
 import { AppContext } from '../context/AppContext';
@@ -6,48 +6,24 @@ import Bike from './Bike';
 import './styles/profile.css';
 import axios from 'axios';
 
-const Bicycle = ({ match, history }) => {
+const Bicycle = () => {
   const [formData, setFormData] = useState(null);
-
-  // const { setCyclist, cyclist } = useContext(AppContext);
-
-  // const id = match.params.id;
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`/api/cyclist/find/${id}`, { withCredentials: true })
-  //     .then(({ data }) => {
-  //       setCyclist(data);
-  //     });
-  // }, []);
+  const { fetchCurrentUser } = useContext(AppContext);
 
   const handleChange = (e) => {
-    setFormData({ ...FormData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {};
-
-  // const handleSubmit = async (e) => {
-  //   const form = e.target;
-  //   e.preventDefault();
-  //   try {
-  //     const Data = new FormData();
-  //     Data.append('bikeName', formData.bikeName);
-  //     Data.append('bikeModel', formData.bikeModel);
-  //     Data.append('bikeType', formData);
-  //     await axios({
-  //       method: 'POST',
-  //       url: `/api/${id}/bike`,
-  //       withCredentials: true,
-  //       Data
-  //     });
-
-  //     swal('New Bike!', 'Get Riding!', 'success');
-  //     setFormData(null);
-  //   } catch (error) {
-  //     swal('Oops!', 'Something went wrong');
-  //   }
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post(`/api/bike`, formData, { withCredentials: true });
+      await fetchCurrentUser();
+      setFormData(null);
+    } catch (error) {
+      swal('Oops!', 'Something went wrong');
+    }
+  };
 
   const [show, setShow] = useState(false);
 
@@ -70,6 +46,7 @@ const Bicycle = ({ match, history }) => {
                   <Form.Control
                     type="text"
                     placeholder="BikeName"
+                    ad
                     name="bikeName"
                     onChange={handleChange}
                   />
@@ -110,7 +87,7 @@ const Bicycle = ({ match, history }) => {
         </Modal.Dialog>
       </Modal>
       <Card className="bike">
-        <Bike />
+        <Bike bike={fetchCurrentUser} />
       </Card>
     </>
   );
