@@ -11,10 +11,9 @@ exports.createOrder = async (req, res) => {
       Bikeshop.findById(req.body.bikeshop)
     ]);
 
-    console.log('i found ');
+    cyclist.orders.push(newOrder._id);
+    bikeshop.orders.push(newOrder._id);
 
-    cyclist.orders.push(newOrder);
-    bikeshop.orders.push(newOrder);
     await Promise.all([bikeshop.save(), cyclist.save(), newOrder.save()]);
 
     res.status(201).json(newOrder);

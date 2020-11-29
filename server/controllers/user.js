@@ -19,7 +19,7 @@ exports.createUser = async (req, res) => {
       password,
       admin
     });
-    sendWelcomeEmail(user.email, user.name);
+    // sendWelcomeEmail(user.email, user.name);
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, {
       httpOnly: true,
@@ -97,7 +97,15 @@ exports.passwordRedirect = async (req, res) => {
 // Get current user
 // ***********************************************//
 exports.getCurrentUser = async (req, res) => {
-  res.json(req.user);
+  const user = await User.findById(req.user._id)
+    .populate('cyclist')
+    .populate('bikeshop');
+
+  res.json({
+    ...user.toObject(),
+    cyclist: user.cyclist,
+    bikeshop: user.bikeshop
+  });
 };
 
 // ***********************************************//

@@ -1,5 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Modal, Form, Button } from 'react-bootstrap';
+import swal from 'sweetalert';
+import { AppContext } from '../context/AppContext';
+import Bike from './Bike';
 import './styles/profile.css';
 import axios from 'axios';
 

@@ -5,36 +5,27 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 const CreateCyclist = ({ history }) => {
-  const { setCurrentUser } = useContext(AppContext);
+  const { fetchCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const [image, setImage] = useState(null);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.log(formData);
-  };
-
-  const handleImageSelect = (e) => {
-    setPreview(URL.createObjectURL(e.target.files[0]));
-    setImage(e.target.files[0]);
   };
 
   const handleCreate = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await axios.post('/api/cyclist', formData);
-      const avatar = new FormData();
-      avatar.append('avatar', image, image.name);
-      sessionStorage.setItem('cyclist', response.data);
-      setCurrentUser(response.data.cyclist);
+      await axios.post('/api/cyclist', formData, { withCredentials: true });
+
+      await fetchCurrentUser();
+
       history.push('/');
     } catch (error) {
+      console.log('an error happend in create cylixt');
       swal('SignUp Error: ', error.toString());
     }
   };
-
-  console.log(setCurrentUser);
 
   return (
     <Container
@@ -46,14 +37,6 @@ const CreateCyclist = ({ history }) => {
         <Image src="https://imgur.com/vGj6QjL.png" height="200px" />
       </div>
       <Form onSubmit={handleCreate} className="d-flex flex-column">
-        <Form.Group>
-          <Form.File
-            id="exampleFormControlFile1"
-            label="Upload a profile picture"
-            name="avatar"
-            onChange={handleImageSelect}
-          />
-        </Form.Group>
         <Form.Group controlId="formBasic">
           <Form.Label>What is your zipcode?</Form.Label>
 
@@ -76,13 +59,7 @@ const CreateCyclist = ({ history }) => {
           />
         </Form.Group>
 
-        <Button
-          type="submit"
-          className="btn-pink-sm m-auto"
-          onClick={() => {
-            history.push('/Shoplist');
-          }}
-        >
+        <Button type="submit" className="btn-pink-sm m-auto">
           Finished
         </Button>
       </Form>
