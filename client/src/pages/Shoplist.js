@@ -17,18 +17,11 @@ const Shoplist = () => {
     return bikeshop?.shopContact.zipCode.includes(search);
   });
 
-  // const [loading, setLoading] = useState(false);
   const handleSearch = async (e) => {
     setSearch(e.target.value);
   };
 
   // setLoading(true);
-
-  //create mapboxfunction
-
-  const Mapbox = ReactMapboxGl({
-    accessToken: process.env.REACT_APP_MAPBOX_API_KEY
-  });
 
   useEffect(() => {
     axios

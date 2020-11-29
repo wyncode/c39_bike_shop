@@ -1,15 +1,22 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import ReactMapboxGl from 'react-mapbox-gl';
+import ReactMapboxGl, { ZoomControl } from 'react-mapbox-gl';
 import '../components/styles/shoplist.css';
+
+const MapBox = ReactMapboxGl({
+  accessToken: process.env.REACT_APP_MAPBOX_API_KEY
+});
 
 const Map = () => {
   return (
-    <div>
-      <Container>
-        <h1>Map Component</h1>
-      </Container>
-    </div>
+    <MapBox
+      style="mapbox://styles/mapbox/streets-v11"
+      containerStyle={{
+        height: '600px',
+        width: '850px'
+      }}
+    >
+      <ZoomControl />
+    </MapBox>
   );
 };
 
