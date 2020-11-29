@@ -38,7 +38,7 @@ const SignUp = ({ history }) => {
   const setAdministrator = (val) => {
     // setAdmin(val);
     setFormData({ ...formData, admin: val });
-  };
+  }
 
   return (
     <Container

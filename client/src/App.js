@@ -21,7 +21,9 @@ import CreateBikeShop from './pages/CreateBikeshop';
 import Events from './pages/Events';
 import Trails from './pages/Trails';
 import Community from './pages/Community';
-import AboutUs from './pages/AboutUs';
+import AboutUs from './components/AboutUs';
+import RepairTracker from './pages/RepairTracker';
+
 
 const App = () => {
   return (
@@ -48,6 +50,7 @@ const App = () => {
           <PrivateRoute exact path="/Profile" component={Profile} />
           <PrivateRoute exact path="/shopOwner" component={ShopOwner} />
           <PrivateRoute exact path="/bikeControl" component={BikeControl} />
+          <PrivateRoute exact path="/repairTracker" component={RepairTracker} />
         </Switch>
       </BrowserRouter>
     </AppContextProvider>

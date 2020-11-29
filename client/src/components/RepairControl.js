@@ -1,24 +1,103 @@
-import React from 'react';
-import { Card } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container } from 'react-bootstrap';
 import './styles/repairs.css';
+import Orders from './Orders';
+import ProgressBar from './ProgressBar';
+import { AppContext } from '../context/AppContext';
 
-const RepairControl = () => {
+const RepairControl = ({ match }) => {
+  const [progress, setProgress] = useState('false');
+  const [isActive, setActive] = useState('false');
+  const [formData, setFormData] = useState(null);
+  const { order, setOrder } = useContext(AppContext);
+
+  const id = match.params.id;
+
+  const handleToggle = (val) => {
+    setActive(!isActive);
+  };
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+    console.log(formData);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.patch(`/api/order/${id}`, formData);
+      setOrder(response.data);
+      swal('Congrats! You have won this stage of the tour!');
+    } catch (error) {
+      swal('You made no progress! Turn around and try again!');
+    }
+  };
+
+  const setProgress = (val) => {
+    setFormData({ ...FormData, progress: val });
+  };
+
   return (
-    <Card>
-      <Card.Header as="h5" class="d-flex justify-content-center">
-        Bike Repair Controls
-      </Card.Header>
-      <Card.Body>
-        <Card.Title class="d-flex justify-content-center">
-          Traci #55555
-        </Card.Title>
-        <Card.Text class="d-flex justify-content-center">
-          8-bit gluten-free roof party, drinking vinegar pickled aesthetic.
-          Microdosing fixie margarita fashion axe meh live-edge drinking
-          vinegar.
-        </Card.Text>
-      </Card.Body>
-    </Card>
+    <Container>
+      <h1> Repairs Control</h1>
+      <Orders order={order} />
+      <p>Insert description here </p>
+      <ProgressBar className={isActive ? 'tracker 1' || 'tracker2' : ''} />
+      <hr className="pink-line-page-break" />
+      <Button
+        className="btn-pink-lg-lng"
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+        onClick={handleToggle}
+        onClick={() => setProgress(true)}
+      >
+        Received
+      </Button>
+      <Button
+        className="btn-pink-lg-lng"
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+        onClick={handleToggle}
+        onClick={() => setProgress(true)}
+      >
+        Diagnosed
+      </Button>
+      <Button
+        className="btn-pink-lg-lng"
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+        onClick={handleToggle}
+        onClick={() => setProgress(true)}
+      >
+        Parts Ordered
+      </Button>
+      <Button
+        className="btn-pink-lg-lng"
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+        onClick={handleToggle}
+        onClick={() => setProgress(true)}
+      >
+        Repair in progress
+      </Button>
+      <Button
+        className="btn-pink-lg-lng"
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+        onClick={handleToggle}
+        onClick={() => setProgress(true)}
+      >
+        Delayed
+      </Button>
+      <Button
+        className="btn-pink-lg-lng"
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+        onClick={handleToggle}
+        onClick={() => setProgress(true)}
+      >
+        Ready for pick up
+      </Button>
+    </Container>
   );
 };
 
