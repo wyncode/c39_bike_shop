@@ -12,7 +12,7 @@ const AboutUs = () => {
             <Card.Img
               variant="top"
               className="img"
-              src="https://i.imgur.com/7EqArky.jpeg"
+              src="https://i.imgur.com/eDRoNBI.jpeg"
             />
           </Container>
           <Card.Title>Traci Levine</Card.Title>
