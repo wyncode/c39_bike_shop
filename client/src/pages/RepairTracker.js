@@ -1,19 +1,18 @@
 import React from 'react';
-import { Image, Card, Container } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 import BikeShopCard from '../components/BikeShopCard';
 import '../components/styles/repairtracker.css';
 import ProgressBar from '../components/ProgressBar';
+import Orders from '../components/Orders';
 
 const RepairTracker = () => {
   return (
-    <>
+    <Container>
       <h1 class="text-center">Repairs Tracker</h1>
       <ProgressBar />
       <h1 class="text-center">Currently in Repair</h1>
-      <Card class="text-center"></Card>
-      <Card></Card>
       <BikeShopCard />
-      <h1 class="text-center">Add service order here</h1>
+      <Orders />
       <div>
         <h1 className="dropofftitle">Repairs Selected</h1>
         <p className="dropoffp">
@@ -24,7 +23,7 @@ const RepairTracker = () => {
       <p>Flat Tire Repair: $20</p>
       <hr className="line" />
       <p>Sub Total: $20</p>
-    </>
+    </Container>
   );
 };
 

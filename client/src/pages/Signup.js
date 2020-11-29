@@ -33,7 +33,6 @@ const SignUp = ({ history }) => {
   };
 
   const setAdministrator = (val) => {
-    // setAdmin(val);
     setFormData({ ...FormData, admin: val });
   };
 
