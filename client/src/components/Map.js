@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMapboxGl, { ZoomControl } from 'react-mapbox-gl';
+import ReactMapboxGl, { ZoomControl, Marker } from 'react-mapbox-gl';
 import '../components/styles/shoplist.css';
 
 const MapBox = ReactMapboxGl({
@@ -15,6 +15,12 @@ const Map = () => {
         width: '850px'
       }}
     >
+      {/* <Marker coordinates={[longitude, latitude]} className="marker">
+        <img
+          className="marker-icon"
+        
+        />
+      </Marker> */}
       <ZoomControl />
     </MapBox>
   );

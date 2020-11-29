@@ -9,7 +9,7 @@ import axios from 'axios';
 import BikeShopCard from '../components/BikeShopCard';
 import swal from 'sweetalert';
 
-const Shoplist = () => {
+const Shoplist = ({ latitude, longitude }) => {
   const { setBikeshops, search, loading, bikeshops, setSearch } = useContext(
     AppContext
   );
@@ -41,7 +41,6 @@ const Shoplist = () => {
           <Card.Text className="srch-hdr">Select your Bike Shop:</Card.Text>
           <SearchBar handleSearchProp={handleSearch} loading={loading} />
         </Card>
-        {/* // Here we render Mapbox */}
         <Map />
 
         <Card>
