@@ -98,6 +98,9 @@ const Login = ({ history }) => {
           <Link className="mt-4 text-center" to="/signup">
             Need an Account? Sign up.
           </Link>
+          <Link className="mt-4 text-center" to="/resetpassword">
+            Forgot your passwod?
+          </Link>
         </Form.Group>
       </Form>
     </Container>

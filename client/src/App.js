@@ -22,6 +22,7 @@ import Events from './pages/Events';
 import Trails from './pages/Trails';
 import Community from './pages/Community';
 import AboutUs from './components/AboutUs';
+import ResetPassword from './pages/Resetpassword';
 
 const App = () => {
   return (
@@ -35,12 +36,13 @@ const App = () => {
           <Route exact path="/community" component={Community} />
           <Route exact path="/aboutus" component={AboutUs} />
           <Route exact path="/events" component={Events} />
-          <PrivateRoute exact path="/repairs/:id" component={Repairs} />
           <Route exact path="/shoplist" component={Shoplist} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
-          <PrivateRoute exact path="/confirmation" component={Confirmation} />
+          <Route exact path="/resetpassword" component={ResetPassword} />
           <Route exact path="/bikeshoppdp/:id" component={BikeShopPDP} />
+          <PrivateRoute exact path="/repairs/:id" component={Repairs} />
+          <PrivateRoute exact path="/confirmation" component={Confirmation} />
           <PrivateRoute exact path="/appointment" component={Appointment} />
           <PrivateRoute exact path="/summary" component={Summary} />
           <PrivateRoute exact path="/cyclist" component={CreateCyclist} />
