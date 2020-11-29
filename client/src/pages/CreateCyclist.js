@@ -75,34 +75,6 @@ const CreateCyclist = ({ history }) => {
             onChange={handleChange}
           />
         </Form.Group>
-        <Form.Group>
-          <Form.Label>Add a Bike to your profile</Form.Label>
-          <Form.Row>
-            <Form.Control
-              type="text"
-              placeholder="BikeName"
-              name="bikeName"
-              onChange={handleChange}
-            />
-            <Form.Control
-              type="text"
-              placeholder="Bike Model"
-              name="bikeModel"
-              onChange={handleChange}
-            />
-            <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Label>What type of bike is it?</Form.Label>
-              <Form.Control as="select" name="bikeType" onChange={handleChange}>
-                <option>Road</option>
-                <option>Mountain</option>
-                <option>Commuter</option>
-                <option>Cruiser</option>
-                <option>Hybrid</option>
-                <option>Other</option>
-              </Form.Control>
-            </Form.Group>
-          </Form.Row>
-        </Form.Group>
 
         <Button
           type="submit"
