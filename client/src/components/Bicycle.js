@@ -8,43 +8,46 @@ import axios from 'axios';
 
 const Bicycle = ({ match, history }) => {
   const [formData, setFormData] = useState(null);
-  const { setCyclist, cyclist } = useContext(AppContext);
 
-  const id = match.params.id;
+  // const { setCyclist, cyclist } = useContext(AppContext);
 
-  useEffect(() => {
-    axios
-      .get(`/api/cyclist/find/${id}`, { withCredentials: true })
-      .then(({ data }) => {
-        setCyclist(data);
-      });
-  }, []);
+  // const id = match.params.id;
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`/api/cyclist/find/${id}`, { withCredentials: true })
+  //     .then(({ data }) => {
+  //       setCyclist(data);
+  //     });
+  // }, []);
 
   const handleChange = (e) => {
     setFormData({ ...FormData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    const form = e.target;
-    e.preventDefault();
-    try {
-      const Data = new FormData();
-      Data.append('bikeName', formData.bikeName);
-      Data.append('bikeModel', formData.bikeModel);
-      Data.append('bikeType', formData);
-      await axios({
-        method: 'POST',
-        url: `/api/${id}/bike`,
-        withCredentials: true,
-        Data
-      });
+  const handleSubmit = async (e) => {};
 
-      swal('New Bike!', 'Get Riding!', 'success');
-      setFormData(null);
-    } catch (error) {
-      swal('Oops!', 'Something went wrong');
-    }
-  };
+  // const handleSubmit = async (e) => {
+  //   const form = e.target;
+  //   e.preventDefault();
+  //   try {
+  //     const Data = new FormData();
+  //     Data.append('bikeName', formData.bikeName);
+  //     Data.append('bikeModel', formData.bikeModel);
+  //     Data.append('bikeType', formData);
+  //     await axios({
+  //       method: 'POST',
+  //       url: `/api/${id}/bike`,
+  //       withCredentials: true,
+  //       Data
+  //     });
+
+  //     swal('New Bike!', 'Get Riding!', 'success');
+  //     setFormData(null);
+  //   } catch (error) {
+  //     swal('Oops!', 'Something went wrong');
+  //   }
+  // };
 
   const [show, setShow] = useState(false);
 
@@ -107,7 +110,7 @@ const Bicycle = ({ match, history }) => {
         </Modal.Dialog>
       </Modal>
       <Card className="bike">
-        <Bike bike={cyclist} />
+        <Bike />
       </Card>
     </>
   );
