@@ -9,6 +9,7 @@ exports.getAllCyclist = (req, res) => {
 
 // AUTHENTICATED REQUESTS
 exports.createCyclist = async (req, res) => {
+  console.log('what the heck did i post', req.body);
   const { name, zipcode, phone, bicycles } = req.body;
   try {
     const cyclist = new Cyclist({

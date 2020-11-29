@@ -4,7 +4,7 @@ const router = require('express').Router(),
     getCurrentBikeshop,
     updateBikeshop,
     deleteBikeshop
-  } = require('../../controllers/Bikeshop');
+  } = require('../../controllers/bikeshop');
 const isAdmin = require('../../middleware/authorization');
 
 router.post('/', isAdmin(), createBikeshop);

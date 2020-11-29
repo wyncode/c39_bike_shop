@@ -1,15 +1,24 @@
 import React from 'react';
-import OwnerCard from '../components/OwnerCard';
-import OwnerSearchBar from '../components/OwnerSearchBar';
 import Orders from '../components/Orders';
 import '../components/styles/ownerorderlist.css';
-import { Container } from 'react-bootstrap';
+import { Container, Form } from 'react-bootstrap';
+import BikeShopCard from '../components/BikeShopCard';
 
 const ShopOwner = () => {
+  const handleSearch = () => {};
   return (
     <Container>
-      <OwnerCard />
-      <OwnerSearchBar />
+      <BikeShopCard />
+      <h1 class="d-flex justify-content-center">Welcome</h1>
+      <Form>
+        <Form.Control
+          onChange={handleSearch}
+          type="text"
+          placeholder="Search Orders"
+          size="lg"
+          name="name"
+        />
+      </Form>
       <h1>Open Orders</h1>
       <Orders />
       <h1>Closed Orders</h1>
