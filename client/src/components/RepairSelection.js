@@ -1,6 +1,4 @@
-import React, { useState, useContext } from 'react';
-import { AppContext } from '../context/AppContext';
-import axios from 'axios';
+import React, { useState } from 'react';
 import {
   Modal,
   Button,
@@ -10,29 +8,11 @@ import {
   Container
 } from 'react-bootstrap';
 
-const RepairSelection = ({ repair }) => {
-  const { orders, bikeshop, currentUser, cyclist } = useContext(AppContext);
-
-  const handleSubmit = async () => {
-    const body = {
-      bikeshop: bikeshop._id, // needs to be the ID
-      cyclist: cyclist._id, // needs to be the ID
-      repairs: repair._id // needs to be the ID
-    };
-    try {
-      const { data } = await axios.post('/api/order', {
-        data: body,
-        withCredentials: true
-      });
-      console.log(data);
-      orders.push(data);
-      console.log(orders);
-    } catch (error) {
-      console.log(error);
-    }
-
-    // do whatever you need to with the data
-  };
+const RepairSelection = ({
+  repair,
+  selectedRepairs,
+  handleRepairSelections
+}) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -45,6 +25,11 @@ const RepairSelection = ({ repair }) => {
         size="lg"
         block
         onClick={handleShow}
+        style={
+          selectedRepairs.includes(repair._id)
+            ? { backgroundColor: 'blue' }
+            : {}
+        }
       >
         <p>{repair?.repair}</p>
         <p>{repair?.price}</p>
@@ -92,7 +77,10 @@ const RepairSelection = ({ repair }) => {
             </Form>
           </Modal.Body>
           <ModalFooter className="d-flex justify-content-center modal-ft">
-            <Button onClick={handleSubmit} className="btn-pink-sm-md mt-2">
+            <Button
+              onClick={() => handleRepairSelections(repair._id)}
+              className="btn-pink-sm-md mt-2"
+            >
               Confirm
             </Button>
           </ModalFooter>

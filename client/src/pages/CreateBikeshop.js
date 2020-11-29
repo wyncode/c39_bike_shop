@@ -5,9 +5,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 const CreateBikeshop = ({ history }) => {
-  const { setCurrentUser, setBikeshop, bikeshop, currentUser } = useContext(
-    AppContext
-  );
+  const { fetchCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
 
   const handleChange = (event) => {
@@ -21,30 +19,21 @@ const CreateBikeshop = ({ history }) => {
     try {
       const bikeshopData = new FormData();
       // this information is not append information
-      bikeshopData.append('shopName', formData.shopName);
-      bikeshopData.append('email', formData.email);
-      bikeshopData.append('phone', formData.phone);
-      bikeshopData.append('logo', formData.logo);
-      bikeshopData.append('website', formData.website);
-      bikeshopData.append('email', formData.email);
-      bikeshopData.append('street', formData.shopContact.street);
-      bikeshopData.append('city', formData.shopContact.city);
-      bikeshopData.append('state', formData.shopContact.state);
-      bikeshopData.append('street', formData.shopContact.zipcode);
-      const updatedBikeshop = await axios({
-        method: 'POST',
-        url: `/api/bikeshop`,
-        withCredentials: true,
-        bikeshopData
+      Object.entries(formData).forEach(([field, value]) =>
+        bikeshopData.append(field, value)
+      );
+
+      await axios.post('/api/bikeshop', bikeshopData, {
+        withCredentials: true
       });
-      console.log(updatedBikeshop.data);
-      setBikeshop(updatedBikeshop.data);
-      history.push('/');
+
+      await fetchCurrentUser();
+
+      // history.push('/');
       swal('Start your store!');
     } catch (error) {
       swal('SignUp Error: ', error.toString());
     }
-    console.log(bikeshop);
   };
 
   return (
@@ -140,13 +129,7 @@ const CreateBikeshop = ({ history }) => {
           </Form.Row>
         </Form.Group>
 
-        <Button
-          type="submit"
-          className="btn-pink-sm m-auto"
-          onClick={() => {
-            history.push('/Shoplist');
-          }}
-        >
+        <Button type="submit" className="btn-pink-sm m-auto">
           Finished
         </Button>
       </Form>

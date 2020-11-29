@@ -5,36 +5,26 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 const CreateCyclist = ({ history }) => {
-  const { setCyclist, cyclist } = useContext(AppContext);
+  const { fetchCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.log(formData);
   };
 
   const handleCreate = async (e) => {
     e.preventDefault();
 
     try {
-      const cyclistData = new FormData();
-      // this information is not append information
-      cyclistData.append('zipcode', formData.zipcode);
-      cyclistData.append('phone', formData.phone);
-      const updatedCyclist = await axios({
-        method: 'POST',
-        url: `/api/cyclist`,
-        withCredentials: true,
-        cyclistData
-      });
-      console.log(updatedCyclist.data);
-      setCyclist(updatedCyclist.data);
+      await axios.post('/api/cyclist', formData, { withCredentials: true });
+
+      await fetchCurrentUser();
+
       history.push('/');
-      swal("Let's start riding");
     } catch (error) {
+      console.log('an error happend in create cylixt');
       swal('SignUp Error: ', error.toString());
     }
-    console.log(cyclist);
   };
 
   return (
