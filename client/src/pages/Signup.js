@@ -19,12 +19,17 @@ const SignUp = ({ history }) => {
     e.preventDefault();
     try {
       const response = await axios.post('/api', formData);
-      console.log(response.data);
-      sessionStorage.setItem('user', response.data);
-      setCurrentUser(response.data);
       if (response.data.admin) {
+        const { data } = await axios.post('bikeshop-create-route');
+        const userObj = { ...data.user, ...data.bikeshop };
+        sessionStorage.setItem('user', userObj);
+        setCurrentUser(userObj);
         history.push('/bikeshop');
       } else {
+        const { data } = await axios.post('cyclist-create-route');
+        const userObj = { ...data.user, ...data.cyclist };
+        sessionStorage.setItem('user', userObj);
+        setCurrentUser(userObj);
         history.push('/cyclist');
       }
     } catch (error) {
