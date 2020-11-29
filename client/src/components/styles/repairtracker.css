@@ -11,6 +11,10 @@
   top: 775px;
 }
 
+.tracker {
+  width: 0;
+}
+
 .tracker1 {
   width: 17%;
 }

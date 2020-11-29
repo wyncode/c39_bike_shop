@@ -13,7 +13,7 @@ const RepairControl = ({ match }) => {
 
   const id = match.params.id;
 
-  const handleToggle = () => {
+  const handleToggle = (val) => {
     setActive(!isActive);
   };
   const handleChange = (event) => {
@@ -24,7 +24,7 @@ const RepairControl = ({ match }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.patch('/api/order/${id}', formData);
+      const response = await axios.patch(`/api/order/${id}`, formData);
       setOrder(response.data);
       swal('Congrats! You have won this stage of the tour!');
     } catch (error) {
@@ -33,23 +33,23 @@ const RepairControl = ({ match }) => {
   };
 
   const setProgress = (val) => {
-    // setAdmin(val);
     setFormData({ ...FormData, progress: val });
   };
+
   return (
     <Container>
       <h1> Repairs Control</h1>
       <Orders order={order} />
       <p>Insert description here </p>
-      <ProgressBar className={isActive ? 'tracker 1' : ''} />
+      <ProgressBar className={isActive ? 'tracker 1' || 'tracker2' : ''} />
       <hr className="pink-line-page-break" />
       <Button
         className="btn-pink-lg-lng"
         onSubmit={handleSubmit}
         onChange={handleChange}
         onClick={handleToggle}
+        onClick={() => setProgress(true)}
       >
-        {' '}
         Received
       </Button>
       <Button
@@ -57,8 +57,8 @@ const RepairControl = ({ match }) => {
         onSubmit={handleSubmit}
         onChange={handleChange}
         onClick={handleToggle}
+        onClick={() => setProgress(true)}
       >
-        {' '}
         Diagnosed
       </Button>
       <Button
@@ -66,8 +66,8 @@ const RepairControl = ({ match }) => {
         onSubmit={handleSubmit}
         onChange={handleChange}
         onClick={handleToggle}
+        onClick={() => setProgress(true)}
       >
-        {' '}
         Parts Ordered
       </Button>
       <Button
@@ -75,8 +75,8 @@ const RepairControl = ({ match }) => {
         onSubmit={handleSubmit}
         onChange={handleChange}
         onClick={handleToggle}
+        onClick={() => setProgress(true)}
       >
-        {' '}
         Repair in progress
       </Button>
       <Button
@@ -84,8 +84,8 @@ const RepairControl = ({ match }) => {
         onSubmit={handleSubmit}
         onChange={handleChange}
         onClick={handleToggle}
+        onClick={() => setProgress(true)}
       >
-        {' '}
         Delayed
       </Button>
       <Button
@@ -93,8 +93,8 @@ const RepairControl = ({ match }) => {
         onSubmit={handleSubmit}
         onChange={handleChange}
         onClick={handleToggle}
+        onClick={() => setProgress(true)}
       >
-        {' '}
         Ready for pick up
       </Button>
     </Container>
