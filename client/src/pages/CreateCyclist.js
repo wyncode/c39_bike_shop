@@ -5,9 +5,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 const CreateCyclist = ({ history }) => {
-  const { setCurrentUser, setCyclist, cyclist, currentUser } = useContext(
-    AppContext
-  );
+  const { setCyclist, cyclist } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
 
   const handleChange = (event) => {
@@ -23,7 +21,6 @@ const CreateCyclist = ({ history }) => {
       // this information is not append information
       cyclistData.append('zipcode', formData.zipcode);
       cyclistData.append('phone', formData.phone);
-      cyclistData.append('user', currentUser);
       const updatedCyclist = await axios({
         method: 'POST',
         url: `/api/cyclist`,
