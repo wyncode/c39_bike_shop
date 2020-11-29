@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Container, Button } from 'react-bootstrap';
+import { Container, Button, ProgressBar } from 'react-bootstrap';
 import './styles/repairs.css';
 import Orders from './Orders';
 import ProgressBarContainer from './ProgressBar';
@@ -10,14 +10,14 @@ import axios from 'axios';
 const RepairControl = () => {
   const [formData, setFormData] = useState(null);
   const { order, setLoading } = useContext(AppContext);
-  const [percentRange, setProgress] = useState(0);
+  const [now, setProgress] = useState(0);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     console.log(formData);
   };
   const handleClick = () => {
-    setProgress(percentRange < 100 ? percentRange + 20 : 100);
+    setProgress(now < 100 ? now + 20 : 100);
   };
 
   const handleSubmit = async (e) => {
@@ -30,20 +30,17 @@ const RepairControl = () => {
         { progress },
         { withCredentials: true }
       );
-      console.log(data);
       setProgress([data]);
       swal('Congrats! You have won this stage of the tour!');
     } catch (error) {
       swal('You made no progress! Turn around and try again!');
     }
-    console.log(progress);
   };
 
   return (
     <Container className="d-flex flex-column align-items-center">
-      <h1> Repairs Control</h1>
+      <ProgressBarContainer now={now} />
       <Orders order={order} />
-      <ProgressBarContainer percentRange={percentRange} />
       <hr className="pink-line-page-break" />
       <Button
         className="btn-pink-lg-lng mb-2"
