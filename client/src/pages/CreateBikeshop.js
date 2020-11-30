@@ -3,6 +3,7 @@ import { Container, Form, Button, Image } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
+import { Link, useHistory } from 'react-router-dom';
 
 const CreateBikeshop = ({ history }) => {
   const { fetchCurrentUser } = useContext(AppContext);
@@ -29,17 +30,14 @@ const CreateBikeshop = ({ history }) => {
       Object.entries(formData).forEach(([field, value]) =>
         bikeshopData.append(field, value)
       );
-
       await axios.post('/api/bikeshop', bikeshopData, {
         withCredentials: true
       });
-
       await fetchCurrentUser();
-
       history.push('/addrepairs');
       swal('Start your store!');
     } catch (error) {
-      swal('SignUp Error: ', error.toString());
+      console.log('SignUp Error: ', error.toString());
     }
   };
 
@@ -136,9 +134,11 @@ const CreateBikeshop = ({ history }) => {
           </Form.Row>
         </Form.Group>
 
-        <Button type="submit" className="btn-pink-sm m-auto">
-          Add your repairs
-        </Button>
+        <Link to="/addrepairs">
+          <Button type="submit" className="btn-pink-sm m-auto">
+            Add your repairs
+          </Button>
+        </Link>
       </Form>
     </Container>
   );
