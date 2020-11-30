@@ -10,7 +10,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 const BikeShopPDP = ({ match, history }) => {
-  const { setBikeshop, bikeshop, user } = useContext(AppContext);
+  const { setBikeshop, bikeshop } = useContext(AppContext);
   const [reviewData, setReviewData] = useState(null);
 
   const id = match.params.id;
@@ -39,7 +39,6 @@ const BikeShopPDP = ({ match, history }) => {
         withCredentials: true,
         formData
       });
-
       swal('New Review!', 'You review has been added!', 'success');
       setReviewData(null);
     } catch (error) {
@@ -88,7 +87,11 @@ const BikeShopPDP = ({ match, history }) => {
               <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>
-              <Button variant="primary" onClick={handleSubmit}>
+              <Button
+                variant="primary"
+                nClick={handleClose}
+                onSubmit={handleSubmit}
+              >
                 Save changes
               </Button>
             </Modal.Footer>

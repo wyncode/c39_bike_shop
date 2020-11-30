@@ -6,7 +6,7 @@ import { AppContext } from '../context/AppContext';
 import RepairSelection from '../components/RepairSelection';
 import '../components/styles/repairs.css';
 
-const Repairs = ({ match, history }) => {
+const Repairs = ({ history, match }) => {
   const { bikeshop, setBikeshop, currentUser, setOrder } = useContext(
     AppContext
   );
@@ -14,8 +14,8 @@ const Repairs = ({ match, history }) => {
 
   const createOrder = async () => {
     const body = {
-      bikeshop: bikeshop._id, // needs to be the ID
-      cyclist: currentUser.cyclist._id, // needs to be the ID
+      bikeshop: bikeshop._id,
+      cyclist: currentUser.cyclist._id,
       repairs: selectedRepairs
     };
 

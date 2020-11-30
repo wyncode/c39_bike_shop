@@ -1,14 +1,14 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Card, Modal, Form, Button } from 'react-bootstrap';
+import { Card, Modal, Button, Form } from 'react-bootstrap';
+import './styles/profile.css';
+import axios from 'axios';
 import swal from 'sweetalert';
 import { AppContext } from '../context/AppContext';
 import Bike from './Bike';
-import './styles/profile.css';
-import axios from 'axios';
 
-const Bicycle = ({ match, history }) => {
+const Bicycle = ({ match }) => {
   const [formData, setFormData] = useState(null);
-  const { setCyclist, cyclist } = useContext(AppContext);
+  const { fetchCurrentUser } = useContext(AppContext);
 
   const id = match.params.id;
 
@@ -16,7 +16,7 @@ const Bicycle = ({ match, history }) => {
     axios
       .get(`/api/cyclist/find/${id}`, { withCredentials: true })
       .then(({ data }) => {
-        setCyclist(data);
+        fetchCurrentUser(data);
       });
   }, []);
 
@@ -42,7 +42,7 @@ const Bicycle = ({ match, history }) => {
       swal('New Bike!', 'Get Riding!', 'success');
       setFormData(null);
     } catch (error) {
-      swal('Oops!', 'Something went wrong');
+      console.log(error);
     }
   };
 
@@ -107,7 +107,7 @@ const Bicycle = ({ match, history }) => {
         </Modal.Dialog>
       </Modal>
       <Card className="bike">
-        <Bike bike={cyclist} />
+        <Bike bike={fetchCurrentUser} />
       </Card>
     </>
   );

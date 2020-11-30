@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import '../components/styles/homepage.css';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Chat from '../components/Chat';
 
 const Home = () => {
   return (
@@ -13,10 +14,11 @@ const Home = () => {
       <HeroImage />
       <InfoCards />
       <FeaturedShops />
-      <Link className="mt-3 mb-5" to="/aboutus" className="aboutus">
-        {' '}
+      <Link className="mt-3 mb-5 text-center aboutus" to="/aboutus">
         About Us
       </Link>
+
+      <Chat />
       <Form className="d-flex justify-content-center">
         <Form.Group className="d-flex" controlId="formBasicEmail">
           <Form.Control

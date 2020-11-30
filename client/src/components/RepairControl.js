@@ -1,101 +1,88 @@
-import React, { useState } from 'react';
-import { Container, Button } from 'react-bootstrap';
+import React, { useState, useContext, useEffect } from 'react';
+import { Container, Button, ProgressBar } from 'react-bootstrap';
 import './styles/repairs.css';
 import Orders from './Orders';
-import ProgressBar from './ProgressBar';
-// import { AppContext } from '../context/AppContext';
-import axios from 'axios';
+import ProgressBarContainer from './ProgressBar';
+import { AppContext } from '../context/AppContext';
 import swal from 'sweetalert';
+import axios from 'axios';
 
-const RepairControl = ({ match }) => {
-  const [progress, setProgress] = useState('false');
-  const [isActive, setActive] = useState('false');
+const RepairControl = () => {
   const [formData, setFormData] = useState(null);
-  // const { order, setOrder } = useContext(AppContext);
+  const { order, setLoading } = useContext(AppContext);
+  const [now, setProgress] = useState(0);
 
-  const id = match.params.id;
-
-  const handleToggle = (val) => {
-    setActive(!isActive);
-  };
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     console.log(formData);
   };
+  const handleClick = () => {
+    setProgress(now < 100 ? now + 20 : 100);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const progress = e.target.elements.progress.value;
+    setLoading(true);
     try {
-      const response = await axios.patch(`/api/order/${id}`, formData);
-      // setOrder(response.data);
+      const { data } = await axios.patch(
+        `/api/order/${order._id}`,
+        { progress },
+        { withCredentials: true }
+      );
+      setProgress([data]);
       swal('Congrats! You have won this stage of the tour!');
     } catch (error) {
       swal('You made no progress! Turn around and try again!');
     }
   };
 
-  // const setProgress = (val) => {
-  //   setFormData({ ...FormData, progress: val });
-  // };
-
   return (
-    <Container>
-      <h1> Repairs Control</h1>
-      {/* <Orders order={order} /> */}
-      <p>Insert description here </p>
-      <ProgressBar className={isActive ? 'tracker 1' || 'tracker2' : ''} />
+    <Container className="d-flex flex-column align-items-center">
+      <ProgressBarContainer now={now} />
+      <Orders order={order} />
       <hr className="pink-line-page-break" />
       <Button
-        className="btn-pink-lg-lng"
-        onSubmit={handleSubmit}
+        className="btn-pink-lg-lng mb-2"
         onChange={handleChange}
-        onClick={handleToggle}
-        onClick={() => setProgress(true)}
+        onClick={handleClick}
       >
         Received
       </Button>
       <Button
-        className="btn-pink-lg-lng"
-        onSubmit={handleSubmit}
+        className="btn-pink-lg-lng mb-2"
         onChange={handleChange}
-        onClick={handleToggle}
-        onClick={() => setProgress(true)}
+        onClick={handleClick}
       >
         Diagnosed
       </Button>
       <Button
-        className="btn-pink-lg-lng"
-        onSubmit={handleSubmit}
+        className="btn-pink-lg-lng mb-2"
         onChange={handleChange}
-        onClick={handleToggle}
-        onClick={() => setProgress(true)}
+        onClick={handleClick}
       >
         Parts Ordered
       </Button>
       <Button
-        className="btn-pink-lg-lng"
-        onSubmit={handleSubmit}
+        className="btn-pink-lg-lng mb-2"
         onChange={handleChange}
-        onClick={handleToggle}
-        onClick={() => setProgress(true)}
+        onClick={handleClick}
       >
         Repair in progress
       </Button>
       <Button
-        className="btn-pink-lg-lng"
+        className="btn-pink-lg-lng mb-2"
         onSubmit={handleSubmit}
         onChange={handleChange}
-        onClick={handleToggle}
-        onClick={() => setProgress(true)}
+        onClick={handleClick}
       >
         Delayed
       </Button>
       <Button
-        className="btn-pink-lg-lng"
+        className="btn-pink-lg-lng mb-2"
         onSubmit={handleSubmit}
         onChange={handleChange}
-        onClick={handleToggle}
-        onClick={() => setProgress(true)}
+        onClick={handleClick}
       >
         Ready for pick up
       </Button>

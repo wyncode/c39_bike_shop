@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Container, Image, Card } from 'react-bootstrap';
 import SideBar from '../components/SideBar';
-import Chat from '../components/Chat';
+
 import '../components/styles/profile.css';
 import FileUploader from '../components/Fileuploader';
 import axios from 'axios';
@@ -73,7 +73,6 @@ const Profile = ({ history }) => {
       </div>
       <Container className="d-flex justify-content-center">
         <SideBar />
-        <Chat />
       </Container>
     </>
   );
