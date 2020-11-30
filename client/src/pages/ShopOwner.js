@@ -2,7 +2,6 @@ import React from 'react';
 import Orders from '../components/Orders';
 import '../components/styles/ownerorderlist.css';
 import { Container, Form } from 'react-bootstrap';
-
 import { Link } from 'react-router-dom';
 
 const ShopOwner = () => {

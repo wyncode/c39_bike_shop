@@ -38,7 +38,7 @@ const SignUp = ({ history }) => {
 
       data.admin ? history.push('/bikeshop') : history.push('/cyclist');
     } catch (error) {
-      swal('SignUp Error: ', error.toString());
+      console.log('SignUp Error: ', error.toString());
     }
   };
 
