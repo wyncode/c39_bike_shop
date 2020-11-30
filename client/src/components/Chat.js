@@ -1,11 +1,6 @@
 import React, { useEffect } from 'react';
 import './styles/profile.css';
-import {
-  Widget,
-  addResponseMessage,
-  addUserMessage,
-  addLinkSnippet
-} from 'react-chat-widget';
+import { Widget, addResponseMessage, addLinkSnippet } from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
 import axios from 'axios';
 import swal from 'sweetalert';
