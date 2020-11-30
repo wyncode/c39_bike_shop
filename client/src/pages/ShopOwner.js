@@ -3,6 +3,7 @@ import Orders from '../components/Orders';
 import '../components/styles/ownerorderlist.css';
 import { Container, Form } from 'react-bootstrap';
 import BikeShopCard from '../components/BikeShopCard';
+import { Link } from 'react-router-dom';
 
 const ShopOwner = () => {
   const handleSearch = () => {};
@@ -20,7 +21,9 @@ const ShopOwner = () => {
         />
       </Form>
       <h1>Open Orders</h1>
-      <Orders />
+      <Link to="/repairscontrol">
+        <Orders />
+      </Link>
       <h1>Closed Orders</h1>
       <Orders />
     </Container>

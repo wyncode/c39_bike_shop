@@ -68,7 +68,7 @@ const AddRepairs = () => {
         <Button className="btn-pink-sm-sq mb-3" onSubmit={handleSubmit}>
           Add Another Repair
         </Button>
-        <Link to="/">
+        <Link to="/shopowner">
           <Button className="btn-pink-lg-lng">Finish</Button>
         </Link>
       </Form>

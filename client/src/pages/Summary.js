@@ -41,7 +41,7 @@ const Summary = () => {
           regarding your appointment.
         </Card.Text>
 
-        <Link to="/">
+        <Link to="/repairtracker">
           <Button
             className="btn-pink-lg"
             style={{ width: '61vw', marginleft: 'auto', marginright: 'auto' }}
