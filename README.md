@@ -55,8 +55,6 @@ We love working on web developement and riding our bikes. During our cohort, we 
 |          moment           |                         |     |     |     |
 |     React-Chat-Widgit     |
 
-## Dependencies Root
-
 ## Available build commands
 
 - `yarn dev`: Runs BOTH your Express.JS and React developer environment locally at the same time. Any logs coming from Express will be prefaced with `[0]`, any logs from `create-react-app` will be prefaced with `[1]`.
