@@ -3,36 +3,3 @@
   display: flex;
   justify-content: center;
 }
-
-.line {
-  width: 1500px;
-  height: 0px;
-  left: 100px;
-  top: 775px;
-}
-
-.tracker {
-  width: 0;
-}
-
-.tracker1 {
-  width: 17%;
-}
-
-.tracker2 {
-  width: 34%;
-}
-
-.tracker3 {
-  width: 50%;
-}
-
-.tracker4 {
-  width: 67%;
-}
-.tracker5 {
-  width: 84%;
-}
-.tracker6 {
-  width: 100%;
-}

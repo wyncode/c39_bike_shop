@@ -15,7 +15,7 @@ const RepairTracker = () => {
       <Orders />
       <div>
         <h1 className="dropofftitle">Repairs Selected</h1>
-        <p className="dropoffp">
+        <p className="dropoff">
           Please note this is an estimated subtotal. Total cost may be more due
           to additional shop fees, taxes or other necessary repairs.
         </p>

@@ -12,7 +12,7 @@ import swal from 'sweetalert';
 
 const Chat = () => {
   useEffect(() => {
-    addResponseMessage('Welcome to the BikeShop! How may we assit you?');
+    addResponseMessage('Welcome to the BikeShop! How may we assist you?');
   }, []);
 
   const handleNewUserMessage = async (newMessage) => {
@@ -42,7 +42,6 @@ const Chat = () => {
         handleNewUserMessage={handleNewUserMessage}
         title="Contact the Bikeshop"
         subtitle="Reach out with all your questions!"
-        // profileAvatar={logo ? avatar : ''}
       />
     </div>
   );
