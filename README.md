@@ -27,49 +27,34 @@ We love working on web developement and riding our bikes. During our cohort, we 
 - `yarn install`
 - `cd client && yarn install`
 
-## Dependencies-Client
+## Dependencies
 
-"@fullcalendar/daygrid": "^5.4.0",
-"@fullcalendar/interaction": "^5.4.0",
-"@fullcalendar/react": "^5.4.0",
-"axios": "^0.21.0",
-"bootstrap": "^4.5.3",
-"moment": "^2.29.1",
-"moment-range": "^4.0.2",
-"react": "^16.14.0",
-"react-bootstrap": "^1.4.0",
-"react-dom": "^16.14.0",
-"react-router-dom": "^5.2.0",
-"react-scripts": "3.4.3",
-"react-share": "^4.3.1",
-"react-chat-widget": "^3.0.5",
-"react-rater": "^5.1.1",
-"sweetalert": "^2.1.2",
-"styled-components": "^5.2.1"
+|        Client Side        |       Server Side       |     |     |     |
+| :-----------------------: | :---------------------: | --- | --- | --- |
+|   @fullcalendar/daygrid   |     @sendgrid/mail      |     |     |     |
+| @fullcalendar/interaction |        bcryptjs         |     |     |     |
+|         bootstrap         |       cloudinary        |     |     |     |
+|       moment-range        |      concurrently       |     |     |     |
+|      react-bootstrap      |      cookie-parser      |     |     |     |
+|      react-scroll-to      |   express-file-upload   |     |     |     |
+|           axios           |          faker          |     |     |     |
+|     styled-components     |      jsonwebtoken       |     |     |     |
+|        sweetalert         |         mongodb         |     |     |     |
+|  react-paypal-button-v2   |        mongoose         |     |     |     |
+|           react           |    passport-facebook    |     |     |     |
+|         react-dom         |        passport         |     |     |     |
+|       react-map-jl        | passport-local-mongoose |     |     |     |
+|     react-router-dom      |      passport-jwt       |     |     |     |
+|       react-scripts       |     passport-local      |     |     |     |
+|        react-tabs         |        validator        |     |     |     |
+|      react-spinners       |         moment          |     |     |     |
+|          moment           |          cors           |     |     |     |
+|        Sweet Alert        |      jsonwebtoken       |     |     |     |
+|        React-Rater        |         mbreact         |     |     |     |
+|        React-Share        |         express         |     |     |     |
+|          moment           |                         |     |     |     |
+|     React-Chat-Widgit     |
 
-
-## Dependencies Root
-
-"dependencies": {
-"@sendgrid/mail": "^7.4.0",
-"axios": "^0.21.0",
-"bcryptjs": "^2.4.3",
-"bootstrap": "^4.5.3",
-"cloudinary": "^1.23.0",
-"concurrently": "^5.3.0",
-"cookie-parser": "^1.4.5",
-"express": "^4.17.1",
-"express-fileupload": "^1.2.0",
-"faker": "^5.1.0",
-"jsonwebtoken": "^8.5.1",
-"mdbreact": "^4.27.0",
-"moment": "^2.29.1",
-"mongodb": "^3.6.2",
-"mongoose": "^5.10.9",
-"passport": "^0.4.1",
-"passport-facebook": "^3.0.0",
-"passport-jwt": "^4.0.0",
-"validator": "^13.1.17"
 
 ## Available build commands
 
