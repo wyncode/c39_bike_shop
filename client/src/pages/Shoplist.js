@@ -17,12 +17,9 @@ const Shoplist = () => {
     return bikeshop?.shopContact.zipCode.includes(search);
   });
 
-  // const [loading, setLoading] = useState(false);
   const handleSearch = async (e) => {
     setSearch(e.target.value);
   };
-
-  // setLoading(true);
 
   useEffect(() => {
     axios

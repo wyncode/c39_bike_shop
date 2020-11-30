@@ -4,9 +4,11 @@ import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
 
-const General = () => {
+const General = ({ match }) => {
   const [formData, setFormData] = useState(null);
-  const { setCurrentUser } = useContext(AppContext);
+  const { fetchCurrentUser, setLoading } = useContext(AppContext);
+
+  const id = match.params.id;
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -20,9 +22,42 @@ const General = () => {
 
       sessionStorage.setItem('user', response.data);
 
-      setCurrentUser(response.data);
+      fetchCurrentUser(response.data);
     } catch (error) {
       swal('You put on the wrong kit! Error: ', error.toString());
+    }
+  };
+
+  const handleDelete = async () => {
+    setLoading(true);
+    try {
+      const willDelete = await swal({
+        title: 'Are you sure?',
+        text: 'Once deleted, you will not be able to recover your account!',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true
+      });
+      if (willDelete) {
+        try {
+          await axios({
+            method: 'DELETE',
+            //can't get id?
+            url: `/api/user/${id}`,
+            withCredentials: true
+          });
+          swal('I guess you left the team!', {
+            icon: 'success'
+          });
+          setLoading(false);
+        } catch (error) {
+          swal(`Oops!`, 'Something went wrong.');
+        }
+      } else {
+        swal('Your task is safe!');
+      }
+    } catch (error) {
+      swal(`Oops!`, 'Something went wrong.');
     }
   };
 
@@ -59,8 +94,13 @@ const General = () => {
             />
           </Form.Group>
         </Form.Group>
-        <Button type="submit">Submit Changes</Button>
+        <Button type="submit" className="btn-pink-sm">
+          Submit Changes
+        </Button>
       </Form>
+      <Button className="btn-pink-sm" onSubmit={handleDelete}>
+        Delete Account
+      </Button>
     </Card>
   );
 };

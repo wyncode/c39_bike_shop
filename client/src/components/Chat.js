@@ -42,7 +42,6 @@ const Chat = () => {
         handleNewUserMessage={handleNewUserMessage}
         title="Contact the Bikeshop"
         subtitle="Reach out with all your questions!"
-        // profileAvatar={logo ? avatar : ''}
       />
     </div>
   );
