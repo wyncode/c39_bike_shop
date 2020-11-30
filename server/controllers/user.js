@@ -130,7 +130,6 @@ exports.logoutUser = async (req, res) => {
     req.user.tokens = req.user.tokens.filter((token) => {
       return token.token !== req.cookies.jwt;
     });
-    sendCancellationEmail(req.user.email, req.user.name);
     await req.user.save();
     res.clearCookie('jwt');
     res.json({ message: 'logged out!' });
