@@ -29,31 +29,30 @@ We love working on web developement and riding our bikes. During our cohort, we 
 
 ## Dependencies
 
-|        Client Side        |       Server Side       |     |     |     |
-| :-----------------------: | :---------------------: | --- | --- | --- |
-|   @fullcalendar/daygrid   |     @sendgrid/mail      |     |     |     |
-| @fullcalendar/interaction |        bcryptjs         |     |     |     |
-|         bootstrap         |       cloudinary        |     |     |     |
-|       moment-range        |      concurrently       |     |     |     |
-|      react-bootstrap      |      cookie-parser      |     |     |     |
-|      react-scroll-to      |   express-file-upload   |     |     |     |
-|           axios           |          faker          |     |     |     |
-|     styled-components     |      jsonwebtoken       |     |     |     |
-|        sweetalert         |         mongodb         |     |     |     |
-|  react-paypal-button-v2   |        mongoose         |     |     |     |
-|           react           |    passport-facebook    |     |     |     |
-|         react-dom         |        passport         |     |     |     |
-|       react-map-jl        | passport-local-mongoose |     |     |     |
-|     react-router-dom      |      passport-jwt       |     |     |     |
-|       react-scripts       |     passport-local      |     |     |     |
-|        react-tabs         |        validator        |     |     |     |
-|      react-spinners       |         moment          |     |     |     |
-|          moment           |          cors           |     |     |     |
-|        Sweet Alert        |      jsonwebtoken       |     |     |     |
-|        React-Rater        |         mbreact         |     |     |     |
-|        React-Share        |         express         |     |     |     |
-|          moment           |                         |     |     |     |
-|     React-Chat-Widgit     |
+|        Client Side        |       Server Side       |   
+| :-----------------------: | :---------------------: | 
+|   @fullcalendar/daygrid   |     @sendgrid/mail      |    
+| @fullcalendar/interaction |        bcryptjs         |    
+|         bootstrap         |       cloudinary        |    
+|       moment-range        |      concurrently       |     
+|      react-bootstrap      |      cookie-parser      |     
+|      react-scroll-to      |   express-file-upload   |     
+|           axios           |          faker          |    
+|     styled-components     |      jsonwebtoken       |    
+|        sweetalert         |         mongodb         |     
+|  react-paypal-button-v2   |        mongoose         |    
+|           react           |    passport-facebook    | 
+|         react-dom         |        passport         |     
+|       react-map-jl        | passport-local-mongoose |   
+|     react-router-dom      |      passport-jwt       |     
+|       react-scripts       |     passport-local      |    
+|        react-tabs         |        validator        |     
+|      react-spinners       |         moment          |     
+|          moment           |          cors           |     
+|        Sweet Alert        |      jsonwebtoken       |     
+|        React-Rater        |         mbreact         |     
+|        React-Share        |         express         |     
+|          moment           |                         |    
 
 
 ## Available build commands
@@ -62,10 +61,8 @@ We love working on web developement and riding our bikes. During our cohort, we 
 - `yarn server`: Runs JUST your Express.JS server.
 - `yarn client`: Runs JUST your front-end React app.
 
-## Runs on Herkoku
+## Deploys on Heroku
 
 https://thebikeshop305.herokuapp.com/
 
-## Testing
 
-- Not testing required.
