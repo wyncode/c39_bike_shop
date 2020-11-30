@@ -21,8 +21,6 @@ const Shoplist = ({ latitude, longitude }) => {
     setSearch(e.target.value);
   };
 
-  // setLoading(true);
-
   useEffect(() => {
     axios
       .get('/api/bikeshop/')
