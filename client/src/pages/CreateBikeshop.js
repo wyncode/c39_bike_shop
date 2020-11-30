@@ -7,10 +7,17 @@ import swal from 'sweetalert';
 const CreateBikeshop = ({ history }) => {
   const { fetchCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     console.log(formData);
+  };
+
+  const handleImageSelect = (e) => {
+    setPreview(URL.createObjectURL(e.target.files[0]));
+    setImage(e.target.files[0]);
   };
 
   const handleCreate = async (e) => {
@@ -18,7 +25,7 @@ const CreateBikeshop = ({ history }) => {
 
     try {
       const bikeshopData = new FormData();
-      // this information is not append information
+
       Object.entries(formData).forEach(([field, value]) =>
         bikeshopData.append(field, value)
       );
@@ -29,7 +36,7 @@ const CreateBikeshop = ({ history }) => {
 
       await fetchCurrentUser();
 
-      // history.push('/');
+      history.push('/addrepairs');
       swal('Start your store!');
     } catch (error) {
       swal('SignUp Error: ', error.toString());
@@ -47,12 +54,12 @@ const CreateBikeshop = ({ history }) => {
       </div>
       <Form onSubmit={handleCreate} className="d-flex flex-column">
         <Form.Group>
-          {/* <Form.File
+          <Form.File
             id="exampleFormControlFile1"
             label="Upload your logo"
             name="logo"
             onChange={handleImageSelect}
-          /> */}
+          />
         </Form.Group>
         <Form.Group controlId="formBasic">
           <Form.Label>What is your shop's name?</Form.Label>
@@ -130,7 +137,7 @@ const CreateBikeshop = ({ history }) => {
         </Form.Group>
 
         <Button type="submit" className="btn-pink-sm m-auto">
-          Finished
+          Add your repairs
         </Button>
       </Form>
     </Container>

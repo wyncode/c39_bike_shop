@@ -24,6 +24,7 @@ import Community from './pages/Community';
 import AboutUs from './pages/AboutUs';
 import RepairTracker from './pages/RepairTracker';
 import RepairControl from './components/RepairControl';
+import AddRepair from './pages/AddRepairs';
 
 const App = () => {
   return (
@@ -35,23 +36,24 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/trails" component={Trails} />
           <Route exact path="/community" component={Community} />
-          {/* <Route exact path="/aboutus" component={AboutUs} /> */}
+          <Route exact path="/aboutus" component={AboutUs} />
           <Route exact path="/events" component={Events} />
           <Route exact path="/repairControl" component={RepairControl} />
-          <PrivateRoute exact path="/repairs/:id" component={Repairs} />
+          <Route exact path="/bikeshoppdp/:id" component={BikeShopPDP} />
           <Route exact path="/shoplist" component={Shoplist} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/addrepairs" component={AddRepair} />
+          <PrivateRoute exact path="/repairs/:id" component={Repairs} />
           <PrivateRoute exact path="/confirmation" component={Confirmation} />
-          <Route exact path="/bikeshoppdp/:id" component={BikeShopPDP} />
           <PrivateRoute exact path="/appointment" component={Appointment} />
           <PrivateRoute exact path="/summary" component={Summary} />
           <PrivateRoute exact path="/cyclist" component={CreateCyclist} />
-          <PrivateRoute exact path="/bikeShop" component={CreateBikeShop} />
-          <PrivateRoute exact path="/Profile" component={Profile} />
-          <PrivateRoute exact path="/shopOwner" component={ShopOwner} />
-          <PrivateRoute exact path="/bikeControl" component={BikeControl} />
-          <PrivateRoute exact path="/repairTracker" component={RepairTracker} />
+          <PrivateRoute exact path="/bikeshop" component={CreateBikeShop} />
+          <PrivateRoute exact path="/profile" component={Profile} />
+          <PrivateRoute exact path="/shopowner" component={ShopOwner} />
+          <PrivateRoute exact path="/bikecontrol" component={BikeControl} />
+          <PrivateRoute exact path="/repairtracker" component={RepairTracker} />
         </Switch>
       </BrowserRouter>
     </AppContextProvider>

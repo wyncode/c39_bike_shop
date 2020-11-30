@@ -1,7 +1,7 @@
 import React from 'react';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactMapboxGl, { ZoomControl, Marker } from 'react-mapbox-gl';
 import '../components/styles/shoplist.css';
-import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MapBox = ReactMapboxGl({
   accessToken: process.env.REACT_APP_MAPBOX_API_KEY
