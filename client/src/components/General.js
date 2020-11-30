@@ -10,16 +10,13 @@ const General = () => {
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.log(formData);
   };
 
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.patch('/api/user/me', formData);
-
       sessionStorage.setItem('user', response.data);
-
       setCurrentUser(response.data);
     } catch (error) {
       swal('You put on the wrong kit! Error: ', error.toString());

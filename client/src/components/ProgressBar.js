@@ -5,7 +5,7 @@ export const ProgressBarContainer = ({ now }) => {
   return (
     <div>
       <Card>
-        <Card.Title className="mb-2">Repairs Tracker</Card.Title>
+        <Card.Title className="mb-2 text-center">Repairs Tracker</Card.Title>
         <Card.Img
           src="https://imgur.com/wE9rGJ8.png"
           alt="Card image"

@@ -7,7 +7,7 @@ import swal from 'sweetalert';
 import '../components/styles/login.css';
 
 const SignUp = ({ history }) => {
-  const { setCurrentUser } = useContext(AppContext);
+  const { setCurrentUser, fetchCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
 
   const handleChange = (event) => {
@@ -32,13 +32,12 @@ const SignUp = ({ history }) => {
         formData,
         data
       });
-
       sessionStorage.setItem('user', data);
       setCurrentUser(data);
-
+      fetchCurrentUser();
       data.admin ? history.push('/bikeshop') : history.push('/cyclist');
     } catch (error) {
-      swal('SignUp Error: ', error.toString());
+      console.log('SignUp Error: ', error.toString());
     }
   };
 
@@ -55,7 +54,6 @@ const SignUp = ({ history }) => {
         <h1 className="m-auto">Welcome to The Bike Shop!</h1>
 
         <Form.Label className="text-center">
-          {' '}
           Are you a Cyclist or a Shop Owner?
         </Form.Label>
         <div className="d-flex justify-content-evenly m-auto">

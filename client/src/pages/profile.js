@@ -64,11 +64,9 @@ const Profile = ({ history }) => {
             <FileUploader />
           </div>
           <div className="mt-3 heading">
-            <h1 className="userName">Your Profile</h1>
-            <p>I am an avid cyclist who......</p>
-            <h2>{currentUser?.name}</h2>
+            <h1 className="userName">{currentUser?.name}</h1>
+            <p>I am an avid cyclist who loves to code!</p>
             <h6>{currentUser?.email}</h6>
-            <h6>{currentUser?.zipCode}</h6>
           </div>
         </Container>
       </div>
