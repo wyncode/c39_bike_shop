@@ -1,10 +1,5 @@
 const User = require('../db/models/user'),
   cloudinary = require('cloudinary').v2,
-  {
-    sendWelcomeEmail,
-    sendCancellationEmail,
-    forgotPasswordEmail
-  } = require('../notifications/emails/index'),
   jwt = require('jsonwebtoken');
 
 // ***********************************************//
@@ -19,7 +14,6 @@ exports.createUser = async (req, res) => {
       password,
       admin
     });
-    // sendWelcomeEmail(user.email, user.name);
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, {
       httpOnly: true,
