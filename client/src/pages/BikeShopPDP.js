@@ -42,6 +42,7 @@ const BikeShopPDP = ({ match, history }) => {
 
       swal('New Review!', 'You review has been added!', 'success');
       setReviewData(null);
+      handleClose();
     } catch (error) {
       swal('Oops!', 'Something went wrong');
     }
@@ -65,7 +66,7 @@ const BikeShopPDP = ({ match, history }) => {
               <Modal.Title>Add A Review</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Form>
+              <Form onSubmit={handleClose}>
                 <Form.Label>Give this bikeshop a Rating from 1-5</Form.Label>
                 <Form.Control
                   name="rating"
