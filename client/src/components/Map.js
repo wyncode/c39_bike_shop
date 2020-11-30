@@ -6,7 +6,7 @@ import '../components/styles/shoplist.css';
 const MapBox = ReactMapboxGl({
   accessToken: process.env.REACT_APP_MAPBOX_API_KEY
 });
-console.log('this is working');
+
 const Map = () => {
   return (
     <MapBox

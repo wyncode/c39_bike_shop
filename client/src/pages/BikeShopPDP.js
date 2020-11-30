@@ -90,7 +90,7 @@ const BikeShopPDP = ({ match, history }) => {
               </Button>
               <Button
                 variant="primary"
-                nClick={handleClose}
+                onClick={handleClose}
                 onSubmit={handleSubmit}
               >
                 Save changes

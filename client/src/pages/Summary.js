@@ -6,13 +6,13 @@ import '../components/styles/summary.css';
 
 const Summary = () => {
   return (
-    <Container>
+    <Container className="d-flex flex-column align-items-center">
       <Image
         src="https://i.imgur.com/SwJrGN2.png"
         alt="Progress Bar"
         className="Progress-Gear"
       />
-      <Card>
+      <Card className="d-flex flex-column align-items-center mt-2">
         <Card.Title className="summary-title">Repairs Requested</Card.Title>
         <Card.Text className="summary">
           Pop-up bicycle rights polaroid kickstarter intelligentsia cray, +1
@@ -27,12 +27,11 @@ const Summary = () => {
         </ListGroup>
       </Card>
       <Card>
-        <Card.Title className="dropoff">
-          Please drop off your bicycle at
+        <Card.Title className="dropoff d-flex flex-column align-items-center">
+          Please drop off your bicycle at: <br />
+          Danny's Bike Shop
         </Card.Title>
-        <Card.Text className="location">This Location</Card.Text>
       </Card>
-      <BikeShopCard />
       <Card>
         <Card.Title className="instruction-header">
           Drop off instructions
@@ -42,18 +41,15 @@ const Summary = () => {
           regarding your appointment.
         </Card.Text>
 
-        <Button
-          className="btn-pink-lg"
-          style={{ width: '61vw', marginleft: 'auto', marginright: 'auto' }}
-        >
-          Create account
-        </Button>
-        <Card.Text className="cr-acc-desc">
-          Create an account in order to track the bike repair progress.
-        </Card.Text>
-        <Link to="/Repairs" className="edit-link">
-          Edit Repairs
+        <Link to="/">
+          <Button
+            className="btn-pink-lg"
+            style={{ width: '61vw', marginleft: 'auto', marginright: 'auto' }}
+          >
+            Finished
+          </Button>
         </Link>
+        <Card.Text className="cr-acc-desc"></Card.Text>
       </Card>
     </Container>
   );

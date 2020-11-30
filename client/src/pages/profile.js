@@ -34,6 +34,7 @@ const Profile = ({ history }) => {
       });
       //We are pulling up the
       setCurrentUser({ ...currentUser, avatar: updatedUser.data.secure_url });
+      setLoading(false);
       swal('Looking Good!', 'Your image has been updated!', 'success');
       history.push('/avatar');
     } catch (error) {

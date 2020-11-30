@@ -8,7 +8,7 @@ const Bike = () => {
   return (
     <div>
       {fetchCurrentUser &&
-        fetchCurrentUser.cyclist.bike?.map((bike) => (
+        fetchCurrentUser.cyclist?.map((bike) => (
           <Card
             key={bike._id}
             className="d-flex flex-column align-items-center"

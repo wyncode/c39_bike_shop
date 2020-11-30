@@ -23,10 +23,10 @@ const Chat = () => {
       swal('Sorry! There are no ride leaders available at this time!');
     }
     await addResponseMessage(
-      `Sure. I would love to help you let me check on that!`
+      `Sure. I would love to help you. Let me check on that!`
     );
     await addLinkSnippet({
-      title: 'Search the for a Bikeshop',
+      title: 'Search for a Bikeshop',
       link: '/shoplist'
     });
   };
