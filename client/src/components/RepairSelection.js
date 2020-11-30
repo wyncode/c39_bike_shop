@@ -63,14 +63,16 @@ const RepairSelection = ({
               </svg>{' '}
             </Button>
             <Collapse in={show}>
-              <div id="example-collapse-text">asdasdfasfasf</div>
+              <div id="example-collapse-text">
+                Here is a brief description of your repair
+              </div>
             </Collapse>
 
             <h6 className="mt-4">
               Repairs may typically take up to 24-48 hours for completion. In
               some cases repairs take longer
             </h6>
-            <Form className="d-flex flex-column mt-5">
+            <Form className="d-flex flex-column mt-5" onSubmit={handleClose}>
               <Form.Group>
                 <Form.Check type="checkbox" label="Select this repair" />
               </Form.Group>
@@ -78,7 +80,9 @@ const RepairSelection = ({
           </Modal.Body>
           <ModalFooter className="d-flex justify-content-center modal-ft">
             <Button
-              onClick={() => handleRepairSelections(repair._id)}
+              onClick={
+                (() => handleRepairSelections(repair._id)) && handleClose
+              }
               className="btn-pink-sm-md mt-2"
             >
               Confirm

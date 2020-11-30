@@ -1,17 +1,28 @@
 import React from 'react';
-import { Container, Image } from 'react-bootstrap';
+
+import ReactMapboxGl, { ZoomControl, Marker } from 'react-mapbox-gl';
+import '../components/styles/shoplist.css';
+
+const MapBox = ReactMapboxGl({
+  accessToken:
+    'pk.eyJ1IjoidGVsZXZpbmUiLCJhIjoiY2tnYTQ5MnJrMDNpZTJ6b2puZGJxZ21qZCJ9.Euhc3Q37uKKWBj6wlq3uSg'
+});
 
 const Map = () => {
   return (
-    <div>
-      <Container>
-        <Image
-          className="map"
-          src="https://thumbs.dreamstime.com/z/square-map-river-streets-parks-vector-54040512.jpg"
-          alt="map"
-        />
-      </Container>
-    </div>
+    <MapBox
+      style="mapbox://styles/mapbox/streets-v11"
+      containerStyle={{
+        height: '600px',
+        width: '850px'
+      }}
+      center={[-80.1918, 25.7617]}
+    >
+      <Marker coordinates={[-80.1918, 25.7617]} className="marker">
+        <img className="marker-icon" />
+      </Marker>
+      <ZoomControl />
+
   );
 };
 
