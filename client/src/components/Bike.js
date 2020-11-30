@@ -2,13 +2,11 @@ import React, { useContext } from 'react';
 import { Card } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 
-const Bike = () => {
-  const { fetchCurrentUser } = useContext(AppContext);
-
+const Bike = ({ fetchCurrentUser }) => {
   return (
     <div>
       {fetchCurrentUser &&
-        fetchCurrentUser.cyclist?.map((bike) => (
+        fetchCurrentUser.cyclist.bike?.map((bike) => (
           <Card
             key={bike._id}
             className="d-flex flex-column align-items-center"
