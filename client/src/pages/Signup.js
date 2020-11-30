@@ -17,6 +17,15 @@ const SignUp = ({ history }) => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
+      const response = await axios.post('/api', formData);
+      console.log(response.data);
+      sessionStorage.setItem('user', response.data);
+      setCurrentUser(response.data);
+      if (response.data.admin) {
+        history.push('/bikeshop');
+      } else {
+        history.push('/cyclist');
+      }
       const { data } = await axios.post('/api', formData);
 
       console.log('SIGNED UP THE USER', {
