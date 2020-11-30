@@ -1,17 +1,15 @@
 import React from 'react';
-import { Card, Container } from 'react-bootstrap';
-import BikeShopCard from '../components/BikeShopCard';
+import { Container } from 'react-bootstrap';
 import '../components/styles/repairtracker.css';
 import ProgressBar from '../components/ProgressBar';
 import Orders from '../components/Orders';
 
 const RepairTracker = () => {
   return (
-    <Container>
+    <Container className="d-flex flex-column align-items-center">
       <h1 class="text-center">Repairs Tracker</h1>
       <ProgressBar />
       <h1 class="text-center">Currently in Repair</h1>
-      <BikeShopCard />
       <Orders />
       <div>
         <h1 className="dropofftitle">Repairs Selected</h1>

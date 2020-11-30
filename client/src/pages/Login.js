@@ -21,7 +21,7 @@ const Login = ({ history }) => {
       fetchCurrentUser();
       history.push('/');
     } catch (error) {
-      swal(`Oops!`, 'Something went wrong.');
+      console.log(`Oops!`, 'Something went wrong.');
     }
   };
 

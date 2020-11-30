@@ -3,7 +3,6 @@ import { AppContextProvider } from './context/AppContext';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
-import Confirmation from './pages/Confirmation';
 import Shoplist from './pages/Shoplist';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -38,14 +37,13 @@ const App = () => {
           <Route exact path="/community" component={Community} />
           <Route exact path="/aboutus" component={AboutUs} />
           <Route exact path="/events" component={Events} />
-          <Route exact path="/repairControl" component={RepairControl} />
+          <Route exact path="/repaircontrol" component={RepairControl} />
           <Route exact path="/bikeshoppdp/:id" component={BikeShopPDP} />
           <Route exact path="/shoplist" component={Shoplist} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/addrepairs" component={AddRepair} />
           <PrivateRoute exact path="/repairs/:id" component={Repairs} />
-          <PrivateRoute exact path="/confirmation" component={Confirmation} />
           <PrivateRoute exact path="/appointment" component={Appointment} />
           <PrivateRoute exact path="/summary" component={Summary} />
           <PrivateRoute exact path="/cyclist" component={CreateCyclist} />

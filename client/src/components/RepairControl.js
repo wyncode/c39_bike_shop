@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Container, Button, ProgressBar } from 'react-bootstrap';
+import React, { useState, useContext } from 'react';
+import { Container, Button } from 'react-bootstrap';
 import './styles/repairs.css';
 import Orders from './Orders';
 import ProgressBarContainer from './ProgressBar';
