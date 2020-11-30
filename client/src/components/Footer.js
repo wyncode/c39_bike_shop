@@ -23,16 +23,16 @@ const Footer = () => {
         </div>
         <hr className="line" />
         <div className="linkHolder">
-          <Link className="ft-link" to="#">
+          <Link className="ft-link" to="/aboutus">
             About Us
           </Link>
-          <Link className="ft-link" to="#">
+          <Link className="ft-link" to="/trails">
             Trails
           </Link>
-          <Link className="ft-link" to="#">
+          <Link className="ft-link" to="/events">
             Events
           </Link>
-          <Link className="ft-link" to="/ShopList">
+          <Link className="ft-link" to="/shoplist">
             Bike Shops
           </Link>
         </div>

@@ -8,27 +8,27 @@ export default function InfoCards() {
       <Card className="InfoCard">
         <Link to="/community">
           <Card.Img variant="top" src="https://i.imgur.com/dzTEdUH.png" />
+          <Card.ImgOverlay>
+            <Card.Title className="imgtitle">Community</Card.Title>
+          </Card.ImgOverlay>{' '}
         </Link>
-        <Card.ImgOverlay>
-          <Card.Title className="imgtitle">Community</Card.Title>
-        </Card.ImgOverlay>
       </Card>
 
       <Card className="InfoCard">
         <Link to="/events">
           <Card.Img variant="top" src="https://i.imgur.com/tEUFskd.png" />
+          <Card.ImgOverlay>
+            <Card.Title className="imgtitle">Events</Card.Title>
+          </Card.ImgOverlay>{' '}
         </Link>
-        <Card.ImgOverlay>
-          <Card.Title className="imgtitle">Events</Card.Title>
-        </Card.ImgOverlay>
       </Card>
       <Card className="InfoCard">
         <Link to="/trails">
           <Card.Img variant="top" src="https://i.imgur.com/gADnyXW.png" />
+          <Card.ImgOverlay>
+            <Card.Title className="imgtitle">Trails & Routes</Card.Title>
+          </Card.ImgOverlay>{' '}
         </Link>
-        <Card.ImgOverlay>
-          <Card.Title className="imgtitle">Trails & Routes</Card.Title>
-        </Card.ImgOverlay>
       </Card>
     </CardDeck>
   );
