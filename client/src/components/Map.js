@@ -1,5 +1,5 @@
 import React from 'react';
-
+import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactMapboxGl, { ZoomControl, Marker } from 'react-mapbox-gl';
 import '../components/styles/shoplist.css';
 
@@ -22,7 +22,7 @@ const Map = () => {
         <img className="marker-icon" />
       </Marker>
       <ZoomControl />
-
+    </MapBox>
   );
 };
 
