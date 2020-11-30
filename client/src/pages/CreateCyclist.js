@@ -19,10 +19,8 @@ const CreateCyclist = ({ history }) => {
       await axios.post('/api/cyclist', formData, { withCredentials: true });
 
       await fetchCurrentUser();
-
       history.push('/');
     } catch (error) {
-      console.log('an error happend in create cylixt');
       swal('SignUp Error: ', error.toString());
     }
   };
