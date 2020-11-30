@@ -1,15 +1,46 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Image } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
 import RepairSelection from '../components/RepairSelection';
 import '../components/styles/repairs.css';
 
-const Repairs = ({ match }) => {
-  //fetching will happen here with useEffect and App Context
-  const { bikeshop, setBikeshop } = useContext(AppContext);
-  //we need to get the context of the current bike shop.
+const Repairs = ({ match, history }) => {
+  const { bikeshop, setBikeshop, currentUser, setOrder } = useContext(
+    AppContext
+  );
+  const [selectedRepairs, setSelectedRepairs] = useState([]);
+
+  const createOrder = async () => {
+    const body = {
+      bikeshop: bikeshop._id, // needs to be the ID
+      cyclist: currentUser.cyclist._id, // needs to be the ID
+      repairs: selectedRepairs
+    };
+
+    try {
+      const { data } = await axios.post('/api/order', body, {
+        withCredentials: true
+      });
+      setOrder(data);
+
+      history.push('/appointment');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleRepairSelections = (repairId) => {
+    let newRepairs = selectedRepairs;
+    if (selectedRepairs.includes(repairId)) {
+      newRepairs = selectedRepairs.filter((id) => id !== repairId);
+    } else {
+      newRepairs = [...selectedRepairs, repairId];
+    }
+    setSelectedRepairs(newRepairs);
+  };
+
   const { id } = match.params;
 
   useEffect(() => {
@@ -20,7 +51,6 @@ const Repairs = ({ match }) => {
     axios
       .get(`/api/bikeshop/find/${id}`, { withCredentials: true })
       .then((response) => {
-        console.log(response.data);
         setBikeshop(response.data);
       })
       .catch((error) => console.log(error));
@@ -29,15 +59,24 @@ const Repairs = ({ match }) => {
   return (
     <>
       <Container className="d-flex flex-column justify-content-center align-items-center">
-        {/* // We are going to map through the filter repairs from id of the bike shop */}
+        <h1 className="appName">The Bike Shop</h1>
+        <Image
+          src="https://imgur.com/wE9rGJ8.png"
+          className="mt-5 mb-5 bicycleImage"
+        />
+        <h2>Select your repairs</h2>
+
         {(bikeshop?.repairs || []).map((repair) => (
-          <RepairSelection key={repair._id} repair={repair} />
+          <RepairSelection
+            selectedRepairs={selectedRepairs}
+            handleRepairSelections={handleRepairSelections}
+            key={repair._id}
+            repair={repair}
+          />
         ))}
-        {/* //How can I pass the prop to the next pages */}
-        {/* //How can I make the pop up function */}
+
         <Container className="mt-5 d-flex flex-column align-items-center justify-content-center">
-          {/* send to appointment page */}
-          <Button className="btn-pink-xlg" block>
+          <Button className="btn-pink-xlg" block onClick={createOrder}>
             {' '}
             Select Appointment
           </Button>

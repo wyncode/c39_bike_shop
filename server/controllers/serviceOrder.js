@@ -11,10 +11,9 @@ exports.createOrder = async (req, res) => {
       Bikeshop.findById(req.body.bikeshop)
     ]);
 
-    console.log('i found ');
+    cyclist.orders.push(newOrder._id);
+    bikeshop.orders.push(newOrder._id);
 
-    cyclist.orders.push(newOrder);
-    bikeshop.orders.push(newOrder);
     await Promise.all([bikeshop.save(), cyclist.save(), newOrder.save()]);
 
     res.status(201).json(newOrder);
@@ -31,7 +30,12 @@ exports.getAllOrders = (req, res) => {
 
 exports.updateOrder = async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ['progress', 'dropoffDate', 'expectedPickup'];
+  const allowedUpdates = [
+    'progress',
+    'dropOffDate',
+    'expectedPickup',
+    'description'
+  ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );

@@ -28,6 +28,7 @@
     "passport-facebook": "^3.0.0",
     "passport-jwt": "^4.0.0",
     "react-mapbox-gl": "^5.1.1",
+    "react-rater": "^5.1.1",
     "react-share": "^4.3.1",
     "styled-components": "^5.2.1",
     "sweetalert": "^2.1.2",
@@ -52,5 +53,7 @@
     "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
     "heroku-postbuild": "cd client && yarn && yarn run build",
     "prettify": "prettier '*/**/*.js' '*/**/*.jsx' '*/**/*.html' '*/**/*.css' --write"
-  }
+  },
+  "repository": "git@github.com:wyncode/c39_bike_shop.git",
+  "author": "tracilevine <televine@gmail.com>"
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppContextProvider } from './context/AppContext';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import Confirmation from './pages/Confirmation';
 import Shoplist from './pages/Shoplist';
@@ -11,15 +12,18 @@ import BikeShopPDP from './pages/BikeShopPDP';
 import Appointment from './pages/Appointment';
 import Summary from './pages/Summary';
 import './App.css';
-import RepairPopUp from './components/RepairPopUp';
 import Navigation from './components/navigation';
-
 import Profile from './pages/profile';
-
 import ShopOwner from './pages/ShopOwner';
 import BikeControl from './pages/BikeControl';
 import CreateCyclist from './pages/CreateCyclist';
 import CreateBikeShop from './pages/CreateBikeshop';
+import Events from './pages/Events';
+import Trails from './pages/Trails';
+import Community from './pages/Community';
+import AboutUs from './pages/AboutUs';
+import RepairTracker from './pages/RepairTracker';
+import RepairControl from './components/RepairControl';
 
 const App = () => {
   return (
@@ -29,20 +33,25 @@ const App = () => {
         <Navigation />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/Repairs/:id" component={Repairs} />
-          <Route exact path="/Shoplist" component={Shoplist} />
-          <Route exact path="/Login" component={Login} />
-          <Route exact path="/Signup" component={Signup} />
-          <Route exact path="/Confirmation" component={Confirmation} />
-          <Route exact path="/BikeShopPDP/:id" component={BikeShopPDP} />
-          <Route exact path="/Appointment" component={Appointment} />
-          <Route exact path="/Summary" component={Summary} />
-          <Route exact path="/RepairsPop" component={RepairPopUp} />
-          <Route exact path="/Cyclist" component={CreateCyclist} />
-          <Route exact path="/BikeShop" component={CreateBikeShop} />
-          <Route exact path="/Profile" component={Profile} />
-          <Route exact path="/ShopOwner" component={ShopOwner} />
-          <Route exact path="/BikeControl" component={BikeControl} />
+          <Route exact path="/trails" component={Trails} />
+          <Route exact path="/community" component={Community} />
+          <Route exact path="/aboutus" component={AboutUs} />
+          <Route exact path="/events" component={Events} />
+          <Route exact path="/repairControl" component={RepairControl} />
+          <PrivateRoute exact path="/repairs/:id" component={Repairs} />
+          <Route exact path="/shoplist" component={Shoplist} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <PrivateRoute exact path="/confirmation" component={Confirmation} />
+          <Route exact path="/bikeshoppdp/:id" component={BikeShopPDP} />
+          <PrivateRoute exact path="/appointment" component={Appointment} />
+          <PrivateRoute exact path="/summary" component={Summary} />
+          <PrivateRoute exact path="/cyclist" component={CreateCyclist} />
+          <PrivateRoute exact path="/bikeShop" component={CreateBikeShop} />
+          <PrivateRoute exact path="/Profile" component={Profile} />
+          <PrivateRoute exact path="/shopOwner" component={ShopOwner} />
+          <PrivateRoute exact path="/bikeControl" component={BikeControl} />
+          <PrivateRoute exact path="/repairTracker" component={RepairTracker} />
         </Switch>
       </BrowserRouter>
     </AppContextProvider>

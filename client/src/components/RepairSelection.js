@@ -8,8 +8,11 @@ import {
   Container
 } from 'react-bootstrap';
 
-const RepairSelection = ({ repair }) => {
-  const handleClick = () => {};
+const RepairSelection = ({
+  repair,
+  selectedRepairs,
+  handleRepairSelections
+}) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -17,14 +20,16 @@ const RepairSelection = ({ repair }) => {
 
   return (
     <Container className="mt-4">
-      <h2>Select your repairs</h2>
-
-      {/* //we need to on click that triggers therepair pop up */}
       <Button
         className="d-flex justify-content-between btnRep"
         size="lg"
         block
         onClick={handleShow}
+        style={
+          selectedRepairs.includes(repair._id)
+            ? { backgroundColor: 'blue' }
+            : {}
+        }
       >
         <p>{repair?.repair}</p>
         <p>{repair?.price}</p>
@@ -72,7 +77,10 @@ const RepairSelection = ({ repair }) => {
             </Form>
           </Modal.Body>
           <ModalFooter className="d-flex justify-content-center modal-ft">
-            <Button onClick={handleClick} className="btn-pink-sm-md mt-2">
+            <Button
+              onClick={() => handleRepairSelections(repair._id)}
+              className="btn-pink-sm-md mt-2"
+            >
               Confirm
             </Button>
           </ModalFooter>
