@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Container, Image } from 'react-bootstrap';
 import axios from 'axios';
@@ -6,8 +6,40 @@ import { AppContext } from '../context/AppContext';
 import RepairSelection from '../components/RepairSelection';
 import '../components/styles/repairs.css';
 
-const Repairs = ({ match }) => {
-  const { bikeshop, setBikeshop } = useContext(AppContext);
+const Repairs = ({ history, match }) => {
+  const { bikeshop, setBikeshop, currentUser, setOrder } = useContext(
+    AppContext
+  );
+  const [selectedRepairs, setSelectedRepairs] = useState([]);
+
+  const createOrder = async () => {
+    const body = {
+      bikeshop: bikeshop._id,
+      cyclist: currentUser.cyclist._id,
+      repairs: selectedRepairs
+    };
+
+    try {
+      const { data } = await axios.post('/api/order', body, {
+        withCredentials: true
+      });
+      setOrder(data);
+
+      history.push('/appointment');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleRepairSelections = (repairId) => {
+    let newRepairs = selectedRepairs;
+    if (selectedRepairs.includes(repairId)) {
+      newRepairs = selectedRepairs.filter((id) => id !== repairId);
+    } else {
+      newRepairs = [...selectedRepairs, repairId];
+    }
+    setSelectedRepairs(newRepairs);
+  };
 
   const { id } = match.params;
 
@@ -35,11 +67,16 @@ const Repairs = ({ match }) => {
         <h2>Select your repairs</h2>
 
         {(bikeshop?.repairs || []).map((repair) => (
-          <RepairSelection key={repair._id} repair={repair} />
+          <RepairSelection
+            selectedRepairs={selectedRepairs}
+            handleRepairSelections={handleRepairSelections}
+            key={repair._id}
+            repair={repair}
+          />
         ))}
 
         <Container className="mt-5 d-flex flex-column align-items-center justify-content-center">
-          <Button className="btn-pink-xlg" block>
+          <Button className="btn-pink-xlg" block onClick={createOrder}>
             {' '}
             Select Appointment
           </Button>

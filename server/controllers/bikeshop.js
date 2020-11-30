@@ -1,8 +1,5 @@
 const Bikeshop = require('../db/models/bikeshop');
 const User = require('../db/models/user');
-const Review = require('../db/models/reviews');
-const Repair = require('../db/models/repair');
-const ServiceOrder = require('../db/models/serviceOrder');
 
 //UNAUTHENTICATED
 
@@ -30,19 +27,32 @@ exports.getBikeshopById = async (req, res) => {
 
 // AUTHENTICATED REQUESTS
 exports.createBikeshop = async (req, res) => {
-  const { shopName, shopContact, email, website, repairs } = req.body;
+  const {
+    shopName,
+    email,
+    website,
+    repairs,
+    street,
+    city,
+    state,
+    zipCode
+  } = req.body;
   try {
     const bikeshop = new Bikeshop({
       shopName,
-      shopContact,
+      shopContact: { state, city, street, zipCode },
       email,
       website,
-      repairs,
-      owner: req.user._id
+      repairs
     });
+
+    bikeshop.owner = req.user._id;
+
     await bikeshop.save();
+
     res.status(201).json(bikeshop);
   } catch (e) {
+    console.log('what is the error', e.message);
     res.status(400).json({ error: e.toString() });
   }
 };

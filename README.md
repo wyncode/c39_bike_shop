@@ -27,7 +27,7 @@ We love working on web developement and riding our bikes. During our cohort, we 
 - `yarn install`
 - `cd client && yarn install`
 
-## Dependencies-Client
+## Dependencies
 
 |        Client Side        |       Server Side       |     |     |     |
 | :-----------------------: | :---------------------: | --- | --- | --- |
@@ -54,6 +54,7 @@ We love working on web developement and riding our bikes. During our cohort, we 
 |        React-Share        |         express         |     |     |     |
 |          moment           |                         |     |     |     |
 |     React-Chat-Widgit     |
+
 
 ## Available build commands
 

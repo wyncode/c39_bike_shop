@@ -1,5 +1,6 @@
 const Repair = require('../db/models/repair'),
-  Bikeshop = require('../db/models/bikeshop');
+  Bikeshop = require('../db/models/bikeshop'),
+  User = require('../db/models/user');
 
 // ***********************************************//
 // create repair
@@ -8,13 +9,18 @@ const Repair = require('../db/models/repair'),
 exports.createRepair = async (req, res) => {
   try {
     const newRepair = new Repair(req.body);
-    newRepair.bikeshop = req.params.bikeshop_id;
-    const bikeshop = await Bikeshop.findById(req.params.bikeshop_id);
-    const createRepair = await newRepair.save();
-    await bikeshop.repairs.push(createRepair._id);
-    await bikeshop.save();
 
-    res.json(createRepair);
+    const user = User.findById(req.user._id).poplate('bikeshop');
+    const bikeshopId = user.bikeshop._id;
+
+    newRepair.bikeshop = bikeshopId;
+
+    const bikeshop = await Bikeshop.findById(bikeshopId);
+    bikeshop.repairs.push(createRepair._id);
+
+    await Promise.all([newRepair.save(), bikeshop.save()]);
+
+    res.json(newRepair);
   } catch (error) {
     console.log(error.message);
   }

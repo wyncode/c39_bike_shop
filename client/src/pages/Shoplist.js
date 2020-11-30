@@ -1,15 +1,15 @@
 import React, { useContext, useEffect } from 'react';
 import Map from '../components/Map';
 import SearchBar from '../components/SearchBar';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import { Container, Card } from 'react-bootstrap';
 import Footer from '../components/Footer';
-import '../components/styles/shoplist.css';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import BikeShopCard from '../components/BikeShopCard';
 import swal from 'sweetalert';
 
-const Shoplist = () => {
+const Shoplist = ({ latitude, longitude }) => {
   const { setBikeshops, search, loading, bikeshops, setSearch } = useContext(
     AppContext
   );
@@ -17,12 +17,9 @@ const Shoplist = () => {
     return bikeshop?.shopContact.zipCode.includes(search);
   });
 
-  // const [loading, setLoading] = useState(false);
   const handleSearch = async (e) => {
     setSearch(e.target.value);
   };
-
-  // setLoading(true);
 
   useEffect(() => {
     axios

@@ -1,4 +1,4 @@
-const ServiceOrder = require('../db/models/serviceorder');
+const ServiceOrder = require('../db/models/serviceOrder');
 const Bikeshop = require('../db/models/bikeshop');
 const Cyclist = require('../db/models/cyclist');
 

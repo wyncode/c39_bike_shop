@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Button, Image } from 'react-bootstrap';
 import Calendar from '../components/Calendar';
+import { AppContext } from '../context/AppContext';
 import '../components/styles/appointment.css';
 
 const Appointment = () => {
+  const { order } = useContext(AppContext);
+
   return (
     <div>
       <Image
@@ -11,7 +14,7 @@ const Appointment = () => {
         className="progress-gear"
       ></Image>
       <Container>
-        <h1 className="title">The Miami Bike Shop</h1>
+        <h1 className="title">The =Bike Shop</h1>
         <h1 className="select">Select a date</h1>
       </Container>
       <Container>

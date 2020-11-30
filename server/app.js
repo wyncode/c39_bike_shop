@@ -1,4 +1,3 @@
-//import the DB connection
 require('./db/config/index');
 const express = require('express'),
   app = express(),
@@ -9,7 +8,8 @@ const express = require('express'),
   bikeshopRouter = require('./routes/secure/bikeshop'),
   reviewRouter = require('./routes/secure/reviews'),
   bikeRouter = require('./routes/secure/bicycle'),
-  orderRouter = require('./routes/secure/serviceorder'),
+  orderRouter = require('./routes/secure/serviceOrder'),
+  messageRouter = require('./routes/secure/message'),
   passport = require('./middleware/authentication/index'),
   fileUpload = require('express-fileupload'),
   cookieParser = require('cookie-parser'),
@@ -46,6 +46,7 @@ app.use('/api/repair', repairRouter);
 app.use('/api/review', reviewRouter);
 app.use('/api/order', orderRouter);
 app.use('/api/cyclist/', bikeRouter);
+app.use('/api/chat', messageRouter);
 
 if (process.env.NODE_ENV === 'production') {
   // Handle React routing, return all requests to React app

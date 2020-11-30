@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Form, Button, Image, Card } from 'react-bootstrap';
+import { Container, Form, Button, Image } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -12,7 +12,6 @@ const SignUp = ({ history }) => {
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.log(formData);
   };
 
   const handleSignUp = async (e) => {
@@ -27,19 +26,25 @@ const SignUp = ({ history }) => {
       } else {
         history.push('/cyclist');
       }
+      const { data } = await axios.post('/api', formData);
+
+      console.log('SIGNED UP THE USER', {
+        formData,
+        data
+      });
+
+      sessionStorage.setItem('user', data);
+      setCurrentUser(data);
+
+      data.admin ? history.push('/bikeshop') : history.push('/cyclist');
     } catch (error) {
       swal('SignUp Error: ', error.toString());
     }
   };
 
   const setAdministrator = (val) => {
-    // setAdmin(val);
-    setFormData({ ...FormData, admin: val });
+    setFormData({ ...formData, admin: val });
   };
-
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
 
   return (
     <Container

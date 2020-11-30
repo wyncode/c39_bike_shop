@@ -7,7 +7,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 const Login = ({ history }) => {
-  const { setCurrentUser } = useContext(AppContext);
+  const { fetchCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
 
   const handleChange = (event) => {
@@ -17,9 +17,8 @@ const Login = ({ history }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login', formData);
-      setCurrentUser(response.data);
-      sessionStorage.setItem('user', response.data);
+      await axios.post('/api/login', formData);
+      fetchCurrentUser();
       history.push('/');
     } catch (error) {
       swal(`Oops!`, 'Something went wrong.');
