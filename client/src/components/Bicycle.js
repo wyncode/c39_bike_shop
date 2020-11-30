@@ -6,15 +6,15 @@ import swal from 'sweetalert';
 import { AppContext } from '../context/AppContext';
 import Bike from './Bike';
 
-const Bicycle = ({ match }) => {
+const Bicycle = () => {
   const [formData, setFormData] = useState(null);
   const { fetchCurrentUser } = useContext(AppContext);
 
-  const id = match.params.id;
-
   useEffect(() => {
     axios
-      .get(`/api/cyclist/find/${id}`, { withCredentials: true })
+      .get(`/api/cyclist/find/5fc3d219ab206131231648d5`, {
+        withCredentials: true
+      })
       .then(({ data }) => {
         fetchCurrentUser(data);
       });
@@ -34,7 +34,7 @@ const Bicycle = ({ match }) => {
       Data.append('bikeType', formData);
       await axios({
         method: 'POST',
-        url: `/api/${id}/bike`,
+        url: `/api/5fc3d21cab206131231648fd/bike`,
         withCredentials: true,
         Data
       });

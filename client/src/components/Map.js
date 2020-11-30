@@ -1,6 +1,6 @@
 import React from 'react';
+import ReactMapboxGl, { Marker, ZoomControl } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import ReactMapboxGl, { ZoomControl, Marker } from 'react-mapbox-gl';
 import '../components/styles/shoplist.css';
 
 const MapBox = ReactMapboxGl({

@@ -45,7 +45,6 @@ const Shoplist = ({ latitude, longitude }) => {
           <Card.Title className="fltr-txt">Filter By</Card.Title>
         </Card>
         {filteredBikeshops?.map((bikeshop) => {
-          console.log(bikeshop);
           return <BikeShopCard bikeshop={bikeshop} key={bikeshop._id} />;
         })}
 

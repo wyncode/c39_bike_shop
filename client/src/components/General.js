@@ -4,11 +4,9 @@ import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
 
-const General = ({ match }) => {
+const General = () => {
   const [formData, setFormData] = useState(null);
-  const { fetchCurrentUser, setLoading } = useContext(AppContext);
-
-  const id = match.params.id;
+  const { setCurrentUser, setLoading } = useContext(AppContext);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -22,7 +20,7 @@ const General = ({ match }) => {
 
       sessionStorage.setItem('user', response.data);
 
-      fetchCurrentUser(response.data);
+      setCurrentUser(response.data);
     } catch (error) {
       swal('You put on the wrong kit! Error: ', error.toString());
     }
@@ -42,8 +40,7 @@ const General = ({ match }) => {
         try {
           await axios({
             method: 'DELETE',
-            //can't get id?
-            url: `/api/user/${id}`,
+            url: `/api/user/5fc3d219ab206131231648cb`,
             withCredentials: true
           });
           swal('I guess you left the team!', {
@@ -94,7 +91,7 @@ const General = ({ match }) => {
             />
           </Form.Group>
         </Form.Group>
-        <Button type="submit" className="btn-pink-sm">
+        <Button type="submit" className="btn-pink-sm mb-2">
           Submit Changes
         </Button>
       </Form>

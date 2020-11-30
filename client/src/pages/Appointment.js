@@ -14,7 +14,7 @@ const Appointment = () => {
         className="progress-gear"
       ></Image>
       <Container>
-        <h1 className="title">The =Bike Shop</h1>
+        <h1 className="title">The Bike Shop</h1>
         <h1 className="select">Select a date</h1>
       </Container>
       <Container>
